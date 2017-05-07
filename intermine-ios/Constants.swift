@@ -9,6 +9,9 @@
 struct Endpoints {
     static let serviceListing = "/service"
     static let modelDescription = "/service/model"
+    static let lists = "/service/lists"
+    static let templates = "/service/templates"
+    static let tokens = "/service/user/tokens"
 }
 
 struct Model {

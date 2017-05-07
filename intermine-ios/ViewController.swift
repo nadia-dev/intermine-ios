@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         CacheDataStore.sharedCacheDataStore.updateRegistryIfNeeded()
-        IntermineAPIClient.fetchMouseModel()
+        IntermineMinesClient.getMouseToken(userName: "test@test.com", password: "test")
     }
 
     override func didReceiveMemoryWarning() {

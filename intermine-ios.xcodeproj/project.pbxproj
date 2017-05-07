@@ -14,6 +14,7 @@
 		05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E601EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift */; };
 		05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */; };
 		05715E691EBF801900C4C3C7 /* NSDate+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */; };
+		05715E6B1EBFBB8300C4C3C7 /* IntermineMinesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E6A1EBFBB8300C4C3C7 /* IntermineMinesClient.swift */; };
 		057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */; };
 		05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530B1E90286E00113171 /* AppDelegate.swift */; };
 		05DF530E1E90286E00113171 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530D1E90286E00113171 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		05715E601EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mine+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDataStore.swift; sourceTree = "<group>"; };
 		05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Methods.swift"; sourceTree = "<group>"; };
+		05715E6A1EBFBB8300C4C3C7 /* IntermineMinesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermineMinesClient.swift; sourceTree = "<group>"; };
 		057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermineAPIClient.swift; sourceTree = "<group>"; };
 		05DF53081E90286E00113171 /* intermine-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "intermine-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF530B1E90286E00113171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,9 +98,35 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05DF530D1E90286E00113171 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05DF53141E90286E00113171 /* LaunchScreen.storyboard */,
+				05DF530F1E90286E00113171 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		05715E6E1EBFBC3E00C4C3C7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				05DF530B1E90286E00113171 /* AppDelegate.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
 		05DE68A21E91BA220009838E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				05715E6A1EBFBB8300C4C3C7 /* IntermineMinesClient.swift */,
 				057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */,
 				05715E531EBF055800C4C3C7 /* Constants.swift */,
 				05715E551EBF0CA800C4C3C7 /* registry.json */,
@@ -129,14 +157,13 @@
 		05DF530A1E90286E00113171 /* intermine-ios */ = {
 			isa = PBXGroup;
 			children = (
+				05715E6E1EBFBC3E00C4C3C7 /* App */,
+				05715E6D1EBFBC3200C4C3C7 /* Views */,
+				05715E6C1EBFBC1100C4C3C7 /* Controllers */,
 				05715E671EBF7FF800C4C3C7 /* Utilities */,
 				05715E571EBF0F5F00C4C3C7 /* Model */,
 				05DE68A21E91BA220009838E /* Networking */,
-				05DF530B1E90286E00113171 /* AppDelegate.swift */,
-				05DF530D1E90286E00113171 /* ViewController.swift */,
-				05DF530F1E90286E00113171 /* Main.storyboard */,
 				05DF53121E90286E00113171 /* Assets.xcassets */,
-				05DF53141E90286E00113171 /* LaunchScreen.storyboard */,
 				05DF53171E90286E00113171 /* Info.plist */,
 			);
 			path = "intermine-ios";
@@ -330,6 +357,7 @@
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
 				05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */,
 				05715E691EBF801900C4C3C7 /* NSDate+Methods.swift in Sources */,
+				05715E6B1EBFBB8300C4C3C7 /* IntermineMinesClient.swift in Sources */,
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
 				05715E541EBF055800C4C3C7 /* Constants.swift in Sources */,
 			);

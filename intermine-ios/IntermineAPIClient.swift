@@ -11,7 +11,7 @@ import Alamofire
 
 class IntermineAPIClient: NSObject {
     
-    static let mouseMine: Mine? = CacheDataStore.sharedCacheDataStore.getMouseMine()
+    static let jsonParams = ["format": "json"]
     
     class func fetchRegistry(completion: (_ result: NSDictionary?) -> ()) {
         // TODO: Use registry endpoint
@@ -29,26 +29,56 @@ class IntermineAPIClient: NSObject {
             completion(nil)
         }
     }
-    
-    class func fetchMouseModel() {
-        guard let mineUrl = self.mouseMine?.url else {
-            return
-        }
-        fetchModel(mineUrl: mineUrl)
-    }
-    
+        
     class func fetchModel(mineUrl: String) {
         // send GET request to mineUrl + /model endpoint
-        let params = ["format": "json"]
-        Alamofire.request(mineUrl + Endpoints.modelDescription, parameters: params).responseJSON { (response) in
+        Alamofire.request(mineUrl + Endpoints.modelDescription, parameters: jsonParams).responseJSON { (response) in
             print(response.result)
-            
             if let JSON = response.result.value {
                 print("JSON: \(JSON)")
             }
         }
-        
     }
     
+    class func fetchLists(mineUrl: String) {
+        Alamofire.request(mineUrl + Endpoints.lists, parameters: jsonParams).responseJSON { (response) in
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
+    }
+    
+    class func fetchTemplates(mineUrl: String) {
+        Alamofire.request(mineUrl + Endpoints.templates, parameters: jsonParams).responseJSON { (response) in
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
+    }
+    
+    class func getToken(mineUrl: String, username: String, password: String) {
+        //                SUCCESS: {
+        //                    error = "<null>";
+        //                    executionTime = "2017.05.07 18:22::41";
+        //                    statusCode = 200;
+        //                    token = "d46b67a8-f606-4e6c-b391-c6e13025a4f6";
+        //                    wasSuccessful = 1;
+        //                }
+
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Request.authorizationHeader(user: username, password: password) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        let params = ["type": "perm", "message": "iOS client"]
+        
+        Alamofire.request(mineUrl + Endpoints.tokens, method: .post, parameters: params, headers: headers)
+            .responseJSON { (response) in
+                
+            print(response)
+            // take the token, store it in nsuserdefaults, use next time for auth
+        }
+    }
     
 }
