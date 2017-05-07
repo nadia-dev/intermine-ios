@@ -8,6 +8,7 @@
 
 struct Endpoints {
     static let serviceListing = "/service"
+    static let modelDescription = "/service/model"
 }
 
 struct Model {

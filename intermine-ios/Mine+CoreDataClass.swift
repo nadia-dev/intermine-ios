@@ -21,5 +21,16 @@ public class Mine: NSManagedObject {
         mine.url = json["url"]
         mine.lastUpdated = NSDate()
     }
+    
+    class func getMineByName(name: String, context: NSManagedObjectContext) -> Mine? {
+        let request = NSFetchRequest<Mine>(entityName: "Mine")
+        request.predicate =  NSPredicate(format: "name == %@", name)
+        if let mines = try? context.fetch(request) {
+            if mines.count > 0 {
+                return mines.first
+            }
+        }
+        return nil
+    }
 
 }

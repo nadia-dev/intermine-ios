@@ -47,6 +47,11 @@ class CacheDataStore {
         saveContext()
     }
     
+    func getMouseMine() -> Mine? {
+        // FIXME: Debug code, to remove
+        return Mine.getMineByName(name: "MouseMine", context: self.managedContext)
+    }
+    
     // MARK: Private methods
     
     private func fetchCachedRegistry() -> Array<Mine>? {
