@@ -1,0 +1,29 @@
+{
+    "mines":
+    [
+         {
+             "name": "MouseMine",
+             "url": "http://www.mousemine.org/mousemine"
+         },
+         {
+             "name": "FlyMine",
+             "url": "http://www.flymine.org/query"
+         },
+         {
+             "name": "RatMine",
+             "url": "http://ratmine.mcw.edu/ratmine"
+         },
+         {
+             "name": "YeastMine",
+             "url": "http://yeastmine.yeastgenome.org/yeastmine"
+         },
+         {
+             "name": "HumanMine",
+             "url": "http://www.humanmine.org/humanmine"
+         },
+         {
+             "name": "MedicMine",
+             "url": "http://medicmine.jcvi.org/medicmine"
+         }
+     ]
+}

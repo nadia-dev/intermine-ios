@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05715E541EBF055800C4C3C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E531EBF055800C4C3C7 /* Constants.swift */; };
+		05715E561EBF0CA800C4C3C7 /* registry.json in Resources */ = {isa = PBXBuildFile; fileRef = 05715E551EBF0CA800C4C3C7 /* registry.json */; };
+		05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05715E581EBF0FCC00C4C3C7 /* Cache.xcdatamodeld */; };
+		05715E611EBF10E300C4C3C7 /* Mine+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E5F1EBF10E300C4C3C7 /* Mine+CoreDataClass.swift */; };
+		05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E601EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift */; };
+		05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */; };
+		05715E691EBF801900C4C3C7 /* NSDate+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */; };
+		057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */; };
 		05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530B1E90286E00113171 /* AppDelegate.swift */; };
 		05DF530E1E90286E00113171 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530D1E90286E00113171 /* ViewController.swift */; };
 		05DF53111E90286E00113171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DF530F1E90286E00113171 /* Main.storyboard */; };
 		05DF53131E90286E00113171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05DF53121E90286E00113171 /* Assets.xcassets */; };
 		05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DF53141E90286E00113171 /* LaunchScreen.storyboard */; };
 		05DF53211E90286E00113171 /* intermine_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF53201E90286E00113171 /* intermine_iosTests.swift */; };
+		69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +35,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05715E531EBF055800C4C3C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		05715E551EBF0CA800C4C3C7 /* registry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = registry.json; sourceTree = "<group>"; };
+		05715E591EBF0FCC00C4C3C7 /* Cache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cache.xcdatamodel; sourceTree = "<group>"; };
+		05715E5F1EBF10E300C4C3C7 /* Mine+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mine+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05715E601EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mine+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDataStore.swift; sourceTree = "<group>"; };
+		05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Methods.swift"; sourceTree = "<group>"; };
+		057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermineAPIClient.swift; sourceTree = "<group>"; };
 		05DF53081E90286E00113171 /* intermine-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "intermine-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF530B1E90286E00113171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05DF530D1E90286E00113171 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +53,9 @@
 		05DF531C1E90286E00113171 /* intermine-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "intermine-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF53201E90286E00113171 /* intermine_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = intermine_iosTests.swift; sourceTree = "<group>"; };
 		05DF53221E90286E00113171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.release.xcconfig"; sourceTree = "<group>"; };
+		7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intermine_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +77,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05715E571EBF0F5F00C4C3C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				05715E5F1EBF10E300C4C3C7 /* Mine+CoreDataClass.swift */,
+				05715E601EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift */,
+				05715E581EBF0FCC00C4C3C7 /* Cache.xcdatamodeld */,
+				05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		05715E671EBF7FF800C4C3C7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		05DE68A21E91BA220009838E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */,
+				05715E531EBF055800C4C3C7 /* Constants.swift */,
+				05715E551EBF0CA800C4C3C7 /* registry.json */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		05DF52FF1E90286D00113171 = {
 			isa = PBXGroup;
 			children = (
 				05DF530A1E90286E00113171 /* intermine-ios */,
 				05DF531F1E90286E00113171 /* intermine-iosTests */,
 				05DF53091E90286E00113171 /* Products */,
+				5DB7A5E7A74B75C257D9CAA3 /* Pods */,
+				7C111D7225C096E5B4DE67A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +129,9 @@
 		05DF530A1E90286E00113171 /* intermine-ios */ = {
 			isa = PBXGroup;
 			children = (
+				05715E671EBF7FF800C4C3C7 /* Utilities */,
+				05715E571EBF0F5F00C4C3C7 /* Model */,
+				05DE68A21E91BA220009838E /* Networking */,
 				05DF530B1E90286E00113171 /* AppDelegate.swift */,
 				05DF530D1E90286E00113171 /* ViewController.swift */,
 				05DF530F1E90286E00113171 /* Main.storyboard */,
@@ -96,6 +151,23 @@
 			path = "intermine-iosTests";
 			sourceTree = "<group>";
 		};
+		5DB7A5E7A74B75C257D9CAA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */,
+				2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7C111D7225C096E5B4DE67A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05DF53251E90286E00113171 /* Build configuration list for PBXNativeTarget "intermine-ios" */;
 			buildPhases = (
+				574E7F899BB7F0BD92FACD64 /* [CP] Check Pods Manifest.lock */,
 				05DF53041E90286D00113171 /* Sources */,
 				05DF53051E90286D00113171 /* Frameworks */,
 				05DF53061E90286D00113171 /* Resources */,
+				FE8531314A8AF5AB709DF4B3 /* [CP] Embed Pods Frameworks */,
+				13DA4E4B32221F00D7C8E9B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,6 +256,7 @@
 			files = (
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
+				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
 				05DF53111E90286E00113171 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,13 +270,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		13DA4E4B32221F00D7C8E9B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		574E7F899BB7F0BD92FACD64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FE8531314A8AF5AB709DF4B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		05DF53041E90286D00113171 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05715E611EBF10E300C4C3C7 /* Mine+CoreDataClass.swift in Sources */,
 				05DF530E1E90286E00113171 /* ViewController.swift in Sources */,
+				05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */,
+				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
+				05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */,
+				05715E691EBF801900C4C3C7 /* NSDate+Methods.swift in Sources */,
+				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
+				05715E541EBF055800C4C3C7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +468,7 @@
 		};
 		05DF53261E90286E00113171 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "intermine-ios/Info.plist";
@@ -349,6 +481,7 @@
 		};
 		05DF53271E90286E00113171 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "intermine-ios/Info.plist";
@@ -406,6 +539,7 @@
 				05DF53271E90286E00113171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05DF53281E90286E00113171 /* Build configuration list for PBXNativeTarget "intermine-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -414,8 +548,22 @@
 				05DF532A1E90286E00113171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		05715E581EBF0FCC00C4C3C7 /* Cache.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				05715E591EBF0FCC00C4C3C7 /* Cache.xcdatamodel */,
+			);
+			currentVersion = 05715E591EBF0FCC00C4C3C7 /* Cache.xcdatamodel */;
+			path = Cache.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 05DF53001E90286D00113171 /* Project object */;
 }
