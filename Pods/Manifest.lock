@@ -1,12 +1,15 @@
 PODS:
   - Alamofire (4.4.0)
+  - Font-Awesome-Swift (1.6.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Font-Awesome-Swift (~> 1.6.2)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Font-Awesome-Swift: 4dc96df73b5f32aaccdee50a454c3ec253ee4977
 
-PODFILE CHECKSUM: 6709fe6d00d387c4543730db2785847ce94d7745
+PODFILE CHECKSUM: e8d845b696c0364541bd3ef02150fb5842912b6d
 
 COCOAPODS: 1.2.1
