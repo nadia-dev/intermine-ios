@@ -56,7 +56,33 @@ class IntermineAPIClient: NSObject {
         }
     }
     
+    // add get method, if get comes empty, do post and store token from there
+    // GET - will fetch tokens from other clients
+    // POST - will create token from iOS client
+    // store token from GET or POST - either way it should work given the token created was PERM
+    
     class func getToken(mineUrl: String, username: String, password: String) {
+        
+//        {"tokens":
+//            [{"dateCreated":"2017-05-07T18:22:41-0400","message":"iOS client","token":"d46b67a8-f606-4e6c-b391-c6e13025a4f6"},{"dateCreated":"2017-05-08T05:48:21-0400","message":"iOS client","token":"307d2c23-39a5-4e7b-a877-9bb7961f04a4"}]
+//            ,"executionTime":"2017.05.08 05:48::44","wasSuccessful":true,"error":null,"statusCode":200}
+        
+        var headers: HTTPHeaders = [:]
+        
+        if let authorizationHeader = Request.authorizationHeader(user: username, password: password) {
+            headers[authorizationHeader.key] = authorizationHeader.value
+        }
+        
+        Alamofire.request(mineUrl + Endpoints.tokens, headers: headers)
+            .responseString { (response) in
+                
+                print(response)
+                // take the token, store it in nsuserdefaults, use next time for auth
+        }
+    }
+    
+    
+    class func createToken(mineUrl: String, username: String, password: String) {
         //                SUCCESS: {
         //                    error = "<null>";
         //                    executionTime = "2017.05.07 18:22::41";
