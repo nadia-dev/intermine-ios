@@ -11,7 +11,7 @@ import CoreData
 
 class CacheDataStore {
     
-    private let modelName = Model.modelName
+    private let modelName = General.modelName
     private let minesUpdateInterval: Double = 432000 //5 days, TODO: -change this value to less often
     
     // MARK: Shared Instance

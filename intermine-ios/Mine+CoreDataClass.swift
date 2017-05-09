@@ -19,6 +19,7 @@ public class Mine: NSManagedObject {
         let mine = Mine(entity: mineEntiry, insertInto: context)
         mine.name = json["name"]
         mine.url = json["url"]
+        mine.theme = json["theme"]
         mine.lastUpdated = NSDate()
     }
     

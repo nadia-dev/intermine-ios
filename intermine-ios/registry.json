@@ -3,27 +3,33 @@
     [
          {
              "name": "MouseMine",
-             "url": "http://www.mousemine.org/mousemine"
+             "url": "http://www.mousemine.org/mousemine",
+             "theme": "#5EB0D3"
          },
          {
              "name": "FlyMine",
-             "url": "http://www.flymine.org/query"
+             "url": "http://www.flymine.org/query",
+             "theme": "#9B64A8"
          },
          {
              "name": "RatMine",
-             "url": "http://ratmine.mcw.edu/ratmine"
+             "url": "http://ratmine.mcw.edu/ratmine",
+             "theme": "#265C94"
          },
          {
              "name": "YeastMine",
-             "url": "http://yeastmine.yeastgenome.org/yeastmine"
+             "url": "http://yeastmine.yeastgenome.org/yeastmine",
+             "theme": "#646091"
          },
          {
              "name": "HumanMine",
-             "url": "http://www.humanmine.org/humanmine"
+             "url": "http://www.humanmine.org/humanmine",
+             "theme": "#989898"
          },
          {
              "name": "MedicMine",
-             "url": "http://medicmine.jcvi.org/medicmine"
+             "url": "http://medicmine.jcvi.org/medicmine",
+             "theme": "#61B3DA"
          }
      ]
 }

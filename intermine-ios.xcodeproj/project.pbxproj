@@ -28,6 +28,8 @@
 		05DF53131E90286E00113171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05DF53121E90286E00113171 /* Assets.xcassets */; };
 		05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DF53141E90286E00113171 /* LaunchScreen.storyboard */; };
 		05DF53211E90286E00113171 /* intermine_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF53201E90286E00113171 /* intermine_iosTests.swift */; };
+		05E952E91EC197400057F753 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05E952EB1EC197400057F753 /* Localizable.strings */; };
+		05E952EF1EC198380057F753 /* String+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E952EE1EC198380057F753 /* String+Methods.swift */; };
 		69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05715E531EBF055800C4C3C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05715E551EBF0CA800C4C3C7 /* registry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = registry.json; sourceTree = "<group>"; };
 		05715E591EBF0FCC00C4C3C7 /* Cache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cache.xcdatamodel; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 		05DF531C1E90286E00113171 /* intermine-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "intermine-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF53201E90286E00113171 /* intermine_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = intermine_iosTests.swift; sourceTree = "<group>"; };
 		05DF53221E90286E00113171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05E952EE1EC198380057F753 /* String+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Methods.swift"; sourceTree = "<group>"; };
+		05E952F01EC240010057F753 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.release.xcconfig"; sourceTree = "<group>"; };
 		7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intermine_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +96,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		054745741EC246C700BC35F8 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				0595D5281EC0A7C800686065 /* BaseViewController.swift */,
+			);
+			name = BaseVC;
+			sourceTree = "<group>";
+		};
+		054745781EC247AA00BC35F8 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				0595D51E1EC0A60600686065 /* SearchViewController.swift */,
+				0595D5201EC0A65300686065 /* TemplatesViewController.swift */,
+				0595D5221EC0A67000686065 /* ListsViewController.swift */,
+				0595D5241EC0A69C00686065 /* FavoritesViewController.swift */,
+				0595D5261EC0A6D000686065 /* LoginViewController.swift */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
+		054745791EC247EA00BC35F8 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				05DF530F1E90286E00113171 /* Main.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		0547457A1EC247F500BC35F8 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				05DF53141E90286E00113171 /* LaunchScreen.storyboard */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		0547457B1EC2482500BC35F8 /* MinesListTableCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MinesListTableCell;
+			sourceTree = "<group>";
+		};
 		05715E571EBF0F5F00C4C3C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,24 +150,21 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		05715E671EBF7FF800C4C3C7 /* Utilities */ = {
+		05715E671EBF7FF800C4C3C7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */,
+				05E952EE1EC198380057F753 /* String+Methods.swift */,
 			);
-			name = Utilities;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				05DF530D1E90286E00113171 /* MainTabController.swift */,
-				0595D51E1EC0A60600686065 /* SearchViewController.swift */,
-				0595D5201EC0A65300686065 /* TemplatesViewController.swift */,
-				0595D5221EC0A67000686065 /* ListsViewController.swift */,
-				0595D5241EC0A69C00686065 /* FavoritesViewController.swift */,
-				0595D5261EC0A6D000686065 /* LoginViewController.swift */,
-				0595D5281EC0A7C800686065 /* BaseViewController.swift */,
+				054745781EC247AA00BC35F8 /* Tabs */,
+				054745741EC246C700BC35F8 /* BaseVC */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -127,8 +172,9 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				05DF530F1E90286E00113171 /* Main.storyboard */,
-				05DF53141E90286E00113171 /* LaunchScreen.storyboard */,
+				0547457B1EC2482500BC35F8 /* MinesListTableCell */,
+				054745791EC247EA00BC35F8 /* Storyboard */,
+				0547457A1EC247F500BC35F8 /* LaunchScreen */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -178,11 +224,12 @@
 				05715E6E1EBFBC3E00C4C3C7 /* App */,
 				05715E6D1EBFBC3200C4C3C7 /* Views */,
 				05715E6C1EBFBC1100C4C3C7 /* Controllers */,
-				05715E671EBF7FF800C4C3C7 /* Utilities */,
+				05715E671EBF7FF800C4C3C7 /* Utils */,
 				05715E571EBF0F5F00C4C3C7 /* Model */,
 				05DE68A21E91BA220009838E /* Networking */,
 				05DF53121E90286E00113171 /* Assets.xcassets */,
 				05DF53171E90286E00113171 /* Info.plist */,
+				05E952EB1EC197400057F753 /* Localizable.strings */,
 			);
 			path = "intermine-ios";
 			sourceTree = "<group>";
@@ -299,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E952E91EC197400057F753 /* Localizable.strings in Resources */,
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
 				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
@@ -379,6 +427,7 @@
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
 				0595D5211EC0A65300686065 /* TemplatesViewController.swift in Sources */,
 				05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */,
+				05E952EF1EC198380057F753 /* String+Methods.swift in Sources */,
 				05715E691EBF801900C4C3C7 /* NSDate+Methods.swift in Sources */,
 				05715E6B1EBFBB8300C4C3C7 /* IntermineMinesClient.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
@@ -420,6 +469,15 @@
 				05DF53151E90286E00113171 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		05E952EB1EC197400057F753 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05E952F01EC240010057F753 /* en */,
+				054745731EC2426900BC35F8 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -524,6 +582,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "intermine-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.com.intermine-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,6 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "intermine-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "self.edu.com.intermine-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
