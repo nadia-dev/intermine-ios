@@ -12,6 +12,7 @@ class ListsViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        controllerType = .Lists
     }
 
 

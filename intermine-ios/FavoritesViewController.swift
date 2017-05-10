@@ -12,6 +12,7 @@ class FavoritesViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        controllerType = .Favorites
     }
 
 

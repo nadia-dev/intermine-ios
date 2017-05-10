@@ -19,5 +19,12 @@ class BaseView: UIView {
     class func instantiateFromNib() -> Self {
         return instantiateFromNib(viewType: self)
     }
+    
+    // MARK: Public methods
+    
+    public func resizeView(toY: CGFloat, toWidth: CGFloat, toHeight: CGFloat) {
+        self.frame = CGRect(x: 0, y: toY, width: toWidth, height: toHeight)
+        self.layoutIfNeeded()
+    }
 
 }

@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol MinesTableViewCellDelegate: class {
+    
+    func minesTableViewCell(cell: MinesTableViewCell, didDetectButtonTapWithUrl: String?)
+}
+
 class MinesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mineButton: UIButton?
+    
+    weak var delegate: MinesTableViewCellDelegate?
     
     var mineName: String? = "" {
         didSet {
@@ -37,7 +44,7 @@ class MinesTableViewCell: UITableViewCell {
     // MARK: Actions
     
     @IBAction func tapMineButton(_ sender: Any) {
-        
+        self.delegate?.minesTableViewCell(cell: self, didDetectButtonTapWithUrl: mineUrl)
     }
     
     

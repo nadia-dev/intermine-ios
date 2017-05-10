@@ -12,9 +12,9 @@ class TemplatesViewController: BaseTableViewController {
     
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        controllerType = .Templates
     }
 
 
