@@ -52,13 +52,19 @@ class CacheDataStore {
         return Mine.getMineByName(name: "MouseMine", context: self.managedContext)
     }
     
+    func registrySize() -> Int {
+        if let registry = self.fetchCachedRegistry() {
+            return registry.count
+        } else {
+            return 0
+        }
+    }
+    
     // MARK: Private methods
     
     private func fetchCachedRegistry() -> Array<Mine>? {
         do {
             if let registry = try self.managedContext.fetch(Mine.fetchRequest()) as? Array<Mine> {
-                print ("fetched")
-                print (registry.count)
                 return registry
             } else {
                 return []

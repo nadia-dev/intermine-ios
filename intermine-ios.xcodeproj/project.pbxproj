@@ -30,6 +30,12 @@
 		05DF53211E90286E00113171 /* intermine_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF53201E90286E00113171 /* intermine_iosTests.swift */; };
 		05E952E91EC197400057F753 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05E952EB1EC197400057F753 /* Localizable.strings */; };
 		05E952EF1EC198380057F753 /* String+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E952EE1EC198380057F753 /* String+Methods.swift */; };
+		05F407721EC34A6700707B86 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407711EC34A6700707B86 /* BaseTableViewController.swift */; };
+		05F407751EC34C0600707B86 /* MinesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F407741EC34C0600707B86 /* MinesTableView.xib */; };
+		05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407761EC34C2200707B86 /* MinesTableView.swift */; };
+		05F407791EC34CFE00707B86 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407781EC34CFE00707B86 /* BaseView.swift */; };
+		05F4077D1EC35A2800707B86 /* MinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4077B1EC35A2800707B86 /* MinesTableViewCell.swift */; };
+		05F4077E1EC35A2800707B86 /* MinesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F4077C1EC35A2800707B86 /* MinesTableViewCell.xib */; };
 		69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +78,12 @@
 		05DF53221E90286E00113171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05E952EE1EC198380057F753 /* String+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Methods.swift"; sourceTree = "<group>"; };
 		05E952F01EC240010057F753 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		05F407711EC34A6700707B86 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		05F407741EC34C0600707B86 /* MinesTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinesTableView.xib; sourceTree = "<group>"; };
+		05F407761EC34C2200707B86 /* MinesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesTableView.swift; sourceTree = "<group>"; };
+		05F407781EC34CFE00707B86 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		05F4077B1EC35A2800707B86 /* MinesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesTableViewCell.swift; sourceTree = "<group>"; };
+		05F4077C1EC35A2800707B86 /* MinesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinesTableViewCell.xib; sourceTree = "<group>"; };
 		2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.release.xcconfig"; sourceTree = "<group>"; };
 		7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intermine_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,13 +144,6 @@
 			name = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		0547457B1EC2482500BC35F8 /* MinesListTableCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MinesListTableCell;
-			sourceTree = "<group>";
-		};
 		05715E571EBF0F5F00C4C3C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +158,7 @@
 		05715E671EBF7FF800C4C3C7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				05715E531EBF055800C4C3C7 /* Constants.swift */,
 				05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */,
 				05E952EE1EC198380057F753 /* String+Methods.swift */,
 			);
@@ -163,8 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				05DF530D1E90286E00113171 /* MainTabController.swift */,
-				054745781EC247AA00BC35F8 /* Tabs */,
 				054745741EC246C700BC35F8 /* BaseVC */,
+				05F407701EC34A4900707B86 /* BaseTableVC */,
+				054745781EC247AA00BC35F8 /* Tabs */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -172,7 +179,9 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0547457B1EC2482500BC35F8 /* MinesListTableCell */,
+				05F407781EC34CFE00707B86 /* BaseView.swift */,
+				05F4077A1EC35A1200707B86 /* MinesCell */,
+				05F407731EC34BD300707B86 /* MinesTable */,
 				054745791EC247EA00BC35F8 /* Storyboard */,
 				0547457A1EC247F500BC35F8 /* LaunchScreen */,
 			);
@@ -192,7 +201,6 @@
 			children = (
 				05715E6A1EBFBB8300C4C3C7 /* IntermineMinesClient.swift */,
 				057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */,
-				05715E531EBF055800C4C3C7 /* Constants.swift */,
 				05715E551EBF0CA800C4C3C7 /* registry.json */,
 			);
 			name = Networking;
@@ -241,6 +249,32 @@
 				05DF53221E90286E00113171 /* Info.plist */,
 			);
 			path = "intermine-iosTests";
+			sourceTree = "<group>";
+		};
+		05F407701EC34A4900707B86 /* BaseTableVC */ = {
+			isa = PBXGroup;
+			children = (
+				05F407711EC34A6700707B86 /* BaseTableViewController.swift */,
+			);
+			name = BaseTableVC;
+			sourceTree = "<group>";
+		};
+		05F407731EC34BD300707B86 /* MinesTable */ = {
+			isa = PBXGroup;
+			children = (
+				05F407761EC34C2200707B86 /* MinesTableView.swift */,
+				05F407741EC34C0600707B86 /* MinesTableView.xib */,
+			);
+			name = MinesTable;
+			sourceTree = "<group>";
+		};
+		05F4077A1EC35A1200707B86 /* MinesCell */ = {
+			isa = PBXGroup;
+			children = (
+				05F4077B1EC35A2800707B86 /* MinesTableViewCell.swift */,
+				05F4077C1EC35A2800707B86 /* MinesTableViewCell.xib */,
+			);
+			name = MinesCell;
 			sourceTree = "<group>";
 		};
 		5DB7A5E7A74B75C257D9CAA3 /* Pods */ = {
@@ -347,9 +381,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				05E952E91EC197400057F753 /* Localizable.strings in Resources */,
+				05F4077E1EC35A2800707B86 /* MinesTableViewCell.xib in Resources */,
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
 				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
+				05F407751EC34C0600707B86 /* MinesTableView.xib in Resources */,
 				05DF53111E90286E00113171 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,12 +452,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F407721EC34A6700707B86 /* BaseTableViewController.swift in Sources */,
 				05715E611EBF10E300C4C3C7 /* Mine+CoreDataClass.swift in Sources */,
 				0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */,
 				0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */,
 				0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */,
 				05DF530E1E90286E00113171 /* MainTabController.swift in Sources */,
 				05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */,
+				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
 				0595D5231EC0A67000686065 /* ListsViewController.swift in Sources */,
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
@@ -430,9 +468,11 @@
 				05E952EF1EC198380057F753 /* String+Methods.swift in Sources */,
 				05715E691EBF801900C4C3C7 /* NSDate+Methods.swift in Sources */,
 				05715E6B1EBFBB8300C4C3C7 /* IntermineMinesClient.swift in Sources */,
+				05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
 				05715E541EBF055800C4C3C7 /* Constants.swift in Sources */,
+				05F4077D1EC35A2800707B86 /* MinesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
