@@ -36,6 +36,7 @@
 		05F407791EC34CFE00707B86 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407781EC34CFE00707B86 /* BaseView.swift */; };
 		05F4077D1EC35A2800707B86 /* MinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4077B1EC35A2800707B86 /* MinesTableViewCell.swift */; };
 		05F4077E1EC35A2800707B86 /* MinesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F4077C1EC35A2800707B86 /* MinesTableViewCell.xib */; };
+		05F407801EC36E4800707B86 /* UIColor+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4077F1EC36E4800707B86 /* UIColor+Methods.swift */; };
 		69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		05F407781EC34CFE00707B86 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		05F4077B1EC35A2800707B86 /* MinesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesTableViewCell.swift; sourceTree = "<group>"; };
 		05F4077C1EC35A2800707B86 /* MinesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinesTableViewCell.xib; sourceTree = "<group>"; };
+		05F4077F1EC36E4800707B86 /* UIColor+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Methods.swift"; sourceTree = "<group>"; };
 		2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.release.xcconfig"; sourceTree = "<group>"; };
 		7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intermine_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				05715E531EBF055800C4C3C7 /* Constants.swift */,
 				05715E681EBF801900C4C3C7 /* NSDate+Methods.swift */,
 				05E952EE1EC198380057F753 /* String+Methods.swift */,
+				05F4077F1EC36E4800707B86 /* UIColor+Methods.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				05715E6B1EBFBB8300C4C3C7 /* IntermineMinesClient.swift in Sources */,
 				05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
+				05F407801EC36E4800707B86 /* UIColor+Methods.swift in Sources */,
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
 				05715E541EBF055800C4C3C7 /* Constants.swift in Sources */,
 				05F4077D1EC35A2800707B86 /* MinesTableViewCell.swift in Sources */,

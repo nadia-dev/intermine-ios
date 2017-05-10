@@ -10,14 +10,6 @@ import UIKit
 
 class BaseView: UIView {
     
-    // MARK: Constraints
-    
-    func constraintsToEqualDimentions(toView: UIView) -> [NSLayoutConstraint] {
-        let height = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: toView, attribute: .height, multiplier: 1.0, constant: 1.0)
-        let width = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: toView, attribute: .width, multiplier: 1.0, constant: 1.0)
-        return [height, width]
-    }
-    
     // MARK: Instantiate
 
     class func instantiateFromNib<T: UIView>(viewType: T.Type) -> T {

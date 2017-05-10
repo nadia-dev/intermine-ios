@@ -9,17 +9,36 @@
 import UIKit
 
 class MinesTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var mineButton: UIButton?
+    
+    var mineName: String? = "" {
+        didSet {
+            mineButton?.setTitle(mineName, for: .normal)
+        }
+    }
+
+    var mineColor: String? = "#939393" {
+        didSet {
+            mineButton?.backgroundColor = UIColor.hexStringToUIColor(hex: mineColor)
+        }
+    }
+    
+    var mineUrl: String? = nil
+    
+    // MARK: Table view cell
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.frame.size.height = General.minesCellHeight
         self.selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    // MARK: Actions
+    
+    @IBAction func tapMineButton(_ sender: Any) {
+        
     }
+    
     
 }

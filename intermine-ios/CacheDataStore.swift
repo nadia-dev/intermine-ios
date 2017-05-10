@@ -60,7 +60,18 @@ class CacheDataStore {
         }
     }
     
+    func allRegistry() -> Array<Mine>? {
+        return self.fetchCachedRegistry()?.sorted(by: { (mine0, mine1) -> Bool in
+            guard let name0 = mine0.name, let name1 = mine1.name else {
+                return false
+            }
+            return name0 < name1
+        })
+    }
+    
+    
     // MARK: Private methods
+
     
     private func fetchCachedRegistry() -> Array<Mine>? {
         do {

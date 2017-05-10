@@ -16,9 +16,7 @@ class BaseTableViewController: BaseViewController {
         super.viewDidLoad()
         if let minesView = MinesTableView.loadMinesTableView() {
             self.view.addSubview(minesView)
-            // TODO: constraint mines view
-            //let constraints = minesView.constraintsToEqualDimentions(toView: self.view)
-            //self.view.addConstraints(constraints)
+            minesView.resizeView(toY: 0, toWidth: self.view.frame.width, toHeight: self.view.frame.height)
         }
     }
     

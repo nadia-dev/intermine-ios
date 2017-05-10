@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,8 +18,27 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TK2-XD-AaX">
+                        <rect key="frame" x="28" y="13" width="264" height="33.5"/>
+                        <state key="normal">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="tapMineButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gov-Na-gg3"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TK2-XD-AaX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="0iQ-xB-lfH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TK2-XD-AaX" secondAttribute="trailing" constant="20" id="EA7-oC-0mc"/>
+                    <constraint firstItem="TK2-XD-AaX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="S3C-xb-Omt"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="TK2-XD-AaX" secondAttribute="bottom" constant="5" id="vQA-V8-rm7"/>
+                </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="mineButton" destination="TK2-XD-AaX" id="9C8-ox-3bY"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>
