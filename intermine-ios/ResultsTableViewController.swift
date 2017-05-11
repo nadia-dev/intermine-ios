@@ -31,20 +31,21 @@ class ResultsTableViewController: UITableViewController {
     }
 
     override func viewDidLoad() {
-        
-        // hide table view until loaded
-        
+        //hide table view until info is loaded
         super.viewDidLoad()
-        self.spinner = NVActivityIndicatorView(frame: self.view.frame, type: .ballSpinFadeLoader, color: UIColor.gray, padding: 0)
+        self.configureNavBar()
+
+        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballSpinFadeLoader, color: Colors.chelseaCucumber, padding: self.indicatorPadding())
         if let spinner = self.spinner {
             self.view.addSubview(spinner)
+            self.view.bringSubview(toFront: spinner)
         }
         self.spinner?.startAnimating()
         if let mineUrl = self.mineUrl {
             IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (templatesList) in
                 guard let list = templatesList else {
-                    self.alert(message: String.localize("Results.NotFound"))
                     self.spinner?.stopAnimating()
+                    self.alert(message: String.localize("Results.NotFound"))
                     return
                 }
                 self.templatesList = list
@@ -52,10 +53,36 @@ class ResultsTableViewController: UITableViewController {
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: Private methods
+    
+    private func indicatorFrame() -> CGRect {
+        if let navbarHeight = self.navigationController?.navigationBar.frame.size.height, let tabbarHeight = self.tabBarController?.tabBar.frame.size.height {
+            let viewHeight = BaseView.viewHeight(view: self.view)
+            let indicatorHeight = viewHeight - (tabbarHeight + navbarHeight)
+            let indicatorWidth = BaseView.viewWidth(view: self.view)
+            return CGRect(x: 0, y: 0, width: indicatorWidth, height: indicatorHeight)
+        } else {
+            return self.view.frame
+        }
+    }
+    
+    private func indicatorPadding() -> CGFloat {
+        return BaseView.viewWidth(view: self.view) / 2.5
+    }
+    
+    private func configureNavBar() {
+        guard let url = self.mineUrl else {
+            return
+        }
+        if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: url) {
+            self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: mine.theme)
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.tintColor = Colors.white
+            self.navigationController?.navigationBar.backItem?.title = ""
+            self.navigationController?.navigationBar.topItem?.title = mine.name
+            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
+        }
     }
 
     // MARK: - Table view data source

@@ -28,3 +28,9 @@ struct Icons {
     static let bookmark = UIImage.init(icon: .FABookmark, size: CGSize(width: 35, height: 35))
     static let login = UIImage.init(icon: .FASignIn, size: CGSize(width: 35, height: 35))
 }
+
+struct Colors {
+    static let chelseaCucumber = UIColor.hexStringToUIColor(hex: "#8CA855")
+    static let conifer = UIColor.hexStringToUIColor(hex: "#BFD93B")
+    static let white = UIColor.white
+}

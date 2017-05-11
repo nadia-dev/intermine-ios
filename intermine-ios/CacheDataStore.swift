@@ -73,6 +73,10 @@ class CacheDataStore {
         })
     }
     
+    func findMineByUrl(url: String) -> Mine? {
+        return Mine.getMineByUrl(url: url, context: self.managedContext)
+    }
+    
     
     // MARK: Private methods
 

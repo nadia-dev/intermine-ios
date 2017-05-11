@@ -33,5 +33,16 @@ public class Mine: NSManagedObject {
         }
         return nil
     }
+    
+    class func getMineByUrl(url: String, context: NSManagedObjectContext) -> Mine? {
+        let request = NSFetchRequest<Mine>(entityName: "Mine")
+        request.predicate =  NSPredicate(format: "url == %@", url)
+        if let mines = try? context.fetch(request) {
+            if mines.count > 0 {
+                return mines.first
+            }
+        }
+        return nil
+    }
 
 }

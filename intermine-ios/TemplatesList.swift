@@ -10,6 +10,8 @@ import Foundation
 
 class TemplatesList {
     
+    // TODO: Should it be cached in CD?
+    
     private let templates: [Template]?
     private let mine: String?
     
