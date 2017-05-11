@@ -33,4 +33,5 @@ struct Colors {
     static let chelseaCucumber = UIColor.hexStringToUIColor(hex: "#8CA855")
     static let conifer = UIColor.hexStringToUIColor(hex: "#BFD93B")
     static let white = UIColor.white
+    static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
 }

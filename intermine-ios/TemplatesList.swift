@@ -20,8 +20,21 @@ class TemplatesList {
         self.mine = mine
     }
     
-    func size() -> Int? {
-        return templates?.count
+    func size() -> Int {
+        if let templates = self.templates {
+            return templates.count
+        } else {
+            return 0
+        }
+    }
+    
+    func templateAtIndex(index: Int) -> Template? {
+        if let templates = self.templates {
+            if index < self.size() {
+                return templates[index]
+            }
+        }
+        return nil
     }
     
 }

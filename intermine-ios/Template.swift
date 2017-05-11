@@ -20,4 +20,12 @@ class Template {
         self.queryList = queryList
     }
     
+    func getInfo() -> String? {
+        return self.description
+    }
+    
+    func getTitle() -> String? {
+        return self.title
+    }
+    
 }
