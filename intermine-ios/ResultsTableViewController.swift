@@ -40,7 +40,7 @@ class ResultsTableViewController: UITableViewController {
         
         self.configureNavBar()
 
-        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballSpinFadeLoader, color: Colors.chelseaCucumber, padding: self.indicatorPadding())
+        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballGridPulse, color: Colors.chelseaCucumber, padding: self.indicatorPadding())
         if let spinner = self.spinner {
             self.view.addSubview(spinner)
             self.view.bringSubview(toFront: spinner)
