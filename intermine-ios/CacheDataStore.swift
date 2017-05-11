@@ -12,6 +12,10 @@ import CoreData
 class CacheDataStore {
     
     private let modelName = General.modelName
+    
+    // TODO: compare versions instead using:
+//    GET /version/release which tells you the version of the data *inside* the intermine
+//    GET /version/intermine, which gives you the version of the intermine software that you're communicating with.
     private let minesUpdateInterval: Double = 432000 //5 days, TODO: -change this value to less often
     
     // MARK: Shared Instance

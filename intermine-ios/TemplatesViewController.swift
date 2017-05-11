@@ -12,9 +12,20 @@ class TemplatesViewController: BaseTableViewController {
     
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         controllerType = .Templates
+    }
+    
+    // MARK: Mines table view delegate
+    
+    override func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
+        guard let mineUrl = didDetectUrlSelection else {
+            return
+        }
+        
+        if let resultsVC = ResultsTableViewController.resultsTableViewController(withMineUrl: mineUrl) {
+            self.navigationController?.pushViewController(resultsVC, animated: true)
+        }
     }
 
 

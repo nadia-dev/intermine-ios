@@ -46,7 +46,7 @@ class BaseTableViewController: BaseViewController, MinesTableViewDelegate {
     // MARK: Mines table view delegate
     
     func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
-        // TODO: To implement
+        // To override
     }
 
 

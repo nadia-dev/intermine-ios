@@ -13,6 +13,33 @@ class IntermineAPIClient: NSObject {
     
     static let jsonParams = ["format": "json"]
     
+    class func sendRequest(url: String, method: HTTPMethod, params: [String: String], completion: @escaping (_ result: [String: AnyObject]?) -> ()) {
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = 120
+        
+        manager.request(url, method: method, parameters: params)
+            .responseJSON {
+                response in
+                switch (response.result) {
+                case .success:
+                    //do json stuff
+                    if let JSON = response.result.value as? [String: AnyObject] {
+                        completion(JSON)
+                    } else {
+                        completion(nil)
+                    }
+                    break
+                case .failure(let error):
+                    if error._code == NSURLErrorTimedOut {
+                        // timeout
+                        completion(nil)
+                    }
+                    print("\n\nAuth request failed with error:\n \(error)")
+                    break
+                }
+        }
+    }
+    
     class func fetchRegistry(completion: (_ result: NSDictionary?) -> ()) {
         // TODO: Use registry endpoint
         //for now: read registry from .json file
@@ -48,10 +75,30 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func fetchTemplates(mineUrl: String) {
-        Alamofire.request(mineUrl + Endpoints.templates, parameters: jsonParams).responseJSON { (response) in
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+    class func fetchTemplates(mineUrl: String, completion: @escaping (_ result: TemplatesList?) -> ()) {
+        let url = mineUrl + Endpoints.templates
+        IntermineAPIClient.sendRequest(url: url, method: .get, params: jsonParams) { (result) in
+            if let result = result {
+                if let templates = result["templates"] as? [String: AnyObject] {
+                    var templateList: [Template] = []
+                    for (_, template) in templates {
+                        var queryList: [TemplateQuery] = []
+                        if let queries = template["where"] as? [[String: AnyObject]] {
+                            for query in queries {
+                                let queryObj = TemplateQuery(withValue: query["value"] as? String, code: query["code"] as? String, op: query["op"] as? String, constraint: query["path"] as? String)
+                                queryList.append(queryObj)
+                            }
+                        }
+                        let templateObj = Template(withTitle: template["title"] as? String, description: template["description"] as? String, queryList: queryList)
+                        templateList.append(templateObj)
+                    }
+                    let templatesListObj = TemplatesList(withTemplates: templateList, mine: mineUrl)
+                    completion(templatesListObj)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
             }
         }
     }

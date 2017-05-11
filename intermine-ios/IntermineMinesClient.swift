@@ -33,7 +33,9 @@ class IntermineMinesClient {
         guard let mineUrl = self.mouseMine?.url else {
             return
         }
-        IntermineAPIClient.fetchTemplates(mineUrl: mineUrl)
+        IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (res) in
+            //
+        }
     }
     
     class func getMouseToken(userName: String, password: String) {

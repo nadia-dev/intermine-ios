@@ -14,6 +14,12 @@ class ListsViewController: BaseTableViewController {
         super.viewDidLoad()
         controllerType = .Lists
     }
+    
+    // MARK: Mines table view delegate
+    
+    override func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
+        // TODO: To implement
+    }
 
 
 }

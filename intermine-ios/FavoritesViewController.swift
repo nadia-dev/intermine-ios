@@ -14,6 +14,12 @@ class FavoritesViewController: BaseTableViewController {
         super.viewDidLoad()
         controllerType = .Favorites
     }
+    
+    // MARK: Mines table view delegate
+    
+    override func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
+        // TODO: To implement
+    }
 
 
 }

@@ -11,3 +11,5 @@
 "Tabs.Lists" = "Lists";
 "Tabs.Favorites" = "Favorites";
 "Tabs.Login" = "Login";
+
+"Results.NotFound" = "Nothing found";
