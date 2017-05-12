@@ -55,4 +55,5 @@ struct Operations {
 
 struct Notifications {
     static let operationChanged = "notification.operation.changed"
+    static let valueChanged = "notification.value.changed"
 }

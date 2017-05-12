@@ -10,7 +10,7 @@ import Foundation
 
 class TemplateQuery {
     
-    private let value: String?
+    private var value: String?
     private let code: String?
     private var op: String?
     private let constraint: String? // "path"
@@ -60,6 +60,10 @@ class TemplateQuery {
     
     func changeOperation(operation: String?) {
         self.op = operation
+    }
+    
+    func changeValue(value: String?) {
+        self.value = value
     }
     
 }

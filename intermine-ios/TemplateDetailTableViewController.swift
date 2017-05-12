@@ -9,11 +9,12 @@
 import UIKit
 
 
-class LookupCell: UITableViewCell {
+class LookupCell: UITableViewCell, UITextFieldDelegate {
     
     static let identifier = "LookupCell"
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var lookupTextField: UITextField?
+    var index: Int? = nil
     
     var query: TemplateQuery? {
         didSet {
@@ -24,6 +25,21 @@ class LookupCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel?.text = "Lookup"
+        lookupTextField?.delegate = self
+        lookupTextField?.addTarget(self, action: #selector(textFieldEdited(_:)), for: UIControlEvents.editingChanged)
+    }
+    
+    func textFieldEdited(_ sender : UITextField) {
+        guard let index = self.index else {
+            return
+        }
+        var info: [String: Any] = [:]
+        if let value = sender.text {
+            info = ["value": value, "index": index]
+        } else {
+            info = ["value": "", "index": index]
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.valueChanged), object: self, userInfo: info)
     }
 }
 
@@ -31,12 +47,16 @@ protocol OperationSelectionCellDelegate: class {
     func operationSelectionCellDidTapSelectButton(cell: OperationSelectionCell)
 }
 
-class OperationSelectionCell: UITableViewCell {
+class OperationSelectionCell: UITableViewCell, UITextFieldDelegate {
+    
+    // TODO: To refactor duplicated code into parent class
     
     static let identifier = "OperationSelectionCell"
     @IBOutlet weak var operationLabel: UILabel?
     @IBOutlet weak var selectOperationButton: UIButton?
     @IBOutlet weak var valueTextField: UITextField?
+    
+    var index: Int? = nil
     
     weak var delegate: OperationSelectionCellDelegate?
     
@@ -60,10 +80,25 @@ class OperationSelectionCell: UITableViewCell {
         selectOperationButton?.titleLabel?.numberOfLines = 2
         selectOperationButton?.titleLabel?.textAlignment = NSTextAlignment.center
         NotificationCenter.default.addObserver(self, selector: #selector(self.operationChanged(_:)), name: NSNotification.Name(rawValue: Notifications.operationChanged), object: nil)
+        valueTextField?.delegate = self
+        valueTextField?.addTarget(self, action: #selector(textFieldEdited(_:)), for: UIControlEvents.editingChanged)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func textFieldEdited(_ sender : UITextField) {
+        guard let index = self.index else {
+            return
+        }
+        var info: [String: Any] = [:]
+        if let value = sender.text {
+            info = ["value": value, "index": index]
+        } else {
+            info = ["value": "", "index": index]
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.valueChanged), object: self, userInfo: info)
     }
     
     @IBAction func operationSelectButtonTapped(_ sender: Any) {
@@ -153,6 +188,8 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
         self.tableView.estimatedSectionHeaderHeight = 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.operationChanged(_:)), name: NSNotification.Name(rawValue: Notifications.operationChanged), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.valueChanged(_:)), name: NSNotification.Name(rawValue: Notifications.valueChanged), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,10 +211,12 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
         if (indexPath.row < switchIndex) || (indexPath.row == 0 && switchIndex == 0) || (switchIndex == -1) {
             let cell = tableView.dequeueReusableCell(withIdentifier: LookupCell.identifier, for: indexPath) as! LookupCell
             cell.query = sortedQueries[indexPath.row]
+            cell.index = indexPath.row
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: OperationSelectionCell.identifier, for: indexPath) as! OperationSelectionCell
             cell.query = sortedQueries[indexPath.row]
+            cell.index = indexPath.row
             cell.delegate = self
             return cell
         }
@@ -222,18 +261,24 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     // MARK: Action cell delegate
     
     func actionCellDidTapSearchButton(actionCell: ActionCell) {
-        // TODO: - implement network call to get spesific template results
-        // construct url params
+        // TODO: - collect values from text fields
+        
+        
         guard let template = self.template else {
             return
         }
         var gen = 0
         var params = ["name": template.getName(), "start": "0", "size": "15", "format": "json"]
+        //TODO: in the next view controller implement loading of additional data when tableview is scrolled to bottom
+        
         for query in self.sortedQueries {
             gen += 1
             let queryParams = query.constructDictForGen(gen: gen)
             params.update(other: queryParams)
         }
+        
+        print(params)
+        
         if let mineUrl = self.template?.getMineUrl() {
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: params)
         }
@@ -247,7 +292,14 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
             updatedQuery.changeOperation(operation: op)
         }
     }
+    
+    // MARK: Notification when value is changed
+    
+    func valueChanged(_ notification: NSNotification) {
+        if let value = notification.userInfo?["value"] as? String, let index = notification.userInfo?["index"] as? Int {
+            let updatedQuery = self.sortedQueries[index]
+            updatedQuery.changeValue(value: value)
+        }
+    }
 
-    
-    
 }

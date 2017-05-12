@@ -106,7 +106,7 @@ class IntermineAPIClient: NSObject {
     class func fetchTemplateResults(mineUrl: String, queryParams: [String: String]) {
         let url = mineUrl + Endpoints.templateResults
         IntermineAPIClient.sendRequest(url: url, method: .get, params: queryParams) { (res) in
-            print(res)
+            //print(res)
         }
     }
     
