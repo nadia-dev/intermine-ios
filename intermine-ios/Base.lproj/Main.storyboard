@@ -148,8 +148,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lookupTextField" destination="Wt0-hd-dSb" id="64U-Bp-6hh"/>
                                     <outlet property="titleLabel" destination="vNC-Mn-bYs" id="qwC-ny-Upc"/>
+                                    <outlet property="valueTextField" destination="Wt0-hd-dSb" id="OTY-Cj-w5e"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OperationSelectionCell" rowHeight="100" id="FxH-3h-5UF" customClass="OperationSelectionCell" customModule="intermine_ios" customModuleProvider="target">
@@ -220,7 +220,7 @@
                                 <connections>
                                     <outlet property="operationLabel" destination="rZq-97-kDi" id="574-PS-16R"/>
                                     <outlet property="selectOperationButton" destination="jrg-HF-wYz" id="Yyo-so-Csu"/>
-                                    <outlet property="valueTextField" destination="dIr-dl-eRM" id="rPU-cz-zHT"/>
+                                    <outlet property="valueTextField" destination="dIr-dl-eRM" id="5PE-oW-ZXG"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescripitonCell" rowHeight="100" id="c5P-g0-47c" customClass="DescriptionCell" customModule="intermine_ios" customModuleProvider="target">
