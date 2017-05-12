@@ -14,6 +14,17 @@ class LookupCell: UITableViewCell {
     static let identifier = "LookupCell"
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var lookupTextField: UITextField?
+    
+    var query: TemplateQuery? {
+        didSet {
+            
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel?.text = "Lookup"
+    }
 }
 
 class OperationSelectionCell: UITableViewCell {
@@ -22,6 +33,12 @@ class OperationSelectionCell: UITableViewCell {
     @IBOutlet weak var operationLabel: UILabel?
     @IBOutlet weak var selectOperationButton: UIButton?
     @IBOutlet weak var valueTextField: UITextField?
+    
+    var query: TemplateQuery? {
+        didSet {
+            operationLabel?.text = self.query?.getOperation()
+        }
+    }
     
     var operation: String? = "==" {
         didSet {
@@ -36,6 +53,10 @@ class OperationSelectionCell: UITableViewCell {
         selectOperationButton?.titleLabel?.numberOfLines = 2
         selectOperationButton?.titleLabel?.textAlignment = NSTextAlignment.center
     }
+    
+    @IBAction func operationSelectButtonTapped(_ sender: Any) {
+    }
+    
 
 }
 
@@ -78,7 +99,9 @@ class TemplateDetailTableViewController: UITableViewController {
             self.tableView.reloadData()
             if let template = self.template {
                 self.sortedQueries = template.getQueriesSortedByType()
+                print("\(self.sortedQueries)")
                 self.switchIndex = template.opQueryCount() - 1
+                print("\(self.switchIndex)")
             }
         }
     }
@@ -91,6 +114,8 @@ class TemplateDetailTableViewController: UITableViewController {
         vc?.template = withTemplate
         return vc
     }
+    
+    // MARK: View controller methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,9 +140,11 @@ class TemplateDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < switchIndex {
             let cell = tableView.dequeueReusableCell(withIdentifier: LookupCell.identifier, for: indexPath) as! LookupCell
+            cell.query = sortedQueries[indexPath.row]
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: OperationSelectionCell.identifier, for: indexPath) as! OperationSelectionCell
+            cell.query = sortedQueries[indexPath.row]
             return cell
         }
         

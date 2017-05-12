@@ -27,7 +27,14 @@ class TemplateQuery {
     }
     
     func isOpQuery() -> Bool {
-        return value?.lowercased() != "lookup"
+        if let value = self.value {
+            return value.lowercased() != "lookup"
+        }
+        return false
+    }
+    
+    func getOperation() -> String? {
+        return self.op
     }
     
 }

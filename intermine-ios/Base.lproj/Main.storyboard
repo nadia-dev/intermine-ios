@@ -146,6 +146,10 @@
                                         <constraint firstAttribute="bottom" secondItem="00I-QB-ngD" secondAttribute="bottom" constant="5" id="zpB-to-eOh"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lookupTextField" destination="Wt0-hd-dSb" id="64U-Bp-6hh"/>
+                                    <outlet property="titleLabel" destination="vNC-Mn-bYs" id="qwC-ny-Upc"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OperationSelectionCell" rowHeight="100" id="FxH-3h-5UF" customClass="OperationSelectionCell" customModule="intermine_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="135.5" width="375" height="100"/>
@@ -173,6 +177,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="operationSelectButtonTapped:" destination="FxH-3h-5UF" eventType="touchUpInside" id="6tq-Vn-04E"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZq-97-kDi">
                                                     <rect key="frame" x="0.0" y="26.5" width="93.5" height="21"/>
