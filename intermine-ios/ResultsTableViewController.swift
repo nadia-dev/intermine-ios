@@ -103,9 +103,8 @@ class ResultsTableViewController: UITableViewController {
         return 0
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TemplateCell", for: indexPath) as! TemplateTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TemplateTableViewCell.identifier, for: indexPath) as! TemplateTableViewCell
         if let template = templatesList?.templateAtIndex(index: indexPath.row) {
             cell.template = template
         }
@@ -115,8 +114,9 @@ class ResultsTableViewController: UITableViewController {
     // MARK: Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // show template detail VC
+        if let template = templatesList?.templateAtIndex(index: indexPath.row),
+            let templateDetail = TemplateDetailTableViewController.templateDetailTableViewController(withTemplate: template) {
+            self.navigationController?.pushViewController(templateDetail, animated: true)
+        }
     }
-
-
 }

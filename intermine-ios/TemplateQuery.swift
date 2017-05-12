@@ -22,4 +22,12 @@ class TemplateQuery {
         self.constraint = constraint
     }
     
+    func isLookupQuery() -> Bool {
+        return value?.lowercased() == "lookup"
+    }
+    
+    func isOpQuery() -> Bool {
+        return value?.lowercased() != "lookup"
+    }
+    
 }
