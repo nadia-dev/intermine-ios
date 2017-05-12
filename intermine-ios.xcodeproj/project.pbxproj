@@ -52,6 +52,8 @@
 		05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A41EC6100C00707B86 /* ActionCell.swift */; };
 		05F407A71EC6105A00707B86 /* TemplateDetailBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */; };
 		05F407AB1EC6137E00707B86 /* LoadingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */; };
+		05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407AF1EC6159000707B86 /* FetchedTemplatesViewController.swift */; };
+		05F407B21EC61F1400707B86 /* FetchedTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407B11EC61F1400707B86 /* FetchedTemplateCell.swift */; };
 		69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +118,8 @@
 		05F407A41EC6100C00707B86 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailBaseCell.swift; sourceTree = "<group>"; };
 		05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewController.swift; sourceTree = "<group>"; };
+		05F407AF1EC6159000707B86 /* FetchedTemplatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedTemplatesViewController.swift; sourceTree = "<group>"; };
+		05F407B11EC61F1400707B86 /* FetchedTemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedTemplateCell.swift; sourceTree = "<group>"; };
 		2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.release.xcconfig"; sourceTree = "<group>"; };
 		7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intermine_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 				05F407891EC4A9AA00707B86 /* ResultsTableViewController.swift */,
 				05F407971EC5B45F00707B86 /* TemplateDetailTableViewController.swift */,
 				05F407991EC5DFF900707B86 /* OperationSelectViewController.swift */,
+				05F407AF1EC6159000707B86 /* FetchedTemplatesViewController.swift */,
 			);
 			name = Results;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				05F407A21EC60FEF00707B86 /* DescriptionCell.swift */,
 				05F407A41EC6100C00707B86 /* ActionCell.swift */,
 				05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */,
+				05F407B11EC61F1400707B86 /* FetchedTemplateCell.swift */,
 			);
 			name = TemplateDetailCells;
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 				05DF530E1E90286E00113171 /* MainTabController.swift in Sources */,
 				05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */,
 				05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */,
+				05F407B21EC61F1400707B86 /* FetchedTemplateCell.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
 				0595D5231EC0A67000686065 /* ListsViewController.swift in Sources */,
@@ -582,6 +589,7 @@
 				05715E691EBF801900C4C3C7 /* NSDate+Utils.swift in Sources */,
 				05F4078D1EC4AD3100707B86 /* UIViewController+Utils.swift in Sources */,
 				05715E6B1EBFBB8300C4C3C7 /* IntermineMinesClient.swift in Sources */,
+				05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */,
 				05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */,
 				05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,

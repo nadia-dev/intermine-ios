@@ -29,23 +29,17 @@ class ResultsTableViewController: LoadingTableViewController {
     }
 
     override func viewDidLoad() {
-        //hide table view until info is loaded
         super.viewDidLoad()
-        
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 200
-        
         self.configureNavBar()
-        
         if let mineUrl = self.mineUrl {
             IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (templatesList) in
                 guard let list = templatesList else {
-                    self.spinner?.stopAnimating()
+                    self.stopSpinner()
                     self.alert(message: String.localize("Results.NotFound"))
                     return
                 }
                 self.templatesList = list
-                self.spinner?.stopAnimating()
+                self.stopSpinner()
             }
         }
     }

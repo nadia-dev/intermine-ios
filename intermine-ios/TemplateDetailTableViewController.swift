@@ -85,6 +85,7 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCell.identifier) as! DescriptionCell
         cell.info = template?.getInfo()
+        cell.title = template?.getTitle()
         return cell
     }
     
@@ -119,15 +120,12 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     // MARK: Action cell delegate
     
     func actionCellDidTapSearchButton(actionCell: ActionCell) {
-        // TODO: - collect values from text fields
-        
-        
+
         guard let template = self.template else {
             return
         }
         var gen = 0
         var params = ["name": template.getName(), "start": "0", "size": "15", "format": "json"]
-        //TODO: in the next view controller implement loading of additional data when tableview is scrolled to bottom
         
         for query in self.sortedQueries {
             gen += 1
@@ -136,8 +134,11 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
         }
         
         if let mineUrl = self.template?.getMineUrl() {
-            IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: params)
+            if let fetchedVC = FetchedTemplatesViewController.fetchedTemplatesViewController(withMineUrl: mineUrl, params: params) {
+                self.navigationController?.pushViewController(fetchedVC, animated: true)
+            }
         }
+        
     }
     
     // MARK: Notification when operation is changed

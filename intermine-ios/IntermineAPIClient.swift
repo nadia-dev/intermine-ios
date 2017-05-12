@@ -103,10 +103,10 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func fetchTemplateResults(mineUrl: String, queryParams: [String: String]) {
+    class func fetchTemplateResults(mineUrl: String, queryParams: [String: String], completion: @escaping (_ res: [String: AnyObject]?) -> ()) {
         let url = mineUrl + Endpoints.templateResults
         IntermineAPIClient.sendRequest(url: url, method: .get, params: queryParams) { (res) in
-            //print(res)
+            completion(res)
         }
     }
     

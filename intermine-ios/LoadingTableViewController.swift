@@ -11,16 +11,24 @@ import NVActivityIndicatorView
 
 class LoadingTableViewController: UITableViewController {
     
-    var spinner: NVActivityIndicatorView?
+    private var spinner: NVActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200
+        
         self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballGridPulse, color: Colors.chelseaCucumber, padding: self.indicatorPadding())
         if let spinner = self.spinner {
             self.view.addSubview(spinner)
             self.view.bringSubview(toFront: spinner)
         }
         self.spinner?.startAnimating()
+    }
+    
+    func stopSpinner() {
+        self.spinner?.stopAnimating()
     }
     
     private func indicatorFrame() -> CGRect {
@@ -37,7 +45,6 @@ class LoadingTableViewController: UITableViewController {
     private func indicatorPadding() -> CGFloat {
         return BaseView.viewWidth(view: self.view) / 2.5
     }
-
 
     // MARK: - Table view data source
 
