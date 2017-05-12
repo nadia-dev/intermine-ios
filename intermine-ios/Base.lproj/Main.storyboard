@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -294,6 +295,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGZ-lq-YD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3008.8000000000002" y="-700.29985007496259"/>
+        </scene>
+        <!--Operation Select View Controller-->
+        <scene sceneID="Obf-UQ-Wsx">
+            <objects>
+                <viewController storyboardIdentifier="OperationSelectVC" id="WeJ-nU-Fga" customClass="OperationSelectViewController" customModule="intermine_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9he-0s-GRt"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bbk-nU-WMu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="21k-RG-lSy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6m-qb-2OJ">
+                                <rect key="frame" x="313" y="28" width="46" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="cy9-Ir-sLS"/>
+                                    <constraint firstAttribute="width" secondItem="W6m-qb-2OJ" secondAttribute="height" multiplier="1:1" id="ytf-xV-gv4"/>
+                                </constraints>
+                                <color key="tintColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.54901960780000003" green="0.64705882349999999" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="WeJ-nU-Fga" eventType="touchUpInside" id="DcN-Sr-NbO"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="364-JE-wjs">
+                                <rect key="frame" x="27.5" y="225" width="320" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="364-JE-wjs" firstAttribute="centerX" secondItem="21k-RG-lSy" secondAttribute="centerX" id="M0k-gw-dm7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W6m-qb-2OJ" secondAttribute="trailing" id="OWX-2d-y10"/>
+                            <constraint firstItem="364-JE-wjs" firstAttribute="centerY" secondItem="21k-RG-lSy" secondAttribute="centerY" id="VtV-EK-Wgq"/>
+                            <constraint firstItem="W6m-qb-2OJ" firstAttribute="top" secondItem="9he-0s-GRt" secondAttribute="bottom" constant="8" id="c0m-F2-OR8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="W6m-qb-2OJ" id="gUO-cQ-uAi"/>
+                        <outlet property="picker" destination="364-JE-wjs" id="n79-zf-6gg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zow-6l-LQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3668" y="-699.40029985007504"/>
         </scene>
         <!--Lists-->
         <scene sceneID="cLd-4M-aWQ">

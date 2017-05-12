@@ -89,7 +89,7 @@ class IntermineAPIClient: NSObject {
                                 queryList.append(queryObj)
                             }
                         }
-                        let templateObj = Template(withTitle: template["title"] as? String, description: template["description"] as? String, queryList: queryList)
+                        let templateObj = Template(withTitle: template["title"] as? String, description: template["description"] as? String, queryList: queryList, name: template["name"] as? String)
                         templateList.append(templateObj)
                     }
                     let templatesListObj = TemplatesList(withTemplates: templateList, mine: mineUrl)

@@ -11,13 +11,15 @@ import Foundation
 class Template {
     
     private let title: String?
+    private let name: String?
     private let description: String?
     private let queryList: [TemplateQuery]?
     
-    init(withTitle: String?, description: String?, queryList: [TemplateQuery]?) {
+    init(withTitle: String?, description: String?, queryList: [TemplateQuery]?, name: String?) {
         self.title = withTitle
         self.description = description
         self.queryList = queryList
+        self.name = name
     }
     
     // MARK: Public methods

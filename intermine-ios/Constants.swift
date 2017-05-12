@@ -27,6 +27,7 @@ struct Icons {
     static let lists = UIImage.init(icon: .FAList, size: CGSize(width: 35, height: 35))
     static let bookmark = UIImage.init(icon: .FABookmark, size: CGSize(width: 35, height: 35))
     static let login = UIImage.init(icon: .FASignIn, size: CGSize(width: 35, height: 35))
+    static let close = UIImage.init(icon: .FATimes, size: CGSize(width: 40, height: 40))
 }
 
 struct Colors {
@@ -34,4 +35,23 @@ struct Colors {
     static let conifer = UIColor.hexStringToUIColor(hex: "#BFD93B")
     static let white = UIColor.white
     static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
+}
+
+struct Operations {
+    static let equalsEquals = "=="
+    static let like = "LIKE"
+    static let equals = "="
+    static let notEquals = "!="
+    static let notLike = "NOT LIKE"
+    static let notEqualsEquals = "!=="
+    static let doesNotContain = "DOES NOT CONTAIN"
+    static let contains = "CONTAINS"
+    static let moreOrEqual = ">="
+    static let lessOrEqual = "<="
+    static let more = ">"
+    static let less = "<"
+}
+
+struct Notifications {
+    static let operationChanged = "notification.operation.changed"
 }

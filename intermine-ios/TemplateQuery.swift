@@ -12,7 +12,7 @@ class TemplateQuery {
     
     private let value: String?
     private let code: String?
-    private let op: String?
+    private var op: String?
     private let constraint: String? // "path"
     
     init(withValue: String?, code: String?, op: String?, constraint: String?) {
@@ -35,6 +35,14 @@ class TemplateQuery {
     
     func getOperation() -> String? {
         return self.op
+    }
+    
+    func getValue() -> String? {
+        return self.value
+    }
+    
+    func changeOperation(operation: String?) {
+        self.op = operation
     }
     
 }
