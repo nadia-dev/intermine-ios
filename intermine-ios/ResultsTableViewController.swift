@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
 
-class ResultsTableViewController: UITableViewController {
-    
-    private var spinner: NVActivityIndicatorView?
+class ResultsTableViewController: LoadingTableViewController {
     
     private var templatesList: TemplatesList? {
         didSet {
@@ -39,13 +36,7 @@ class ResultsTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 200
         
         self.configureNavBar()
-
-        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballGridPulse, color: Colors.chelseaCucumber, padding: self.indicatorPadding())
-        if let spinner = self.spinner {
-            self.view.addSubview(spinner)
-            self.view.bringSubview(toFront: spinner)
-        }
-        self.spinner?.startAnimating()
+        
         if let mineUrl = self.mineUrl {
             IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (templatesList) in
                 guard let list = templatesList else {
@@ -60,21 +51,6 @@ class ResultsTableViewController: UITableViewController {
     }
     
     // MARK: Private methods
-    
-    private func indicatorFrame() -> CGRect {
-        if let navbarHeight = self.navigationController?.navigationBar.frame.size.height, let tabbarHeight = self.tabBarController?.tabBar.frame.size.height {
-            let viewHeight = BaseView.viewHeight(view: self.view)
-            let indicatorHeight = viewHeight - (tabbarHeight + navbarHeight)
-            let indicatorWidth = BaseView.viewWidth(view: self.view)
-            return CGRect(x: 0, y: 0, width: indicatorWidth, height: indicatorHeight)
-        } else {
-            return self.view.frame
-        }
-    }
-    
-    private func indicatorPadding() -> CGFloat {
-        return BaseView.viewWidth(view: self.view) / 2.5
-    }
     
     private func configureNavBar() {
         guard let url = self.mineUrl else {

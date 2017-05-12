@@ -135,8 +135,6 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
             params.update(other: queryParams)
         }
         
-        print(params)
-        
         if let mineUrl = self.template?.getMineUrl() {
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: params)
         }

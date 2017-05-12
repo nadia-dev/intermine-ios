@@ -51,6 +51,7 @@
 		05F407A31EC60FEF00707B86 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A21EC60FEF00707B86 /* DescriptionCell.swift */; };
 		05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A41EC6100C00707B86 /* ActionCell.swift */; };
 		05F407A71EC6105A00707B86 /* TemplateDetailBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */; };
+		05F407AB1EC6137E00707B86 /* LoadingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */; };
 		69A7E631738FBE362FEA344C /* Pods_intermine_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		05F407A21EC60FEF00707B86 /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		05F407A41EC6100C00707B86 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailBaseCell.swift; sourceTree = "<group>"; };
+		05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewController.swift; sourceTree = "<group>"; };
 		2F5C0CB30F0BCF0BB472F14D /* Pods-intermine-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.release.xcconfig"; sourceTree = "<group>"; };
 		7B514D1EF446A912B0A731BC /* Pods_intermine_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intermine_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3F464877A1055A9A211969 /* Pods-intermine-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intermine-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-intermine-ios/Pods-intermine-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,7 +203,8 @@
 		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				05DF530D1E90286E00113171 /* MainTabController.swift */,
+				05F407AE1EC6142000707B86 /* Landing */,
+				05F407AD1EC6141600707B86 /* LoadingVC */,
 				05F4078B1EC4A9B300707B86 /* Results */,
 				054745741EC246C700BC35F8 /* BaseVC */,
 				05F407701EC34A4900707B86 /* BaseTableVC */,
@@ -360,6 +363,22 @@
 				05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */,
 			);
 			name = TemplateDetailCells;
+			sourceTree = "<group>";
+		};
+		05F407AD1EC6141600707B86 /* LoadingVC */ = {
+			isa = PBXGroup;
+			children = (
+				05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */,
+			);
+			name = LoadingVC;
+			sourceTree = "<group>";
+		};
+		05F407AE1EC6142000707B86 /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				05DF530D1E90286E00113171 /* MainTabController.swift */,
+			);
+			name = Landing;
 			sourceTree = "<group>";
 		};
 		5DB7A5E7A74B75C257D9CAA3 /* Pods */ = {
@@ -537,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F407AB1EC6137E00707B86 /* LoadingTableViewController.swift in Sources */,
 				05F4079C1EC6068E00707B86 /* Dictionary+Utils.swift in Sources */,
 				05F407721EC34A6700707B86 /* BaseTableViewController.swift in Sources */,
 				05F407A31EC60FEF00707B86 /* DescriptionCell.swift in Sources */,
