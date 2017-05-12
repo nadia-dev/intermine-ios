@@ -14,6 +14,7 @@ struct Endpoints {
     static let lists = "/service/lists"
     static let templates = "/service/templates"
     static let tokens = "/service/user/tokens"
+    static let templateResults = "/service/template/results"
 }
 
 struct General {

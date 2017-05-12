@@ -22,6 +22,23 @@ class TemplateQuery {
         self.constraint = constraint
     }
     
+    func constructDictForGen(gen: Int) -> [String: String] {
+        var params: [String: String] = [:]
+        if let constraint = self.constraint {
+            params["constraint\(gen)"] = constraint
+        }
+        if let value = self.value {
+            params["value\(gen)"] = value
+        }
+        if let code = self.code {
+            params["code\(gen)"] = code
+        }
+        if let op = self.op {
+            params["op\(gen)"] = op
+        }
+        return params
+    }
+    
     func isLookupQuery() -> Bool {
         return value?.lowercased() == "lookup"
     }

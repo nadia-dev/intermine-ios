@@ -223,7 +223,20 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     
     func actionCellDidTapSearchButton(actionCell: ActionCell) {
         // TODO: - implement network call to get spesific template results
-        print (self.sortedQueries)
+        // construct url params
+        guard let template = self.template else {
+            return
+        }
+        var gen = 0
+        var params = ["name": template.getName(), "start": "0", "size": "15", "format": "json"]
+        for query in self.sortedQueries {
+            gen += 1
+            let queryParams = query.constructDictForGen(gen: gen)
+            params.update(other: queryParams)
+        }
+        if let mineUrl = self.template?.getMineUrl() {
+            IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: params)
+        }
     }
     
     // MARK: Notification when operation is changed
