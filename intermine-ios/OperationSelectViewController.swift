@@ -25,6 +25,8 @@ class OperationSelectViewController: BaseViewController, UIPickerViewDelegate, U
                               Operations.notEquals, Operations.notLike, Operations.notEqualsEquals,
                               Operations.doesNotContain, Operations.contains, Operations.moreOrEqual,
                               Operations.lessOrEqual, Operations.more, Operations.less]
+    
+    var cellIndex: Int? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +37,10 @@ class OperationSelectViewController: BaseViewController, UIPickerViewDelegate, U
     
     // MARK: Load from storyboard
     
-    class func operationSelectViewController() -> OperationSelectViewController? {
+    class func operationSelectViewController(forCellIndex: Int?) -> OperationSelectViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "OperationSelectVC") as? OperationSelectViewController
+        vc?.cellIndex = forCellIndex
         return vc
     }
     
@@ -63,7 +66,10 @@ class OperationSelectViewController: BaseViewController, UIPickerViewDelegate, U
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedValue = operations[row]
-        let info = ["op": selectedValue]
+        guard let index = self.cellIndex else {
+            return
+        }
+        let info = ["op": selectedValue, "index": index] as [String : Any]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.operationChanged), object: self, userInfo: info)
     }
 

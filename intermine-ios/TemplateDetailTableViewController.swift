@@ -93,10 +93,16 @@ class DescriptionCell: UITableViewCell {
     
 }
 
+protocol ActionCellDelegate: class {
+    func actionCellDidTapSearchButton(actionCell: ActionCell)
+}
+
 class ActionCell: UITableViewCell {
     
     static let identifier = "ActionCell"
     @IBOutlet weak var searchButton: UIButton?
+    
+    weak var delegate: ActionCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -104,13 +110,13 @@ class ActionCell: UITableViewCell {
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        // NETWORK CALL with built query
+        self.delegate?.actionCellDidTapSearchButton(actionCell: self)
     }
     
 }
 
 
-class TemplateDetailTableViewController: UITableViewController, OperationSelectionCellDelegate, OperationSelectViewControllerDelegate {
+class TemplateDetailTableViewController: UITableViewController, OperationSelectionCellDelegate, OperationSelectViewControllerDelegate, ActionCellDelegate {
     
     private var sortedQueries: [TemplateQuery] = []
     private var switchIndex: Int = 0
@@ -121,7 +127,7 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
             self.tableView.reloadData()
             if let template = self.template {
                 self.sortedQueries = template.getQueriesSortedByType()
-                self.switchIndex = template.opQueryCount() - 1
+                self.switchIndex = template.totalQueryCount() - template.opQueryCount() - 1
             }
         }
     }
@@ -165,7 +171,7 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row < switchIndex) || (indexPath.row == 0 && switchIndex == 0) {
+        if (indexPath.row < switchIndex) || (indexPath.row == 0 && switchIndex == 0) || (switchIndex == -1) {
             let cell = tableView.dequeueReusableCell(withIdentifier: LookupCell.identifier, for: indexPath) as! LookupCell
             cell.query = sortedQueries[indexPath.row]
             return cell
@@ -187,6 +193,7 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: ActionCell.identifier) as! ActionCell
+        cell.delegate = self
         return cell
     }
     
@@ -197,7 +204,8 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
     // MARK: Operation selection cell delegate
     
     func operationSelectionCellDidTapSelectButton(cell: OperationSelectionCell) {
-        if let popover = OperationSelectViewController.operationSelectViewController() {
+        let ip = self.tableView.indexPath(for: cell)
+        if let popover = OperationSelectViewController.operationSelectViewController(forCellIndex: ip?.row) {
             popover.modalPresentationStyle = UIModalPresentationStyle.popover
             popover.delegate = self
             self.popover = popover
@@ -211,13 +219,19 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
         self.popover?.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: Action cell delegate
+    
+    func actionCellDidTapSearchButton(actionCell: ActionCell) {
+        // TODO: - implement network call to get spesific template results
+        print (self.sortedQueries)
+    }
+    
     // MARK: Notification when operation is changed
     
     func operationChanged(_ notification: NSNotification) {
-        if let op = notification.userInfo?["op"] as? String {
-            // change query in list of queries according to index of the cell
-//            self.query?.changeOperation(operation: op)
-//            operationLabel?.text = op
+        if let op = notification.userInfo?["op"] as? String, let index = notification.userInfo?["index"] as? Int {
+            let updatedQuery = self.sortedQueries[index]
+            updatedQuery.changeOperation(operation: op)
         }
     }
 
