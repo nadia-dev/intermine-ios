@@ -44,9 +44,11 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
         
         self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.tableView.estimatedSectionHeaderHeight = 60
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.operationChanged(_:)), name: NSNotification.Name(rawValue: Notifications.operationChanged), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.valueChanged(_:)), name: NSNotification.Name(rawValue: Notifications.valueChanged), object: nil)
     }
     
@@ -149,7 +151,7 @@ class TemplateDetailTableViewController: UITableViewController, OperationSelecti
             updatedQuery.changeOperation(operation: op)
         }
     }
-    
+
     // MARK: Notification when value is changed
     
     func valueChanged(_ notification: NSNotification) {
