@@ -20,6 +20,7 @@ struct Endpoints {
 struct General {
     static let modelName = "Cache"
     static let minesCellHeight = CGFloat(60.0)
+    static let pageSize = 15
 }
 
 struct Icons {

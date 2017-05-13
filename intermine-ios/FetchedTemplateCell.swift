@@ -25,7 +25,6 @@ class FetchedTemplateCell: UITableViewCell {
                 }
                 infoString.append(currentString)
             }
-            print(infoString)
             descriptionLabel?.text = infoString
         }
     }
