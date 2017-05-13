@@ -13,20 +13,42 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     
     var mineUrl: String?
     var params: [String: String]?
-    private var templatesCount: Int?
+    
+    private var templatesCount: Int? {
+        didSet {
+            if templatesCount == 0 {
+                self.nothingFoundView?.isHidden = false
+            }
+        }
+    }
+    
     private var currentOffset: Int = 0
+    
+    private var nothingFoundView: BaseView? = nil
     
     var templates: [[String: String]] = [] {
         didSet {
             if self.templates.count > 0 {
                 self.tableView.reloadData()
+                self.nothingFoundView?.isHidden = true
+            } else {
+                self.nothingFoundView?.isHidden = false
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nothingFoundView = TableCoverView.instantiateFromNib()
+        if let nothingFoundView = self.nothingFoundView {
+            nothingFoundView.frame = self.tableView.frame
+            self.tableView.addSubview(nothingFoundView)
+            nothingFoundView.isHidden = true
+        }
+        
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
+        
         if let mineUrl = self.mineUrl, let params = self.params {
             IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res) in
                 if let countString = res, let count = Int(countString.trim()) {
@@ -53,12 +75,17 @@ class FetchedTemplatesViewController: LoadingTableViewController {
         if let mineUrl = self.mineUrl, let params = self.params {
             var correctedParams = params
             correctedParams["start"] = "\(offset)"
+            
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res) in
                 if let results = res?["results"] as? NSArray, let headers = res?["columnHeaders"] as? NSArray {
                     let processedHeaders = self.processHeaderArray(headerArray: headers)
                     for res in results {
-                        if let res = res as? [String] {
-                            let dict = Dictionary(keys: processedHeaders, values: res)
+                        if let res = res as? [Any] {
+                            var values: [String] = []
+                            for r in res {
+                                values.append("\(r)")
+                            }
+                            let dict = Dictionary(keys: processedHeaders, values: values)
                             self.templates.append(dict)
                         }
                     }

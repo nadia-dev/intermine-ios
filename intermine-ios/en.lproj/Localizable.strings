@@ -16,3 +16,5 @@
 
 "Templates.CTA.Search" = "Show Results";
 "Templates.CTA.SelectOperation" = "Select Operation";
+
+"General.NothingFound" = "No results found";

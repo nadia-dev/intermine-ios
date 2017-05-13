@@ -30,6 +30,8 @@
 		05DF53211E90286E00113171 /* intermine_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF53201E90286E00113171 /* intermine_iosTests.swift */; };
 		05E952E91EC197400057F753 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05E952EB1EC197400057F753 /* Localizable.strings */; };
 		05E952EF1EC198380057F753 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E952EE1EC198380057F753 /* String+Utils.swift */; };
+		05EA6CBA1EC79BEB002CC884 /* TableCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05EA6CB91EC79BEB002CC884 /* TableCoverView.xib */; };
+		05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CBC1EC79C10002CC884 /* TableCoverView.swift */; };
 		05F407721EC34A6700707B86 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407711EC34A6700707B86 /* BaseTableViewController.swift */; };
 		05F407751EC34C0600707B86 /* MinesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F407741EC34C0600707B86 /* MinesTableView.xib */; };
 		05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407761EC34C2200707B86 /* MinesTableView.swift */; };
@@ -97,6 +99,8 @@
 		05DF53221E90286E00113171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05E952EE1EC198380057F753 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		05E952F01EC240010057F753 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		05EA6CB91EC79BEB002CC884 /* TableCoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCoverView.xib; sourceTree = "<group>"; };
+		05EA6CBC1EC79C10002CC884 /* TableCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCoverView.swift; sourceTree = "<group>"; };
 		05F407711EC34A6700707B86 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		05F407741EC34C0600707B86 /* MinesTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinesTableView.xib; sourceTree = "<group>"; };
 		05F407761EC34C2200707B86 /* MinesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinesTableView.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				05EA6CBB1EC79BF8002CC884 /* TableCoverView */,
 				05F4079D1EC60F7E00707B86 /* TemplateDetailCells */,
 				05F407901EC4F48D00707B86 /* ResultsCell */,
 				05F407781EC34CFE00707B86 /* BaseView.swift */,
@@ -295,6 +300,15 @@
 				05DF53221E90286E00113171 /* Info.plist */,
 			);
 			path = "intermine-iosTests";
+			sourceTree = "<group>";
+		};
+		05EA6CBB1EC79BF8002CC884 /* TableCoverView */ = {
+			isa = PBXGroup;
+			children = (
+				05EA6CBC1EC79C10002CC884 /* TableCoverView.swift */,
+				05EA6CB91EC79BEB002CC884 /* TableCoverView.xib */,
+			);
+			name = TableCoverView;
 			sourceTree = "<group>";
 		};
 		05F407701EC34A4900707B86 /* BaseTableVC */ = {
@@ -498,6 +512,7 @@
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
 				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
+				05EA6CBA1EC79BEB002CC884 /* TableCoverView.xib in Resources */,
 				05F407751EC34C0600707B86 /* MinesTableView.xib in Resources */,
 				05DF53111E90286E00113171 /* Main.storyboard in Resources */,
 			);
@@ -584,6 +599,7 @@
 				05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */,
 				05F407B21EC61F1400707B86 /* FetchedTemplateCell.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
+				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
 				0595D5231EC0A67000686065 /* ListsViewController.swift in Sources */,
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
