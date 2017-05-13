@@ -13,6 +13,23 @@ class FetchedTemplateCell: UITableViewCell {
     static let identifier = "FetchedTemplateCell"
     @IBOutlet weak var descriptionLabel: UILabel?
     
+    var template: [String: String] = [:] {
+        didSet {
+            var infoString = ""
+            var gen = 0
+            for (key, value) in self.template {
+                gen += 1
+                var currentString = "\(key): \(value)\n"
+                if gen == self.template.count {
+                    currentString = "\(key): \(value)"
+                }
+                infoString.append(currentString)
+            }
+            print(infoString)
+            descriptionLabel?.text = infoString
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

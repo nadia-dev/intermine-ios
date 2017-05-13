@@ -369,18 +369,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="num-qS-3HB">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="num-qS-3HB">
                                             <rect key="frame" x="16" y="8" width="343" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2o-Te-bK9">
+                                            <rect key="frame" x="8" y="43" width="359" height="1"/>
+                                            <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="1UX-R6-UBJ"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="num-qS-3HB" secondAttribute="bottom" id="IqX-Wn-QKV"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="num-qS-3HB" secondAttribute="trailing" constant="8" id="Rv6-hh-RLI"/>
                                         <constraint firstItem="num-qS-3HB" firstAttribute="leading" secondItem="Ptl-hU-y9y" secondAttribute="leadingMargin" constant="8" id="ScY-bp-FSE"/>
                                         <constraint firstItem="num-qS-3HB" firstAttribute="top" secondItem="Ptl-hU-y9y" secondAttribute="topMargin" id="Ute-jA-JWJ"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="D2o-Te-bK9" secondAttribute="leading" id="c2e-Nx-Mfo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="D2o-Te-bK9" secondAttribute="trailing" id="gOK-Ll-UQZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="D2o-Te-bK9" secondAttribute="bottom" id="y1B-aB-G82"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
