@@ -42,7 +42,7 @@
 		05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407821EC4980C00707B86 /* TemplatesList.swift */; };
 		05F407851EC4981A00707B86 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407841EC4981A00707B86 /* Template.swift */; };
 		05F407871EC4998A00707B86 /* TemplateQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407861EC4998A00707B86 /* TemplateQuery.swift */; };
-		05F4078A1EC4A9AA00707B86 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407891EC4A9AA00707B86 /* ResultsTableViewController.swift */; };
+		05F4078A1EC4A9AA00707B86 /* AllTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407891EC4A9AA00707B86 /* AllTemplatesViewController.swift */; };
 		05F4078D1EC4AD3100707B86 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4078C1EC4AD3100707B86 /* UIViewController+Utils.swift */; };
 		05F4078F1EC4F48400707B86 /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4078E1EC4F48400707B86 /* TemplateTableViewCell.swift */; };
 		05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407971EC5B45F00707B86 /* TemplateDetailTableViewController.swift */; };
@@ -111,7 +111,7 @@
 		05F407821EC4980C00707B86 /* TemplatesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplatesList.swift; sourceTree = "<group>"; };
 		05F407841EC4981A00707B86 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		05F407861EC4998A00707B86 /* TemplateQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateQuery.swift; sourceTree = "<group>"; };
-		05F407891EC4A9AA00707B86 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		05F407891EC4A9AA00707B86 /* AllTemplatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTemplatesViewController.swift; sourceTree = "<group>"; };
 		05F4078C1EC4AD3100707B86 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		05F4078E1EC4F48400707B86 /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
 		05F407971EC5B45F00707B86 /* TemplateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 		05F4078B1EC4A9B300707B86 /* Results */ = {
 			isa = PBXGroup;
 			children = (
-				05F407891EC4A9AA00707B86 /* ResultsTableViewController.swift */,
+				05F407891EC4A9AA00707B86 /* AllTemplatesViewController.swift */,
 				05F407971EC5B45F00707B86 /* TemplateDetailTableViewController.swift */,
 				05F407991EC5DFF900707B86 /* OperationSelectViewController.swift */,
 				05F407AF1EC6159000707B86 /* FetchedTemplatesViewController.swift */,
@@ -613,7 +613,7 @@
 				05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */,
 				05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
-				05F4078A1EC4A9AA00707B86 /* ResultsTableViewController.swift in Sources */,
+				05F4078A1EC4A9AA00707B86 /* AllTemplatesViewController.swift in Sources */,
 				05F407801EC36E4800707B86 /* UIColor+Utils.swift in Sources */,
 				05F4079A1EC5DFF900707B86 /* OperationSelectViewController.swift in Sources */,
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,

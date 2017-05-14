@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ResultsTableViewController: LoadingTableViewController {
+class AllTemplatesViewController: LoadingTableViewController {
     
     private var templatesList: TemplatesList? {
         didSet {
@@ -21,9 +21,9 @@ class ResultsTableViewController: LoadingTableViewController {
     
     // MARK: Load from storyboard
     
-    class func resultsTableViewController(withMineUrl: String) -> ResultsTableViewController? {
+    class func resultsTableViewController(withMineUrl: String) -> AllTemplatesViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ResultsTableVC") as? ResultsTableViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllTemplatesVC") as? AllTemplatesViewController
         vc?.mineUrl = withMineUrl
         return vc
     }

@@ -23,7 +23,7 @@ class TemplatesViewController: BaseTableViewController {
             return
         }
         
-        if let resultsVC = ResultsTableViewController.resultsTableViewController(withMineUrl: mineUrl) {
+        if let resultsVC = AllTemplatesViewController.resultsTableViewController(withMineUrl: mineUrl) {
             self.navigationController?.pushViewController(resultsVC, animated: true)
         }
     }

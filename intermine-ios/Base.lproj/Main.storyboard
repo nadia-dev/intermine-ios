@@ -31,10 +31,10 @@
             </objects>
             <point key="canvasLocation" x="1420" y="-700.29985007496259"/>
         </scene>
-        <!--Results Table View Controller-->
+        <!--All Templates View Controller-->
         <scene sceneID="p5D-Rf-2nz">
             <objects>
-                <tableViewController storyboardIdentifier="ResultsTableVC" id="LcT-Xk-Hyn" customClass="ResultsTableViewController" customModule="intermine_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AllTemplatesVC" id="LcT-Xk-Hyn" customClass="AllTemplatesViewController" customModule="intermine_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TXI-GE-xgG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
