@@ -11,7 +11,6 @@ import NVActivityIndicatorView
 
 class FetchedTemplatesViewController: LoadingTableViewController {
     
-    var mineUrl: String?
     var params: [String: String]?
     
     private var templatesCount: Int? {
@@ -52,7 +51,6 @@ class FetchedTemplatesViewController: LoadingTableViewController {
         if let mineUrl = self.mineUrl, let params = self.params {
             IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res) in
                 if let countString = res, let count = Int(countString.trim()) {
-                    print(count)
                     self.templatesCount = count
                 }
             })

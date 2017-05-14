@@ -16,11 +16,16 @@ public class Mine: NSManagedObject {
         guard let mineEntiry = NSEntityDescription.entity(forEntityName: "Mine", in: context) else {
             return
         }
-        let mine = Mine(entity: mineEntiry, insertInto: context)
-        mine.name = json["name"]
-        mine.url = json["url"]
-        mine.theme = json["theme"]
-        mine.lastUpdated = NSDate()
+        var mine: Mine?
+        if let name = json["name"], let existingMine = Mine.getMineByName(name: name, context: context) {
+            mine = existingMine
+        } else {
+            mine = Mine(entity: mineEntiry, insertInto: context)
+        }
+        mine?.name = json["name"]
+        mine?.url = json["url"]
+        mine?.theme = json["theme"]
+        mine?.lastUpdated = NSDate()
     }
     
     class func getMineByName(name: String, context: NSManagedObjectContext) -> Mine? {

@@ -10,7 +10,6 @@ import UIKit
 
 class TemplatesViewController: BaseTableViewController {
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         controllerType = .Templates
@@ -23,7 +22,7 @@ class TemplatesViewController: BaseTableViewController {
             return
         }
         
-        if let resultsVC = AllTemplatesViewController.resultsTableViewController(withMineUrl: mineUrl) {
+        if let resultsVC = AllTemplatesViewController.allTemplatesViewController(withMineUrl: mineUrl) {
             self.navigationController?.pushViewController(resultsVC, animated: true)
         }
     }

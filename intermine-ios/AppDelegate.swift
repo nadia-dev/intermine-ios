@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CacheDataStore.sharedCacheDataStore.updateRegistryIfNeeded()
+        CacheDataStore.sharedCacheDataStore.updateModelIfNeeded(mineUrl: "http://www.mousemine.org/mousemine")
         return true
     }
 

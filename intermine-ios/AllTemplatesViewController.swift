@@ -17,11 +17,9 @@ class AllTemplatesViewController: LoadingTableViewController {
         }
     }
     
-    private var mineUrl: String?
-    
     // MARK: Load from storyboard
     
-    class func resultsTableViewController(withMineUrl: String) -> AllTemplatesViewController? {
+    class func allTemplatesViewController(withMineUrl: String) -> AllTemplatesViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AllTemplatesVC") as? AllTemplatesViewController
         vc?.mineUrl = withMineUrl
@@ -30,7 +28,7 @@ class AllTemplatesViewController: LoadingTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavBar()
+        
         if let mineUrl = self.mineUrl {
             IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (templatesList) in
                 guard let list = templatesList else {
@@ -46,19 +44,7 @@ class AllTemplatesViewController: LoadingTableViewController {
     
     // MARK: Private methods
     
-    private func configureNavBar() {
-        guard let url = self.mineUrl else {
-            return
-        }
-        if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: url) {
-            self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: mine.theme)
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.navigationController?.navigationBar.tintColor = Colors.white
-            self.navigationController?.navigationBar.backItem?.title = ""
-            self.navigationController?.navigationBar.topItem?.title = mine.name
-            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
-        }
-    }
+    
 
     // MARK: Table view data source
 

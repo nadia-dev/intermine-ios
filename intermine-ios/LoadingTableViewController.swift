@@ -12,9 +12,11 @@ import NVActivityIndicatorView
 class LoadingTableViewController: UITableViewController {
     
     private var spinner: NVActivityIndicatorView?
+    var mineUrl: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureNavBar()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
@@ -39,6 +41,20 @@ class LoadingTableViewController: UITableViewController {
             return CGRect(x: 0, y: 0, width: indicatorWidth, height: indicatorHeight)
         } else {
             return self.view.frame
+        }
+    }
+    
+    private func configureNavBar() {
+        guard let url = self.mineUrl else {
+            return
+        }
+        if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: url) {
+            self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: mine.theme)
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.tintColor = Colors.white
+            self.navigationController?.navigationBar.backItem?.title = ""
+            self.navigationController?.navigationBar.topItem?.title = mine.name
+            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
         }
     }
     

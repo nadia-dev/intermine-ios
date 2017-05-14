@@ -29,4 +29,22 @@ extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
+    
+    func isAboveVersion(version: String) -> Bool {
+        // compares versions with format x.x.x
+        // "1.7.1".isAboveVersion(version: "1.6.6") -> True
+        // "1.6.6".isAboveVersion(version: "1.7.1") -> False
+        
+        let baseArray = self.components(separatedBy: ".")
+        let arrayToCompare = version.components(separatedBy: ".")
+        assert(baseArray.count == arrayToCompare.count)
+        for i in 0..<baseArray.count {
+            if let baseElem = Int(baseArray[i]), let comparedElem = Int(arrayToCompare[i]) {
+                if baseElem > comparedElem {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }

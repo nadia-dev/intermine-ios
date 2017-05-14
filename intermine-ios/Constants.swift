@@ -15,12 +15,15 @@ struct Endpoints {
     static let templates = "/service/templates"
     static let tokens = "/service/user/tokens"
     static let templateResults = "/service/template/results"
+    static let intermineVersion = "/service/version/intermine"
+    static let modelReleased = "/service/version/release"
 }
 
 struct General {
     static let modelName = "Cache"
     static let minesCellHeight = CGFloat(60.0)
     static let pageSize = 15
+    static let baseVersion = "1.6.5"
 }
 
 struct Icons {

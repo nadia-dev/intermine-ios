@@ -18,7 +18,13 @@ class ListsViewController: BaseTableViewController {
     // MARK: Mines table view delegate
     
     override func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
-        // TODO: To implement
+//        guard let mineUrl = didDetectUrlSelection else {
+//            return
+//        }
+        
+//        IntermineAPIClient.fetchModel(mineUrl: mineUrl) { (xmlString) in
+//            //
+//        }
     }
 
 
