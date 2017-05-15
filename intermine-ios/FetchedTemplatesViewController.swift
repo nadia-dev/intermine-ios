@@ -15,37 +15,28 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     
     private var templatesCount: Int? {
         didSet {
-            if templatesCount == 0 {
-                self.nothingFoundView?.isHidden = false
+            if self.templatesCount == 0 {
+                self.showNothingFoundView()
             }
         }
     }
     
     private var currentOffset: Int = 0
-    
-    private var nothingFoundView: BaseView? = nil
-    
+
     var templates: [[String: String]] = [] {
         didSet {
             if self.templates.count > 0 {
                 self.tableView.reloadData()
-                self.nothingFoundView?.isHidden = true
+                self.hideNothingFoundView()
             } else {
-                self.nothingFoundView?.isHidden = false
+                self.showNothingFoundView()
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.nothingFoundView = TableCoverView.instantiateFromNib()
-        if let nothingFoundView = self.nothingFoundView {
-            nothingFoundView.frame = self.tableView.frame
-            self.tableView.addSubview(nothingFoundView)
-            nothingFoundView.isHidden = true
-        }
-        
+
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
         
         if let mineUrl = self.mineUrl, let params = self.params {

@@ -27,7 +27,7 @@ class CacheDataStore {
     
     // MARK: Public methods
     
-    func updateRegistryIfNeeded() {
+    func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?) -> ()) {
         if registryNeedsUpdate() {
             IntermineAPIClient.fetchRegistry { (jsonRes) in
                 guard let jsonRes = jsonRes else {
@@ -37,68 +37,19 @@ class CacheDataStore {
                 eraseRegistry()
                 if let registryDict = jsonRes as? [String: AnyObject] {
                     if let mines = registryDict["mines"] as? Array<[String: String]> {
+                        var mineObjects: [Mine] = []
                         for mine in mines {
-                            Mine.createMineFromJson(json: mine, context: self.managedContext)
+                            if let mineObj = Mine.createMineFromJson(json: mine, context: self.managedContext) {
+                                mineObjects.append(mineObj)
+                            }
                         }
                         save()
+                        completion(mineObjects)
                     }
                 }
             }
         }
-    }
-    
-    func updateModelIfNeeded(mineUrl: String) {
-        // TODO: Implement steps:
-        // 1. check if xml file present
-        // 2. check intermine version, if > 1.6.6 -> test date when last updated
-        // 3. compare last updated date and reload xml if needed
-        // Note: url and date can be stored in file name
-        
-        // 1. To check if xml is present, get MineModel by url
-        if let model = MineModel.getMineModelByUrl(url: mineUrl, context: self.managedContext) {
-            
-            // 2. check if model.xmlFile is a valid url to existing resource
-            if let fileName = model.xmlFile {
-                
-                if FileHandler.doesFileExist(fileName: fileName) {
-                    
-                    // 3. check intermine software version
-                    IntermineAPIClient.fetchIntermineVersion(mineUrl: mineUrl, completion: { (versionString) in
-                        if let versionString = versionString {
-                            if versionString.isAboveVersion(version: General.baseVersion) {
-                                
-                                // 4. fetch last updated date
-                                IntermineAPIClient.fetchReleaseDate(mineUrl: mineUrl, completion: { (date) in
-                                    
-                                    // 5. compare date of the mine object and fetched date
-                                    if let fetchedReleaseDate = date, let storedReleaseDate = model.releaseDate {
-                                        if fetchedReleaseDate.isGreaterThan(date: storedReleaseDate) {
-                                            
-                                            // needs update!
-                                            self.updateMineModel(mineUrl: mineUrl)
-                                            
-                                        }
-                                    }
-                                })
-                                
-                            } else {
-                                // there is no way to tell if model has changed, fetch a new one
-                                // this condition should always be false, other than on very old 
-                                // versions of backend
-                                // needs update!
-                                self.updateMineModel(mineUrl: mineUrl)
-                            }
-                        }
-                    })
-                } else {
-                    // xml does not exist in documents directory, needs update!
-                    self.updateMineModel(mineUrl: mineUrl)
-                }
-            }
-        } else {
-            // no model found, needs update!
-            self.updateMineModel(mineUrl: mineUrl)
-        }
+        completion(nil)
     }
     
     func save() {
@@ -126,19 +77,69 @@ class CacheDataStore {
         return Mine.getMineByUrl(url: url, context: self.managedContext)
     }
     
+    func updateRegistryModelsIfNeeded(mines: [Mine]) {
+        for mine in mines {
+            if let mineUrl = mine.url {
+                self.updateModelIfNeeded(mineUrl: mineUrl)
+            }
+        }
+    }
+    
     
     // MARK: Private methods
     
-    private func updateMineModel(mineUrl: String) {
+    private func updateModelIfNeeded(mineUrl: String) {
         
-        if let mine = Mine.getMineByUrl(url: mineUrl, context: self.managedContext), let mineName = mine.name {
+        // 1. To check if xml is present, get MineModel by url
+        if let model = MineModel.getMineModelByUrl(url: mineUrl, context: self.managedContext) {
             
-            let fileName = mineName + ".xml"
-            
-            IntermineAPIClient.fetchModel(mineUrl: mineUrl, completion: { (xmlString) in
+            // 2. check if model.xmlFile is a valid url to existing resource
+            if let fileName = model.xmlFile {
+                if FileHandler.doesFileExist(fileName: fileName) {
+                    
+                    // 3. check intermine software version
+                    IntermineAPIClient.fetchIntermineVersion(mineUrl: mineUrl, completion: { (versionString) in
+                        if let versionString = versionString {
+                            if versionString.isAboveVersion(version: General.baseVersion) {
+                                
+                                // 4. fetch last updated date
+                                IntermineAPIClient.fetchReleaseDate(mineUrl: mineUrl, completion: { (date) in
+                                    
+                                    // 5. compare date of the mine object and fetched date
+                                    if let fetchedReleaseDate = date, let storedReleaseDate = model.releaseDate {
+                                        if fetchedReleaseDate.isGreaterThan(date: storedReleaseDate) {
+                                            
+                                            // needs update!
+                                            self.updateMineModel(mineUrl: mineUrl)
+                                        }
+                                    }
+                                })
+                            } else {
+                                // there is no way to tell if model has changed, fetch a new one
+                                // this condition should always be false, other than on very old
+                                // versions of backend
+                                // needs update!
+                                self.updateMineModel(mineUrl: mineUrl)
+                            }
+                        }
+                    })
+                } else {
+                    // xml does not exist in documents directory, needs update!
+                    self.updateMineModel(mineUrl: mineUrl)
+                }
+            }
+        } else {
+            // no model found, needs update!
+            self.updateMineModel(mineUrl: mineUrl)
+        }
+    }
 
+    
+    private func updateMineModel(mineUrl: String) {
+        if let mine = Mine.getMineByUrl(url: mineUrl, context: self.managedContext), let mineName = mine.name {
+            let fileName = mineName + ".xml"
+            IntermineAPIClient.fetchModel(mineUrl: mineUrl, completion: { (xmlString) in
                 FileHandler.writeToFile(fileName: fileName, contents: xmlString)
-                
                 IntermineAPIClient.fetchIntermineVersion(mineUrl: mineUrl, completion: { (versionString) in
                     if let versionString = versionString {
                         if versionString.isAboveVersion(version: General.baseVersion) {
@@ -147,7 +148,6 @@ class CacheDataStore {
                                     MineModel.createMineModel(url: mineUrl, date: fetchedReleaseDate, xmlFile: fileName, versioned: true, context: self.managedContext)
                                 }
                             })
-                            
                         } else {
                             // there is no way to tell if model has changed, fetch a new one
                             // this condition should always be false, other than on very old
@@ -162,12 +162,9 @@ class CacheDataStore {
                     }
                 })
             })
-
         }
-        
     }
 
-    
     private func fetchCachedRegistry() -> Array<Mine>? {
         do {
             if let registry = try self.managedContext.fetch(Mine.fetchRequest()) as? Array<Mine> {
@@ -226,7 +223,5 @@ class CacheDataStore {
             print("Unresolved error \(error), \(error.userInfo)")
         }
     }
-    
 
-    
 }

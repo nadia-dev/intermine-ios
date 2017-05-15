@@ -24,6 +24,7 @@ struct General {
     static let minesCellHeight = CGFloat(60.0)
     static let pageSize = 15
     static let baseVersion = "1.6.5"
+    static let descriptionCharactersLimit = 120
 }
 
 struct Icons {
@@ -38,6 +39,8 @@ struct Icons {
 struct Colors {
     static let chelseaCucumber = UIColor.hexStringToUIColor(hex: "#8CA855")
     static let conifer = UIColor.hexStringToUIColor(hex: "#BFD93B")
+    static let pistachio = UIColor.hexStringToUIColor(hex: "#8CA50B")
+    static let eggplant = UIColor.hexStringToUIColor(hex: "#a50b8b") // complementary to pistachio
     static let white = UIColor.white
     static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
 }

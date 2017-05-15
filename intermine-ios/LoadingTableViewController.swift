@@ -12,11 +12,21 @@ import NVActivityIndicatorView
 class LoadingTableViewController: UITableViewController {
     
     private var spinner: NVActivityIndicatorView?
+    private var nothingFoundView: BaseView? = nil
+    
     var mineUrl: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.configureNavBar()
+        
+        self.nothingFoundView = TableCoverView.instantiateFromNib()
+        if let nothingFoundView = self.nothingFoundView {
+            nothingFoundView.frame = self.tableView.frame
+            self.tableView.addSubview(nothingFoundView)
+            nothingFoundView.isHidden = true
+        }
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
@@ -31,6 +41,14 @@ class LoadingTableViewController: UITableViewController {
     
     func stopSpinner() {
         self.spinner?.stopAnimating()
+    }
+    
+    func showNothingFoundView() {
+        self.nothingFoundView?.isHidden = false
+    }
+    
+    func hideNothingFoundView() {
+        self.nothingFoundView?.isHidden = true
     }
     
     private func indicatorFrame() -> CGRect {

@@ -13,7 +13,15 @@ class AllTemplatesViewController: LoadingTableViewController {
     
     private var templatesList: TemplatesList? {
         didSet {
-            self.tableView.reloadData()
+            if let templatesList = self.templatesList {
+                if templatesList.size() > 0 {
+                    self.tableView.reloadData()
+                    self.hideNothingFoundView()
+                } else {
+                    self.showNothingFoundView()
+                }
+            }
+            
         }
     }
     
@@ -33,7 +41,7 @@ class AllTemplatesViewController: LoadingTableViewController {
             IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (templatesList) in
                 guard let list = templatesList else {
                     self.stopSpinner()
-                    self.alert(message: String.localize("Results.NotFound"))
+                    self.showNothingFoundView()
                     return
                 }
                 self.templatesList = list

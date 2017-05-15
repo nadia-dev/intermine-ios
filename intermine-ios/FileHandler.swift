@@ -12,6 +12,10 @@ class FileHandler: NSObject {
     
     static let manager: FileManager = FileManager.default
     
+    class func getDocumentsDir() -> String? {
+        return manager.urls(for: .documentDirectory, in: .userDomainMask).first?.path
+    }
+    
     class func doesFileExist(fileName: String?) -> Bool {
         guard let fileName = fileName else {
             return false
@@ -23,7 +27,6 @@ class FileHandler: NSObject {
             }
         }
         return false
-
     }
     
     class func writeToFile(fileName: String?, contents: String?) {

@@ -18,14 +18,11 @@ class ListsViewController: BaseTableViewController {
     // MARK: Mines table view delegate
     
     override func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
-//        guard let mineUrl = didDetectUrlSelection else {
-//            return
-//        }
-        
-//        IntermineAPIClient.fetchModel(mineUrl: mineUrl) { (xmlString) in
-//            //
-//        }
+        guard let mineUrl = didDetectUrlSelection else {
+            return
+        }
+        if let listsVC = AllListsViewController.allListsViewController(withMineUrl: mineUrl) {
+            self.navigationController?.pushViewController(listsVC, animated: true)
+        }
     }
-
-
 }

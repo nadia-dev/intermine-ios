@@ -9,13 +9,32 @@
 import UIKit
 
 class AllListsViewController: LoadingTableViewController {
+    
+    private var lists: [List]? = [] {
+        didSet {
+            if let lists = self.lists {
+                if lists.count > 0 {
+                    self.tableView.reloadData()
+                    self.hideNothingFoundView()
+                } else {
+                    self.showNothingFoundView()
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let mineUrl = self.mineUrl {
-            
-            //TODO: Implement network call to fetch /lists
+            IntermineAPIClient.fetchLists(mineUrl: mineUrl, completion: { (lists) in
+                guard let lists = lists else {
+                    self.stopSpinner()
+                    self.showNothingFoundView()
+                    return
+                }
+                self.lists = lists
+                self.stopSpinner()
+            })
         }
     }
     
@@ -35,63 +54,31 @@ class AllListsViewController: LoadingTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let lists = self.lists else {
+            return 0
+        }
+        return lists.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
+        if let lists = self.lists {
+            cell.list = lists[indexPath.row]
+        }
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let lists = self.lists {
+            let selectedList = lists[indexPath.row]
+            if let selectedType = selectedList.getType() {
+                print(selectedType)
+                // TODO: based on type, find the views from xml file
+                // set value and make request
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

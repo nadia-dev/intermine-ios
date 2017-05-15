@@ -116,13 +116,28 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func fetchLists(mineUrl: String, completion: @escaping (_ result: TemplatesList?) -> ()) {
+    class func fetchLists(mineUrl: String, completion: @escaping (_ result: [List]?) -> ()) {
         let url = mineUrl + Endpoints.lists
-        Alamofire.request(url, parameters: jsonParams).responseJSON { (response) in
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams) { (result) in
+            var listObjects: [List] = []
+            if let result = result {
+                if let lists = result["lists"] as? [[String: AnyObject]] {
+                    for list in lists {
+                        let listObj = List(withTitle: list["title"] as? String,
+                                           info: list["description"] as? String,
+                                           size: list["size"] as? Int,
+                                           type: list["type"] as? String,
+                                           name: list["name"] as? String,
+                                           status: list["status"] as? String)
+                        listObjects.append(listObj)
+                    }
+                    completion(listObjects)
+                }
+            } else {
+                completion(nil)
             }
         }
+        
     }
     
     class func fetchTemplates(mineUrl: String, completion: @escaping (_ result: TemplatesList?) -> ()) {

@@ -21,6 +21,7 @@
 		0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5241EC0A69C00686065 /* FavoritesViewController.swift */; };
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
 		0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5281EC0A7C800686065 /* BaseViewController.swift */; };
+		05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */; };
 		05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530B1E90286E00113171 /* AppDelegate.swift */; };
 		05DF530E1E90286E00113171 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530D1E90286E00113171 /* MainTabController.swift */; };
 		05DF53111E90286E00113171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DF530F1E90286E00113171 /* Main.storyboard */; };
@@ -34,7 +35,6 @@
 		05EA6CC01EC82CB2002CC884 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CBF1EC82CB2002CC884 /* AllListsViewController.swift */; };
 		05EA6CC31EC8377A002CC884 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CC21EC8377A002CC884 /* ListTableViewCell.swift */; };
 		05EA6CC61EC83DDF002CC884 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CC51EC83DDF002CC884 /* List.swift */; };
-		05EA6CC81EC83DEF002CC884 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CC71EC83DEF002CC884 /* ListItem.swift */; };
 		05EA6CCC1EC85692002CC884 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CCB1EC85692002CC884 /* FileHandler.swift */; };
 		05EA6CD71EC8B243002CC884 /* MineModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CD51EC8B243002CC884 /* MineModel+CoreDataClass.swift */; };
 		05EA6CD81EC8B243002CC884 /* MineModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EA6CD61EC8B243002CC884 /* MineModel+CoreDataProperties.swift */; };
@@ -92,6 +92,7 @@
 		0595D5241EC0A69C00686065 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0595D5281EC0A7C800686065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModelParser.swift; sourceTree = "<group>"; };
 		05DF53081E90286E00113171 /* intermine-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "intermine-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF530B1E90286E00113171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05DF530D1E90286E00113171 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		05EA6CBF1EC82CB2002CC884 /* AllListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		05EA6CC21EC8377A002CC884 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		05EA6CC51EC83DDF002CC884 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		05EA6CC71EC83DEF002CC884 /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		05EA6CCB1EC85692002CC884 /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		05EA6CD51EC8B243002CC884 /* MineModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MineModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		05EA6CD61EC8B243002CC884 /* MineModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MineModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -221,6 +221,7 @@
 				05F4077F1EC36E4800707B86 /* UIColor+Utils.swift */,
 				05F4078C1EC4AD3100707B86 /* UIViewController+Utils.swift */,
 				05F4079B1EC6068E00707B86 /* Dictionary+Utils.swift */,
+				05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -345,7 +346,6 @@
 			isa = PBXGroup;
 			children = (
 				05EA6CC51EC83DDF002CC884 /* List.swift */,
-				05EA6CC71EC83DEF002CC884 /* ListItem.swift */,
 			);
 			name = Lists;
 			sourceTree = "<group>";
@@ -644,6 +644,7 @@
 				05EA6CC61EC83DDF002CC884 /* List.swift in Sources */,
 				05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */,
 				05F407B21EC61F1400707B86 /* FetchedTemplateCell.swift in Sources */,
+				05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
@@ -655,7 +656,6 @@
 				05715E691EBF801900C4C3C7 /* NSDate+Utils.swift in Sources */,
 				05EA6CCC1EC85692002CC884 /* FileHandler.swift in Sources */,
 				05F4078D1EC4AD3100707B86 /* UIViewController+Utils.swift in Sources */,
-				05EA6CC81EC83DEF002CC884 /* ListItem.swift in Sources */,
 				05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */,
 				05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */,
 				05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */,
