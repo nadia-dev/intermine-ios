@@ -40,7 +40,7 @@ extension String {
         assert(baseArray.count == arrayToCompare.count)
         for i in 0..<baseArray.count {
             if let baseElem = Int(baseArray[i]), let comparedElem = Int(arrayToCompare[i]) {
-                if baseElem > comparedElem {
+                if baseElem >= comparedElem {
                     return true
                 }
             }

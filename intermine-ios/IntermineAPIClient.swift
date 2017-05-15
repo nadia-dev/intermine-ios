@@ -86,8 +86,9 @@ class IntermineAPIClient: NSObject {
                 if let versionString = result["version"] as? String {
                     completion(versionString)
                 }
+            } else {
+                completion(nil)
             }
-            completion(nil)
         }
     }
     
@@ -102,10 +103,16 @@ class IntermineAPIClient: NSObject {
                             let date = NSDate.stringToDate(dateString: dateString)
                             completion(date)
                         }
+                    } else {
+                        completion(nil)
                     }
+                } else {
+                    completion(nil)
                 }
+            } else {
+                completion(nil)
             }
-            completion(nil)
+            
         }
     }
     

@@ -43,9 +43,7 @@ class FileHandler: NSObject {
                     print(error)
                 }
             } else {
-                let created = manager.createFile(atPath: path.path, contents: nil, attributes: nil)
-                print(path)
-                print(created)
+                manager.createFile(atPath: path.path, contents: nil, attributes: nil)
                 do {
                     try contents.write(to: path, atomically: false, encoding: String.Encoding.utf8)
                 } catch {
@@ -59,6 +57,7 @@ class FileHandler: NSObject {
     }
     
     class func readFromFile(fileName: String?) -> String? {
+        print(fileName)
         guard let fileName = fileName else {
             return nil
         }

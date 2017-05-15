@@ -25,7 +25,7 @@ public class MineModel: NSManagedObject {
         model?.url = url
         model?.versioned = versioned // if Intermine backend is > 1.6.6
         model?.releaseDate = date // should come from separate call
-        model?.xmlFile = url
+        model?.xmlFile = xmlFile
     }
     
     class func getMineModelByUrl(url: String, context: NSManagedObjectContext) -> MineModel? {

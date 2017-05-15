@@ -12,6 +12,7 @@ import CoreData
 class CacheDataStore {
     
     private let modelName = General.modelName
+    private let debug = true
     
     // TODO: compare versions instead using:
 //    GET /version/release which tells you the version of the data *inside* the intermine
@@ -27,10 +28,20 @@ class CacheDataStore {
     
     // MARK: Public methods
     
+    func getParamsForListCall(mineUrl: String, type: String) {
+        if let model = MineModel.getMineModelByUrl(url: mineUrl, context: self.managedContext) {
+            if let fileName = model.xmlFile {
+                let modelParser = MineModelParser(fromFileWithName: fileName)
+                modelParser.findElementByType(type: type)
+            }
+        }
+    }
+
     func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?) -> ()) {
         if registryNeedsUpdate() {
             IntermineAPIClient.fetchRegistry { (jsonRes) in
                 guard let jsonRes = jsonRes else {
+                    completion(nil)
                     return
                 }
                 // update registry in Core Data
@@ -45,11 +56,17 @@ class CacheDataStore {
                         }
                         save()
                         completion(mineObjects)
+                    } else {
+                        completion(nil)
                     }
+                } else {
+                    completion(nil)
                 }
             }
+        } else {
+            let mines = Mine.getAllMines(context: self.managedContext)
+            completion(mines)
         }
-        completion(nil)
     }
     
     func save() {
@@ -89,6 +106,11 @@ class CacheDataStore {
     // MARK: Private methods
     
     private func updateModelIfNeeded(mineUrl: String) {
+        
+        if debug {
+            self.updateMineModel(mineUrl: mineUrl)
+            return
+        }
         
         // 1. To check if xml is present, get MineModel by url
         if let model = MineModel.getMineModelByUrl(url: mineUrl, context: self.managedContext) {
@@ -146,6 +168,10 @@ class CacheDataStore {
                             IntermineAPIClient.fetchReleaseDate(mineUrl: mineUrl, completion: { (date) in
                                 if let fetchedReleaseDate = date {
                                     MineModel.createMineModel(url: mineUrl, date: fetchedReleaseDate, xmlFile: fileName, versioned: true, context: self.managedContext)
+                                    print("create model for mine : \(mineUrl)")
+                                } else {
+                                    MineModel.createMineModel(url: mineUrl, date: NSDate(), xmlFile: fileName, versioned: false, context: self.managedContext)
+                                    print("create model for mine 1: \(mineUrl)")
                                 }
                             })
                         } else {
@@ -156,6 +182,7 @@ class CacheDataStore {
                             IntermineAPIClient.fetchReleaseDate(mineUrl: mineUrl, completion: { (date) in
                                 if let fetchedReleaseDate = date {
                                     MineModel.createMineModel(url: mineUrl, date: fetchedReleaseDate, xmlFile: fileName, versioned: false, context: self.managedContext)
+                                    print("create model for mine 2: \(mineUrl)")
                                 }
                             })
                         }

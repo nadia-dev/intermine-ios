@@ -50,5 +50,15 @@ public class Mine: NSManagedObject {
         }
         return nil
     }
+    
+    class func getAllMines(context: NSManagedObjectContext) -> [Mine]? {
+        let request = NSFetchRequest<Mine>(entityName: "Mine")
+        if let mines = try? context.fetch(request) {
+            if mines.count > 0 {
+                return mines
+            }
+        }
+        return nil
+    }
 
 }
