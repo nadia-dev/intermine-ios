@@ -12,7 +12,7 @@ import CoreData
 class CacheDataStore {
     
     private let modelName = General.modelName
-    private let debug = true
+    private let debug = false
     
     // TODO: compare versions instead using:
 //    GET /version/release which tells you the version of the data *inside* the intermine
@@ -28,13 +28,14 @@ class CacheDataStore {
     
     // MARK: Public methods
     
-    func getParamsForListCall(mineUrl: String, type: String) {
+    func getParamsForListCall(mineUrl: String, type: String) -> [String]? {
         if let model = MineModel.getMineModelByUrl(url: mineUrl, context: self.managedContext) {
             if let fileName = model.xmlFile {
                 let modelParser = MineModelParser(fromFileWithName: fileName)
-                modelParser.findElementByType(type: type)
+                return modelParser.getViewNames(forType: type)
             }
         }
+        return nil
     }
 
     func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?) -> ()) {
@@ -158,6 +159,8 @@ class CacheDataStore {
 
     
     private func updateMineModel(mineUrl: String) {
+        //FIXME: use versioning flag
+        
         if let mine = Mine.getMineByUrl(url: mineUrl, context: self.managedContext), let mineName = mine.name {
             let fileName = mineName + ".xml"
             IntermineAPIClient.fetchModel(mineUrl: mineUrl, completion: { (xmlString) in
@@ -168,10 +171,8 @@ class CacheDataStore {
                             IntermineAPIClient.fetchReleaseDate(mineUrl: mineUrl, completion: { (date) in
                                 if let fetchedReleaseDate = date {
                                     MineModel.createMineModel(url: mineUrl, date: fetchedReleaseDate, xmlFile: fileName, versioned: true, context: self.managedContext)
-                                    print("create model for mine : \(mineUrl)")
                                 } else {
                                     MineModel.createMineModel(url: mineUrl, date: NSDate(), xmlFile: fileName, versioned: false, context: self.managedContext)
-                                    print("create model for mine 1: \(mineUrl)")
                                 }
                             })
                         } else {
@@ -182,7 +183,6 @@ class CacheDataStore {
                             IntermineAPIClient.fetchReleaseDate(mineUrl: mineUrl, completion: { (date) in
                                 if let fetchedReleaseDate = date {
                                     MineModel.createMineModel(url: mineUrl, date: fetchedReleaseDate, xmlFile: fileName, versioned: false, context: self.managedContext)
-                                    print("create model for mine 2: \(mineUrl)")
                                 }
                             })
                         }

@@ -12,6 +12,7 @@ import SWXMLHash
 class MineModelParser: NSObject {
     
     private var xml: XMLIndexer?
+    private var viewNames: [String]? = []
     
     override init() {
         self.xml = nil
@@ -21,18 +22,40 @@ class MineModelParser: NSObject {
         self.init()
         if let xmlString = FileHandler.readFromFile(fileName: fileName) {
             self.xml = SWXMLHash.lazy(xmlString)
-            
         }
     }
     
-    func findElementByType(type: String) {
+    func getViewNames(forType: String) -> [String]? {
+        self.findViewsByType(type: forType)
+        return self.viewNames
+    }
+    
+    func findViewsByType(type: String) {
         guard let xml = self.xml else {
             return
         }
         
         do {
             let elem = try xml["model"]["class"].withAttr("name", type).element
-            print(elem)
+            if let extends = elem?.attribute(by: "extends") {
+                findViewsByType(type: extends.text)
+            } else {
+                //print(elem)
+                if let children = elem?.children {
+                    for child in children {
+                        let desc = child.description
+                        if desc.contains("type=\"java.lang.String\"") {
+                            let matches = String.findMatches(for: "name=\".*\"", in: desc)
+                            if matches.count > 0 {
+                                if let match = matches.first {
+                                    let removedName = match.replacingOccurrences(of: "name=", with: "")
+                                    self.viewNames?.append(removedName.replacingOccurrences(of: "\"", with: ""))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         } catch let error as NSError {
             print("error parsing xml: \(error)")
         }

@@ -77,7 +77,8 @@ class AllListsViewController: LoadingTableViewController {
                 // TODO: based on type, find the views from xml file
                 // set value and make request
                 if let mineUrl = self.mineUrl {
-                    CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType)
+                    let views = CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType)
+                    print(views)
                 }
             }
         }
