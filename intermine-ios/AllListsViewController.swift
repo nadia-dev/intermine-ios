@@ -82,14 +82,17 @@ class AllListsViewController: LoadingTableViewController {
                 if let mineUrl = self.mineUrl {
                     if let views = CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType) {
                         if let viewsQuery = QueryBuilder.buildQuery(views: views, type: selectedType, value: selectedValue) {
-                            print(viewsQuery)
+                            
+                            if let fetchedListsCV = FetchedListsViewController.fetchedListsViewController(withMineUrl: mineUrl, viewsQuery: viewsQuery) {
+                                self.navigationController?.pushViewController(fetchedListsCV, animated: true)
+                            }
                             
                             // TODO: implement it in the next VC,
                             // TODO: use fetched templates code (refactor to parent class)
                             
-                            IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: viewsQuery, completion: { (res) in
-                                //
-                            })
+//                            IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: viewsQuery, completion: { (res, params) in
+//                                //
+//                            })
                         }
                     }
                 }

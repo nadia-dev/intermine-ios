@@ -129,22 +129,49 @@
             </objects>
             <point key="canvasLocation" x="2341.5999999999999" y="13.943028485757123"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Fetched Lists View Controller-->
         <scene sceneID="ff2-AK-lem">
             <objects>
-                <tableViewController id="43f-GR-Kol" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0M4-4A-sNL">
+                <tableViewController storyboardIdentifier="FetchedListsVC" id="43f-GR-Kol" customClass="FetchedListsViewController" customModule="intermine_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0M4-4A-sNL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gMf-nU-XZM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FetchedCell" id="Mu0-BM-pJb" customClass="FetchedCell" customModule="intermine_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMf-nU-XZM" id="uoh-EM-Y1W">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mu0-BM-pJb" id="BRP-7o-N1l">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rb-QF-M3x">
+                                            <rect key="frame" x="16" y="8" width="343" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tId-dP-jXz">
+                                            <rect key="frame" x="8" y="43" width="359" height="1"/>
+                                            <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="Bv7-Xs-Y7s"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5rb-QF-M3x" secondAttribute="bottom" id="DEk-vK-fIH"/>
+                                        <constraint firstItem="5rb-QF-M3x" firstAttribute="leading" secondItem="BRP-7o-N1l" secondAttribute="leadingMargin" constant="8" id="OZb-Xv-MoT"/>
+                                        <constraint firstAttribute="bottom" secondItem="tId-dP-jXz" secondAttribute="bottom" id="ZV8-Sg-R0R"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tId-dP-jXz" secondAttribute="trailing" id="bGg-Nt-Dsh"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="tId-dP-jXz" secondAttribute="leading" id="ezO-bq-V4I"/>
+                                        <constraint firstItem="5rb-QF-M3x" firstAttribute="top" secondItem="BRP-7o-N1l" secondAttribute="topMargin" id="hKI-Pj-UPv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5rb-QF-M3x" secondAttribute="trailing" constant="8" id="uYh-Rb-V1s"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="5rb-QF-M3x" id="uUS-KW-ocQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -423,7 +450,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FetchedTemplateCell" id="Yia-cI-i8S" customClass="FetchedTemplateCell" customModule="intermine_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FetchedCell" id="Yia-cI-i8S" customClass="FetchedCell" customModule="intermine_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yia-cI-i8S" id="Ptl-hU-y9y">

@@ -66,40 +66,13 @@ class FetchedTemplatesViewController: LoadingTableViewController {
             correctedParams["start"] = "\(offset)"
             
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res) in
-                if let results = res?["results"] as? NSArray, let headers = res?["columnHeaders"] as? NSArray {
-                    let processedHeaders = self.processHeaderArray(headerArray: headers)
-                    for res in results {
-                        if let res = res as? [Any] {
-                            var values: [String] = []
-                            for r in res {
-                                values.append("\(r)")
-                            }
-                            let dict = Dictionary(keys: processedHeaders, values: values)
-                            self.templates.append(dict)
-                        }
-                    }
-                }
+                self.processDataResult(res: res, data: &self.templates)
                 if self.currentOffset == 0 {
                     self.stopSpinner()
                 } 
             })
         }
     }
-
-    private func processHeaderArray(headerArray: NSArray) -> [String] {
-        var processedArray: [String] = []
-        for elem in headerArray {
-            if let elem = elem as? String {
-                let comps = elem.components(separatedBy: " > ")
-                if comps.count > 1 {
-                    let title = comps[1]
-                    processedArray.append(title)
-                }
-            }
-        }
-        return processedArray
-    }
-    
     
     // MARK: - Table view data source
     
@@ -112,8 +85,8 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FetchedTemplateCell.identifier, for: indexPath) as! FetchedTemplateCell
-        cell.template = templates[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
+        cell.data = templates[indexPath.row]
         return cell
     }
     

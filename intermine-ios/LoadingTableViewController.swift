@@ -76,6 +76,36 @@ class LoadingTableViewController: UITableViewController {
         }
     }
     
+    func processHeaderArray(headerArray: NSArray) -> [String] {
+        var processedArray: [String] = []
+        for elem in headerArray {
+            if let elem = elem as? String {
+                let comps = elem.components(separatedBy: " > ")
+                if comps.count > 1 {
+                    let title = comps[1]
+                    processedArray.append(title)
+                }
+            }
+        }
+        return processedArray
+    }
+    
+    func processDataResult(res: [String: AnyObject]?, data: inout [[String: String]]) {
+        if let results = res?["results"] as? NSArray, let headers = res?["columnHeaders"] as? NSArray {
+            let processedHeaders = self.processHeaderArray(headerArray: headers)
+            for res in results {
+                if let res = res as? [Any] {
+                    var values: [String] = []
+                    for r in res {
+                        values.append("\(r)")
+                    }
+                    let dict = Dictionary(keys: processedHeaders, values: values)
+                    data.append(dict)
+                }
+            }
+        }
+    }
+    
     private func indicatorPadding() -> CGFloat {
         return BaseView.viewWidth(view: self.view) / 2.5
     }

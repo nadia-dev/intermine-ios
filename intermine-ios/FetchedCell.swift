@@ -8,36 +8,25 @@
 
 import UIKit
 
-class FetchedTemplateCell: UITableViewCell {
+class FetchedCell: UITableViewCell {
     
-    static let identifier = "FetchedTemplateCell"
+    static let identifier = "FetchedCell"
     @IBOutlet weak var descriptionLabel: UILabel?
     
-    var template: [String: String] = [:] {
+    var data: [String: String] = [:] {
         didSet {
             var infoString = ""
             var gen = 0
-            for (key, value) in self.template {
+            for (key, value) in self.data {
                 gen += 1
                 var currentString = "\(key): \(value)\n"
-                if gen == self.template.count {
+                if gen == self.data.count {
                     currentString = "\(key): \(value)"
                 }
                 infoString.append(currentString)
             }
             descriptionLabel?.text = infoString
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

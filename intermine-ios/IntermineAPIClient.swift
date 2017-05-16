@@ -65,11 +65,11 @@ class IntermineAPIClient: NSObject {
     
     // MARK: Public methods
     
-    class func fetchSingleList(mineUrl: String, queryString: String, completion: @escaping (_ result: String?) -> ()) {
+    class func fetchSingleList(mineUrl: String, queryString: String, completion: @escaping (_ result: [String: AnyObject]?, _ params: [String: String]) -> ()) {
         let url = mineUrl + Endpoints.singleList
         let params: [String: String] = ["format": "json", "query": queryString, "start": "0", "size": "15"]
         IntermineAPIClient.sendJSONRequest(url: url, method: .post, params: params) { (res) in
-            print(res)
+            completion(res, params)
         }
     }
     
