@@ -13,7 +13,9 @@ class IntermineAPIClient: NSObject {
     
     static let jsonParams = ["format": "json"]
     
-    class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: [String: AnyObject]?) -> ()) {
+    // MARK: Private methods
+    
+    private class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: [String: AnyObject]?) -> ()) {
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 120
         manager.request(url, method: method, parameters: params)
@@ -39,7 +41,7 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func sendStringRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: String?) -> ()) {
+    private class func sendStringRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: String?) -> ()) {
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 120
         manager.request(url, method: method, parameters: params)
@@ -60,7 +62,16 @@ class IntermineAPIClient: NSObject {
                 }
         }
     }
-
+    
+    // MARK: Public methods
+    
+    class func fetchSingleList(mineUrl: String, queryString: String, completion: @escaping (_ result: String?) -> ()) {
+        let url = mineUrl + Endpoints.singleList
+        let params: [String: String] = ["format": "json", "query": queryString, "start": "0", "size": "15"]
+        IntermineAPIClient.sendJSONRequest(url: url, method: .post, params: params) { (res) in
+            print(res)
+        }
+    }
     
     class func fetchRegistry(completion: (_ result: NSDictionary?) -> ()) {
         // TODO: Use registry endpoint

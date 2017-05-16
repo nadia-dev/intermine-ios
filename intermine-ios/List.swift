@@ -62,4 +62,8 @@ class List {
     func getType() -> String? {
         return self.type
     }
+    
+    func getValue() -> String? {
+        return self.name
+    }
 }

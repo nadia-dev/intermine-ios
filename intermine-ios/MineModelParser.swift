@@ -31,6 +31,9 @@ class MineModelParser: NSObject {
     }
     
     func findViewsByType(type: String) {
+        
+        // TODO: also need to use views from relations?
+        
         guard let xml = self.xml else {
             return
         }
@@ -40,7 +43,6 @@ class MineModelParser: NSObject {
             if let extends = elem?.attribute(by: "extends") {
                 findViewsByType(type: extends.text)
             } else {
-                //print(elem)
                 if let children = elem?.children {
                     for child in children {
                         let desc = child.description

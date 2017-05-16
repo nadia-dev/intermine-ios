@@ -17,6 +17,7 @@ struct Endpoints {
     static let templateResults = "/service/template/results"
     static let intermineVersion = "/service/version/intermine"
     static let modelReleased = "/service/version/release"
+    static let singleList = "/service/query/results"
 }
 
 struct General {

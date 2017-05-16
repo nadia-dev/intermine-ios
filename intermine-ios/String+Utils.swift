@@ -31,7 +31,6 @@ extension String {
     }
     
     func isAboveVersion(version: String) -> Bool {
-        // FIXME: every mine has different date format!
         
         // compares versions with format x.x.x
         // "1.7.1".isAboveVersion(version: "1.6.6") -> True

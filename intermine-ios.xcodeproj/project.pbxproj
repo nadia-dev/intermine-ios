@@ -22,6 +22,8 @@
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
 		0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5281EC0A7C800686065 /* BaseViewController.swift */; };
 		05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */; };
+		05DA3DF91ECAF75D00AB4B79 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */; };
+		05DA3DFB1ECB03F300AB4B79 /* FetchedListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */; };
 		05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530B1E90286E00113171 /* AppDelegate.swift */; };
 		05DF530E1E90286E00113171 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF530D1E90286E00113171 /* MainTabController.swift */; };
 		05DF53111E90286E00113171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05DF530F1E90286E00113171 /* Main.storyboard */; };
@@ -93,6 +95,8 @@
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0595D5281EC0A7C800686065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModelParser.swift; sourceTree = "<group>"; };
+		05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
+		05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedListsViewController.swift; sourceTree = "<group>"; };
 		05DF53081E90286E00113171 /* intermine-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "intermine-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05DF530B1E90286E00113171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05DF530D1E90286E00113171 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				05F4078C1EC4AD3100707B86 /* UIViewController+Utils.swift */,
 				05F4079B1EC6068E00707B86 /* Dictionary+Utils.swift */,
 				05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */,
+				05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				05EA6CBF1EC82CB2002CC884 /* AllListsViewController.swift */,
+				05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */,
 			);
 			name = ListTabVCs;
 			sourceTree = "<group>";
@@ -660,10 +666,12 @@
 				05F407771EC34C2200707B86 /* MinesTableView.swift in Sources */,
 				05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
+				05DA3DFB1ECB03F300AB4B79 /* FetchedListsViewController.swift in Sources */,
 				05EA6CC31EC8377A002CC884 /* ListTableViewCell.swift in Sources */,
 				05F4078A1EC4A9AA00707B86 /* AllTemplatesViewController.swift in Sources */,
 				05F407801EC36E4800707B86 /* UIColor+Utils.swift in Sources */,
 				05F4079A1EC5DFF900707B86 /* OperationSelectViewController.swift in Sources */,
+				05DA3DF91ECAF75D00AB4B79 /* QueryBuilder.swift in Sources */,
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
 				05F407851EC4981A00707B86 /* Template.swift in Sources */,
 				05F407A11EC60FC800707B86 /* OperationSelectionCell.swift in Sources */,
