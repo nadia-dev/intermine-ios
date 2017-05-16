@@ -92,20 +92,12 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func fetchReleaseDate(mineUrl: String, completion: @escaping (_ result: NSDate?) -> ()) {
+    class func fetchReleaseDate(mineUrl: String, completion: @escaping (_ result: String?) -> ()) {
         let url = mineUrl + Endpoints.modelReleased
         IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams) { (result) in
             if let result = result {
                 if let releaseString = result["version"] as? String {
-                    let matches = String.findMatches(for: "\\w*-\\d*-\\d*", in: releaseString)
-                    if matches.count > 0 {
-                        if let dateString = matches.first {
-                            let date = NSDate.stringToDate(dateString: dateString)
-                            completion(date)
-                        }
-                    } else {
-                        completion(nil)
-                    }
+                    completion(releaseString)
                 } else {
                     completion(nil)
                 }

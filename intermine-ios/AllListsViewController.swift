@@ -68,6 +68,31 @@ class AllListsViewController: LoadingTableViewController {
         return cell
     }
     
+    private func formatItNicely(format: String, substrings: [CVarArg]) -> String {
+        return String(format: format, arguments: substrings)
+    }
+    
+    private func buildViewsQuery(views: [String], type: String) -> String? {
+        var viewsString = "view=\""
+        for i in 0..<views.count {
+            var toAdd = "\(type).%@ "
+            if i == views.count - 1 {
+                toAdd = "\(type).%@\""
+            }
+            viewsString.append(toAdd)
+        }
+        let formatted = self.formatItNicely(format: viewsString, substrings: views)
+        return formatted
+    }
+    
+    private func buildQuery(type: String, viewsQuery: String, value: String) -> String? {
+        var queryString = "<query model=\"genomic\" %@ "
+        var queryViewsString = String(format: queryString, viewsQuery)
+        queryViewsString += "<constraint path=\"%@\""
+        print(queryViewsString)
+        return nil
+    }
+    
     // MARK: Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -77,8 +102,14 @@ class AllListsViewController: LoadingTableViewController {
                 // TODO: based on type, find the views from xml file
                 // set value and make request
                 if let mineUrl = self.mineUrl {
-                    let views = CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType)
-                    print(views)
+                    if let views = CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType) {
+                        if let viewsString = self.buildViewsQuery(views: views, type: selectedType) {
+                            self.buildQuery(type: selectedType, viewsQuery: viewsString, value: "test")
+                        }
+                        
+                    }
+                    //print(views)
+                    
                 }
             }
         }

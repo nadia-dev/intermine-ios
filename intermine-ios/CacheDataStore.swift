@@ -130,8 +130,8 @@ class CacheDataStore {
                                     
                                     // 5. compare date of the mine object and fetched date
                                     if let fetchedReleaseDate = date, let storedReleaseDate = model.releaseDate {
-                                        if fetchedReleaseDate.isGreaterThan(date: storedReleaseDate) {
-                                            
+                                        
+                                        if !(fetchedReleaseDate.isEqual(storedReleaseDate)) {
                                             // needs update!
                                             self.updateMineModel(mineUrl: mineUrl)
                                         }
@@ -172,7 +172,7 @@ class CacheDataStore {
                                 if let fetchedReleaseDate = date {
                                     MineModel.createMineModel(url: mineUrl, date: fetchedReleaseDate, xmlFile: fileName, versioned: true, context: self.managedContext)
                                 } else {
-                                    MineModel.createMineModel(url: mineUrl, date: NSDate(), xmlFile: fileName, versioned: false, context: self.managedContext)
+                                    MineModel.createMineModel(url: mineUrl, date: "", xmlFile: fileName, versioned: false, context: self.managedContext)
                                 }
                             })
                         } else {
