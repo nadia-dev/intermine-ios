@@ -31,7 +31,7 @@ class LoadingTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
         
-        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballGridPulse, color: Colors.chelseaCucumber, padding: self.indicatorPadding())
+        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballGridPulse, color: Colors.pistachio, padding: self.indicatorPadding())
         if let spinner = self.spinner {
             self.view.addSubview(spinner)
             self.view.bringSubview(toFront: spinner)

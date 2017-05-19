@@ -19,11 +19,13 @@ class FetchedCell: UITableViewCell {
             var gen = 0
             for (key, value) in self.data {
                 gen += 1
-                var currentString = "\(key): \(value)\n"
-                if gen == self.data.count {
-                    currentString = "\(key): \(value)"
+                if value != "<null>" {
+                    var currentString = "\(key): \(value)\n"
+                    if gen == self.data.count {
+                        currentString = "\(key): \(value)"
+                    }
+                    infoString.append(currentString)
                 }
-                infoString.append(currentString)
             }
             descriptionLabel?.text = infoString
         }

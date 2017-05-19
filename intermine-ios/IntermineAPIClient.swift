@@ -63,7 +63,63 @@ class IntermineAPIClient: NSObject {
         }
     }
     
+    private class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?) -> ()) {
+        
+        // TODO: should accumulate all results before making competion?
+        
+        let url = mineUrl + Endpoints.search
+
+        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: params) { (res) in
+            if let res = res {
+                if let result = res["results"] as? [[String: AnyObject]] {
+                    for r in result {
+                        if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl) {
+                            if let mineName = mine.name {
+                                let resObj = SearchResult(withType: r["type"] as? String, fields: r["fields"] as? [String: AnyObject], mineName: mineName)
+                                completion(resObj)
+                            }
+                        }
+                    }
+                } else {
+                    completion(nil)
+                }
+            } else {
+                 completion(nil)
+            }
+        }
+    }
+    
     // MARK: Public methods
+    
+    class func makeSearchOverAllMines(params: [String: String], completion: @escaping (_ result: [SearchResult]?) -> ()) {
+        guard let registry = CacheDataStore.sharedCacheDataStore.allRegistry() else {
+            completion(nil)
+            return
+        }
+        
+        var results: [SearchResult] = []
+        let totalMineCount = CacheDataStore.sharedCacheDataStore.registrySize()
+        var currentMineCount = 0
+        for mine in registry {
+            currentMineCount += 1
+            //make search in mine
+            if let mineUrl = mine.url {
+                IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchResObj) in
+                    //
+                    if let resObj = searchResObj {
+                        results.append(resObj)
+                    }
+
+                    if currentMineCount == totalMineCount {
+                        completion(results)
+                    }
+                })
+            } else {
+                completion(nil)
+            }
+        }
+    }
+
     
     class func fetchSingleList(mineUrl: String, queryString: String, completion: @escaping (_ result: [String: AnyObject]?, _ params: [String: String]) -> ()) {
         let url = mineUrl + Endpoints.singleList

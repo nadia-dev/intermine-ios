@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */; };
+		055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556681ECCA91D009DCA24 /* SearchResult.swift */; };
 		05715E541EBF055800C4C3C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E531EBF055800C4C3C7 /* Constants.swift */; };
 		05715E561EBF0CA800C4C3C7 /* registry.json in Resources */ = {isa = PBXBuildFile; fileRef = 05715E551EBF0CA800C4C3C7 /* registry.json */; };
 		05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05715E581EBF0FCC00C4C3C7 /* Cache.xcdatamodeld */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedSearchesViewController.swift; sourceTree = "<group>"; };
+		055556681ECCA91D009DCA24 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		05715E531EBF055800C4C3C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05715E551EBF0CA800C4C3C7 /* registry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = registry.json; sourceTree = "<group>"; };
 		05715E591EBF0FCC00C4C3C7 /* Cache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cache.xcdatamodel; sourceTree = "<group>"; };
@@ -200,6 +204,22 @@
 			name = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		055556641ECCA31F009DCA24 /* SearchTabVCs */ = {
+			isa = PBXGroup;
+			children = (
+				055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */,
+			);
+			name = SearchTabVCs;
+			sourceTree = "<group>";
+		};
+		055556671ECCA8DE009DCA24 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				055556681ECCA91D009DCA24 /* SearchResult.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		05715E571EBF0F5F00C4C3C7 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +252,7 @@
 		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				055556641ECCA31F009DCA24 /* SearchTabVCs */,
 				05EA6CBE1EC82B9A002CC884 /* ListTabVCs */,
 				05F407AE1EC6142000707B86 /* Landing */,
 				05F407AD1EC6141600707B86 /* LoadingVC */,
@@ -393,6 +414,7 @@
 		05F407811EC497E300707B86 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				055556671ECCA8DE009DCA24 /* Search */,
 				05EA6CC41EC83D48002CC884 /* Lists */,
 				05F407881EC49B0400707B86 /* Templates */,
 			);
@@ -637,6 +659,7 @@
 				0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */,
 				05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */,
 				05F4079F1EC60F9D00707B86 /* LookupCell.swift in Sources */,
+				055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */,
 				05F407871EC4998A00707B86 /* TemplateQuery.swift in Sources */,
 				0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */,
 				0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */,
@@ -671,6 +694,7 @@
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
 				05F407851EC4981A00707B86 /* Template.swift in Sources */,
 				05F407A11EC60FC800707B86 /* OperationSelectionCell.swift in Sources */,
+				055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */,
 				05715E541EBF055800C4C3C7 /* Constants.swift in Sources */,
 				05F4077D1EC35A2800707B86 /* MinesTableViewCell.swift in Sources */,
 			);

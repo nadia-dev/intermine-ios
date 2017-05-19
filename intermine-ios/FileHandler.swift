@@ -57,7 +57,6 @@ class FileHandler: NSObject {
     }
     
     class func readFromFile(fileName: String?) -> String? {
-        print(fileName)
         guard let fileName = fileName else {
             return nil
         }

@@ -76,6 +76,7 @@ class AllListsViewController: LoadingTableViewController {
         if let lists = self.lists {
             let selectedList = lists[indexPath.row]
             if let selectedType = selectedList.getType(), let selectedValue = selectedList.getValue() {
+                
                 // Based on type, find the views from xml file
                 // set value and make request
                 
@@ -86,13 +87,6 @@ class AllListsViewController: LoadingTableViewController {
                             if let fetchedListsCV = FetchedListsViewController.fetchedListsViewController(withMineUrl: mineUrl, viewsQuery: viewsQuery) {
                                 self.navigationController?.pushViewController(fetchedListsCV, animated: true)
                             }
-                            
-                            // TODO: implement it in the next VC,
-                            // TODO: use fetched templates code (refactor to parent class)
-                            
-//                            IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: viewsQuery, completion: { (res, params) in
-//                                //
-//                            })
                         }
                     }
                 }

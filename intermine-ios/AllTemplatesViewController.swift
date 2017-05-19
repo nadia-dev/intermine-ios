@@ -21,7 +21,6 @@ class AllTemplatesViewController: LoadingTableViewController {
                     self.showNothingFoundView()
                 }
             }
-            
         }
     }
     

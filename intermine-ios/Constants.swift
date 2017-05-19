@@ -18,6 +18,7 @@ struct Endpoints {
     static let intermineVersion = "/service/version/intermine"
     static let modelReleased = "/service/version/release"
     static let singleList = "/service/query/results"
+    static let search = "/service/search"
 }
 
 struct General {
@@ -39,7 +40,7 @@ struct Icons {
 
 struct Colors {
     static let chelseaCucumber = UIColor.hexStringToUIColor(hex: "#8CA855")
-    static let conifer = UIColor.hexStringToUIColor(hex: "#BFD93B")
+    static let conifer = UIColor.hexStringToUIColor(hex: "#BED549")
     static let pistachio = UIColor.hexStringToUIColor(hex: "#8CA50B")
     static let eggplant = UIColor.hexStringToUIColor(hex: "#a50b8b") // complementary to pistachio
     static let white = UIColor.white

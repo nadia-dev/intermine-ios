@@ -8,28 +8,43 @@
 
 import UIKit
 
-class SearchViewController: BaseViewController {
+class SearchViewController: BaseViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar?
+    @IBOutlet weak var descriptionLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.descriptionLabel?.text = String.localize("Search.AppDescription")
+        self.searchBar?.placeholder = String.localize("Search.Placeholder")
+        self.searchBar?.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
+        let params: [String: String] = self.formParams(query: searchBar.text)
+        if let fetchedSearchesVC = FetchedSearchesViewController.fetchedSearchesViewController(withParams: params) {
+            self.navigationController?.pushViewController(fetchedSearchesVC, animated: true)
+        }
     }
-    */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    private func formParams(query: String?) -> [String: String] {
+        var params: [String: String] = ["format": "json", "start": "0", "size": "10"]
+        if let query = query {
+            params["query"] = query
+        } else {
+            params["query"] = ""
+        }
+        return params
+    }
 
 }
