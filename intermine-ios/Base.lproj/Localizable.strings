@@ -22,3 +22,4 @@
 "Search.AppDescription" = "Use InterMine App to quickly find fundamental information about genes and chromosomal features. Search gene names, gene descriptions, or browse the databases to find information about your favorite gene, as well as more detailed information.";
 "Search.Placeholder" = "Enter gene name";
 "Search.Search" = "Search";
+"Search.Refine" = "Refine Search";

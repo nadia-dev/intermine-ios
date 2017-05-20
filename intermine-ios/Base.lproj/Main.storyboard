@@ -252,7 +252,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="jrg-HF-wYz">
                                                     <rect key="frame" x="103.5" y="22" width="65" height="30"/>
-                                                    <color key="backgroundColor" red="0.54901960780000003" green="0.6588235294" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.54901960780000003" green="0.64705882349999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="uhM-06-EJA"/>
                                                     </constraints>
@@ -356,7 +356,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbc-6f-mM9">
                                             <rect key="frame" x="93" y="35" width="188.5" height="30"/>
-                                            <color key="backgroundColor" red="0.5490196078431373" green="0.6588235294117647" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.54901960780000003" green="0.64705882349999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -774,9 +774,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="GY0-uu-fo2">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjX-FC-vkh">
+                                    <rect key="frame" x="93" y="15" width="188.5" height="30"/>
+                                    <color key="backgroundColor" red="0.54901960780000003" green="0.64705882349999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="refineButtonTapped:" destination="6Kn-to-Y6m" eventType="touchUpInside" id="cDk-7h-iRh"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="mjX-FC-vkh" firstAttribute="centerY" secondItem="GY0-uu-fo2" secondAttribute="centerY" id="RQI-5g-D2W"/>
+                                <constraint firstItem="mjX-FC-vkh" firstAttribute="centerX" secondItem="GY0-uu-fo2" secondAttribute="centerX" id="UDo-aS-ZBz"/>
+                                <constraint firstItem="mjX-FC-vkh" firstAttribute="width" secondItem="GY0-uu-fo2" secondAttribute="width" multiplier="0.5" constant="1" id="lVc-ru-Wgx"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FetchedCell" id="EqM-tb-6tS" customClass="FetchedCell" customModule="intermine_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EqM-tb-6tS" id="196-Q8-WTf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -816,6 +843,10 @@
                             <outlet property="delegate" destination="6Kn-to-Y6m" id="4rX-AJ-iJv"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="buttonView" destination="GY0-uu-fo2" id="M6x-Zr-GEk"/>
+                        <outlet property="refineButton" destination="mjX-FC-vkh" id="FHX-Iz-0nZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fP6-S3-AxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

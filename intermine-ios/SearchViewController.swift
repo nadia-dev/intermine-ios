@@ -38,7 +38,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     }
     
     private func formParams(query: String?) -> [String: String] {
-        var params: [String: String] = ["format": "json", "start": "0", "size": "10"]
+        var params: [String: String] = ["format": "json", "start": "0", "size": "\(General.searchSize)"]
         if let query = query {
             params["query"] = query
         } else {

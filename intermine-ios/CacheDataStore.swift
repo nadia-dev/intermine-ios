@@ -12,7 +12,7 @@ import CoreData
 class CacheDataStore {
     
     private let modelName = General.modelName
-    private let debug = false
+    private let debug = true
     
     // TODO: compare versions instead using:
 //    GET /version/release which tells you the version of the data *inside* the intermine
@@ -206,6 +206,10 @@ class CacheDataStore {
     }
     
     private func registryNeedsUpdate() -> Bool {
+        if debug == true {
+            return true
+        }
+        
         if let registry = fetchCachedRegistry() {
             if let mine: Mine = registry.first, let lastUpdated = mine.lastUpdated {
                 return NSDate.hasIntervalPassed(lastUpdated: lastUpdated, timeInterval: minesUpdateInterval)

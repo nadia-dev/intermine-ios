@@ -63,59 +63,83 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    private class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?) -> ()) {
+    private class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?) -> ()) {
         
-        // TODO: should accumulate all results before making competion?
+        // TODO: should accumulate all results before making completion?
         
         let url = mineUrl + Endpoints.search
+        
 
         IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: params) { (res) in
             if let res = res {
+                var facetList: FacetList?
+                if let facets = res["facets"] as? [String: AnyObject] {
+
+                    var listFacets: [SearchFacet] = []
+
+                    if let category = facets["Category"] as? [String: Int] {
+                        listFacets.append(SearchFacet(withType: "Category", contents: category))
+                    }
+                    
+                    if let organism = facets["organism.shortName"] as? [String: Int] {
+                        listFacets.append(SearchFacet(withType: "Organism name", contents: organism))
+                    }
+                    
+                    if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl), let mineName = mine.name {
+                        facetList = FacetList(withMineName: mineName, facets: listFacets)
+                    }
+                }
+                
                 if let result = res["results"] as? [[String: AnyObject]] {
                     for r in result {
                         if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl) {
                             if let mineName = mine.name {
                                 let resObj = SearchResult(withType: r["type"] as? String, fields: r["fields"] as? [String: AnyObject], mineName: mineName)
-                                completion(resObj)
+                                completion(resObj, facetList)
                             }
                         }
                     }
                 } else {
-                    completion(nil)
+                    completion(nil, nil)
                 }
             } else {
-                 completion(nil)
+                 completion(nil, nil)
             }
         }
     }
     
     // MARK: Public methods
     
-    class func makeSearchOverAllMines(params: [String: String], completion: @escaping (_ result: [SearchResult]?) -> ()) {
+    class func makeSearchOverAllMines(params: [String: String], completion: @escaping (_ result: [SearchResult]?, _ facetList: [FacetList]?) -> ()) {
         guard let registry = CacheDataStore.sharedCacheDataStore.allRegistry() else {
-            completion(nil)
+            completion(nil, nil)
             return
         }
         
         var results: [SearchResult] = []
+        var facetLists: [FacetList] = []
         let totalMineCount = CacheDataStore.sharedCacheDataStore.registrySize()
         var currentMineCount = 0
         for mine in registry {
             currentMineCount += 1
             //make search in mine
             if let mineUrl = mine.url {
-                IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchResObj) in
+                IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchResObj, facetList) in
                     //
                     if let resObj = searchResObj {
                         results.append(resObj)
                     }
+                    
+                    if let facetList = facetList {
+                        facetLists.append(facetList)
+                    }
 
                     if currentMineCount == totalMineCount {
-                        completion(results)
+                        completion(results, facetLists)
                     }
                 })
             } else {
-                completion(nil)
+                completion(nil, nil)
             }
         }
     }

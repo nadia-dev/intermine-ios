@@ -25,6 +25,7 @@ struct General {
     static let modelName = "Cache"
     static let minesCellHeight = CGFloat(60.0)
     static let pageSize = 15
+    static let searchSize = 5
     static let baseVersion = "1.6.5"
     static let descriptionCharactersLimit = 120
 }
