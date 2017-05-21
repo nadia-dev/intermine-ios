@@ -10,7 +10,6 @@ import UIKit
 
 protocol OperationSelectViewControllerDelegate: class {
     func operationSelectViewControllerDidTapClose(controller: OperationSelectViewController)
-    //func operationSelectViewController(controller: OperationSelectViewController, didSelectOperation: String)
 }
 
 

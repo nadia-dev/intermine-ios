@@ -27,4 +27,10 @@ class FacetList {
         return self.facets
     }
     
+    func getCategoryFacets() -> [SearchFacet]? {
+        return self.facets?.filter({ (facet) -> Bool in
+            return facet.getType()?.lowercased() == "category"
+        })
+    }
+    
 }

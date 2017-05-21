@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0535180D1ECEEB2E006F87EA /* RightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535180C1ECEEB2E006F87EA /* RightMenu.swift */; };
-		053518101ECEEB53006F87EA /* RightMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0535180F1ECEEB53006F87EA /* RightMenu.xib */; };
-		053518131ECEF000006F87EA /* RightMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053518111ECEF000006F87EA /* RightMenuCell.swift */; };
-		053518141ECEF000006F87EA /* RightMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053518121ECEF000006F87EA /* RightMenuCell.xib */; };
-		053518171ECF0258006F87EA /* RightHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053518151ECF0258006F87EA /* RightHeaderCell.swift */; };
-		053518181ECF0258006F87EA /* RightHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053518161ECF0258006F87EA /* RightHeaderCell.xib */; };
 		0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053518191ECF824E006F87EA /* SearchFacet.swift */; };
 		0535181C1ECF8260006F87EA /* FacetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535181B1ECF8260006F87EA /* FacetList.swift */; };
 		055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */; };
@@ -31,6 +25,7 @@
 		0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5241EC0A69C00686065 /* FavoritesViewController.swift */; };
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
 		0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5281EC0A7C800686065 /* BaseViewController.swift */; };
+		05CFF8511ED06839005DD0FE /* RefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */; };
 		05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */; };
 		05DA3DF91ECAF75D00AB4B79 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */; };
 		05DA3DFB1ECB03F300AB4B79 /* FetchedListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */; };
@@ -88,12 +83,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0535180C1ECEEB2E006F87EA /* RightMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenu.swift; sourceTree = "<group>"; };
-		0535180F1ECEEB53006F87EA /* RightMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMenu.xib; sourceTree = "<group>"; };
-		053518111ECEF000006F87EA /* RightMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuCell.swift; sourceTree = "<group>"; };
-		053518121ECEF000006F87EA /* RightMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMenuCell.xib; sourceTree = "<group>"; };
-		053518151ECF0258006F87EA /* RightHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightHeaderCell.swift; sourceTree = "<group>"; };
-		053518161ECF0258006F87EA /* RightHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightHeaderCell.xib; sourceTree = "<group>"; };
 		053518191ECF824E006F87EA /* SearchFacet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFacet.swift; sourceTree = "<group>"; };
 		0535181B1ECF8260006F87EA /* FacetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacetList.swift; sourceTree = "<group>"; };
 		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -113,6 +102,7 @@
 		0595D5241EC0A69C00686065 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0595D5281EC0A7C800686065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefineSearchViewController.swift; sourceTree = "<group>"; };
 		05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModelParser.swift; sourceTree = "<group>"; };
 		05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedListsViewController.swift; sourceTree = "<group>"; };
@@ -184,19 +174,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0535180E1ECEEB3B006F87EA /* RightMenu */ = {
-			isa = PBXGroup;
-			children = (
-				0535180C1ECEEB2E006F87EA /* RightMenu.swift */,
-				0535180F1ECEEB53006F87EA /* RightMenu.xib */,
-				053518111ECEF000006F87EA /* RightMenuCell.swift */,
-				053518121ECEF000006F87EA /* RightMenuCell.xib */,
-				053518151ECF0258006F87EA /* RightHeaderCell.swift */,
-				053518161ECF0258006F87EA /* RightHeaderCell.xib */,
-			);
-			name = RightMenu;
-			sourceTree = "<group>";
-		};
 		054745741EC246C700BC35F8 /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */,
+				05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */,
 			);
 			name = SearchTabVCs;
 			sourceTree = "<group>";
@@ -298,7 +276,6 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0535180E1ECEEB3B006F87EA /* RightMenu */,
 				05F407B11EC61F1400707B86 /* FetchedCell.swift */,
 				05EA6CC11EC83758002CC884 /* ListCells */,
 				05EA6CBB1EC79BF8002CC884 /* TableCoverView */,
@@ -610,11 +587,8 @@
 				05F4077E1EC35A2800707B86 /* MinesTableViewCell.xib in Resources */,
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
-				053518101ECEEB53006F87EA /* RightMenu.xib in Resources */,
 				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
-				053518141ECEF000006F87EA /* RightMenuCell.xib in Resources */,
 				05EA6CBA1EC79BEB002CC884 /* TableCoverView.xib in Resources */,
-				053518181ECF0258006F87EA /* RightHeaderCell.xib in Resources */,
 				05F407751EC34C0600707B86 /* MinesTableView.xib in Resources */,
 				05DF53111E90286E00113171 /* Main.storyboard in Resources */,
 			);
@@ -691,10 +665,8 @@
 				05F4078F1EC4F48400707B86 /* TemplateTableViewCell.swift in Sources */,
 				05F407A71EC6105A00707B86 /* TemplateDetailBaseCell.swift in Sources */,
 				0535181C1ECF8260006F87EA /* FacetList.swift in Sources */,
-				053518131ECEF000006F87EA /* RightMenuCell.swift in Sources */,
 				05EA6CC01EC82CB2002CC884 /* AllListsViewController.swift in Sources */,
 				0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */,
-				0535180D1ECEEB2E006F87EA /* RightMenu.swift in Sources */,
 				05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */,
 				05F4079F1EC60F9D00707B86 /* LookupCell.swift in Sources */,
 				055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */,
@@ -707,13 +679,13 @@
 				05EA6CD81EC8B243002CC884 /* MineModel+CoreDataProperties.swift in Sources */,
 				05EA6CC61EC83DDF002CC884 /* List.swift in Sources */,
 				05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */,
-				053518171ECF0258006F87EA /* RightHeaderCell.swift in Sources */,
 				05F407B21EC61F1400707B86 /* FetchedCell.swift in Sources */,
 				05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
 				0595D5231EC0A67000686065 /* ListsViewController.swift in Sources */,
+				05CFF8511ED06839005DD0FE /* RefineSearchViewController.swift in Sources */,
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
 				0595D5211EC0A65300686065 /* TemplatesViewController.swift in Sources */,
 				05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */,

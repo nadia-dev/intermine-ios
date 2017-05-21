@@ -13,9 +13,10 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     @IBOutlet weak var refineButton: UIButton?
     @IBOutlet weak var buttonView: UIView?
     
+    
     private var currentOffset: Int = 0
     private var params: [String: String]?
-    private var drawer: RightMenu?
+    private var facets: [FacetList]?
     
     private var data: [[String: String]] = [] {
         didSet {
@@ -38,15 +39,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
         refineButton?.setTitle(String.localize("Search.Refine"), for: .normal)
         buttonView?.isHidden = true
-        self.drawer = RightMenu.rightMenu()
-        if let drawer = self.drawer {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-            drawer.addGestureRecognizer(tap)
-            if let tabBarHeigh = self.tabBarController?.tabBar.frame.size.height {
-                drawer.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height - tabBarHeigh)
-                self.view.addSubview(drawer)
-            }
-        }
     }
     
     // MARK: Load from storyboard
@@ -82,9 +74,20 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 }
                 
                 if let facets = facetLists {
-                    self.drawer?.facets = facets
+                    // To later show facets on refine search VC
+                    self.facets = facets
+                    print(self.facets)
                 }
             }
+        }
+    }
+    
+    // MARK: Action
+    
+    @IBAction func refineSearchTapped(_ sender: Any) {
+        if let refineVC = RefineSearchViewController.refineSearchViewController(withFacets: self.facets) {
+            refineVC.modalTransitionStyle = .coverVertical
+            self.present(refineVC, animated: true, completion: nil)
         }
     }
 
@@ -102,30 +105,5 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
         cell.data = self.data[indexPath.row]
         return cell
-    }
-    
-    // MARK: Action
-    
-    @IBAction func refineButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.drawer?.frame.origin.x = 0
-        }) { (done) in
-            self.tableView.isScrollEnabled = false
-            UIView.animate(withDuration: 0.1, animations: {
-                self.drawer?.tintBackground()
-            }, completion: nil)
-        }
-    }
-    
-    func handleTap(_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.drawer?.untintBackground()
-        }) { (done) in
-            UIView.animate(withDuration: 0.3, animations: {
-                self.drawer?.frame.origin.x = self.view.frame.width
-            }, completion: { (done) in
-                self.tableView.isScrollEnabled = true
-            })
-        }
     }
 }
