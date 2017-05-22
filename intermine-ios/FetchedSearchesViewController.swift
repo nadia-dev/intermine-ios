@@ -76,7 +76,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 if let facets = facetLists {
                     // To later show facets on refine search VC
                     self.facets = facets
-                    print(self.facets)
                 }
             }
         }

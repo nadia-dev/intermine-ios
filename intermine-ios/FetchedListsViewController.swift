@@ -47,8 +47,6 @@ class FetchedListsViewController: LoadingTableViewController {
             IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: queryString, completion: { (res, params) in
                 self.params = params
                 self.processDataResult(res: res, data: &self.lists)
-                print("lists")
-                print(self.lists)
                 if self.currentOffset == 0 {
                     self.stopSpinner()
                 }

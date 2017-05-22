@@ -15,13 +15,32 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var countLabel: UILabel?
     
-    
+    var facet: FormattedFacet? {
+        didSet {
+            titleLabel?.text = facet?.getTitle()
+            countLabel?.text = facet?.getCount()
+        }
+    }
 }
 
 class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     private var mines: [String] = [String.localize("Search.Refine.NoSelection")]
     private var categoryFacets: [SearchFacet]?
+    private var categorySearchFacet: SearchFacet?
+    private var categories: [[String: Int]]?
+    private var contents: [FormattedFacet]?
+    
+    private var selectedMine: String? {
+        didSet {
+            if let selectedMine = self.selectedMine {
+                self.categoryFacets = self.getCategoryFacetsByMineName(mineName: selectedMine)
+                self.categorySearchFacet = self.getCategorySearchFacet()
+                self.contents = self.categorySearchFacet?.getFormattedContents()
+                self.categoriesTable?.reloadData()
+            }
+        }
+    }
     
     private var facets: [FacetList]? {
         didSet {
@@ -51,6 +70,7 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
         categoriesTable?.delegate = self
         categoriesTable?.dataSource = self
         minesPicker?.selectRow(self.getInitialSelectedRow(), inComponent: 0, animated: false)
+        self.selectedMine = self.getInitialSelectedMine()
         closeButton?.setImage(Icons.close, for: .normal)
     }
     
@@ -70,7 +90,6 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
         
         var mineNames: [String] = self.mines
         for facet in facets {
-            print(facet)
             if let name = facet.getMine() {
                 if !(mineNames.contains(name)) {
                     mineNames.append(name)
@@ -86,6 +105,54 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
     
     private func getInitialSelectedRow() -> Int {
         return self.getMinesCount()/2
+    }
+    
+    private func getInitialSelectedMine() -> String? {
+        let index = self.getInitialSelectedRow()
+        return self.mines[index]
+    }
+    
+    private func getFacetListByMineName(mineName: String) -> FacetList? {
+        guard let facets = self.facets else {
+            return nil
+        }
+        
+        if mineName == String.localize("Search.Refine.NoSelection") {
+            return nil
+        }
+
+        for facet in facets {
+            if facet.getMine() == mineName {
+                return facet
+            }
+        }
+        return nil
+    }
+    
+    private func getCategoryFacetsByMineName(mineName: String) -> [SearchFacet]? {
+        if let facetList = self.getFacetListByMineName(mineName: mineName) {
+            return facetList.getCategoryFacets()
+        }
+        return nil
+    }
+    
+    private func categoryFacetsCount() -> Int {
+        guard let categoryFacets = self.categoryFacets else {
+            return 0
+        }
+        return categoryFacets.count
+    }
+    
+    private func getCategorySearchFacet() -> SearchFacet? {
+        guard let catFacets = self.categoryFacets else {
+            return nil
+        }
+        
+        if catFacets.count > 0 {
+            return catFacets[0]
+        }
+        
+        return nil
     }
 
 
@@ -127,7 +194,7 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
     // MARK: Picker view delegate
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // To implement
+        self.selectedMine = self.mines[row]
     }
     
     // MARK: - Table view data source
@@ -143,11 +210,19 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let contents = self.contents else {
+            return 0
+        }
+        return contents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
+        if let contents = self.contents {
+            let currentFacet = contents[indexPath.row]
+            cell.facet = currentFacet
+        }
+        
         return cell
     }
 
