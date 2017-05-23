@@ -12,25 +12,23 @@ import Foundation
 class FacetList {
     
     private var mine: String? // mineName
-    private var facets: [SearchFacet]?
+    private var categoryFacet: SearchFacet? // categories
     
-    init(withMineName: String?, facets: [SearchFacet]?) {
+    init(withMineName: String?, facet: SearchFacet) {
         self.mine = withMineName
-        self.facets = facets
+        self.categoryFacet = facet
     }
     
     func getMine() -> String? {
         return self.mine
     }
     
-    func getFacets() -> [SearchFacet]? {
-        return self.facets
+    func getCategoryFacet() -> SearchFacet? {
+        return self.categoryFacet
     }
     
-    func getCategoryFacets() -> [SearchFacet]? {
-        return self.facets?.filter({ (facet) -> Bool in
-            return facet.getType()?.lowercased() == "category"
-        })
+    func getFormattedFacetsList() -> [FormattedFacet]? {
+        return self.categoryFacet?.getFormattedContents()
     }
     
 }

@@ -63,30 +63,24 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    private class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?) -> ()) {
+    class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?) -> ()) {
         
         // TODO: should accumulate all results before making completion?
         
         let url = mineUrl + Endpoints.search
-        
-
         IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: params) { (res) in
             if let res = res {
                 var facetList: FacetList?
                 if let facets = res["facets"] as? [String: AnyObject] {
-
-                    var listFacets: [SearchFacet] = []
-
+                    
+                    var categoryFacet: SearchFacet?
                     if let category = facets["Category"] as? [String: Int] {
-                        listFacets.append(SearchFacet(withType: "Category", contents: category))
+                        
+                        categoryFacet = SearchFacet(withType: "Category", contents: category)
                     }
                     
-                    if let organism = facets["organism.shortName"] as? [String: Int] {
-                        listFacets.append(SearchFacet(withType: "Organism name", contents: organism))
-                    }
-                    
-                    if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl), let mineName = mine.name {
-                        facetList = FacetList(withMineName: mineName, facets: listFacets)
+                    if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl), let mineName = mine.name, let categoryFacet = categoryFacet {
+                        facetList = FacetList(withMineName: mineName, facet: categoryFacet)
                     }
                 }
                 

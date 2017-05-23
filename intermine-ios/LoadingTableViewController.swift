@@ -43,6 +43,10 @@ class LoadingTableViewController: UITableViewController {
         self.spinner?.stopAnimating()
     }
     
+    func startSpinner() {
+        self.spinner?.startAnimating()
+    }
+    
     func showNothingFoundView() {
         self.nothingFoundView?.isHidden = false
     }

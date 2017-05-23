@@ -8,6 +8,34 @@
 
 import Foundation
 
+class SelectedFacet {
+    
+    private var mineName: String?
+    private var facetName: String?
+    private var count: String?
+    
+    init(withMineName: String?, facetName: String?, count: String?) {
+        self.mineName = withMineName
+        self.facetName = facetName
+        self.count = count
+    }
+    
+    func getFacetName() -> String? {
+        return self.facetName
+    }
+    
+    func getMineName() -> String? {
+        return self.mineName
+    }
+    
+    func getCount() -> Int? {
+        guard let count = self.count else {
+            return nil
+        }
+        return Int(count)
+    }
+}
+
 class FormattedFacet {
     
     private var title: String?
@@ -31,12 +59,12 @@ class FormattedFacet {
 
 class SearchFacet {
     
-    private var type: String? // Category, organism.shortName
+    private var type: String?
     private var contents: [String: Int]?
     
     init(withType: String?, contents: [String: Int]) {
-        self.type = withType
-        self.contents = contents
+        self.type = withType // Category
+        self.contents = contents // ["ProteinDomain": 1]
     }
     
     func getType() -> String? {

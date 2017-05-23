@@ -8,25 +8,38 @@
 
 import UIKit
 
-class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecognizerDelegate {
+class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecognizerDelegate, RefineSearchViewControllerDelegate {
     
     @IBOutlet weak var refineButton: UIButton?
     @IBOutlet weak var buttonView: UIView?
-    
+    @IBOutlet weak var categoryLabel: UILabel?
+    @IBOutlet weak var mineLabel: UILabel?
     
     private var currentOffset: Int = 0
     private var params: [String: String]?
     private var facets: [FacetList]?
     
+    private var selectedFacet: SelectedFacet? {
+        didSet {
+            if let selectedFacet = self.selectedFacet {
+                categoryLabel?.text = selectedFacet.getFacetName()
+                mineLabel?.text = selectedFacet.getMineName()
+            }
+        }
+    }
+    
     private var data: [[String: String]] = [] {
         didSet {
+            self.tableView.reloadData()
             if data.count > 0 {
-                self.tableView.reloadData()
                 self.hideNothingFoundView()
                 self.buttonView?.isHidden = false
+                self.stopSpinner()
             } else {
-                self.showNothingFoundView()
-                self.buttonView?.isHidden = true
+                if self.selectedFacet == nil {
+                    self.showNothingFoundView()
+                    self.buttonView?.isHidden = true
+                }
             }
         }
     }
@@ -36,9 +49,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavbar()
-        self.loadTemplateResultsWithOffset(offset: self.currentOffset)
+        self.loadSearchResultsWithOffset(offset: self.currentOffset)
         refineButton?.setTitle(String.localize("Search.Refine"), for: .normal)
         buttonView?.isHidden = true
+        mineLabel?.text = String.localize("Search.Refine.NoSelection")
+        categoryLabel?.text = String.localize("Search.Refine.NoSelection")
     }
     
     // MARK: Load from storyboard
@@ -61,7 +76,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
     }
     
-    private func loadTemplateResultsWithOffset(offset: Int) {
+    private func loadSearchResultsWithOffset(offset: Int) {
         self.params?["start"] = "\(offset)"
         if let params = self.params {
             IntermineAPIClient.makeSearchOverAllMines(params: params) { (searchResults, facetLists) in
@@ -81,12 +96,38 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         }
     }
     
+    private func loadRefinedSearchWithOffset(offset: Int, selectedFacet: SelectedFacet) {
+        // TODO: implement load more on pull
+        self.params?["facet_Category"] = selectedFacet.getFacetName()
+        self.params?["size"] = "\(General.pageSize)"
+        self.params?["start"] = "\(offset)"
+        if let mineName = selectedFacet.getMineName(), let params = self.params {
+            if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName), let mineUrl = mine.url {
+                IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList) in
+                    if let res = searchRes {
+                        self.data.append(res.viewableRepresentation())
+                    }
+                })
+            }
+        }
+    }
+    
+    // MARK: Refine search controller delegate
+    
+    func refineSearchViewController(controller: RefineSearchViewController, didSelectFacet: SelectedFacet) {
+        // reload table view with new data
+        self.selectedFacet = didSelectFacet
+        self.data = []
+        self.startSpinner()
+        self.loadRefinedSearchWithOffset(offset: self.currentOffset, selectedFacet: didSelectFacet)
+    }
+    
     // MARK: Action
     
     @IBAction func refineSearchTapped(_ sender: Any) {
         if let refineVC = RefineSearchViewController.refineSearchViewController(withFacets: self.facets) {
-            refineVC.modalTransitionStyle = .coverVertical
-            self.present(refineVC, animated: true, completion: nil)
+            refineVC.delegate = self
+            self.navigationController?.pushViewController(refineVC, animated: true)
         }
     }
 
@@ -105,4 +146,20 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         cell.data = self.data[indexPath.row]
         return cell
     }
+    
+    // MARK: Scroll view delegate
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if (maximumOffset - currentOffset <= 10.0) {
+            if let selectedFacet = self.selectedFacet, let count = selectedFacet.getCount() {
+                if count > General.pageSize, self.currentOffset + General.pageSize < count {
+                    self.currentOffset += General.pageSize
+                    self.loadRefinedSearchWithOffset(offset: self.currentOffset, selectedFacet: selectedFacet)
+                }
+            }
+        }
+    }
+
 }

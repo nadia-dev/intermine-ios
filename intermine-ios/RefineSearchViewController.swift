@@ -15,29 +15,34 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var countLabel: UILabel?
     
-    var facet: FormattedFacet? {
+    var formattedFacet: FormattedFacet? {
         didSet {
-            titleLabel?.text = facet?.getTitle()
-            countLabel?.text = facet?.getCount()
+            titleLabel?.text = formattedFacet?.getTitle()
+            countLabel?.text = formattedFacet?.getCount()
         }
     }
 }
 
-class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+protocol RefineSearchViewControllerDelegate: class {
+    func refineSearchViewController(controller: RefineSearchViewController, didSelectFacet: SelectedFacet)
+}
+
+class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     private var mines: [String] = [String.localize("Search.Refine.NoSelection")]
-    private var categoryFacets: [SearchFacet]?
-    private var categorySearchFacet: SearchFacet?
-    private var categories: [[String: Int]]?
-    private var contents: [FormattedFacet]?
     
+    private var categories: [FormattedFacet]? {
+        didSet {
+            self.categoriesTable?.reloadData()
+        }
+    }
+    
+    weak var delegate: RefineSearchViewControllerDelegate?
+
     private var selectedMine: String? {
         didSet {
             if let selectedMine = self.selectedMine {
-                self.categoryFacets = self.getCategoryFacetsByMineName(mineName: selectedMine)
-                self.categorySearchFacet = self.getCategorySearchFacet()
-                self.contents = self.categorySearchFacet?.getFormattedContents()
-                self.categoriesTable?.reloadData()
+                self.categories = self.getCategoriesForMine(mineName: selectedMine)
             }
         }
     }
@@ -53,16 +58,9 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
     
     @IBOutlet weak var minesPicker: UIPickerView?
     @IBOutlet weak var categoriesTable: UITableView?
-    
-    @IBOutlet weak var closeButton: UIButton?
-    
-    
-    let searchController = UISearchController(searchResultsController: nil)
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureSearchController()
         minesLabel?.text = String.localize("Search.Refine.SelectMine")
         categoriesLabel?.text = String.localize("Search.Refine.SelectCategory")
         minesPicker?.delegate = self
@@ -71,17 +69,9 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
         categoriesTable?.dataSource = self
         minesPicker?.selectRow(self.getInitialSelectedRow(), inComponent: 0, animated: false)
         self.selectedMine = self.getInitialSelectedMine()
-        closeButton?.setImage(Icons.close, for: .normal)
     }
     
     // MARK: Private methods
-    
-    private func configureSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        categoriesTable?.tableHeaderView = searchController.searchBar
-    }
     
     private func listMineNames() -> [String] {
         guard let facets = self.facets else {
@@ -112,15 +102,10 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
         return self.mines[index]
     }
     
-    private func getFacetListByMineName(mineName: String) -> FacetList? {
+    private func getFacetListByName(mineName: String) -> FacetList? {
         guard let facets = self.facets else {
             return nil
         }
-        
-        if mineName == String.localize("Search.Refine.NoSelection") {
-            return nil
-        }
-
         for facet in facets {
             if facet.getMine() == mineName {
                 return facet
@@ -129,37 +114,21 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
         return nil
     }
     
-    private func getCategoryFacetsByMineName(mineName: String) -> [SearchFacet]? {
-        if let facetList = self.getFacetListByMineName(mineName: mineName) {
-            return facetList.getCategoryFacets()
+    private func getCategoriesForMine(mineName: String) -> [FormattedFacet]? {
+        // FacetList has mineName and categoryFacet as SearchFacet object
+        // SearchFacet object has instance method getFormattedContents() -> [FormattedFacet]
+        
+        if let facetList = self.getFacetListByName(mineName: mineName) {
+            return facetList.getFormattedFacetsList()
         }
         return nil
     }
     
-    private func categoryFacetsCount() -> Int {
-        guard let categoryFacets = self.categoryFacets else {
-            return 0
+    private func getCategoriesCount() -> Int {
+        if let categories = self.categories {
+            return categories.count
         }
-        return categoryFacets.count
-    }
-    
-    private func getCategorySearchFacet() -> SearchFacet? {
-        guard let catFacets = self.categoryFacets else {
-            return nil
-        }
-        
-        if catFacets.count > 0 {
-            return catFacets[0]
-        }
-        
-        return nil
-    }
-
-
-    // MARK: Action
-
-    @IBAction func closeButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        return 0
     }
     
     // MARK: Load from storyboard
@@ -169,12 +138,6 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
         let vc = storyboard.instantiateViewController(withIdentifier: "RefineSearchVC") as? RefineSearchViewController
         vc?.facets = withFacets
         return vc
-    }
-    
-    // MARK: UISearchResultsUpdating delegate
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        // To implement
     }
     
     // MARK: Picker view data source
@@ -210,20 +173,29 @@ class RefineSearchViewController: BaseViewController, UISearchResultsUpdating, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let contents = self.contents else {
-            return 0
-        }
-        return contents.count
+        return self.getCategoriesCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
-        if let contents = self.contents {
-            let currentFacet = contents[indexPath.row]
-            cell.facet = currentFacet
+        if let categories = self.categories {
+            let category = categories[indexPath.row]
+            cell.formattedFacet = category
         }
-        
         return cell
     }
+    
+    // MARK: Table view delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let categories = self.categories, let selectedMine = self.selectedMine {
+            let category = categories[indexPath.row]
+            if let facetName = category.getTitle(), let facetCount = category.getCount() {
+                let selectedFacet = SelectedFacet(withMineName: selectedMine, facetName: facetName, count: facetCount)
+                self.delegate?.refineSearchViewController(controller: self, didSelectFacet: selectedFacet)
+            }
+        }
+    }
 
+    
 }

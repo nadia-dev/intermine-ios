@@ -95,6 +95,10 @@ class CacheDataStore {
         return Mine.getMineByUrl(url: url, context: self.managedContext)
     }
     
+    func findMineByName(name: String) -> Mine? {
+        return Mine.getMineByName(name: name, context: self.managedContext)
+    }
+    
     func updateRegistryModelsIfNeeded(mines: [Mine]) {
         for mine in mines {
             if let mineUrl = mine.url {
