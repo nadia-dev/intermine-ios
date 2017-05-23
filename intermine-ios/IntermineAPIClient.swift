@@ -63,9 +63,9 @@ class IntermineAPIClient: NSObject {
         }
     }
     
+    // MARK: Public methods
+    
     class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?) -> ()) {
-        
-        // TODO: should accumulate all results before making completion?
         
         let url = mineUrl + Endpoints.search
         IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: params) { (res) in
@@ -101,8 +101,6 @@ class IntermineAPIClient: NSObject {
             }
         }
     }
-    
-    // MARK: Public methods
     
     class func makeSearchOverAllMines(params: [String: String], completion: @escaping (_ result: [SearchResult]?, _ facetList: [FacetList]?) -> ()) {
         guard let registry = CacheDataStore.sharedCacheDataStore.allRegistry() else {
@@ -268,40 +266,38 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    // add get method, if get comes empty, do post and store token from there
-    // GET - will fetch tokens from other clients
-    // POST - will create token from iOS client
-    // store token from GET or POST - either way it should work given the token created was PERM
-    
-    class func getToken(mineUrl: String, username: String, password: String) {
-        
-//        {"tokens":
-//            [{"dateCreated":"2017-05-07T18:22:41-0400","message":"iOS client","token":"d46b67a8-f606-4e6c-b391-c6e13025a4f6"},{"dateCreated":"2017-05-08T05:48:21-0400","message":"iOS client","token":"307d2c23-39a5-4e7b-a877-9bb7961f04a4"}]
-//            ,"executionTime":"2017.05.08 05:48::44","wasSuccessful":true,"error":null,"statusCode":200}
-        
+    class func getToken(mineUrl: String, username: String, password: String, completion: @escaping (_ success: Bool) -> ()) -> () {
         var headers: HTTPHeaders = [:]
-        
         if let authorizationHeader = Request.authorizationHeader(user: username, password: password) {
             headers[authorizationHeader.key] = authorizationHeader.value
         }
-        
         Alamofire.request(mineUrl + Endpoints.tokens, headers: headers)
-            .responseString { (response) in
-                
-                print(response)
-                // take the token, store it in nsuserdefaults, use next time for auth
+            .responseJSON { (response) in
+                if let JSON = response.result.value as? [String: AnyObject] {
+                    if let successful = JSON["wasSuccessful"] as? Bool {
+                        if successful {
+                            // store token in nsuserdefaults
+                            if let token = JSON["token"] as? String {
+                                DefaultsManager.storeInDefaults(key: "token", value: token)
+                                completion(true)
+                            }
+                        } else {
+                            // create token
+                            self.createToken(mineUrl: mineUrl, username: username, password: password, completion: { (success) in
+                                completion(success)
+                            })
+                        }
+                    } else {
+                        completion(false)
+                    }
+                } else {
+                    completion(false)
+                }
         }
     }
     
     
-    class func createToken(mineUrl: String, username: String, password: String) {
-        //                SUCCESS: {
-        //                    error = "<null>";
-        //                    executionTime = "2017.05.07 18:22::41";
-        //                    statusCode = 200;
-        //                    token = "d46b67a8-f606-4e6c-b391-c6e13025a4f6";
-        //                    wasSuccessful = 1;
-        //                }
+    class func createToken(mineUrl: String, username: String, password: String, completion: @escaping (_ success: Bool) -> ()) -> () {
 
         var headers: HTTPHeaders = [:]
         
@@ -313,9 +309,24 @@ class IntermineAPIClient: NSObject {
         
         Alamofire.request(mineUrl + Endpoints.tokens, method: .post, parameters: params, headers: headers)
             .responseJSON { (response) in
-                
-            print(response)
-            // take the token, store it in nsuserdefaults, use next time for auth
+                if let JSON = response.result.value as? [String: AnyObject] {
+                    if let successful = JSON["wasSuccessful"] as? Bool {
+                        if successful {
+                            // store token in nsuserdefaults
+                            if let token = JSON["token"] as? String {
+                                DefaultsManager.storeInDefaults(key: "token", value: token)
+                                completion(true)
+                            }
+                        } else {
+                            // TODO: user is not auth'd, show message
+                            completion(false)
+                        }
+                    } else {
+                        completion(false)
+                    }
+                } else {
+                    completion(false)
+                }
         }
     }
     

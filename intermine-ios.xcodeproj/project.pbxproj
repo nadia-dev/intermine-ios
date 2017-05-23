@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05269F601ED4D4E50002ECB2 /* DefaultsManager.swift */; };
 		0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053518191ECF824E006F87EA /* SearchFacet.swift */; };
 		0535181C1ECF8260006F87EA /* FacetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535181B1ECF8260006F87EA /* FacetList.swift */; };
 		055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05269F601ED4D4E50002ECB2 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		053518191ECF824E006F87EA /* SearchFacet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFacet.swift; sourceTree = "<group>"; };
 		0535181B1ECF8260006F87EA /* FacetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacetList.swift; sourceTree = "<group>"; };
 		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				05F4079B1EC6068E00707B86 /* Dictionary+Utils.swift */,
 				05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */,
 				05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */,
+				05269F601ED4D4E50002ECB2 /* DefaultsManager.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */,
 				05F407B21EC61F1400707B86 /* FetchedCell.swift in Sources */,
 				05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */,
+				05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
