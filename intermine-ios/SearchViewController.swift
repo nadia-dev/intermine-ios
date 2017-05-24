@@ -18,6 +18,12 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         self.descriptionLabel?.text = String.localize("Search.AppDescription")
         self.searchBar?.placeholder = String.localize("Search.Placeholder")
         self.searchBar?.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {

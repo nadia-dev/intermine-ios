@@ -107,6 +107,18 @@ class CacheDataStore {
         }
     }
     
+    func getMineNames() -> [String] {
+        var mineNames: [String] = []
+        if let registry = self.fetchCachedRegistry() {
+            for mine in registry {
+                if let mineName = mine.name {
+                    mineNames.append(mineName)
+                }
+            }
+        }
+        return mineNames
+    }
+    
     
     // MARK: Private methods
     

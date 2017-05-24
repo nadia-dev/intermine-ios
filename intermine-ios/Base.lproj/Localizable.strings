@@ -26,3 +26,5 @@
 "Search.Refine.SelectMine" = "Select mine";
 "Search.Refine.SelectCategory" = "Select category";
 "Search.Refine.NoSelection" = "None selected";
+
+"Login.LoginButton" = "Login";
