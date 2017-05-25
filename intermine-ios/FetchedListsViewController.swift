@@ -66,7 +66,7 @@ class FetchedListsViewController: LoadingTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
-        cell.data = lists[indexPath.row]
+        cell.representedData = lists[indexPath.row]
         return cell
     }
     

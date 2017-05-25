@@ -23,7 +23,7 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     
     private var currentOffset: Int = 0
 
-    var templates: [[String: String]] = [] {
+    var templates: [[String:String]] = [] {
         didSet {
             if self.templates.count > 0 {
                 self.tableView.reloadData()
@@ -85,7 +85,7 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
-        cell.data = templates[indexPath.row]
+        cell.representedData = templates[indexPath.row]
         return cell
     }
     

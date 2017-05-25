@@ -32,7 +32,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     // TODO: Make thread save array
     // When loading refined search, self.data only written from refine search calls
     
-    private var data: [[String: String]] = [] {
+    private var data: [SearchResult] = [] {
         didSet {
             self.tableView.reloadData()
             if data.count > 0 {
@@ -88,7 +88,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 if let searchResults = searchResults {
                     for res in searchResults {
                         if !self.lockData {
-                            self.data.append(res.viewableRepresentation())
+                            self.data.append(res)
                             self.stopSpinner()
                         }
                     }
@@ -113,7 +113,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName), let mineUrl = mine.url {
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList) in
                     if let res = searchRes {
-                        self.data.append(res.viewableRepresentation())
+                        self.data.append(res)
                     }
                 })
             }

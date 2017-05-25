@@ -35,17 +35,18 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
     
     private var keys: [String] = []
     
-    private var data: [String: String]? {
+    private var data: SearchResult? {
         didSet {
             if let data = self.data {
-                self.keys = Array(data.keys)
+                let viewableRepresentation = data.viewableRepresentation()
+                self.keys = Array(viewableRepresentation.keys)
             }
         }
     }
     
     // MARK: Load from storyboard
     
-    class func searchDetailViewController(withData: [String: String]) -> SearchDetailViewController? {
+    class func searchDetailViewController(withData: SearchResult) -> SearchDetailViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SearchDetailVC") as? SearchDetailViewController
         vc?.data = withData
@@ -71,7 +72,7 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier, for: indexPath) as! SearchCell
         let key = self.keys[indexPath.row]
         cell.key = key
-        cell.value = self.data?[key]
+        cell.value = self.data?.viewableRepresentation()[key]
         return cell
     }
 
