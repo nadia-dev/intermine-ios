@@ -40,6 +40,8 @@ struct Icons {
     static let close = UIImage.init(icon: .FATimes, size: CGSize(width: 40, height: 40))
     static let menu = UIImage.init(icon: .FABars, size: CGSize(width: 40, height: 40), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
     static let check = UIImage.init(icon: .FACheck, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.tamarillo, backgroundColor: UIColor.clear)
+    static let info = UIImage.init(icon: .FAInfo, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
+    static let star = UIImage.init(icon: .FAStar, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
     
 }
 

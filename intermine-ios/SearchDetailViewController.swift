@@ -44,6 +44,22 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
         }
     }
     
+    // MARK: Private methods
+    
+    private func addNavbarButtons() {
+        let infoButton   = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
+        let favButton = UIBarButtonItem(image: Icons.star,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapFavButton))
+        navigationItem.rightBarButtonItems = [infoButton, favButton]
+    }
+    
+    func didTapInfoButton(){
+
+    }
+    
+    func didTapFavButton(){
+
+    }
+    
     // MARK: Load from storyboard
     
     class func searchDetailViewController(withData: SearchResult) -> SearchDetailViewController? {
@@ -56,6 +72,7 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView?.dataSource = self
+        self.addNavbarButtons()
     }
     
     // MARK: Table view data source
