@@ -116,6 +116,9 @@ class CacheDataStore {
                 }
             }
         }
+        mineNames.sort { (name1, name2) -> Bool in
+            return name1 < name2
+        }
         return mineNames
     }
     

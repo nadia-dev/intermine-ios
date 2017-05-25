@@ -34,7 +34,7 @@ class MenuViewController : UIViewController {
     
     var menuActionDelegate:MenuActionDelegate? = nil
     
-    let menuItems = ["First", "Second"]
+    let menuItems = CacheDataStore.sharedCacheDataStore.getMineNames()
     
     // MARK: Load from storyboard
     
@@ -84,8 +84,8 @@ extension MenuViewController : UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel?.text = menuItems[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
+        cell.mineName = menuItems[indexPath.row]
         return cell
     }
 }

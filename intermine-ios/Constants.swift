@@ -48,6 +48,7 @@ struct Colors {
     static let eggplant = UIColor.hexStringToUIColor(hex: "#a50b8b") // complementary to pistachio
     static let white = UIColor.white
     static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
+    static let greenMeadow = UIColor.hexStringToUIColor(hex: "#1cb25d")
 }
 
 struct Operations {

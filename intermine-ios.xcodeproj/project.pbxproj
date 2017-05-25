@@ -27,6 +27,7 @@
 		057E5F6F1ED6EAE2004278C5 /* MenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F6E1ED6EAE2004278C5 /* MenuHelper.swift */; };
 		057E5F711ED6EB01004278C5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F701ED6EB01004278C5 /* MenuViewController.swift */; };
 		057E5F751ED6EBC6004278C5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F741ED6EBC6004278C5 /* MainViewController.swift */; };
+		057E5F771ED6F032004278C5 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F761ED6F032004278C5 /* MenuCell.swift */; };
 		0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D51E1EC0A60600686065 /* SearchViewController.swift */; };
 		0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5241EC0A69C00686065 /* FavoritesViewController.swift */; };
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
@@ -105,6 +106,7 @@
 		057E5F6E1ED6EAE2004278C5 /* MenuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHelper.swift; sourceTree = "<group>"; };
 		057E5F701ED6EB01004278C5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		057E5F741ED6EBC6004278C5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		057E5F761ED6F032004278C5 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		0595D51E1EC0A60600686065 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0595D5241EC0A69C00686065 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				057E5F761ED6F032004278C5 /* MenuCell.swift */,
 				05F407B11EC61F1400707B86 /* FetchedCell.swift */,
 				05EA6CC11EC83758002CC884 /* ListCells */,
 				05EA6CBB1EC79BF8002CC884 /* TableCoverView */,
@@ -685,6 +688,7 @@
 				05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */,
 				05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
+				057E5F771ED6F032004278C5 /* MenuCell.swift in Sources */,
 				05DA3DFB1ECB03F300AB4B79 /* FetchedListsViewController.swift in Sources */,
 				05EA6CC31EC8377A002CC884 /* ListTableViewCell.swift in Sources */,
 				05F4078A1EC4A9AA00707B86 /* TemplatesViewController.swift in Sources */,
