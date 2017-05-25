@@ -52,12 +52,18 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
         navigationItem.rightBarButtonItems = [infoButton, favButton]
     }
     
-    func didTapInfoButton(){
-
+    func didTapInfoButton() {
+        // TODO: should load web view with /report.do?id=12915318
+        //IntermineAPIClient.cancelAllRequests()
+        if let webVC = WebViewController.webViewController() {
+            AppManager.sharedManager.shouldBreakLoading = true
+            self.navigationController?.pushViewController(webVC, animated: true)
+        }
     }
     
-    func didTapFavButton(){
-
+    func didTapFavButton() {
+        // TODO: should add item to locally stored favs
+        
     }
     
     // MARK: Load from storyboard

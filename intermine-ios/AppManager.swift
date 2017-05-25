@@ -17,6 +17,8 @@ class AppManager {
         }
     }
     
+    var shouldBreakLoading = false
+    
     // MARK: Shared Instance
     
     static let sharedManager : AppManager = {

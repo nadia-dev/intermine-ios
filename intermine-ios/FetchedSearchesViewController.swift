@@ -18,7 +18,14 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     private var currentOffset: Int = 0
     private var params: [String: String]?
     private var facets: [FacetList]?
-    private var lockData = false
+    
+    private var lockData = false {
+        didSet {
+            if lockData == true {
+                AppManager.sharedManager.shouldBreakLoading = true
+            }
+        }
+    }
     
     private var selectedFacet: SelectedFacet? {
         didSet {
@@ -58,6 +65,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         buttonView?.isHidden = true
         mineLabel?.text = String.localize("Search.Refine.NoSelection")
         categoryLabel?.text = String.localize("Search.Refine.NoSelection")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AppManager.sharedManager.shouldBreakLoading = false
     }
     
     // MARK: Load from storyboard

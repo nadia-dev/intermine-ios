@@ -942,6 +942,38 @@
             </objects>
             <point key="canvasLocation" x="3094" y="-1383"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="vZ2-pZ-gVK">
+            <objects>
+                <viewController storyboardIdentifier="WebVC" id="4yd-m2-ux3" customClass="WebViewController" customModule="intermine_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gvZ-Xo-HVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="edt-xQ-jqc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Egl-EE-ZDw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="mID-a1-soJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mID-a1-soJ" firstAttribute="leading" secondItem="Egl-EE-ZDw" secondAttribute="leading" id="33F-Vx-eGR"/>
+                            <constraint firstAttribute="trailing" secondItem="mID-a1-soJ" secondAttribute="trailing" id="Cq5-Fq-UU0"/>
+                            <constraint firstItem="edt-xQ-jqc" firstAttribute="top" secondItem="mID-a1-soJ" secondAttribute="bottom" id="J3M-OQ-ddX"/>
+                            <constraint firstItem="mID-a1-soJ" firstAttribute="top" secondItem="gvZ-Xo-HVh" secondAttribute="bottom" id="UYH-gD-hQ1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="mID-a1-soJ" id="cyz-kI-7aA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="26C-VM-Ghn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3801" y="-1383"/>
+        </scene>
         <!--Refine Search View Controller-->
         <scene sceneID="fYK-ye-sXB">
             <objects>
