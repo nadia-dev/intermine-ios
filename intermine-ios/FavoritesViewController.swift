@@ -8,17 +8,10 @@
 
 import UIKit
 
-class FavoritesViewController: BaseTableViewController {
+class FavoritesViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        controllerType = .Favorites
-    }
-    
-    // MARK: Mines table view delegate
-    
-    override func minesTableView(tableView: MinesTableView, didDetectUrlSelection: String?) {
-        // TODO: To implement
     }
 
 
