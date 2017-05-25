@@ -1072,14 +1072,24 @@
                                                         <action selector="refineSearchTapped:" destination="6Kn-to-Y6m" eventType="touchUpInside" id="Je2-3j-Dkn"/>
                                                     </connections>
                                                 </button>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ibP-Bl-bjy">
+                                                    <rect key="frame" x="16.5" y="13" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Qs3-1U-pMh"/>
+                                                        <constraint firstAttribute="width" constant="25" id="cj3-uj-c2E"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="76r-Uw-0Qt" firstAttribute="centerY" secondItem="I15-JF-FwO" secondAttribute="centerY" id="28w-Ez-ALf"/>
                                                 <constraint firstItem="76r-Uw-0Qt" firstAttribute="centerX" secondItem="I15-JF-FwO" secondAttribute="centerX" id="DwZ-DF-KCH"/>
+                                                <constraint firstItem="ibP-Bl-bjy" firstAttribute="centerX" secondItem="76r-Uw-0Qt" secondAttribute="leading" id="GrL-Hq-P3l"/>
+                                                <constraint firstItem="ibP-Bl-bjy" firstAttribute="centerY" secondItem="76r-Uw-0Qt" secondAttribute="centerY" id="moO-vv-EJm"/>
                                                 <constraint firstItem="76r-Uw-0Qt" firstAttribute="width" secondItem="I15-JF-FwO" secondAttribute="width" multiplier="0.8" constant="1" id="pie-NB-Wxf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkImageView" destination="ibP-Bl-bjy" id="dpM-Fa-LZR"/>
                                             <outlet property="mineButton" destination="76r-Uw-0Qt" id="Qn7-VB-gTg"/>
                                         </connections>
                                     </tableViewCell>
@@ -1114,7 +1124,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-306" y="-673"/>
+            <point key="canvasLocation" x="-306.39999999999998" y="-673.31334332833592"/>
         </scene>
     </scenes>
     <resources>

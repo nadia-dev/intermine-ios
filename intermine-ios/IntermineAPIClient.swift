@@ -278,7 +278,7 @@ class IntermineAPIClient: NSObject {
                         if successful {
                             // store token in nsuserdefaults
                             if let token = JSON["token"] as? String {
-                                DefaultsManager.storeInDefaults(key: "token", value: token)
+                                DefaultsManager.storeInDefaults(key: DefaultsKeys.token, value: token)
                                 completion(true)
                             }
                         } else {
@@ -314,7 +314,7 @@ class IntermineAPIClient: NSObject {
                         if successful {
                             // store token in nsuserdefaults
                             if let token = JSON["token"] as? String {
-                                DefaultsManager.storeInDefaults(key: "token", value: token)
+                                DefaultsManager.storeInDefaults(key: DefaultsKeys.token, value: token)
                                 completion(true)
                             }
                         } else {

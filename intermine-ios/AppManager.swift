@@ -11,7 +11,11 @@ import Foundation
 
 class AppManager {
     
-    var selectedMine: String = "YeastMine"
+    var selectedMine: String = General.defaultMine {
+        didSet {
+            //
+        }
+    }
     
     // MARK: Shared Instance
     
@@ -19,5 +23,19 @@ class AppManager {
         let instance = AppManager()
         return instance
     }()
+    
+    // MARK: Public method
+    
+    func selectMine(mineName: String) {
+        self.selectedMine = mineName
+    }
+    
+    func retrieveSelectedMine() {
+        if let selectedMine = DefaultsManager.fetchFromDefaults(key: DefaultsKeys.selectedMine) {
+            self.selectMine(mineName: selectedMine)
+        } else {
+            self.selectMine(mineName: General.defaultMine)
+        }
+    }
 }
 

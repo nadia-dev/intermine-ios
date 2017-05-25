@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 CacheDataStore.sharedCacheDataStore.updateRegistryModelsIfNeeded(mines: mines)
             }
         }
+        AppManager.sharedManager.retrieveSelectedMine()
+        
         return true
     }
 

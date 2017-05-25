@@ -28,6 +28,7 @@ struct General {
     static let searchSize = 5
     static let baseVersion = "1.6.5"
     static let descriptionCharactersLimit = 120
+    static let defaultMine = "YeastMine"
 }
 
 struct Icons {
@@ -38,6 +39,7 @@ struct Icons {
     static let login = UIImage.init(icon: .FASignIn, size: CGSize(width: 35, height: 35))
     static let close = UIImage.init(icon: .FATimes, size: CGSize(width: 40, height: 40))
     static let menu = UIImage.init(icon: .FABars, size: CGSize(width: 40, height: 40), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
+    static let check = UIImage.init(icon: .FACheck, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.terracota, backgroundColor: UIColor.clear)
     
 }
 
@@ -49,6 +51,12 @@ struct Colors {
     static let white = UIColor.white
     static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
     static let greenMeadow = UIColor.hexStringToUIColor(hex: "#1cb25d")
+    static let terracota = UIColor.hexStringToUIColor(hex: "#b22d1c")
+}
+
+struct DefaultsKeys {
+    static let token = "intermine.defaults.token"
+    static let selectedMine = "intermine.defaults.selectedMine"
 }
 
 struct Operations {
@@ -69,4 +77,5 @@ struct Operations {
 struct Notifications {
     static let operationChanged = "notification.operation.changed"
     static let valueChanged = "notification.value.changed"
+    static let mineSelected = "notification.mine.selected"
 }

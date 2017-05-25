@@ -35,6 +35,7 @@ class MenuViewController : UIViewController {
     var menuActionDelegate:MenuActionDelegate? = nil
     
     let menuItems = CacheDataStore.sharedCacheDataStore.getMineNames()
+    var allCells = Set<MenuCell>()
     
     // MARK: Load from storyboard
     
@@ -69,8 +70,8 @@ class MenuViewController : UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        dismiss(animated: true){
-            self.delay(seconds: 0.5){
+        dismiss(animated: true) {
+            self.delay(seconds: 0.5) {
                 self.menuActionDelegate?.reopenMenu()
             }
         }
@@ -78,15 +79,35 @@ class MenuViewController : UIViewController {
     
 }
 
-extension MenuViewController : UITableViewDataSource {
+extension MenuViewController : UITableViewDataSource, MenuCellDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell") as! MenuCell
-        cell.mineName = menuItems[indexPath.row]
+        let mineName = menuItems[indexPath.row]
+        if mineName == AppManager.sharedManager.selectedMine {
+            cell.showCheck()
+        }
+        cell.mineName = mineName
+        cell.delegate = self
+        if !allCells.contains(cell) { allCells.insert(cell) }
+        cell.index = indexPath.row
         return cell
+    }
+    
+    // MARK: Cell delegate
+    func mineCell(mineCell: MenuCell, didTapButtonWithMineName name: String, withIndex: Int) {
+        AppManager.sharedManager.selectMine(mineName: name)
+        for cell in allCells {
+            if cell.index != withIndex {
+                cell.hideCheck()
+            } else {
+                cell.showCheck()
+            }
+        }
     }
 }
 
