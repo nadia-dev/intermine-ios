@@ -14,11 +14,13 @@ class SearchResult: NSObject {
     private var type: String?
     private var fields: [String: AnyObject]?
     private var mineName: String?
+    private var id: String?
     
-    init(withType: String?, fields: [String: AnyObject]?, mineName: String?) {
+    init(withType: String?, fields: [String: AnyObject]?, mineName: String?, id: String?) {
         self.type = withType
         self.fields = fields
         self.mineName = mineName
+        self.id = id
     }
     
     func viewableRepresentation() -> [String: String] {

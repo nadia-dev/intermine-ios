@@ -87,7 +87,7 @@ class IntermineAPIClient: NSObject {
                     for r in result {
                         if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl) {
                             if let mineName = mine.name {
-                                let resObj = SearchResult(withType: r["type"] as? String, fields: r["fields"] as? [String: AnyObject], mineName: mineName)
+                                let resObj = SearchResult(withType: r["type"] as? String, fields: r["fields"] as? [String: AnyObject], mineName: mineName, id: r["id"] as? String)
                                 completion(resObj, facetList)
                             }
                         }
