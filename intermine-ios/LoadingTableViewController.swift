@@ -14,12 +14,14 @@ class LoadingTableViewController: UITableViewController {
     private var spinner: NVActivityIndicatorView?
     private var nothingFoundView: BaseView? = nil
     
-    var mineUrl: String?
+    var mineUrl: String? {
+        didSet {
+            self.configureNavBar()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.configureNavBar()
         
         self.nothingFoundView = TableCoverView.instantiateFromNib()
         if let nothingFoundView = self.nothingFoundView {
@@ -31,7 +33,7 @@ class LoadingTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 200
         
-        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballGridPulse, color: Colors.pistachio, padding: self.indicatorPadding())
+        self.spinner = NVActivityIndicatorView(frame: self.indicatorFrame(), type: .ballSpinFadeLoader, color: Colors.pistachio, padding: self.indicatorPadding())
         if let spinner = self.spinner {
             self.view.addSubview(spinner)
             self.view.bringSubview(toFront: spinner)
@@ -74,10 +76,24 @@ class LoadingTableViewController: UITableViewController {
             self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: mine.theme)
             self.navigationController?.navigationBar.isTranslucent = false
             self.navigationController?.navigationBar.tintColor = Colors.white
-            self.navigationController?.navigationBar.backItem?.title = ""
             self.navigationController?.navigationBar.topItem?.title = mine.name
             self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
+            
+            let button = UIButton()
+            button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            button.setImage(Icons.menu, for: .normal)
+            button.addTarget(self, action: #selector(LoadingTableViewController.menuButtonPressed), for: .touchUpInside)
+            button.tintColor = Colors.white
+            let barButton = UIBarButtonItem()
+            barButton.customView = button
+            
+            self.navigationItem.leftBarButtonItem = barButton
         }
+    }
+    
+    func menuButtonPressed() {
+        print("tapped")
+        // TODO: implement sliding menu
     }
     
     func processHeaderArray(headerArray: NSArray) -> [String] {

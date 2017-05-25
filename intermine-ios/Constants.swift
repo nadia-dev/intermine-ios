@@ -37,6 +37,8 @@ struct Icons {
     static let bookmark = UIImage.init(icon: .FABookmark, size: CGSize(width: 35, height: 35))
     static let login = UIImage.init(icon: .FASignIn, size: CGSize(width: 35, height: 35))
     static let close = UIImage.init(icon: .FATimes, size: CGSize(width: 40, height: 40))
+    static let menu = UIImage.init(icon: .FABars, size: CGSize(width: 40, height: 40), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
+    
 }
 
 struct Colors {
@@ -46,6 +48,7 @@ struct Colors {
     static let eggplant = UIColor.hexStringToUIColor(hex: "#a50b8b") // complementary to pistachio
     static let white = UIColor.white
     static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
+    static let greenMeadow = UIColor.hexStringToUIColor(hex: "#1cb25d")
 }
 
 struct Operations {
