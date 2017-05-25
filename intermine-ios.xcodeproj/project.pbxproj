@@ -21,7 +21,12 @@
 		05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */; };
 		05715E691EBF801900C4C3C7 /* NSDate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E681EBF801900C4C3C7 /* NSDate+Utils.swift */; };
 		057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */; };
-		057E5F5E1ED6DC34004278C5 /* SlideAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F5D1ED6DC34004278C5 /* SlideAnimator.swift */; };
+		057E5F691ED6EA9B004278C5 /* DismissMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F681ED6EA9B004278C5 /* DismissMenuAnimator.swift */; };
+		057E5F6C1ED6EAA7004278C5 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F6A1ED6EAA7004278C5 /* Interactor.swift */; };
+		057E5F6D1ED6EAA7004278C5 /* PresentMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F6B1ED6EAA7004278C5 /* PresentMenuAnimator.swift */; };
+		057E5F6F1ED6EAE2004278C5 /* MenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F6E1ED6EAE2004278C5 /* MenuHelper.swift */; };
+		057E5F711ED6EB01004278C5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F701ED6EB01004278C5 /* MenuViewController.swift */; };
+		057E5F751ED6EBC6004278C5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F741ED6EBC6004278C5 /* MainViewController.swift */; };
 		0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D51E1EC0A60600686065 /* SearchViewController.swift */; };
 		0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5241EC0A69C00686065 /* FavoritesViewController.swift */; };
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
@@ -94,7 +99,12 @@
 		05715E631EBF164B00C4C3C7 /* CacheDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDataStore.swift; sourceTree = "<group>"; };
 		05715E681EBF801900C4C3C7 /* NSDate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utils.swift"; sourceTree = "<group>"; };
 		057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermineAPIClient.swift; sourceTree = "<group>"; };
-		057E5F5D1ED6DC34004278C5 /* SlideAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideAnimator.swift; sourceTree = "<group>"; };
+		057E5F681ED6EA9B004278C5 /* DismissMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissMenuAnimator.swift; sourceTree = "<group>"; };
+		057E5F6A1ED6EAA7004278C5 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		057E5F6B1ED6EAA7004278C5 /* PresentMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuAnimator.swift; sourceTree = "<group>"; };
+		057E5F6E1ED6EAE2004278C5 /* MenuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHelper.swift; sourceTree = "<group>"; };
+		057E5F701ED6EB01004278C5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		057E5F741ED6EBC6004278C5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0595D51E1EC0A60600686065 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0595D5241EC0A69C00686065 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +264,8 @@
 		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				057E5F741ED6EBC6004278C5 /* MainViewController.swift */,
+				057E5F701ED6EB01004278C5 /* MenuViewController.swift */,
 				055556641ECCA31F009DCA24 /* SearchTabVCs */,
 				05EA6CBE1EC82B9A002CC884 /* ListTabVCs */,
 				05F407AE1EC6142000707B86 /* Landing */,
@@ -288,12 +300,15 @@
 			name = App;
 			sourceTree = "<group>";
 		};
-		057E5F5C1ED6DC1C004278C5 /* Animations */ = {
+		057E5F5C1ED6DC1C004278C5 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
-				057E5F5D1ED6DC34004278C5 /* SlideAnimator.swift */,
+				057E5F6E1ED6EAE2004278C5 /* MenuHelper.swift */,
+				057E5F6A1ED6EAA7004278C5 /* Interactor.swift */,
+				057E5F6B1ED6EAA7004278C5 /* PresentMenuAnimator.swift */,
+				057E5F681ED6EA9B004278C5 /* DismissMenuAnimator.swift */,
 			);
-			name = Animations;
+			name = Transitions;
 			sourceTree = "<group>";
 		};
 		05DE68A21E91BA220009838E /* Networking */ = {
@@ -328,7 +343,7 @@
 		05DF530A1E90286E00113171 /* intermine-ios */ = {
 			isa = PBXGroup;
 			children = (
-				057E5F5C1ED6DC1C004278C5 /* Animations */,
+				057E5F5C1ED6DC1C004278C5 /* Transitions */,
 				05EA6CC91EC8530F002CC884 /* Models */,
 				05715E6E1EBFBC3E00C4C3C7 /* App */,
 				05715E6D1EBFBC3200C4C3C7 /* Views */,
@@ -633,11 +648,11 @@
 				05EA6CD71EC8B243002CC884 /* MineModel+CoreDataClass.swift in Sources */,
 				05F4078F1EC4F48400707B86 /* TemplateTableViewCell.swift in Sources */,
 				05F407A71EC6105A00707B86 /* TemplateDetailBaseCell.swift in Sources */,
+				057E5F751ED6EBC6004278C5 /* MainViewController.swift in Sources */,
 				0535181C1ECF8260006F87EA /* FacetList.swift in Sources */,
 				05EA6CC01EC82CB2002CC884 /* ListsViewController.swift in Sources */,
 				0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */,
 				05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */,
-				057E5F5E1ED6DC34004278C5 /* SlideAnimator.swift in Sources */,
 				05F4079F1EC60F9D00707B86 /* LookupCell.swift in Sources */,
 				055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */,
 				0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */,
@@ -647,19 +662,24 @@
 				05DF530E1E90286E00113171 /* MainTabController.swift in Sources */,
 				05715E641EBF164B00C4C3C7 /* CacheDataStore.swift in Sources */,
 				05EA6CD81EC8B243002CC884 /* MineModel+CoreDataProperties.swift in Sources */,
+				057E5F6D1ED6EAA7004278C5 /* PresentMenuAnimator.swift in Sources */,
 				05EA6CC61EC83DDF002CC884 /* List.swift in Sources */,
 				05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */,
 				05F407B21EC61F1400707B86 /* FetchedCell.swift in Sources */,
 				05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */,
 				05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */,
+				057E5F711ED6EB01004278C5 /* MenuViewController.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,
 				05CFF8511ED06839005DD0FE /* RefineSearchViewController.swift in Sources */,
+				057E5F6F1ED6EAE2004278C5 /* MenuHelper.swift in Sources */,
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
+				057E5F691ED6EA9B004278C5 /* DismissMenuAnimator.swift in Sources */,
 				05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */,
 				05E952EF1EC198380057F753 /* String+Utils.swift in Sources */,
 				05715E691EBF801900C4C3C7 /* NSDate+Utils.swift in Sources */,
+				057E5F6C1ED6EAA7004278C5 /* Interactor.swift in Sources */,
 				05EA6CCC1EC85692002CC884 /* FileHandler.swift in Sources */,
 				05F4078D1EC4AD3100707B86 /* UIViewController+Utils.swift in Sources */,
 				05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */,

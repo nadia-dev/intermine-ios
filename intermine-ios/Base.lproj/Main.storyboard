@@ -1024,6 +1024,71 @@
             </objects>
             <point key="canvasLocation" x="605.60000000000002" y="748.87556221889065"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="r69-iL-ZlV">
+            <objects>
+                <viewController storyboardIdentifier="MenuVC" id="0aW-wO-6gg" customClass="MenuViewController" customModule="intermine_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vgk-AS-Gkd"/>
+                        <viewControllerLayoutGuide type="bottom" id="11s-T8-Gxn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c96-kS-ZYb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3n-ml-5ve">
+                                <rect key="frame" x="300" y="20" width="75" height="647"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <action selector="closeMenu:" destination="0aW-wO-6gg" eventType="touchUpInside" id="n18-Z4-mfg"/>
+                                    <outletCollection property="gestureRecognizers" destination="4qz-SH-be8" appends="YES" id="AdV-bt-GbM"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xCm-n1-Yc4">
+                                <rect key="frame" x="0.0" y="20" width="300" height="647"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Pti-RO-DDz">
+                                        <rect key="frame" x="0.0" y="28" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pti-RO-DDz" id="I15-JF-FwO">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0aW-wO-6gg" id="nTK-8Z-uqz"/>
+                                    <outlet property="delegate" destination="0aW-wO-6gg" id="96i-tk-KKg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="D3n-ml-5ve" firstAttribute="leading" secondItem="xCm-n1-Yc4" secondAttribute="trailing" id="4LO-Wc-NML"/>
+                            <constraint firstItem="xCm-n1-Yc4" firstAttribute="width" secondItem="c96-kS-ZYb" secondAttribute="width" multiplier="0.8" id="C9Y-lF-Dib"/>
+                            <constraint firstAttribute="trailing" secondItem="D3n-ml-5ve" secondAttribute="trailing" id="OE4-Pj-99Y"/>
+                            <constraint firstItem="xCm-n1-Yc4" firstAttribute="leading" secondItem="c96-kS-ZYb" secondAttribute="leading" id="Qa1-W2-lUC"/>
+                            <constraint firstItem="xCm-n1-Yc4" firstAttribute="top" secondItem="Vgk-AS-Gkd" secondAttribute="bottom" id="aEY-Oa-eI7"/>
+                            <constraint firstItem="11s-T8-Gxn" firstAttribute="top" secondItem="xCm-n1-Yc4" secondAttribute="bottom" id="jSs-xN-6rG"/>
+                            <constraint firstItem="11s-T8-Gxn" firstAttribute="top" secondItem="D3n-ml-5ve" secondAttribute="bottom" id="kIZ-5T-fVg"/>
+                            <constraint firstItem="D3n-ml-5ve" firstAttribute="top" secondItem="Vgk-AS-Gkd" secondAttribute="bottom" id="tEO-g9-nAr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xCm-n1-Yc4" id="9Pp-zL-hq5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rB7-ZE-mcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="4qz-SH-be8">
+                    <connections>
+                        <action selector="handleGesture:" destination="0aW-wO-6gg" id="wO6-6T-wXE"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-306" y="-673"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo_green" width="411" height="54"/>
