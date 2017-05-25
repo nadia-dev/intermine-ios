@@ -64,7 +64,6 @@ class FetchedTemplatesViewController: LoadingTableViewController {
         if let mineUrl = self.mineUrl, let params = self.params {
             var correctedParams = params
             correctedParams["start"] = "\(offset)"
-            
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res) in
                 self.processDataResult(res: res, data: &self.templates)
                 if self.currentOffset == 0 {

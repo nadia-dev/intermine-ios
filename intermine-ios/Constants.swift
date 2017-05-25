@@ -39,7 +39,7 @@ struct Icons {
     static let login = UIImage.init(icon: .FASignIn, size: CGSize(width: 35, height: 35))
     static let close = UIImage.init(icon: .FATimes, size: CGSize(width: 40, height: 40))
     static let menu = UIImage.init(icon: .FABars, size: CGSize(width: 40, height: 40), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
-    static let check = UIImage.init(icon: .FACheck, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.terracota, backgroundColor: UIColor.clear)
+    static let check = UIImage.init(icon: .FACheck, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.tamarillo, backgroundColor: UIColor.clear)
     
 }
 
@@ -52,6 +52,9 @@ struct Colors {
     static let gray = UIColor.hexStringToUIColor(hex: "#8F8F8F")
     static let greenMeadow = UIColor.hexStringToUIColor(hex: "#1cb25d")
     static let terracota = UIColor.hexStringToUIColor(hex: "#b22d1c")
+    static let palma = UIColor.hexStringToUIColor(hex: "#1E9618")
+    static let tamarillo = UIColor.hexStringToUIColor(hex: "#96181e")
+    static let apple = UIColor.hexStringToUIColor(hex: "#43A047")
 }
 
 struct DefaultsKeys {

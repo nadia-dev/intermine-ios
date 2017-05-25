@@ -32,6 +32,7 @@
 		0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5241EC0A69C00686065 /* FavoritesViewController.swift */; };
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
 		0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5281EC0A7C800686065 /* BaseViewController.swift */; };
+		05AC8A731ED75DB2000F37CE /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */; };
 		05CFF8511ED06839005DD0FE /* RefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */; };
 		05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */; };
 		05DA3DF91ECAF75D00AB4B79 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */; };
@@ -111,6 +112,7 @@
 		0595D5241EC0A69C00686065 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0595D5281EC0A7C800686065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefineSearchViewController.swift; sourceTree = "<group>"; };
 		05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModelParser.swift; sourceTree = "<group>"; };
 		05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */,
 				05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */,
+				05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */,
 			);
 			name = SearchTabVCs;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */,
 				05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */,
 				057E5F711ED6EB01004278C5 /* MenuViewController.swift in Sources */,
+				05AC8A731ED75DB2000F37CE /* SearchDetailViewController.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,
 				05715E621EBF10E300C4C3C7 /* Mine+CoreDataProperties.swift in Sources */,

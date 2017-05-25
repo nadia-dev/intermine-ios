@@ -12,11 +12,11 @@ import Alamofire
 class IntermineAPIClient: NSObject {
     
     static let jsonParams = ["format": "json"]
+    static let manager = Alamofire.SessionManager.default
     
     // MARK: Private methods
     
     private class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: [String: AnyObject]?) -> ()) {
-        let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 120
         manager.request(url, method: method, parameters: params)
             .responseJSON {
@@ -42,7 +42,6 @@ class IntermineAPIClient: NSObject {
     }
     
     private class func sendStringRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: String?) -> ()) {
-        let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 120
         manager.request(url, method: method, parameters: params)
             .responseString {
@@ -115,6 +114,7 @@ class IntermineAPIClient: NSObject {
         for mine in registry {
             currentMineCount += 1
             //make search in mine
+            // TODO: stop this method after refine search is called
             if let mineUrl = mine.url {
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchResObj, facetList) in
                     //

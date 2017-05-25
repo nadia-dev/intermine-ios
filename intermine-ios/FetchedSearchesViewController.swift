@@ -18,6 +18,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     private var currentOffset: Int = 0
     private var params: [String: String]?
     private var facets: [FacetList]?
+    private var lockData = false
     
     private var selectedFacet: SelectedFacet? {
         didSet {
@@ -27,6 +28,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
             }
         }
     }
+    
+    // TODO: Make thread save array
+    // When loading refined search, self.data only written from refine search calls
     
     private var data: [[String: String]] = [] {
         didSet {
@@ -68,7 +72,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     // MARK: Private methods
     
     private func configureNavbar() {
-        self.navigationController?.navigationBar.barTintColor = Colors.pistachio
+        self.navigationController?.navigationBar.barTintColor = Colors.palma
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.navigationBar.backItem?.title = ""
@@ -83,24 +87,28 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 // Transform into [String: String] dict
                 if let searchResults = searchResults {
                     for res in searchResults {
-                        self.data.append(res.viewableRepresentation())
-                        self.stopSpinner()
+                        if !self.lockData {
+                            self.data.append(res.viewableRepresentation())
+                            self.stopSpinner()
+                        }
                     }
                 }
                 
                 if let facets = facetLists {
                     // To later show facets on refine search VC
-                    self.facets = facets
+                    if !self.lockData {
+                        self.facets = facets
+                    }
                 }
             }
         }
     }
     
     private func loadRefinedSearchWithOffset(offset: Int, selectedFacet: SelectedFacet) {
-        // TODO: implement load more on pull
         self.params?["facet_Category"] = selectedFacet.getFacetName()
         self.params?["size"] = "\(General.pageSize)"
         self.params?["start"] = "\(offset)"
+
         if let mineName = selectedFacet.getMineName(), let params = self.params {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName), let mineUrl = mine.url {
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList) in
@@ -118,7 +126,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         // reload table view with new data
         self.selectedFacet = didSelectFacet
         self.data = []
+        self.lockData = true
         self.startSpinner()
+        //IntermineAPIClient.cancelAllRequests()
         self.loadRefinedSearchWithOffset(offset: self.currentOffset, selectedFacet: didSelectFacet)
     }
     
@@ -145,6 +155,15 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
         cell.data = self.data[indexPath.row]
         return cell
+    }
+    
+    // MARK: Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = self.data[indexPath.row]
+        if let searchDetailVC = SearchDetailViewController.searchDetailViewController(withData: data) {
+            self.navigationController?.pushViewController(searchDetailVC, animated: true)
+        }
     }
     
     // MARK: Scroll view delegate

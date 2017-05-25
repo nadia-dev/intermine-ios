@@ -50,7 +50,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     
     
     private func configureNavBar() {
-        self.navigationController?.navigationBar.barTintColor = Colors.greenMeadow
+        self.navigationController?.navigationBar.barTintColor = Colors.palma
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.navigationBar.topItem?.title = String.localize("Search.All")
