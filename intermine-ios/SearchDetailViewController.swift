@@ -47,15 +47,13 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
     // MARK: Private methods
     
     private func addNavbarButtons() {
-        let infoButton   = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
+        let infoButton = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
         let favButton = UIBarButtonItem(image: Icons.star,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapFavButton))
         navigationItem.rightBarButtonItems = [infoButton, favButton]
     }
     
     func didTapInfoButton() {
-        // TODO: should load web view with /report.do?id=12915318
-        //IntermineAPIClient.cancelAllRequests()
-        if let webVC = WebViewController.webViewController() {
+        if let data = self.data, let webVC = WebViewController.webViewController(withSearchResult: data) {
             AppManager.sharedManager.shouldBreakLoading = true
             self.navigationController?.pushViewController(webVC, animated: true)
         }

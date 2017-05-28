@@ -10,16 +10,37 @@ import UIKit
 
 class CategoryCell: UITableViewCell {
     
+    @IBOutlet weak var checkImageView: UIImageView?
     static let identifier = "CategoryCell"
     
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var countLabel: UILabel?
+    
+    var index: Int = 0
     
     var formattedFacet: FormattedFacet? {
         didSet {
             titleLabel?.text = formattedFacet?.getTitle()
             countLabel?.text = formattedFacet?.getCount()
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        checkImageView?.image = Icons.check
+    }
+    
+    func hideCheck() {
+        checkImageView?.isHidden = true
+    }
+    
+    func showCheck() {
+        checkImageView?.isHidden = false
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.hideCheck()
     }
 }
 
@@ -30,6 +51,7 @@ protocol RefineSearchViewControllerDelegate: class {
 class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     private var mines: [String] = [String.localize("Search.Refine.NoSelection")]
+    var allCells = Set<CategoryCell>()
     
     private var categories: [FormattedFacet]? {
         didSet {
@@ -182,6 +204,8 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
             let category = categories[indexPath.row]
             cell.formattedFacet = category
         }
+        cell.index = indexPath.row
+        if !allCells.contains(cell) { allCells.insert(cell) }
         return cell
     }
     
@@ -193,6 +217,13 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
             if let facetName = category.getTitle(), let facetCount = category.getCount() {
                 let selectedFacet = SelectedFacet(withMineName: selectedMine, facetName: facetName, count: facetCount)
                 self.delegate?.refineSearchViewController(controller: self, didSelectFacet: selectedFacet)
+            }
+        }
+        for cell in allCells {
+            if cell.index != indexPath.row {
+                cell.hideCheck()
+            } else {
+                cell.showCheck()
             }
         }
     }

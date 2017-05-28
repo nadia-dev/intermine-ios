@@ -16,11 +16,21 @@ class SearchResult: NSObject {
     private var mineName: String?
     private var id: String?
     
-    init(withType: String?, fields: [String: AnyObject]?, mineName: String?, id: String?) {
+    init(withType: String?, fields: [String: AnyObject]?, mineName: String?, id: Int?) {
         self.type = withType
         self.fields = fields
         self.mineName = mineName
-        self.id = id
+        if let id = id {
+            self.id = "\(id)"
+        }
+    }
+    
+    func getMineName() -> String? {
+        return self.mineName
+    }
+    
+    func getId() -> String? {
+        return self.id
     }
     
     func viewableRepresentation() -> [String: String] {

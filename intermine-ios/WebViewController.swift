@@ -13,20 +13,33 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     
     @IBOutlet weak var webView: UIWebView?
     
-    // MARK: Load from storyboard
+    private var urlString: String?
     
-    class func webViewController() -> WebViewController? {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController
-        return vc
+    private var searchResult: SearchResult? {
+        didSet {
+            if let searchResult = self.searchResult,
+                let mineName = searchResult.getMineName(),
+                let id = searchResult.getId() {
+                if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName) {
+                    if let mineUrl = mine.url {
+                        let urlString = mineUrl + Endpoints.report + "?id=\(id)"
+                        if let url = NSURL(string: urlString) as URL? {
+                            let request = NSURLRequest(url: url)
+                            self.webView?.loadRequest(request as URLRequest)
+                        }
+                    }
+                }
+            }
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let url = NSURL(string: "http://www.mousemine.org/mousemine/report.do?id=12915318") as URL? {
-            let request = NSURLRequest(url: url)
-            self.webView?.loadRequest(request as URLRequest)
-        }
+    // MARK: Load from storyboard
+    
+    class func webViewController(withSearchResult: SearchResult) -> WebViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController
+        vc?.searchResult = withSearchResult
+        return vc
     }
 
     override func viewDidLoad() {

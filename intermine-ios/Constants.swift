@@ -19,6 +19,7 @@ struct Endpoints {
     static let modelReleased = "/service/version/release"
     static let singleList = "/service/query/results"
     static let search = "/service/search"
+    static let report = "/report.do"
 }
 
 struct General {
