@@ -38,7 +38,7 @@ class LoadingTableViewController: UITableViewController {
             self.view.addSubview(spinner)
             self.view.bringSubview(toFront: spinner)
         }
-        self.spinner?.startAnimating()
+        self.startSpinner()
     }
     
     func stopSpinner() {

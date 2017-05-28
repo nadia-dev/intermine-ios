@@ -31,3 +31,5 @@
 "Search.Header" = "Search term: %@";
 
 "Login.LoginButton" = "Login";
+
+"Webview.Loading.Error" = "Error loading. Please, try again later";
