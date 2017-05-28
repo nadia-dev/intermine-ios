@@ -14,6 +14,10 @@ extension String {
         return NSLocalizedString(key, comment: "")
     }
     
+    public static func localizeWithArg(_ key: String, arg: String) -> String {
+        return String(format: NSLocalizedString(key, comment: ""), arg)
+    }
+    
     static func findMatches(for regex: String, in text: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: regex)

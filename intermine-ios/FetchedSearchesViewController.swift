@@ -72,6 +72,13 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         AppManager.sharedManager.shouldBreakLoading = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let query = self.params?["query"] {
+            navigationItem.title = String.localizeWithArg("Search.Header", arg: query)
+        }
+    }
+    
     // MARK: Load from storyboard
     
     class func fetchedSearchesViewController(withParams: [String: String]?) -> FetchedSearchesViewController? {
@@ -88,7 +95,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = Colors.white
         self.navigationController?.navigationBar.backItem?.title = ""
-        self.navigationController?.navigationBar.topItem?.title = String.localize("Search.Search")
+        self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
     }
     

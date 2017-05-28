@@ -28,5 +28,6 @@
 "Search.Refine.NoSelection" = "None selected";
 "Search.SelectMine" = "Select mine";
 "Search.All" = "Search all mines";
+"Search.Header" = "Search term: %@";
 
 "Login.LoginButton" = "Login";
