@@ -9,11 +9,6 @@
 import Foundation
 import CoreData
 
-//@NSManaged public var type: String?
-//@NSManaged public var fields: NSObject?
-//@NSManaged public var mineName: String?
-//@NSManaged public var id: String?
-
 @objc(FavoriteSearchResult)
 public class FavoriteSearchResult: NSManagedObject {
     
