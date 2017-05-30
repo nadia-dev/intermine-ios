@@ -23,7 +23,9 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = Colors.white
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
-        
+    }
+    
+    func showMenuButton() {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         button.setImage(Icons.menu, for: .normal)

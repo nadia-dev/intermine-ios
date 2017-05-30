@@ -36,6 +36,16 @@ class BaseView: UIView {
         self.layoutIfNeeded()
     }
     
-    
+    class func animateView(view: UIView, animateIn: Bool) {
+        if animateIn {
+            UIView.animate(withDuration: General.viewAnimationSpeed, animations: {
+                view.alpha = 1.0
+            })
+        } else {
+            UIView.animate(withDuration: General.viewAnimationSpeed, animations: {
+                view.alpha = 0.0
+            })
+        }
+    }
 
 }

@@ -1033,6 +1033,22 @@
                                 <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2Q-wf-ErA">
+                                <rect key="frame" x="18" y="269" width="338.5" height="398"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="khk-e1-6uq">
+                                        <rect key="frame" x="117.5" y="147.5" width="103" height="103"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="khk-e1-6uq" secondAttribute="height" multiplier="1:1" id="cmE-AR-pSa"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="khk-e1-6uq" firstAttribute="centerX" secondItem="d2Q-wf-ErA" secondAttribute="centerX" id="G4q-it-6pS"/>
+                                    <constraint firstItem="khk-e1-6uq" firstAttribute="width" secondItem="d2Q-wf-ErA" secondAttribute="width" multiplier="0.3" constant="1" id="ISp-a5-fs2"/>
+                                    <constraint firstItem="khk-e1-6uq" firstAttribute="centerY" secondItem="d2Q-wf-ErA" secondAttribute="centerY" id="zvC-ql-Q4K"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vze-8B-4NV">
                                 <rect key="frame" x="18.5" y="306" width="338.5" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1090,14 +1106,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="d2Q-wf-ErA" secondAttribute="trailing" constant="2.5" id="45J-zF-1HJ"/>
                             <constraint firstItem="TlS-Kn-u6z" firstAttribute="centerX" secondItem="p1b-Bv-xrl" secondAttribute="centerX" id="DBs-Ee-NYy"/>
                             <constraint firstItem="kFl-R5-0Nw" firstAttribute="centerX" secondItem="p1b-Bv-xrl" secondAttribute="centerX" id="Fys-1P-Wdj"/>
                             <constraint firstItem="Vze-8B-4NV" firstAttribute="centerX" secondItem="p1b-Bv-xrl" secondAttribute="centerX" id="HUA-K7-sfU"/>
                             <constraint firstItem="2aQ-T8-Tb7" firstAttribute="centerX" secondItem="p1b-Bv-xrl" secondAttribute="centerX" id="HhO-xY-aZ9"/>
                             <constraint firstItem="Vze-8B-4NV" firstAttribute="width" secondItem="p1b-Bv-xrl" secondAttribute="width" multiplier="0.9" constant="1" id="JBm-OD-Vfb"/>
                             <constraint firstItem="2aQ-T8-Tb7" firstAttribute="top" secondItem="TlS-Kn-u6z" secondAttribute="bottom" constant="5" id="Pcz-q8-SsX"/>
+                            <constraint firstItem="d2Q-wf-ErA" firstAttribute="top" secondItem="kFl-R5-0Nw" secondAttribute="bottom" constant="-17" id="RCw-FT-4qQ"/>
                             <constraint firstItem="2aQ-T8-Tb7" firstAttribute="top" secondItem="MoI-g4-aZe" secondAttribute="bottom" constant="40" id="Wcl-KJ-idy"/>
+                            <constraint firstItem="hIc-HE-rTa" firstAttribute="top" secondItem="d2Q-wf-ErA" secondAttribute="bottom" id="aBm-bh-NjP"/>
                             <constraint firstItem="hIc-HE-rTa" firstAttribute="top" secondItem="Vze-8B-4NV" secondAttribute="bottom" id="afH-Va-mCV"/>
+                            <constraint firstItem="d2Q-wf-ErA" firstAttribute="leading" secondItem="p1b-Bv-xrl" secondAttribute="leadingMargin" constant="2" id="f0y-xa-7pb"/>
                             <constraint firstItem="Vze-8B-4NV" firstAttribute="top" secondItem="kFl-R5-0Nw" secondAttribute="bottom" constant="20" id="gXZ-n1-Www"/>
                             <constraint firstItem="Vze-8B-4NV" firstAttribute="top" secondItem="2aQ-T8-Tb7" secondAttribute="bottom" constant="30" id="o7f-yZ-vwV"/>
                         </constraints>
@@ -1107,11 +1127,12 @@
                         <outlet property="categoriesTable" destination="Vze-8B-4NV" id="5Zg-fj-nyR"/>
                         <outlet property="minesLabel" destination="TlS-Kn-u6z" id="kbu-dc-pKo"/>
                         <outlet property="minesPicker" destination="2aQ-T8-Tb7" id="Jlr-f6-a4C"/>
+                        <outlet property="placeholderImageView" destination="khk-e1-6uq" id="r9t-CC-f0F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ul-Zl-KMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="-2069"/>
+            <point key="canvasLocation" x="2317.5999999999999" y="-2069.4152923538231"/>
         </scene>
         <!--Item-->
         <scene sceneID="So6-Zc-PgF">
@@ -1119,7 +1140,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mcr-ju-Ezg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ar8-9P-eZg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BaB-xS-8FQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BaB-xS-8FQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1138,7 +1159,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j32-H2-83l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="eUP-8a-tDI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QvV-UY-Ywj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QvV-UY-Ywj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1157,7 +1178,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aYp-y7-dWo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="4XM-qf-aWt"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2pc-8l-Kix">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2pc-8l-Kix">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1176,7 +1197,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cDF-Te-Nyh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="RA3-0D-yey"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Px8-fX-sjl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Px8-fX-sjl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

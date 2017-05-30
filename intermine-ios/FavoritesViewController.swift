@@ -17,6 +17,7 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.setNavBarTitle(title: String.localize("Favorites.Title"))
+        super.showMenuButton()
         tableView?.dataSource = self
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.estimatedRowHeight = 140

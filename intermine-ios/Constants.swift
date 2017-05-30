@@ -30,6 +30,7 @@ struct General {
     static let baseVersion = "1.6.5"
     static let descriptionCharactersLimit = 120
     static let defaultMine = "YeastMine"
+    static let viewAnimationSpeed = 0.2
 }
 
 struct Icons {
@@ -43,6 +44,7 @@ struct Icons {
     static let check = UIImage.init(icon: .FACheck, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.tamarillo, backgroundColor: UIColor.clear)
     static let info = UIImage.init(icon: .FAInfo, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
     static let star = UIImage.init(icon: .FAStar, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
+    static let placeholder = UIImage.init(icon: .FAFile, size: CGSize(width: 500, height: 500), orientation: UIImageOrientation.up, textColor: Colors.gray, backgroundColor: UIColor.clear)
     
 }
 

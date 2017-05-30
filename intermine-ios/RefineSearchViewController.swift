@@ -50,12 +50,19 @@ protocol RefineSearchViewControllerDelegate: class {
 
 class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
+    
+    @IBOutlet weak var placeholderImageView: UIImageView?
+    
     private var mines: [String] = [String.localize("Search.Refine.NoSelection")]
     var allCells = Set<CategoryCell>()
     
     private var categories: [FormattedFacet]? {
         didSet {
-            self.categoriesTable?.reloadData()
+            if let catsTable = self.categoriesTable {
+                UIView.transition(with: catsTable, duration: General.viewAnimationSpeed, options: .transitionCrossDissolve, animations: {
+                    self.categoriesTable?.reloadData()
+                })
+            }
         }
     }
     
@@ -65,6 +72,13 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         didSet {
             if let selectedMine = self.selectedMine {
                 self.categories = self.getCategoriesForMine(mineName: selectedMine)
+                if let catsTable = self.categoriesTable {
+                    if selectedMine == String.localize("Search.Refine.NoSelection") {
+                        BaseView.animateView(view: catsTable, animateIn: false)
+                    } else {
+                        BaseView.animateView(view: catsTable, animateIn: true)
+                    }
+                }
             }
         }
     }
@@ -91,6 +105,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         categoriesTable?.dataSource = self
         minesPicker?.selectRow(self.getInitialSelectedRow(), inComponent: 0, animated: false)
         self.selectedMine = self.getInitialSelectedMine()
+        self.placeholderImageView?.image = Icons.placeholder
     }
     
     // MARK: Private methods
