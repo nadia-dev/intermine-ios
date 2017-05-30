@@ -12,7 +12,12 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView?
-    private let savedSearches: [FavoriteSearchResult]? = CacheDataStore.sharedCacheDataStore.getSavedSearchResults()
+    
+    private var savedSearches: [FavoriteSearchResult]? {
+        didSet {
+            self.tableView?.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,17 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource {
         tableView?.dataSource = self
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.estimatedRowHeight = 140
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateSavedSearches()
+    }
+    
+    // MARK: Private methods
+    
+    private func updateSavedSearches() {
+        self.savedSearches = CacheDataStore.sharedCacheDataStore.getSavedSearchResults()
     }
     
     // MARK: Table view data source

@@ -124,7 +124,6 @@ class CacheDataStore {
     
     func saveSearchResult(searchResult: SearchResult) {
         if let type = searchResult.getType(), let id = searchResult.getId(), let mineName = searchResult.getMineName() {
-            print("saving search")
             FavoriteSearchResult.createFavoriteSearchResult(type: type, fields: searchResult.viewableRepresentation() as NSDictionary, mineName: mineName, id: id, context: self.managedContext)
             save()
         }
