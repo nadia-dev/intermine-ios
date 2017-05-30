@@ -33,6 +33,10 @@ class SearchResult: NSObject {
         return self.id
     }
     
+    func getType() -> String? {
+        return self.type
+    }
+    
     func viewableRepresentation() -> [String: String] {
         var representation: [String: String] = [:]
         if let type = self.type {

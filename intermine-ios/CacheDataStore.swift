@@ -122,6 +122,17 @@ class CacheDataStore {
         return mineNames
     }
     
+    func saveSearchResult(searchResult: SearchResult) {
+        if let type = searchResult.getType(), let id = searchResult.getId(), let mineName = searchResult.getMineName() {
+            print("saving search")
+            FavoriteSearchResult.createFavoriteSearchResult(type: type, fields: searchResult.viewableRepresentation() as NSDictionary, mineName: mineName, id: id, context: self.managedContext)
+            save()
+        }
+    }
+    
+    func getSavedSearchResults() -> [FavoriteSearchResult]? {
+        return FavoriteSearchResult.getAllSavedSearches(context: self.managedContext)
+    }
     
     // MARK: Private methods
     
@@ -178,7 +189,7 @@ class CacheDataStore {
 
     
     private func updateMineModel(mineUrl: String) {
-        //FIXME: use versioning flag
+        //FIXME: use versioning flag?
         
         if let mine = Mine.getMineByUrl(url: mineUrl, context: self.managedContext), let mineName = mine.name {
             let fileName = mineName + ".xml"

@@ -60,8 +60,9 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
     }
     
     func didTapFavButton() {
-        // TODO: should add item to locally stored favs
-        
+        if let data = self.data {
+            CacheDataStore.sharedCacheDataStore.saveSearchResult(searchResult: data)
+        }
     }
     
     // MARK: Load from storyboard

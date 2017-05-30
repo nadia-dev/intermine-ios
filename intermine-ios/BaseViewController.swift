@@ -14,6 +14,29 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureNavBar()
+    }
+    
+    func configureNavBar() {
+        self.navigationController?.navigationBar.barTintColor = Colors.palma
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = Colors.white
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
+        
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.setImage(Icons.menu, for: .normal)
+        button.addTarget(self, action: #selector(BaseViewController.menuButtonPressed), for: .touchUpInside)
+        button.tintColor = Colors.white
+        let barButton = UIBarButtonItem()
+        barButton.customView = button
+        
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+    
+    func setNavBarTitle(title: String) {
+        self.navigationController?.navigationBar.topItem?.title = title
     }
     
     func menuButtonPressed() {

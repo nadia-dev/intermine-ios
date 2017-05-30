@@ -16,7 +16,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavBar()
+        super.setNavBarTitle(title: String.localize("Search.All"))
         self.descriptionLabel?.text = String.localize("Search.AppDescription")
         self.searchBar?.placeholder = String.localize("Search.Placeholder")
         self.searchBar?.delegate = self
@@ -46,25 +46,6 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
             params["query"] = ""
         }
         return params
-    }
-    
-    
-    private func configureNavBar() {
-        self.navigationController?.navigationBar.barTintColor = Colors.palma
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = Colors.white
-        self.navigationController?.navigationBar.topItem?.title = String.localize("Search.All")
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
-        
-        let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        button.setImage(Icons.menu, for: .normal)
-        button.addTarget(self, action: #selector(SearchViewController.menuButtonPressed), for: .touchUpInside)
-        button.tintColor = Colors.white
-        let barButton = UIBarButtonItem()
-        barButton.customView = button
-        
-        self.navigationItem.leftBarButtonItem = barButton
     }
 
 }
