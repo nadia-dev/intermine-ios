@@ -17,7 +17,9 @@ class LoadingTableViewController: UITableViewController {
     
     var mineUrl: String? {
         didSet {
-            self.configureNavBar()
+            if let url = self.mineUrl, let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: url) {
+                self.configureNavBar(mine: mine)
+            }
         }
     }
 
@@ -42,6 +44,22 @@ class LoadingTableViewController: UITableViewController {
         self.startSpinner()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.mineSelected(_:)), name: NSNotification.Name(rawValue: Notifications.mineSelected), object: nil)
+    }
+
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func mineSelected(_ notification: NSNotification) {
+        // To override
+        print("super")
+    }
+    
+
     func stopSpinner() {
         self.spinner?.stopAnimating()
     }
@@ -69,27 +87,22 @@ class LoadingTableViewController: UITableViewController {
         }
     }
     
-    private func configureNavBar() {
-        guard let url = self.mineUrl else {
-            return
-        }
-        if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: url) {
-            self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: mine.theme)
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.navigationController?.navigationBar.tintColor = Colors.white
-            self.navigationController?.navigationBar.topItem?.title = mine.name
-            self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
-            
-            let button = UIButton()
-            button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            button.setImage(Icons.menu, for: .normal)
-            button.addTarget(self, action: #selector(LoadingTableViewController.menuButtonPressed), for: .touchUpInside)
-            button.tintColor = Colors.white
-            let barButton = UIBarButtonItem()
-            barButton.customView = button
-            
-            self.navigationItem.leftBarButtonItem = barButton
-        }
+    func configureNavBar(mine: Mine) {
+        self.navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: mine.theme)
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = Colors.white
+        self.navigationController?.navigationBar.topItem?.title = mine.name
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
+        
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.setImage(Icons.menu, for: .normal)
+        button.addTarget(self, action: #selector(LoadingTableViewController.menuButtonPressed), for: .touchUpInside)
+        button.tintColor = Colors.white
+        let barButton = UIBarButtonItem()
+        barButton.customView = button
+        
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
     func menuButtonPressed() {

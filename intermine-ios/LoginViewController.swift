@@ -46,7 +46,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         if let mineUrl = self.mineUrl, let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl), let mineName = mine.name {
             loggedInLabel?.text = String.localizeWithArg("Login.Loggedin", arg: mineName)
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +63,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func configureNavBar() {
+        print("conf")
         let selectedMine = AppManager.sharedManager.selectedMine
         if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: selectedMine) {
             
@@ -86,7 +86,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             self.navigationItem.leftBarButtonItem = barButton
         }
     }
-    
+   
     // MARK: Private methods
     
     private func showLoggedinState(isLogged: Bool) {
