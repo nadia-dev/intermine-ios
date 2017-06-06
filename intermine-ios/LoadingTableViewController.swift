@@ -13,6 +13,7 @@ class LoadingTableViewController: UITableViewController {
     
     private var spinner: NVActivityIndicatorView?
     private var nothingFoundView: BaseView? = nil
+    let interactor = Interactor()
     
     var mineUrl: String? {
         didSet {
@@ -92,8 +93,11 @@ class LoadingTableViewController: UITableViewController {
     }
     
     func menuButtonPressed() {
-        print("tapped")
-        // TODO: implement sliding menu
+        if let menuVC = MenuViewController.menuViewController() {
+            menuVC.transitioningDelegate = self
+            menuVC.interactor = interactor
+            present(menuVC, animated: true, completion: nil)
+        }
     }
     
     func processHeaderArray(headerArray: NSArray) -> [String] {
@@ -142,3 +146,22 @@ class LoadingTableViewController: UITableViewController {
         return 0
     }
 }
+
+extension LoadingTableViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentMenuAnimator()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissMenuAnimator()
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
+    }
+}
+

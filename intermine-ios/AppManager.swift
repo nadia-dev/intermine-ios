@@ -19,6 +19,8 @@ class AppManager {
     
     var shouldBreakLoading = false
     
+    var token: String? = DefaultsManager.fetchFromDefaults(key: DefaultsKeys.token)
+    
     // MARK: Shared Instance
     
     static let sharedManager : AppManager = {
@@ -38,6 +40,10 @@ class AppManager {
         } else {
             self.selectMine(mineName: General.defaultMine)
         }
+    }
+    
+    func updateToken() {
+        self.token = DefaultsManager.fetchFromDefaults(key: DefaultsKeys.token)
     }
 }
 
