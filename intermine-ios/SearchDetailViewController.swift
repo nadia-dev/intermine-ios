@@ -48,7 +48,7 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
     
     private func addNavbarButtons() {
         let infoButton = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
-        let favButton = UIBarButtonItem(image: Icons.star,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapFavButton))
+        let favButton = UIBarButtonItem(image: Icons.bookmark,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapFavButton))
         navigationItem.rightBarButtonItems = [infoButton, favButton]
     }
     

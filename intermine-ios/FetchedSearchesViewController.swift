@@ -69,7 +69,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        AppManager.sharedManager.shouldBreakLoading = false
+        self.lockData = true
+        
+        if (self.isMovingFromParentViewController || self.isBeingDismissed) {
+            self.data = []
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,10 +131,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.params?["facet_Category"] = selectedFacet.getFacetName()
         self.params?["size"] = "\(General.pageSize)"
         self.params?["start"] = "\(offset)"
-
+        
         if let mineName = selectedFacet.getMineName(), let params = self.params {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName), let mineUrl = mine.url {
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList) in
+                    
                     if let res = searchRes {
                         self.data.append(res)
                     }
@@ -144,10 +149,10 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     func refineSearchViewController(controller: RefineSearchViewController, didSelectFacet: SelectedFacet) {
         // reload table view with new data
         self.selectedFacet = didSelectFacet
-        self.data = []
+        self.hideNothingFoundView()
         self.lockData = true
         self.startSpinner()
-        //IntermineAPIClient.cancelAllRequests()
+        self.data = []
         self.loadRefinedSearchWithOffset(offset: self.currentOffset, selectedFacet: didSelectFacet)
     }
     

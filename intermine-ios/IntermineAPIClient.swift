@@ -85,7 +85,9 @@ class IntermineAPIClient: NSObject {
     // MARK: Public methods
     
     class func cancelAllRequests() {
-        manager.session.invalidateAndCancel()
+        manager.session.getAllTasks { tasks in
+            tasks.forEach { $0.cancel() }
+        }
     }
     
     class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?) -> ()) {
@@ -138,11 +140,10 @@ class IntermineAPIClient: NSObject {
         for mine in registry {
             currentMineCount += 1
             if let mineUrl = mine.url {
-                if AppManager.sharedManager.shouldBreakLoading {
-                    break
-                }
+                
+                
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchResObj, facetList) in
-                    //
+                    
                     if let resObj = searchResObj {
                         results.append(resObj)
                     }
