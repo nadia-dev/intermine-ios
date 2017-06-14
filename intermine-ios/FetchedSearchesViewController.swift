@@ -63,8 +63,8 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.loadSearchResultsWithOffset(offset: self.currentOffset)
         refineButton?.setTitle(String.localize("Search.Refine"), for: .normal)
         buttonView?.isHidden = true
-        mineLabel?.text = String.localize("Search.Refine.NoSelection")
-        categoryLabel?.text = String.localize("Search.Refine.NoSelection")
+        mineLabel?.text = String.localize("Search.Refine.AllMines")
+        categoryLabel?.text = String.localize("Search.Refine.AllCategories")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
