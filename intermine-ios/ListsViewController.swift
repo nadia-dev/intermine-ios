@@ -37,7 +37,7 @@ class ListsViewController: LoadingTableViewController {
         self.hideNothingFoundLabel()
         if let mineName = notification.userInfo?["mineName"] as? String {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName) {
-                self.configureNavBar(mine: mine)
+                self.configureNavBar(mine: mine, shouldShowMenuButton: true)
                 if let mineUrl = mine.url {
                     self.mineUrl = mineUrl
                     self.fetchLists(mineUrl: mineUrl)
