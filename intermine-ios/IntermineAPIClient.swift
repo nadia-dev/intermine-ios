@@ -17,7 +17,7 @@ class IntermineAPIClient: NSObject {
     // MARK: Private methods
     
     private class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, completion: @escaping (_ result: [String: AnyObject]?) -> ()) {
-        manager.session.configuration.timeoutIntervalForRequest = 120
+        manager.session.configuration.timeoutIntervalForRequest = 30
         let updatedParams = IntermineAPIClient.updateParamsWithAuth(params: params)
         manager.request(url, method: method, parameters: updatedParams)
             .responseJSON {

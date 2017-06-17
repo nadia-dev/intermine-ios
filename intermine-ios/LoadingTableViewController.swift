@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 class LoadingTableViewController: UITableViewController {
     
     private var spinner: NVActivityIndicatorView?
-    private var nothingFoundView: BaseView? = nil
+    private var nothingFoundView: TableCoverView? = nil
     let interactor = Interactor()
     
     var mineUrl: String? {
@@ -70,10 +70,19 @@ class LoadingTableViewController: UITableViewController {
     
     func showNothingFoundView() {
         self.nothingFoundView?.isHidden = false
+        self.showNothingFoundLabel()
     }
     
     func hideNothingFoundView() {
         self.nothingFoundView?.isHidden = true
+    }
+    
+    func hideNothingFoundLabel() {
+        self.nothingFoundView?.messageLabel?.isHidden = true
+    }
+    
+    func showNothingFoundLabel() {
+        self.nothingFoundView?.messageLabel?.isHidden = false
     }
     
     private func indicatorFrame() -> CGRect {
