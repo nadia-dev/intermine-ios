@@ -15,8 +15,8 @@ struct Endpoints {
     static let templates = "/service/templates"
     static let tokens = "/service/user/token"
     static let templateResults = "/service/template/results"
-    static let intermineVersion = "/service/version/intermine"
-    static let modelReleased = "/service/version/release"
+    static let intermineVersion = "/service/version/intermine" // version of the intermine software
+    static let modelReleased = "/service/version/release" // version of the data *inside* the intermine
     static let singleList = "/service/query/results"
     static let search = "/service/search"
     static let report = "/report.do"
