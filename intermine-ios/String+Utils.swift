@@ -34,6 +34,13 @@ extension String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
+    func isEqualTo(comparedTo: String?) -> Bool {
+        if comparedTo != nil {
+            return self == comparedTo
+        }
+        return false
+    }
+
     func isAboveVersion(version: String) -> Bool {
         
         // compares versions with format x.x.x

@@ -82,6 +82,35 @@ class IntermineAPIClient: NSObject {
         return params
     }
     
+    private class func fetchIntermineVersion(mineUrl: String, completion: @escaping (_ result: String?) -> ()) {
+        // TODO: - remove method if not needed
+        let url = mineUrl + Endpoints.intermineVersion
+        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams) { (result) in
+            if let result = result {
+                if let versionString = result["version"] {
+                    completion("\(versionString)")
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    private class func fetchReleaseId(mineUrl: String, completion: @escaping (_ result: String?) -> ()) {
+        let url = mineUrl + Endpoints.modelReleased
+        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams) { (result) in
+            if let result = result {
+                if let releaseString = result["version"] {
+                    completion("\(releaseString)")
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
     // MARK: Public methods
     
     class func cancelAllRequests() {
@@ -188,32 +217,10 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func fetchIntermineVersion(mineUrl: String, completion: @escaping (_ result: String?) -> ()) {
-        let url = mineUrl + Endpoints.intermineVersion
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams) { (result) in
-            if let result = result {
-                if let versionString = result["version"] as? String {
-                    completion(versionString)
-                }
-            } else {
-                completion(nil)
-            }
-        }
-    }
-    
-    class func fetchReleaseDate(mineUrl: String, completion: @escaping (_ result: String?) -> ()) {
-        let url = mineUrl + Endpoints.modelReleased
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams) { (result) in
-            if let result = result {
-                if let releaseString = result["version"] as? String {
-                    completion(releaseString)
-                } else {
-                    completion(nil)
-                }
-            } else {
-                completion(nil)
-            }
-            
+    class func fetchVersioning(mineUrl: String, completion: @escaping (_ releaseId: String?) -> ()) {
+        // TODO: - check do I need to use version id or release id will change when version id changes?
+        IntermineAPIClient.fetchReleaseId(mineUrl: mineUrl) { (releaseId) in
+            completion(releaseId)
         }
     }
     
@@ -245,7 +252,6 @@ class IntermineAPIClient: NSObject {
                 completion(nil)
             }
         }
-        
     }
     
     class func fetchTemplates(mineUrl: String, completion: @escaping (_ result: TemplatesList?) -> ()) {
