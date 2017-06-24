@@ -188,7 +188,7 @@ class CacheDataStore {
                 if let xmlString = xmlString as String? {
                     FileHandler.writeToFile(fileName: fileName, contents: xmlString)
                     IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId) in
-                        MineModel.createMineModel(url: mineUrl, releaseId: releaseId, xmlFile: xmlString, versionId: nil, context: self.managedContext)
+                        MineModel.createMineModel(url: mineUrl, releaseId: releaseId, xmlFile: fileName, versionId: nil, context: self.managedContext)
                         self.save()
                     })
                 }
