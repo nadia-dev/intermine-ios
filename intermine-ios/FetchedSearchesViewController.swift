@@ -121,6 +121,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     // To later show facets on refine search VC
                     if !self.lockData {
                         self.facets = facets
+                        print(self.facets?.count)
                     }
                 }
             }
