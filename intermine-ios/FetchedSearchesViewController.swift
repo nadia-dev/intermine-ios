@@ -20,10 +20,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     private var facets: [FacetList]? {
         didSet {
-            // TODO: add user info w/facet names
-            // so that refine search vc could use it
             if let facets = self.facets {
-                var info: [String: [String]] = [:]
                 var mineNames: [String] = []
                 for facet in facets {
                     if let name = facet.getMine() {
@@ -32,7 +29,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                         }
                     }
                 }
-                info = ["facetNames": mineNames]
             }
 
         }
