@@ -17,7 +17,26 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     private var currentOffset: Int = 0
     private var params: [String: String]?
-    private var facets: [FacetList]?
+    
+    private var facets: [FacetList]? {
+        didSet {
+            // TODO: add user info w/facet names
+            // so that refine search vc could use it
+            if let facets = self.facets {
+                var info: [String: [String]] = [:]
+                var mineNames: [String] = []
+                for facet in facets {
+                    if let name = facet.getMine() {
+                        if !(mineNames.contains(name)) {
+                            mineNames.append(name)
+                        }
+                    }
+                }
+                info = ["facetNames": mineNames]
+            }
+
+        }
+    }
     
     private var lockData = false {
         didSet {
@@ -41,6 +60,14 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     private var data: [SearchResult] = [] {
         didSet {
+
+            self.data = self.data.sorted(by: { (searchResult0, searchResult1) -> Bool in
+                guard let name0 = searchResult0.mineName, let name1 = searchResult1.mineName else {
+                    return false
+                }
+                return name0 < name1
+            })
+            
             self.tableView.reloadData()
             if data.count > 0 {
                 self.hideNothingFoundView()
@@ -121,7 +148,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     // To later show facets on refine search VC
                     if !self.lockData {
                         self.facets = facets
-                        print(self.facets?.count)
                     }
                 }
             }

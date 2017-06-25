@@ -9,10 +9,33 @@
 import Foundation
 import Alamofire
 
+class Counter: NSObject {
+    
+    private var currentMineCount = 0
+    
+    override init() {
+        super.init()
+        self.currentMineCount = 0
+    }
+    
+    func incrementMineCount() {
+        self.currentMineCount += 1
+    }
+    
+    func resetMineCount() {
+        self.currentMineCount = 0
+    }
+    
+    func getCurrentMineCount() -> Int {
+        return self.currentMineCount
+    }
+}
+
 class IntermineAPIClient: NSObject {
     
     static let jsonParams = ["format": "json"]
     static let manager = Alamofire.SessionManager.default
+    static let counter = Counter()
     
     // MARK: Private methods
     
@@ -145,10 +168,13 @@ class IntermineAPIClient: NSObject {
                 }
                 
                 if let result = res["results"] as? [[String: AnyObject]] {
+                    
                     for r in result {
                         if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl) {
+                            
                             if let mineName = mine.name {
                                 let resObj = SearchResult(withType: r["type"] as? String, fields: r["fields"] as? [String: AnyObject], mineName: mineName, id: r["id"] as? Int)
+                                
                                 completion(resObj, facetList)
                             }
                         }
@@ -171,12 +197,14 @@ class IntermineAPIClient: NSObject {
         var results: [SearchResult] = []
         var facetLists: [FacetList] = []
         let totalMineCount = CacheDataStore.sharedCacheDataStore.registrySize()
-        var currentMineCount = 0
+
         for mine in registry {
-            currentMineCount += 1
+            
             if let mineUrl = mine.url {
                 
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchResObj, facetList) in
+                    
+                    IntermineAPIClient.counter.incrementMineCount()
                     
                     if let resObj = searchResObj {
                         results.append(resObj)
@@ -186,8 +214,8 @@ class IntermineAPIClient: NSObject {
                         facetLists.append(facetList)
                     }
 
-                    if currentMineCount == totalMineCount {
-                        print("completion called")
+                    if IntermineAPIClient.counter.getCurrentMineCount() == totalMineCount {
+                        IntermineAPIClient.counter.resetMineCount()
                         completion(results, facetLists)
                     }
                 })
