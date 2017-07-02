@@ -100,12 +100,12 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource, Fav
     // MARK: - FavoriteButtonDelegate
     
     func didTapFavoriteButton(favoriteButton: FavoriteButton) {
-        guard let searchResult = self.data else {
+        guard let searchResult = self.data, let searchId = searchResult.getId() else {
             return
         }
         
         if searchResult.isFavorited() {
-            CacheDataStore.sharedCacheDataStore.unsaveSearchResult(searchResult: searchResult)
+            CacheDataStore.sharedCacheDataStore.unsaveSearchResult(withId: searchId)
         } else {
             CacheDataStore.sharedCacheDataStore.saveSearchResult(searchResult: searchResult)
         }
