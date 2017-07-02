@@ -29,7 +29,7 @@ class SearchCell: UITableViewCell {
     
 }
 
-class SearchDetailViewController: BaseViewController, UITableViewDataSource {
+class SearchDetailViewController: BaseViewController, UITableViewDataSource, FavoriteButtonDelegate {
     
     @IBOutlet weak var tableView: UITableView?
     
@@ -50,9 +50,10 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
         let infoButton = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
         
         if let data = self.data {
-            let favView = FavoriteButton(isFavorite: data.isFavorited())
-            let favButton = UIBarButtonItem(customView: favView)
-            navigationItem.rightBarButtonItems = [infoButton, favButton]
+            let favButton = FavoriteButton(isFavorite: data.isFavorited())
+            favButton.delegate = self
+            let favBarButton = UIBarButtonItem(customView: favButton)
+            navigationItem.rightBarButtonItems = [infoButton, favBarButton]
         }
     }
     
@@ -94,6 +95,20 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
         cell.key = key
         cell.value = self.data?.viewableRepresentation()[key]
         return cell
+    }
+    
+    // MARK: - FavoriteButtonDelegate
+    
+    func didTapFavoriteButton(favoriteButton: FavoriteButton) {
+        guard let searchResult = self.data else {
+            return
+        }
+        
+        if searchResult.isFavorited() {
+            CacheDataStore.sharedCacheDataStore.unsaveSearchResult(searchResult: searchResult)
+        } else {
+            CacheDataStore.sharedCacheDataStore.saveSearchResult(searchResult: searchResult)
+        }
     }
 
 }

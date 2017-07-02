@@ -130,7 +130,9 @@ class CacheDataStore {
     }
     
     func unsaveSearchResult(searchResult: SearchResult) {
-        
+        if let id = searchResult.getId(), let searchResult = getSavedSearchById(id: id) {
+            delete(obj: searchResult)
+        }
     }
     
     func getSavedSearchResults() -> [FavoriteSearchResult]? {
