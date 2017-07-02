@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol FavoriteButtonDelegate: class {
+    func didTapFavoriteButton(favoriteButton: FavoriteButton)
+}
+
 class FavoriteButton: UIButton {
     
     private let selectedImage: UIImage = Icons.bookmark
     private let deselectedImage: UIImage = Icons.bookmarkEmpty
+    
+    weak var delegate: FavoriteButtonDelegate?
     
     private var isFavorite: Bool {
         didSet {
@@ -28,14 +34,14 @@ class FavoriteButton: UIButton {
     }
     
     override init(frame: CGRect) {
-        self.isFavorite = false
+        isFavorite = false
         super.init(frame: frame)
         self.addTarget(self, action: #selector(FavoriteButton.tapped), for: .touchUpInside)
     }
     
     convenience init(isFavorite: Bool) {
         self.init(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
-        self.changeSelectedState(isFavorite: isFavorite)
+        changeSelectedState(isFavorite: isFavorite)
     }
 
     func changeSelectedState(isFavorite: Bool) {
@@ -43,7 +49,8 @@ class FavoriteButton: UIButton {
     }
     
     func tapped() {
-        print ("tapped")
+        isFavorite = !isFavorite
+        self.delegate?.didTapFavoriteButton(favoriteButton: self)
     }
 
 }
