@@ -129,8 +129,16 @@ class CacheDataStore {
         }
     }
     
+    func unsaveSearchResult(searchResult: SearchResult) {
+        
+    }
+    
     func getSavedSearchResults() -> [FavoriteSearchResult]? {
         return FavoriteSearchResult.getAllSavedSearches(context: self.managedContext)
+    }
+    
+    func getSavedSearchById(id: String) -> FavoriteSearchResult? {
+        return FavoriteSearchResult.getFavoriteSearchResultById(id: id, context: self.managedContext)
     }
     
     // MARK: Private methods

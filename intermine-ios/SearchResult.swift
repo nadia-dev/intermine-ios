@@ -53,5 +53,13 @@ class SearchResult: NSObject {
         return representation
     }
     
+    func isFavorited() -> Bool {
+        if let id = self.id {
+            if CacheDataStore.sharedCacheDataStore.getSavedSearchById(id: id) != nil {
+                return true
+            }
+        }
+        return false
+    }
     
 }

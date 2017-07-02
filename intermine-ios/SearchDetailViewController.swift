@@ -49,15 +49,11 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
     private func addNavbarButtons() {
         let infoButton = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
         
-        // TODO: fav button should be empty button if search is not favorited, should be full if search
-        // is favorited
-        
-        
-        let favButtonEmpty = UIBarButtonItem(image: Icons.bookmarkEmpty,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapFavEmptyButton))
-        
-        let favButton = UIBarButtonItem(image: Icons.bookmark,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapFavButton))
-        
-        navigationItem.rightBarButtonItems = [infoButton, favButton]
+        if let data = self.data {
+            let favView = FavoriteButton(isFavorite: data.isFavorited())
+            let favButton = UIBarButtonItem(customView: favView)
+            navigationItem.rightBarButtonItems = [infoButton, favButton]
+        }
     }
     
     func didTapInfoButton() {
@@ -66,19 +62,6 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource {
             self.navigationController?.pushViewController(webVC, animated: true)
         }
     }
-    
-    func didTapFavButton() {
-        if let data = self.data {
-            CacheDataStore.sharedCacheDataStore.saveSearchResult(searchResult: data)
-        }
-    }
-    
-    func didTapFavEmptyButton() {
-        if let data = self.data {
-            CacheDataStore.sharedCacheDataStore.saveSearchResult(searchResult: data)
-        }
-    }
-
     
     // MARK: Load from storyboard
     
