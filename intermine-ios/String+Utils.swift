@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     
@@ -30,6 +31,21 @@ extension String {
         }
     }
     
+    static func formStringWithBoldText(boldText: String, separatorText: String, normalText: String) -> NSMutableAttributedString {
+        let attributedString = String.makeBold(text: boldText.capitalized)
+        let separator = NSMutableAttributedString(string: separatorText)
+        let normal = NSMutableAttributedString(string: normalText.capitalized)
+        attributedString.append(separator)
+        attributedString.append(normal)
+        return attributedString
+    }
+    
+    static func makeBold(text: String) -> NSMutableAttributedString {
+        let boldAttrs = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)]
+        return NSMutableAttributedString(string: text, attributes: boldAttrs)
+    }
+
+    
     func trim() -> String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
@@ -40,9 +56,11 @@ extension String {
         }
         return false
     }
+    
 
     func isAboveVersion(version: String) -> Bool {
         
+        // TODO: - to remove if not used
         // compares versions with format x.x.x
         // "1.7.1".isAboveVersion(version: "1.6.6") -> True
         // "1.6.6".isAboveVersion(version: "1.7.1") -> False

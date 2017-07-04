@@ -30,7 +30,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     }
                 }
             }
-
         }
     }
     
@@ -50,9 +49,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
             }
         }
     }
-    
-    // TODO: Make thread save array
-    // When loading refined search, self.data only written from refine search calls
     
     private var data: [SearchResult] = [] {
         didSet {
