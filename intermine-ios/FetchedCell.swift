@@ -51,7 +51,8 @@ class FetchedCell: UITableViewCell {
                     typeString.append(currentSting)
                     
                 } else {
-                    let currentString = String.formStringWithBoldText(boldText: key, separatorText: ": ", normalText: value)
+                    
+                    let currentString = String.formStringWithBoldText(boldText: key.camelCaseToWords().replacingOccurrences(of: ".", with: " "), separatorText: ": ", normalText: value)
                     if gen != representedData.count {
                         currentString.append(newline)
                     }

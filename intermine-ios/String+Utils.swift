@@ -57,6 +57,16 @@ extension String {
         return false
     }
     
+    func camelCaseToWords() -> String {
+        
+        return unicodeScalars.reduce("") {
+            if CharacterSet.uppercaseLetters.contains($1) == true {
+                return ($0 + " " + String($1))
+            } else {
+                return $0 + String($1)
+            }
+        }
+    }
 
     func isAboveVersion(version: String) -> Bool {
         
