@@ -46,7 +46,7 @@ class FetchedTemplatesHeaderCell: UITableViewCell {
     
 }
 
-class FetchedTemplatesViewController: LoadingTableViewController {
+class FetchedTemplatesViewController: LoadingTableViewController, UISearchResultsUpdating {
 
     var params: [String: String]?
     var summaryCell: FetchedTemplatesHeaderCell?
@@ -87,6 +87,12 @@ class FetchedTemplatesViewController: LoadingTableViewController {
                 }
             })
         }
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     // MARK: Load from storyboard
@@ -169,6 +175,13 @@ class FetchedTemplatesViewController: LoadingTableViewController {
                 self.loadTemplateResultsWithOffset(offset: self.currentOffset)
             }
         }
+    }
+    
+    // MARK: UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //
+        print("update search res")
     }
 
 }
