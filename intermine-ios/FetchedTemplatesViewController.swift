@@ -9,26 +9,55 @@
 import UIKit
 import NVActivityIndicatorView
 
-class FetchedTemplatesViewController: LoadingTableViewController {
-    
-    var params: [String: String]?
+class FetchedTemplatesHeaderCell: UITableViewCell {
     
     @IBOutlet weak var paramsLabel: UILabel?
     @IBOutlet weak var countLabel: UILabel?
     
+    static let identifier = "FetchedTemplatesHeaderCell"
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        countLabel?.alpha = 0.0
+        paramsLabel?.alpha = 0.0
+    }
+    
+    var params: String? {
+        didSet {
+            if let params = self.params {
+                paramsLabel?.text = String.localizeWithArg("Templates.Params", arg: params)
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.paramsLabel?.alpha = 1.0
+                })
+            }
+        }
+    }
+    
+    var templatesCount: Int? {
+        didSet {
+            if let count = self.templatesCount {
+                countLabel?.text = String.localizeWithArg("Templates.CountLabel", arg: "\(count)")
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.countLabel?.alpha = 1.0
+                })
+            }
+        }
+    }
+    
+}
+
+class FetchedTemplatesViewController: LoadingTableViewController {
+
+    var params: [String: String]?
+    var summaryCell: FetchedTemplatesHeaderCell?
+    let searchController = UISearchController(searchResultsController: nil)
+
     private var templatesCount: Int? {
         didSet {
             if self.templatesCount == 0 {
                 self.showNothingFoundView()
             } else {
-                if let count = self.templatesCount, let params = self.templateParams() {
-                    countLabel?.text = String.localizeWithArg("Templates.CountLabel", arg: "\(count)")
-                    paramsLabel?.text = String.localizeWithArg("Templates.Params", arg: params)
-                    UIView.animate(withDuration: 0.2, animations: { 
-                        self.countLabel?.alpha = 1.0
-                        self.paramsLabel?.alpha = 1.0
-                    })
-                }
+                self.summaryCell?.templatesCount = self.templatesCount
             }
         }
     }
@@ -50,9 +79,7 @@ class FetchedTemplatesViewController: LoadingTableViewController {
         super.viewDidLoad()
         self.hideMenuButton = true
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
-        countLabel?.alpha = 0.0
-        paramsLabel?.alpha = 0.0
-        
+
         if let mineUrl = self.mineUrl, let params = self.params {
             IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res) in
                 if let countString = res, let count = Int(countString.trim()) {
@@ -103,6 +130,10 @@ class FetchedTemplatesViewController: LoadingTableViewController {
         }
     }
     
+    private func filterTemplatesForSearchText(searchText: String) {
+        print ("here goes filtering")
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,9 +145,17 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
-        cell.representedData = templates[indexPath.row]
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FetchedTemplatesHeaderCell.identifier, for: indexPath) as! FetchedTemplatesHeaderCell
+            cell.templatesCount = self.templatesCount
+            cell.params = self.templateParams()
+            self.summaryCell = cell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
+            cell.representedData = templates[indexPath.row]
+            return cell
+        }
     }
     
     // MARK: Scroll view delegate
