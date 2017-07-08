@@ -31,6 +31,22 @@ extension String {
         }
     }
     
+    func slice(from: String, to: String) -> String? {
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                substring(with: substringFrom..<substringTo)
+            }
+        }
+    }
+    
+    func index(of string: String, options: CompareOptions = .literal) -> Index? {
+        return range(of: string, options: options)?.lowerBound
+    }
+    
+    func endIndex(of string: String, options: CompareOptions = .literal) -> Index? {
+        return range(of: string, options: options)?.upperBound
+    }
+    
     static func formStringWithBoldText(boldText: String, separatorText: String, normalText: String) -> NSMutableAttributedString {
         let attributedString = String.makeBold(text: boldText.capitalized)
         let separator = NSMutableAttributedString(string: separatorText)
@@ -58,7 +74,6 @@ extension String {
     }
     
     func camelCaseToWords() -> String {
-        
         return unicodeScalars.reduce("") {
             if CharacterSet.uppercaseLetters.contains($1) == true {
                 return ($0 + " " + String($1))
@@ -66,6 +81,14 @@ extension String {
                 return $0 + String($1)
             }
         }
+    }
+    
+    func nsRange(fromRange range: Range<Index>) -> NSRange {
+        let from = range.lowerBound
+        let to = range.upperBound
+        let location = characters.distance(from: startIndex, to: from)
+        let length = characters.distance(from: from, to: to)
+        return NSRange(location: location, length: length)
     }
 
     func isAboveVersion(version: String) -> Bool {
