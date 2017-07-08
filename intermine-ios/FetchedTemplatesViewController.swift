@@ -13,10 +13,22 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     
     var params: [String: String]?
     
+    @IBOutlet weak var paramsLabel: UILabel?
+    @IBOutlet weak var countLabel: UILabel?
+    
     private var templatesCount: Int? {
         didSet {
             if self.templatesCount == 0 {
                 self.showNothingFoundView()
+            } else {
+                if let count = self.templatesCount, let params = self.templateParams() {
+                    countLabel?.text = String.localizeWithArg("Templates.CountLabel", arg: "\(count)")
+                    paramsLabel?.text = String.localizeWithArg("Templates.Params", arg: params)
+                    UIView.animate(withDuration: 0.2, animations: { 
+                        self.countLabel?.alpha = 1.0
+                        self.paramsLabel?.alpha = 1.0
+                    })
+                }
             }
         }
     }
@@ -38,6 +50,8 @@ class FetchedTemplatesViewController: LoadingTableViewController {
         super.viewDidLoad()
         self.hideMenuButton = true
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
+        countLabel?.alpha = 0.0
+        paramsLabel?.alpha = 0.0
         
         if let mineUrl = self.mineUrl, let params = self.params {
             IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res) in
@@ -59,6 +73,22 @@ class FetchedTemplatesViewController: LoadingTableViewController {
     }
     
     // MARK: Private methods
+    
+    private func templateParams() -> String? {
+        guard let params = self.params else {
+            return nil
+        }
+        var searchValues: [String] = []
+        let keys = params.keys
+        for key in keys {
+            if key.hasPrefix("value") {
+                if let value = params[key] {
+                    searchValues.append(value)
+                }
+            }
+        }
+        return searchValues.joined(separator: ", ")
+    }
     
     private func loadTemplateResultsWithOffset(offset: Int) {
         if let mineUrl = self.mineUrl, let params = self.params {
