@@ -50,7 +50,7 @@ extension String {
     static func formStringWithBoldText(boldText: String, separatorText: String, normalText: String) -> NSMutableAttributedString {
         let attributedString = String.makeBold(text: boldText.capitalized)
         let separator = NSMutableAttributedString(string: separatorText)
-        let normal = NSMutableAttributedString(string: normalText.capitalized)
+        let normal = NSMutableAttributedString(string: normalText)
         attributedString.append(separator)
         attributedString.append(normal)
         return attributedString

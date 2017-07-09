@@ -31,6 +31,7 @@ struct General {
     static let descriptionCharactersLimit = 120
     static let defaultMine = "YeastMine"
     static let viewAnimationSpeed = 0.2
+    static let nullValues = ["<null>", "NULL", "-"]
 }
 
 struct Icons {

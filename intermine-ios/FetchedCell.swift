@@ -37,8 +37,7 @@ class FetchedCell: UITableViewCell {
         var gen = 0
         for (key, value) in representedData {
             gen += 1
-            if value != "<null>" {
-                
+            if !General.nullValues.contains(value) {
                 if (key == "mine") {
                     let currentString = String.makeBold(text: value)
                     currentString.append(newline)
@@ -51,12 +50,17 @@ class FetchedCell: UITableViewCell {
                     typeString.append(currentSting)
                     
                 } else {
-                    
-                    let currentString = String.formStringWithBoldText(boldText: key.camelCaseToWords().replacingOccurrences(of: ".", with: " "), separatorText: ": ", normalText: value)
+                    let currentString = String.formStringWithBoldText(boldText: key.replacingOccurrences(of: ".", with: " ").camelCaseToWords().replacingOccurrences(of: "  ", with: " "), separatorText: ": ", normalText: value)
                     if gen != representedData.count {
+                        print(gen, representedData)
+                        print (currentString)
                         currentString.append(newline)
                     }
                     infoString.append(currentString)
+                }
+            } else {
+                if gen == representedData.count {
+                    // TODO: -if infoString ends with newline -> remove last newline
                 }
             }
         }
