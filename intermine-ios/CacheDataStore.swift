@@ -165,7 +165,7 @@ class CacheDataStore {
                 if FileHandler.doesFileExist(fileName: fileName) {
                     
                     // file exists, check the release version
-                    IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId) in
+                    IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId, error) in
                         
                         // compare releaseId and model releaseId
                         if let releaseId = releaseId {
@@ -194,10 +194,10 @@ class CacheDataStore {
     private func createMineModel(mineUrl: String) {
         if let mine = Mine.getMineByUrl(url: mineUrl, context: self.managedContext), let mineName = mine.name {
             let fileName = mineName + ".xml"
-            IntermineAPIClient.fetchModel(mineUrl: mineUrl, completion: { (xmlString) in
+            IntermineAPIClient.fetchModel(mineUrl: mineUrl, completion: { (xmlString, error) in
                 if let xmlString = xmlString as String? {
                     FileHandler.writeToFile(fileName: fileName, contents: xmlString)
-                    IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId) in
+                    IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId, error) in
                         MineModel.createMineModel(url: mineUrl, releaseId: releaseId, xmlFile: fileName, versionId: nil, context: self.managedContext)
                         self.save()
                     })

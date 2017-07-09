@@ -45,11 +45,14 @@ class FetchedListsViewController: LoadingTableViewController {
     private func loadTemplateResultsWithOffset(offset: Int) {
         self.params?["start"] = "\(offset)"
         if let mineUrl = self.mineUrl, let queryString = self.viewsQuery {
-            IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: queryString, completion: { (res, params) in
+            IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: queryString, completion: { (res, params, error) in
                 self.params = params
                 self.processDataResult(res: res, data: &self.lists)
                 if self.currentOffset == 0 {
                     self.stopSpinner()
+                }
+                if let error = error {
+                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
                 }
             })
         }

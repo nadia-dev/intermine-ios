@@ -87,7 +87,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         self.tableView.estimatedSectionHeaderHeight = 60
 
         if let mineUrl = self.mineUrl, let params = self.params {
-            IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res) in
+            IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res, error) in
                 if let countString = res, let count = Int(countString.trim()) {
                     self.templatesCount = count
                 }
@@ -134,11 +134,14 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         if let mineUrl = self.mineUrl, let params = self.params {
             var correctedParams = params
             correctedParams["start"] = "\(offset)"
-            IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res) in
+            IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res, error) in
                 self.processDataResult(res: res, data: &self.templates)
                 if self.currentOffset == 0 {
                     self.stopSpinner()
-                } 
+                }
+                if let error = error {
+                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                }
             })
         }
     }

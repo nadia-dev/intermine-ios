@@ -125,7 +125,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     private func loadSearchResultsWithOffset(offset: Int) {
         self.params?["start"] = "\(offset)"
         if let params = self.params {
-            IntermineAPIClient.makeSearchOverAllMines(params: params) { (searchResults, facetLists) in
+            IntermineAPIClient.makeSearchOverAllMines(params: params) { (searchResults, facetLists, error) in
                 // Transform into [String: String] dict
                 if let searchResults = searchResults {
                     for res in searchResults {
@@ -142,6 +142,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                         self.facets = facets
                     }
                 }
+                
+                if let error = error {
+                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                }
+
             }
         }
     }
@@ -153,11 +158,16 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         
         if let mineName = selectedFacet.getMineName(), let params = self.params {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName), let mineUrl = mine.url {
-                IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList) in
+                IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList, error) in
                     
                     if let res = searchRes {
                         self.data.append(res)
                     }
+                    
+                    if let error = error {
+                        self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                    }
+
                 })
             }
         }
