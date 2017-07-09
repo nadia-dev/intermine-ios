@@ -58,11 +58,14 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
                 self.showNothingFoundView()
             } else {
                 self.summaryCell?.templatesCount = self.templatesCount
+                self.tableView.reloadData()
             }
         }
     }
     
     private var currentOffset: Int = 0
+    
+    var filteredTemplates: [[String:String]] = []
 
     var templates: [[String:String]] = [] {
         didSet {
@@ -79,6 +82,9 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         super.viewDidLoad()
         self.hideMenuButton = true
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
+        
+        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedSectionHeaderHeight = 60
 
         if let mineUrl = self.mineUrl, let params = self.params {
             IntermineAPIClient.getTemplateResultsCount(mineUrl: mineUrl, queryParams: params, completion: { (res) in
@@ -92,7 +98,8 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
+        self.navigationItem.titleView = searchController.searchBar
+        //tableView.tableHeaderView = searchController.searchBar
     }
     
     // MARK: Load from storyboard
@@ -136,8 +143,20 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         }
     }
     
-    private func filterTemplatesForSearchText(searchText: String) {
-        print ("here goes filtering")
+    private func filterTemplatesForSearchText(searchText: String?) {
+        guard let searchText = searchText else {
+            return
+        }
+        self.filteredTemplates = []
+        for template in self.templates {
+            let itemExists =  Array(template.values).contains(where: {
+                $0.range(of: searchText, options: .caseInsensitive) != nil
+            })
+            if itemExists == true {
+                self.filteredTemplates.append(template)
+            }
+        }
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -147,21 +166,39 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.templates.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return self.filteredTemplates.count
+        } else {
+            return self.templates.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FetchedTemplatesHeaderCell.identifier, for: indexPath) as! FetchedTemplatesHeaderCell
-            cell.templatesCount = self.templatesCount
-            cell.params = self.templateParams()
-            self.summaryCell = cell
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
+        if searchController.isActive && searchController.searchBar.text != "" {
+            cell.representedData = filteredTemplates[indexPath.row]
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
             cell.representedData = templates[indexPath.row]
-            return cell
         }
+        return cell
+    }
+    
+    // MARK: Header and footer
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FetchedTemplatesHeaderCell.identifier) as! FetchedTemplatesHeaderCell
+        cell.templatesCount = self.templatesCount
+        cell.params = self.templateParams()
+        self.summaryCell = cell
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
     }
     
     // MARK: Scroll view delegate
@@ -180,8 +217,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     // MARK: UISearchResultsUpdating
     
     func updateSearchResults(for searchController: UISearchController) {
-        //
-        print("update search res")
+        self.filterTemplatesForSearchText(searchText: searchController.searchBar.text)
     }
 
 }
