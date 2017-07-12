@@ -13,6 +13,7 @@
 		05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05269F601ED4D4E50002ECB2 /* DefaultsManager.swift */; };
 		0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053518191ECF824E006F87EA /* SearchFacet.swift */; };
 		0535181C1ECF8260006F87EA /* FacetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535181B1ECF8260006F87EA /* FacetList.swift */; };
+		053A57CC1F13858F00445F6E /* debug_registry.json in Resources */ = {isa = PBXBuildFile; fileRef = 053A57CB1F13858F00445F6E /* debug_registry.json */; };
 		05420A921F128C4C00BC1CC7 /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */; };
 		055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */; };
 		055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556681ECCA91D009DCA24 /* SearchResult.swift */; };
@@ -98,6 +99,7 @@
 		05269F601ED4D4E50002ECB2 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		053518191ECF824E006F87EA /* SearchFacet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFacet.swift; sourceTree = "<group>"; };
 		0535181B1ECF8260006F87EA /* FacetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacetList.swift; sourceTree = "<group>"; };
+		053A57CB1F13858F00445F6E /* debug_registry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = debug_registry.json; sourceTree = "<group>"; };
 		05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedSearchesViewController.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				057779A91EAFEFF000B75372 /* IntermineAPIClient.swift */,
 				05715E551EBF0CA800C4C3C7 /* registry.json */,
 				05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */,
+				053A57CB1F13858F00445F6E /* debug_registry.json */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
 				05EA6CBA1EC79BEB002CC884 /* TableCoverView.xib in Resources */,
 				05DF53111E90286E00113171 /* Main.storyboard in Resources */,
+				053A57CC1F13858F00445F6E /* debug_registry.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

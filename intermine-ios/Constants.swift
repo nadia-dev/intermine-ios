@@ -9,7 +9,6 @@
 import UIKit
 
 struct Endpoints {
-    static let serviceListing = "/service"
     static let modelDescription = "/service/model"
     static let lists = "/service/lists"
     static let templates = "/service/templates"
@@ -29,7 +28,7 @@ struct General {
     static let searchSize = 5
     static let baseVersion = "1.6.5"
     static let descriptionCharactersLimit = 120
-    static let defaultMine = "YeastMine"
+    static let defaultMine = "MouseMine"
     static let viewAnimationSpeed = 0.2
     static let nullValues = ["<null>", "NULL", "-"]
 }

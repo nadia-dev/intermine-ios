@@ -39,6 +39,8 @@ class IntermineAPIClient: NSObject {
     static let manager = Alamofire.SessionManager.default
     static let counter = Counter()
     
+    static let useDebugServer = false
+    
     // MARK: Private methods
 
     private class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, shouldUseAuth: Bool, completion: @escaping (_ result: [String: AnyObject]?, _ error: NetworkErrorType?) -> ()) {
@@ -233,7 +235,11 @@ class IntermineAPIClient: NSObject {
     class func fetchRegistry(completion: (_ result: NSDictionary?) -> ()) {
         // TODO: Use registry endpoint
         // for now: read registry from .json file
-        let registryPath = Bundle.main.path(forResource: "registry", ofType: ".json")
+        var registryPath = Bundle.main.path(forResource: "registry", ofType: ".json")
+        
+        if useDebugServer {
+            registryPath = Bundle.main.path(forResource: "debug_registry", ofType: ".json")
+        }
         
         guard let jsonData = try? NSData(contentsOfFile: registryPath!, options: NSData.ReadingOptions.mappedIfSafe) else {
             completion(nil)
