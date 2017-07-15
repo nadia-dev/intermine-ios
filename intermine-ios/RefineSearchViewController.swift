@@ -223,6 +223,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         if let facetList = self.getFacetListByName(mineName: mineName) {
             return facetList.getFormattedFacetsList()
         }
+       
         return nil
     }
     
