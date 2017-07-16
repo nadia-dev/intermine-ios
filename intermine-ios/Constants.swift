@@ -31,6 +31,7 @@ struct General {
     static let defaultMine = "MouseMine"
     static let viewAnimationSpeed = 0.2
     static let nullValues = ["<null>", "NULL", "-"]
+    static let timeoutIntervalForRequest: Double = 1800
 }
 
 struct Icons {
@@ -90,4 +91,6 @@ struct Notifications {
     static let operationChanged = "notification.operation.changed"
     static let valueChanged = "notification.value.changed"
     static let mineSelected = "notification.mine.selected"
+    static let facetsUpdated = "notification.facets.updated"
+    static let searchFailed = "notification.search.failed"
 }

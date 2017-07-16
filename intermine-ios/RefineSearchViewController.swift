@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class CategoryCell: UITableViewCell {
     
@@ -97,11 +98,15 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var placeholderImageView: UIImageView?
     @IBOutlet weak var refineSearchButton: BaseButton?
     
+    private let facetManager = FacetManager.shared
+    @IBOutlet weak var nothingFoundView: UIView?
+    
+    
     private var mines: [MineRepresentation] = [MineRepresentation(name: String.localize("Search.Refine.NoSelection"), count: nil)]//[String] = [String.localize("Search.Refine.NoSelection")]
     
     private struct MineRepresentation {
         let name: String
-        let count: Int?
+        var count: Int?
         
         init(name: String, count: Int?) {
             self.name = name
@@ -124,6 +129,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     }
     
     weak var delegate: RefineSearchViewControllerDelegate?
+    private var spinner: NVActivityIndicatorView?
 
     private var selectedMine: MineRepresentation? {
         didSet {
@@ -131,12 +137,28 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
                 self.categories = self.getCategoriesForMine(mineName: selectedMine.name)
                 if let catsTable = self.categoriesTable {
                     if selectedMine.name == String.localize("Search.Refine.NoSelection") {
+                        placeholderImageView?.image = Icons.placeholder
+                        categoriesLabel?.text = ""
                         BaseView.animateView(view: catsTable, animateIn: false)
                         refineSearchButton?.isEnabled = false
                     } else {
                         if let count = selectedMine.count, count > 0 {
+                            categoriesLabel?.text = String.localize("Search.Refine.SelectCategory")
                             BaseView.animateView(view: catsTable, animateIn: true)
                         } else {
+                            placeholderImageView?.image = nil
+                            
+                            // add spinner
+                            if let nothingFoundView = self.nothingFoundView {
+                                if self.spinner == nil {
+                                    let spinner = NVActivityIndicatorView(frame: nothingFoundView.bounds, type: .ballSpinFadeLoader, color: Colors.gray56, padding: self.indicatorPadding())
+                                    nothingFoundView.addSubview(spinner)
+                                    spinner.startAnimating()
+                                    self.spinner = spinner
+                                }
+                            }
+                            
+                            categoriesLabel?.text = String.localize("Search.Refine.LoadingCategories")
                             BaseView.animateView(view: catsTable, animateIn: false)
                         }
                     }
@@ -145,9 +167,17 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         }
     }
     
+    private func indicatorPadding() -> CGFloat {
+        if let nothingFoundView = self.nothingFoundView {
+            return BaseView.viewWidth(view: nothingFoundView) / 3
+        }
+        return 0
+    }
+    
     private var facets: [FacetList]? {
         didSet {
             self.mines = self.createMines()
+            minesPicker?.reloadAllComponents()
         }
     }
     
@@ -160,9 +190,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         minesLabel?.text = String.localize("Search.Refine.SelectMine")
-        categoriesLabel?.text = String.localize("Search.Refine.SelectCategory")
-        
-        //TODO: - refine search button should be grayed out until some selection is performed
+
         refineSearchButton?.setTitle(String.localize("Search.Refine.CTA"), for: .normal)
         refineSearchButton?.isEnabled = false
         
@@ -170,9 +198,23 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         minesPicker?.dataSource = self
         categoriesTable?.delegate = self
         categoriesTable?.dataSource = self
-        minesPicker?.selectRow(self.getInitialSelectedRow(), inComponent: 0, animated: false)
+        
+        if let selectedRow = self.getInitialSelectedRow() {
+            minesPicker?.selectRow(selectedRow, inComponent: 0, animated: false)
+        }
+        
         self.selectedMine = self.getInitialSelectedMine()
         self.placeholderImageView?.image = Icons.placeholder
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.facetsUpdated(_:)), name: NSNotification.Name(rawValue: Notifications.facetsUpdated), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: Actions
@@ -182,6 +224,10 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         self.navigationController?.popViewController(animated: true)
     }
     
+    func facetsUpdated(_ notification: NSNotification) {
+        print("notification facet updated")
+        self.facets = facetManager.getFacets()
+    }
     
     // MARK: Private methods
     
@@ -195,11 +241,9 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         for facet in facets {
             if let name = facet.getMine() {
                 let count = self.getTotalCountForMine(mineName: name)
-                let mine = MineRepresentation(name: name, count: count)
-                
-                // test if mines array already has mine with this name
-                if !(mines.contains(where: { rep in rep.name == name })) {
-                    mines.append(mine)
+                let updatedMine = MineRepresentation(name: name, count: count)
+                if !(mines.contains(where: { rep in rep.name == name && rep.count == count })) {
+                    mines.append(updatedMine)
                 }
             }
         }
@@ -209,17 +253,26 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
             for mine in registry {
                 if let name = mine.name {
                     let count = self.getTotalCountForMine(mineName: name)
-                    let mine = MineRepresentation(name: name, count: count)
-                    
+                    let updatedMine = MineRepresentation(name: name, count: count)
                     // test if mines array already has mine with this name
-                    if !(mines.contains(where: { rep in rep.name == name })) {
-                        mines.append(mine)
+                    if !(mines.contains(where: { rep in rep.name == name && rep.count == count})) {
+                        mines.append(updatedMine)
                     }
                 }
             }
         }
         
+        // TODO: - use if mines need to be sorted
+        
+//        mines = mines.sorted(by: { (mine0, mine1) -> Bool in
+//            guard let count0 = mine0.count, let count1 = mine1.count else {
+//                return false
+//            }
+//            return count0 > count1
+//        })
+        
         return mines
+        
     }
 
     
@@ -231,13 +284,22 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         return mines.count
     }
     
-    private func getInitialSelectedRow() -> Int {
-        return 1
+    private func getInitialSelectedRow() -> Int? {
+        if mines.count > 0 {
+            return 1
+        } else {
+            return nil
+        }
+
     }
     
     private func getInitialSelectedMine() -> MineRepresentation? {
-        let index = self.getInitialSelectedRow()
-        return self.mines[index]
+        if let index = self.getInitialSelectedRow() {
+            return self.mines[index]
+        } else {
+            return nil
+        }
+        
     }
     
     private func getFacetListByName(mineName: String) -> FacetList? {
