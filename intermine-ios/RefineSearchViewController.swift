@@ -225,7 +225,6 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     }
     
     func facetsUpdated(_ notification: NSNotification) {
-        print("notification facet updated")
         self.facets = facetManager.getFacets()
     }
     
@@ -242,20 +241,27 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
             if let name = facet.getMine() {
                 let count = self.getTotalCountForMine(mineName: name)
                 let updatedMine = MineRepresentation(name: name, count: count)
+                
+                for (i, mine) in mines.enumerated() {
+                    if mine.name == updatedMine.name && mine.count != updatedMine.count {
+                        mines.remove(at: i)
+                    }
+                }
+                
                 if !(mines.contains(where: { rep in rep.name == name && rep.count == count })) {
                     mines.append(updatedMine)
                 }
             }
         }
         
-        // Padding with mines containing 0 search results
+//        // Padding with mines containing 0 search results
         if let registry = CacheDataStore.sharedCacheDataStore.allRegistry() {
             for mine in registry {
                 if let name = mine.name {
                     let count = self.getTotalCountForMine(mineName: name)
                     let updatedMine = MineRepresentation(name: name, count: count)
                     // test if mines array already has mine with this name
-                    if !(mines.contains(where: { rep in rep.name == name && rep.count == count})) {
+                    if !(mines.contains(where: { rep in rep.name == name })) {
                         mines.append(updatedMine)
                     }
                 }
