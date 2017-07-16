@@ -210,6 +210,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.facetsUpdated(_:)), name: NSNotification.Name(rawValue: Notifications.facetsUpdated), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchFailed(_:)), name: NSNotification.Name(rawValue: Notifications.searchFailed), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -226,6 +227,12 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     
     func facetsUpdated(_ notification: NSNotification) {
         self.facets = facetManager.getFacets()
+    }
+    
+    func searchFailed(_ notification: NSNotification) {
+        if let error = notification.userInfo?["errorType"] as? NetworkErrorType {
+            self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+        }
     }
     
     // MARK: Private methods

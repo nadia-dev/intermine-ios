@@ -147,7 +147,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 }
                 
                 if let error = error {
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.searchFailed), object: self, userInfo: nil)
+                    var info: [String: Any] = [:]
+                    info["errorType"] = error
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.searchFailed), object: self, userInfo: info)
                     self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
                 }
 
