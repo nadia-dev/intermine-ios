@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 
 class AppManager {
+    
+    private var launchVC: UIViewController?
     
     var selectedMine: String = General.defaultMine {
         didSet {
@@ -53,6 +56,18 @@ class AppManager {
     
     func updateToken() {
         self.token = DefaultsManager.fetchFromDefaults(key: DefaultsKeys.token)
+    }
+    
+    func presentLaunchScreen(rootViewController: UIViewController?) {
+        if let vc = LaunchViewController.launchViewController() {
+            self.launchVC = vc
+            rootViewController?.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    func hideLaunchScreen() {
+        // show when notification is received
+        self.launchVC?.dismiss(animated: false, completion: nil)
     }
 }
 

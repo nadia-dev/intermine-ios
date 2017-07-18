@@ -232,24 +232,10 @@ class IntermineAPIClient: NSObject {
         }
     }
     
-    class func fetchRegistry(completion: (_ result: NSDictionary?) -> ()) {
-        // TODO: Use registry endpoint
-        // for now: read registry from .json file
-        var registryPath = Bundle.main.path(forResource: "registry", ofType: ".json")
-        
-        if useDebugServer {
-            registryPath = Bundle.main.path(forResource: "debug_registry", ofType: ".json")
-        }
-        
-        guard let jsonData = try? NSData(contentsOfFile: registryPath!, options: NSData.ReadingOptions.mappedIfSafe) else {
-            completion(nil)
-            return
-        }
-        
-        if let jsonResult = try? JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-            completion(jsonResult)
-        } else {
-            completion(nil)
+    class func fetchRegistry(completion: @escaping (_ result: [String: AnyObject]?, _ error: NetworkErrorType?) -> ()) {
+        let url = Endpoints.registryDomain + Endpoints.registryInstances
+        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: nil, shouldUseAuth: false) { (res, error) in
+            completion(res, error)
         }
     }
     

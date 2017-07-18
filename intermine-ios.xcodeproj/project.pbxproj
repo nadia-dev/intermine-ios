@@ -42,6 +42,7 @@
 		05AC8A731ED75DB2000F37CE /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */; };
 		05AC8A751ED772D6000F37CE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC8A741ED772D6000F37CE /* WebViewController.swift */; };
 		05CFF8511ED06839005DD0FE /* RefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */; };
+		05D531571F1E3674006A4EDC /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D531561F1E3674006A4EDC /* LaunchViewController.swift */; };
 		05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */; };
 		05DA3DF91ECAF75D00AB4B79 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */; };
 		05DA3DFB1ECB03F300AB4B79 /* FetchedListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */; };
@@ -130,6 +131,7 @@
 		05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		05AC8A741ED772D6000F37CE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefineSearchViewController.swift; sourceTree = "<group>"; };
+		05D531561F1E3674006A4EDC /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModelParser.swift; sourceTree = "<group>"; };
 		05DA3DF81ECAF75D00AB4B79 /* QueryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		05DA3DFA1ECB03F300AB4B79 /* FetchedListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedListsViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05D531561F1E3674006A4EDC /* LaunchViewController.swift */,
 				057E5F741ED6EBC6004278C5 /* MainViewController.swift */,
 				057E5F701ED6EB01004278C5 /* MenuViewController.swift */,
 				055556641ECCA31F009DCA24 /* SearchTabVCs */,
@@ -714,6 +717,7 @@
 				05AC8A751ED772D6000F37CE /* WebViewController.swift in Sources */,
 				05F4079F1EC60F9D00707B86 /* LookupCell.swift in Sources */,
 				055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */,
+				05D531571F1E3674006A4EDC /* LaunchViewController.swift in Sources */,
 				0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */,
 				05F407871EC4998A00707B86 /* TemplateQuery.swift in Sources */,
 				0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */,

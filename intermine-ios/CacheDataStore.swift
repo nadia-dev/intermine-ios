@@ -38,35 +38,31 @@ class CacheDataStore {
         return nil
     }
 
-    func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?) -> ()) {
+    func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?, _ error: NetworkErrorType?) -> ()) {
         if registryNeedsUpdate() {
-            IntermineAPIClient.fetchRegistry { (jsonRes) in
+            IntermineAPIClient.fetchRegistry { (jsonRes, error) in
                 guard let jsonRes = jsonRes else {
-                    completion(nil)
+                    completion(nil, error)
                     return
                 }
                 // update registry in Core Data
-                eraseRegistry()
-                if let registryDict = jsonRes as? [String: AnyObject] {
-                    if let mines = registryDict["mines"] as? Array<[String: String]> {
-                        var mineObjects: [Mine] = []
-                        for mine in mines {
-                            if let mineObj = Mine.createMineFromJson(json: mine, context: self.managedContext) {
-                                mineObjects.append(mineObj)
-                            }
+                self.eraseRegistry()
+                var mineObjects: [Mine] = []
+                if let instances = jsonRes["instances"] as? [[String: AnyObject]] {
+                    for instance in instances {
+                        if let mineObj = Mine.createMineFromJson(json: instance, context: self.managedContext) {
+                            mineObjects.append(mineObj)
                         }
-                        save()
-                        completion(mineObjects)
-                    } else {
-                        completion(nil)
                     }
+                    self.save()
+                    completion(mineObjects, error)
                 } else {
-                    completion(nil)
+                    completion(nil, error)
                 }
             }
         } else {
             let mines = Mine.getAllMines(context: self.managedContext)
-            completion(mines)
+            completion(mines, nil)
         }
     }
     
@@ -240,9 +236,8 @@ class CacheDataStore {
         if debug == true {
             return true
         }
-        
         if let registry = fetchCachedRegistry() {
-            if let mine: Mine = registry.first, let lastUpdated = mine.lastUpdated {
+            if let mine: Mine = registry.first, let lastUpdated = mine.lastTimeUpdated {
                 return NSDate.hasIntervalPassed(lastUpdated: lastUpdated, timeInterval: minesUpdateInterval)
             }
             return true

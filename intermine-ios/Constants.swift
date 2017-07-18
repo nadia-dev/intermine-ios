@@ -19,6 +19,8 @@ struct Endpoints {
     static let singleList = "/service/query/results"
     static let search = "/service/search"
     static let report = "/report.do"
+    static let registryDomain = "https://intermine-registry.herokuapp.com/registry"
+    static let registryInstances = "/service/instances"
 }
 
 struct General {
@@ -93,4 +95,5 @@ struct Notifications {
     static let mineSelected = "notification.mine.selected"
     static let facetsUpdated = "notification.facets.updated"
     static let searchFailed = "notification.search.failed"
+    static let registryLoaded = "notification.registry.loaded"
 }
