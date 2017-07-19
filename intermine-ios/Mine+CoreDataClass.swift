@@ -32,7 +32,7 @@ public class Mine: NSManagedObject {
                 if let colors = json["colors"] as? [String: AnyObject], let main = colors["main"] as? [String: AnyObject], let theme = main["fg"] as? String {
                     mine?.theme = theme
                 }
-                mine?.lastTimeUpdated = NSDate.stringToDate(dateString: json["last_time_updated"] as? String)
+                mine?.lastTimeUpdated = NSDate()
                 mine?.releaseVersion = json["release_version"] as? String
             }
         }
