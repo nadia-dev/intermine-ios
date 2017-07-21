@@ -26,8 +26,7 @@ class FetchedCell: TypeColorCell {
                 let viewableRepresentation: [String:String] = data.viewableRepresentation()
                 descriptionLabel?.attributedText = self.labelContents(representedData: viewableRepresentation)
                 if let type = data.getType() {
-                    let sideColor = getSideColor(categoryType: type)
-                    typeView?.backgroundColor = sideColor.withAlphaComponent(0.2)
+                    typeView?.backgroundColor = getBackgroundColor(categoryType: type)
                 }
             }
         }

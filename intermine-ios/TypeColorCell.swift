@@ -10,7 +10,7 @@ import UIKit
 
 class TypeColorCell: UITableViewCell {
     
-    private enum CategoryType: String {
+    enum CategoryType: String {
         case Gene = "Gene"
         case Protein = "Protein"
         case Publication = "Publication"
@@ -48,6 +48,15 @@ class TypeColorCell: UITableViewCell {
             }
         }
         return color
+    }
+    
+    func getBackgroundColor(categoryType: String?) -> UIColor {
+        let color = getSideColor(categoryType: categoryType)
+        var alpha = 0.1
+        if color == Colors.silver {
+            alpha = 0.3
+        }
+        return color.withAlphaComponent(CGFloat(alpha))
     }
 
 }
