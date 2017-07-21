@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CacheDataStore.sharedCacheDataStore.updateRegistryIfNeeded { (mines, error) in
             AppManager.sharedManager.hideLaunchScreen()
-            
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.registryLoaded), object: self, userInfo: nil)
             if let mines = mines {
                 CacheDataStore.sharedCacheDataStore.updateRegistryModelsIfNeeded(mines: mines)
             }
