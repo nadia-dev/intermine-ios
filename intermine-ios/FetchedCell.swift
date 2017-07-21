@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FetchedCell: UITableViewCell {
+class FetchedCell: TypeColorCell {
     
     static let identifier = "FetchedCell"
     @IBOutlet weak var descriptionLabel: UILabel?
+    @IBOutlet weak var typeColorView: UIView?
     
     var representedData: [String:String] = [:] {
         didSet {
@@ -24,6 +25,9 @@ class FetchedCell: UITableViewCell {
             if let data = self.data {
                 let viewableRepresentation: [String:String] = data.viewableRepresentation()
                 descriptionLabel?.attributedText = self.labelContents(representedData: viewableRepresentation)
+                if let type = data.getType() {
+                    typeColorView?.backgroundColor = getSideColor(categoryType: type)
+                }
             }
         }
     }

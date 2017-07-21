@@ -127,8 +127,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     private func loadSearchResultsWithOffset(offset: Int) {
         self.params?["start"] = "\(offset)"
-        // TODO: - debug line, to remove
-        //self.params?["facet_Category"] = "Gene"
         if let params = self.params {
             IntermineAPIClient.makeSearchOverAllMines(params: params) { (searchResults, facetLists, error) in
                 // Transform into [String: String] dict
