@@ -12,7 +12,7 @@ import CoreData
 class CacheDataStore {
     
     private let modelName = General.modelName
-    private let debug = true
+    private let debug = false
     
     // TODO: compare versions instead using:
 //    GET /version/release which tells you the version of the data *inside* the intermine
