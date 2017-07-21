@@ -13,10 +13,6 @@ class CacheDataStore {
     
     private let modelName = General.modelName
     private let debug = false
-    
-    // TODO: compare versions instead using:
-//    GET /version/release which tells you the version of the data *inside* the intermine
-//    GET /version/intermine, which gives you the version of the intermine software that you're communicating with.
     private let minesUpdateInterval: Double = 432000 //5 days, TODO: -change this value to less often
     
     // MARK: Shared Instance
@@ -61,10 +57,14 @@ class CacheDataStore {
                 }
             }
         } else {
-            let mines = Mine.getAllMines(context: self.managedContext)
-            completion(mines, nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                let mines = Mine.getAllMines(context: self.managedContext)
+                completion(mines, nil)
+            })
+            
         }
     }
+
     
     func save() {
         saveContext()
@@ -167,20 +167,23 @@ class CacheDataStore {
                             if !(releaseId.isEqualTo(comparedTo: model.releaseId)) {
                                 // release ids differ, needs an update
                                 self.updateMineModel(model: model, releaseId: releaseId, xmlFile: nil)
+                                return
                             }
                         }
                     }
-
                 } else {
                     // xml does not exist in documents directory, model needs an udpate with new xml
                     self.delete(obj: model)
                     self.createMineModel(mineUrl: mineUrl)
+                    return
                 }
             }
         } else {
             // no model found, create mine model
             self.createMineModel(mineUrl: mineUrl)
+            return
         }
+        return
     }
 
     
@@ -238,10 +241,9 @@ class CacheDataStore {
                 return NSDate.hasIntervalPassed(lastUpdated: lastUpdated, timeInterval: minesUpdateInterval)
             }
             return true
+        } else {
+            return true
         }
-        // TODO: handle this better!
-        // if there was an error fetching
-        return false
     }
     
     private func eraseRegistry() {

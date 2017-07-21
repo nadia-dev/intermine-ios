@@ -16,13 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        ControllersManager().subscribe()
+        
         CacheDataStore.sharedCacheDataStore.updateRegistryIfNeeded { (mines, error) in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.registryLoaded), object: self, userInfo: nil)
+            AppManager.sharedManager.hideLaunchScreen()
+            
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.registryLoaded), object: self, userInfo: nil)
             if let mines = mines {
                 CacheDataStore.sharedCacheDataStore.updateRegistryModelsIfNeeded(mines: mines)
             }
         }
+        
         AppManager.sharedManager.retrieveSelectedMine()
+        
         
         BITHockeyManager.shared().configure(withIdentifier: "978f62a7b13a4d5d8d809daeb71e2c12")
         BITHockeyManager.shared().start()

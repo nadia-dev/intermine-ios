@@ -23,16 +23,16 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         self.selectMineButton?.setTitle(String.localize("Search.SelectMine"), for: .normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.registryLoaded(_:)), name: NSNotification.Name(rawValue: Notifications.registryLoaded), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.registryLoaded(_:)), name: NSNotification.Name(rawValue: Notifications.registryLoaded), object: nil)
     }
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    func registryLoaded(_ notification: NSNotification) {
-        AppManager.sharedManager.hideLaunchScreen()
-    }
+//    func registryLoaded(_ notification: NSNotification) {
+//        AppManager.sharedManager.hideLaunchScreen()
+//    }
 
     
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
