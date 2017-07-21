@@ -892,43 +892,43 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQH-Wi-bhY">
-                                            <rect key="frame" x="8" y="4" width="2" height="36"/>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eul-F5-2fr">
+                                            <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We9-2w-ei3">
+                                                    <rect key="frame" x="10" y="10" width="339" height="8"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="2" id="HTJ-YA-lg8"/>
+                                                <constraint firstAttribute="bottom" secondItem="We9-2w-ei3" secondAttribute="bottom" constant="10" id="1gM-qw-YXh"/>
+                                                <constraint firstAttribute="trailing" secondItem="We9-2w-ei3" secondAttribute="trailing" constant="10" id="31H-HQ-RTx"/>
+                                                <constraint firstItem="We9-2w-ei3" firstAttribute="leading" secondItem="eul-F5-2fr" secondAttribute="leading" constant="10" id="kzZ-K0-VfL"/>
+                                                <constraint firstItem="We9-2w-ei3" firstAttribute="top" secondItem="eul-F5-2fr" secondAttribute="top" constant="10" id="wVu-O4-b7R"/>
                                             </constraints>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We9-2w-ei3">
-                                            <rect key="frame" x="15" y="8" width="344" height="28"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANb-VL-Jty">
-                                            <rect key="frame" x="8" y="43" width="359" height="1"/>
-                                            <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="1" id="KIq-Ji-ZUn"/>
-                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="We9-2w-ei3" firstAttribute="leading" secondItem="rQH-Wi-bhY" secondAttribute="trailing" constant="5" id="2p8-g6-cs9"/>
-                                        <constraint firstItem="rQH-Wi-bhY" firstAttribute="height" secondItem="196-Q8-WTf" secondAttribute="height" multiplier="0.8" constant="1" id="85z-hJ-8FK"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="ANb-VL-Jty" secondAttribute="leading" id="DER-gZ-B20"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="We9-2w-ei3" secondAttribute="bottom" id="Kta-1L-9Ge"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="We9-2w-ei3" secondAttribute="trailing" constant="8" id="ZcK-Qu-uOc"/>
-                                        <constraint firstAttribute="bottom" secondItem="ANb-VL-Jty" secondAttribute="bottom" id="akD-AS-DaU"/>
-                                        <constraint firstItem="We9-2w-ei3" firstAttribute="top" secondItem="196-Q8-WTf" secondAttribute="topMargin" id="cOr-h3-eLR"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ANb-VL-Jty" secondAttribute="trailing" id="kK2-XJ-jq8"/>
-                                        <constraint firstItem="rQH-Wi-bhY" firstAttribute="centerY" secondItem="196-Q8-WTf" secondAttribute="centerY" id="pUc-1w-ZlO"/>
-                                        <constraint firstItem="rQH-Wi-bhY" firstAttribute="leading" secondItem="196-Q8-WTf" secondAttribute="leadingMargin" id="wfr-6v-0cP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eul-F5-2fr" secondAttribute="trailing" id="CFP-2Y-OEF"/>
+                                        <constraint firstItem="eul-F5-2fr" firstAttribute="top" secondItem="196-Q8-WTf" secondAttribute="topMargin" id="CN5-B3-XuN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eul-F5-2fr" secondAttribute="bottom" id="Qte-xR-BiO"/>
+                                        <constraint firstItem="eul-F5-2fr" firstAttribute="leading" secondItem="196-Q8-WTf" secondAttribute="leadingMargin" id="pJ1-gZ-Th3"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="We9-2w-ei3" id="eKv-WW-yph"/>
-                                    <outlet property="typeColorView" destination="rQH-Wi-bhY" id="7bI-JW-TtY"/>
+                                    <outlet property="typeView" destination="eul-F5-2fr" id="aWU-DK-1PF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

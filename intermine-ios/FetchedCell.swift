@@ -12,7 +12,7 @@ class FetchedCell: TypeColorCell {
     
     static let identifier = "FetchedCell"
     @IBOutlet weak var descriptionLabel: UILabel?
-    @IBOutlet weak var typeColorView: UIView?
+    @IBOutlet weak var typeView: UIView?
     
     var representedData: [String:String] = [:] {
         didSet {
@@ -26,7 +26,8 @@ class FetchedCell: TypeColorCell {
                 let viewableRepresentation: [String:String] = data.viewableRepresentation()
                 descriptionLabel?.attributedText = self.labelContents(representedData: viewableRepresentation)
                 if let type = data.getType() {
-                    typeColorView?.backgroundColor = getSideColor(categoryType: type)
+                    let sideColor = getSideColor(categoryType: type)
+                    typeView?.backgroundColor = sideColor.withAlphaComponent(0.2)
                 }
             }
         }
