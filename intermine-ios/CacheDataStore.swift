@@ -160,19 +160,16 @@ class CacheDataStore {
             if let fileName = model.xmlFile {
                 if FileHandler.doesFileExist(fileName: fileName) {
                     
-                    // file exists, check the release version
-                    IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId, error) in
-                        
-                        // compare releaseId and model releaseId
-                        if let releaseId = releaseId {
-                            
+                    // since it is called after mines version is uptated
+                    // we can use mines version
+                    if let mine = Mine.getMineByUrl(url: mineUrl, context: self.managedContext) {
+                        if let releaseId = mine.releaseVersion {
                             if !(releaseId.isEqualTo(comparedTo: model.releaseId)) {
                                 // release ids differ, needs an update
                                 self.updateMineModel(model: model, releaseId: releaseId, xmlFile: nil)
                             }
                         }
-                        
-                    })
+                    }
 
                 } else {
                     // xml does not exist in documents directory, model needs an udpate with new xml
@@ -193,10 +190,10 @@ class CacheDataStore {
             IntermineAPIClient.fetchModel(mineUrl: mineUrl, completion: { (xmlString, error) in
                 if let xmlString = xmlString as String? {
                     FileHandler.writeToFile(fileName: fileName, contents: xmlString)
-                    IntermineAPIClient.fetchVersioning(mineUrl: mineUrl, completion: { (releaseId, error) in
+                    if let releaseId = mine.releaseVersion {
                         MineModel.createMineModel(url: mineUrl, releaseId: releaseId, xmlFile: fileName, versionId: nil, context: self.managedContext)
                         self.save()
-                    })
+                    }
                 }
             })
         }
