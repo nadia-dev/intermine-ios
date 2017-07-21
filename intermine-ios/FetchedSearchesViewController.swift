@@ -63,7 +63,10 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 return name0 < name1
             })
             
-            self.tableView.reloadData()
+            UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: { 
+                self.tableView.reloadData()
+            }, completion: nil)
+            
             if data.count > 0 {
                 self.hideNothingFoundView()
                 self.buttonView?.isHidden = false

@@ -14,11 +14,14 @@ class FetchedListsViewController: LoadingTableViewController {
     private var viewsQuery: String?
     private var currentOffset: Int = 0
     private var params: [String: String]?
+    private var type: String?
     
     private var lists: [[String: String]] = [] {
         didSet {
             if self.lists.count > 0 {
-                self.tableView.reloadData()
+                UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                    self.tableView.reloadData()
+                }, completion: nil)
                 self.hideNothingFoundView()
             } else {
                 self.showNothingFoundView()
@@ -28,11 +31,12 @@ class FetchedListsViewController: LoadingTableViewController {
     
     // MARK: Load from storyboard
     
-    class func fetchedListsViewController(withMineUrl: String, viewsQuery: String) -> FetchedListsViewController? {
+    class func fetchedListsViewController(withMineUrl: String, viewsQuery: String, type: String) -> FetchedListsViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FetchedListsVC") as? FetchedListsViewController
         vc?.mineUrl = withMineUrl
         vc?.viewsQuery = viewsQuery
+        vc?.type = type
         return vc
     }
 
@@ -40,6 +44,7 @@ class FetchedListsViewController: LoadingTableViewController {
         super.viewDidLoad()
         self.hideMenuButton = true
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
+
     }
     
     private func loadTemplateResultsWithOffset(offset: Int) {
@@ -71,6 +76,9 @@ class FetchedListsViewController: LoadingTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FetchedCell.identifier, for: indexPath) as! FetchedCell
         cell.representedData = lists[indexPath.row]
+        if let type = self.type {
+            cell.typeColor = TypeColorDefine.getBackgroundColor(categoryType: type)
+        }
         return cell
     }
     

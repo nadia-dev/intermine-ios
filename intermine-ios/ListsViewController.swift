@@ -14,7 +14,9 @@ class ListsViewController: LoadingTableViewController {
         didSet {
             if let lists = self.lists {
                 if lists.count > 0 {
-                    self.tableView.reloadData()
+                    UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                        self.tableView.reloadData()
+                    }, completion: nil)
                     self.hideNothingFoundView()
                 } else {
                     self.showNothingFoundView()
@@ -98,7 +100,7 @@ class ListsViewController: LoadingTableViewController {
                     if let views = CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType) {
                         if let viewsQuery = QueryBuilder.buildQuery(views: views, type: selectedType, value: selectedValue) {
                             
-                            if let fetchedListsCV = FetchedListsViewController.fetchedListsViewController(withMineUrl: mineUrl, viewsQuery: viewsQuery) {
+                            if let fetchedListsCV = FetchedListsViewController.fetchedListsViewController(withMineUrl: mineUrl, viewsQuery: viewsQuery, type: selectedType) {
                                 self.navigationController?.pushViewController(fetchedListsCV, animated: true)
                             }
                         }

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+class ListTableViewCell: TypeColorCell {
     
     static let identifier = "ListCell"
+    @IBOutlet weak var colorTypeView: UIView?
     
     var list: List? {
         didSet {
@@ -21,6 +22,10 @@ class ListTableViewCell: UITableViewCell {
                 if let size = list.getSize() {
                     let sizeString = "\(size)"
                     countLabel?.text = sizeString
+                }
+                if let type = list.getType() {
+                    let color = getBackgroundColor(categoryType: type)
+                    colorTypeView?.backgroundColor = color
                 }
             }
         }

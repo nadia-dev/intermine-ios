@@ -79,12 +79,20 @@ class LoadingTableViewController: UITableViewController {
     }
     
     func showNothingFoundView() {
-        self.nothingFoundView?.isHidden = false
-        self.showNothingFoundLabel()
+        UIView.animate(withDuration: 0.2, animations: { 
+            self.nothingFoundView?.alpha = 0
+        }) { (done) in
+            self.nothingFoundView?.isHidden = false
+            self.showNothingFoundLabel()
+        }
     }
     
     func hideNothingFoundView() {
-        self.nothingFoundView?.isHidden = true
+        UIView.animate(withDuration: 0.2, animations: { 
+            self.nothingFoundView?.alpha = 1
+        }) { (done) in
+            self.nothingFoundView?.isHidden = true
+        }
     }
     
     func hideNothingFoundLabel() {

@@ -8,20 +8,19 @@
 
 import UIKit
 
-class TypeColorCell: UITableViewCell {
-    
-    enum CategoryType: String {
-        case Gene = "Gene"
-        case Protein = "Protein"
-        case Publication = "Publication"
-        case Organism = "Organism"
-        case Interaction = "Interaction"
-        case GO = "GO"
-        case Nuffink = "Nuffink"
-    }
-    
-    
-    func getSideColor(categoryType: String?) -> UIColor {
+enum CategoryType: String {
+    case Gene = "Gene"
+    case Protein = "Protein"
+    case Publication = "Publication"
+    case Organism = "Organism"
+    case Interaction = "Interaction"
+    case GO = "GO"
+    case Nuffink = "Nuffink"
+}
+
+class TypeColorDefine: NSObject {
+
+    class func getSideColor(categoryType: String?) -> UIColor {
         var color = Colors.silver
         if let title = categoryType {
             switch title {
@@ -50,13 +49,37 @@ class TypeColorCell: UITableViewCell {
         return color
     }
     
-    func getBackgroundColor(categoryType: String?) -> UIColor {
+    class func getBackgroundColor(categoryType: String?) -> UIColor {
         let color = getSideColor(categoryType: categoryType)
         var alpha = 0.1
         if color == Colors.silver {
             alpha = 0.3
         }
         return color.withAlphaComponent(CGFloat(alpha))
+    }
+
+    
+}
+
+class TypeColorCell: UITableViewCell {
+    
+    enum CategoryType: String {
+        case Gene = "Gene"
+        case Protein = "Protein"
+        case Publication = "Publication"
+        case Organism = "Organism"
+        case Interaction = "Interaction"
+        case GO = "GO"
+        case Nuffink = "Nuffink"
+    }
+
+    
+    func getSideColor(categoryType: String?) -> UIColor {
+        return TypeColorDefine.getSideColor(categoryType: categoryType)
+    }
+    
+    func getBackgroundColor(categoryType: String?) -> UIColor {
+        return TypeColorDefine.getBackgroundColor(categoryType: categoryType)
     }
 
 }

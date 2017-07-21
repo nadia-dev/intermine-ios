@@ -13,10 +13,21 @@ class FetchedCell: TypeColorCell {
     static let identifier = "FetchedCell"
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var typeView: UIView?
+    private var typeViewBackgroundColor: UIColor?
+    
+    var typeColor: UIColor? {
+        didSet {
+            if let typeColor = self.typeColor {
+                contentView.backgroundColor = typeColor
+            }
+        }
+    }
     
     var representedData: [String:String] = [:] {
         didSet {
             descriptionLabel?.attributedText = self.labelContents(representedData: representedData)
+            typeView?.layer.borderWidth = 1
+            typeView?.layer.borderColor = Colors.gray56.withAlphaComponent(0.3).cgColor
         }
     }
     
@@ -26,7 +37,9 @@ class FetchedCell: TypeColorCell {
                 let viewableRepresentation: [String:String] = data.viewableRepresentation()
                 descriptionLabel?.attributedText = self.labelContents(representedData: viewableRepresentation)
                 if let type = data.getType() {
-                    typeView?.backgroundColor = getBackgroundColor(categoryType: type)
+                    let typeViewBackgroundColor = getBackgroundColor(categoryType: type)
+                    typeView?.backgroundColor = typeViewBackgroundColor
+                    self.typeViewBackgroundColor = typeViewBackgroundColor
                 }
             }
         }

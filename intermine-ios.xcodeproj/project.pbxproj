@@ -315,7 +315,6 @@
 				05BF4A7D1F21AADF007EE471 /* Cells */,
 				05908AFA1F076209007BDF50 /* Buttons */,
 				05EA6CBB1EC79BF8002CC884 /* TableCoverView */,
-				05F4079D1EC60F7E00707B86 /* TemplateCells */,
 				05F407781EC34CFE00707B86 /* BaseView.swift */,
 				054745791EC247EA00BC35F8 /* Storyboards */,
 				0547457A1EC247F500BC35F8 /* LaunchScreen */,
@@ -355,10 +354,12 @@
 		05BF4A7D1F21AADF007EE471 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				05F4079D1EC60F7E00707B86 /* TemplateCells */,
+				05F407B11EC61F1400707B86 /* FetchedCell.swift */,
+				05BF4A7E1F21AB12007EE471 /* TypeColorCell.swift */,
 				05BF4A841F21ABEA007EE471 /* Menu */,
 				05BF4A831F21ABDF007EE471 /* Search */,
 				05BF4A821F21ABC6007EE471 /* Lists */,
-				05BF4A7E1F21AB12007EE471 /* TypeColorCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -375,7 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				05BF4A801F21AB92007EE471 /* CategoryCell.swift */,
-				05F407B11EC61F1400707B86 /* FetchedCell.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
