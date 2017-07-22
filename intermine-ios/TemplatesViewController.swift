@@ -15,7 +15,9 @@ class TemplatesViewController: LoadingTableViewController {
         didSet {
             if let templatesList = self.templatesList {
                 if templatesList.size() > 0 {
-                    self.tableView.reloadData()
+                    UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                        self.tableView.reloadData()
+                    }, completion: nil)
                     self.showingResult = true
                 } else {
                     self.nothingFound = true

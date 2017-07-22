@@ -58,7 +58,9 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
                 self.nothingFound = true
             } else {
                 self.summaryCell?.templatesCount = self.templatesCount
-                self.tableView.reloadData()
+                UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                    self.tableView.reloadData()
+                }, completion: nil)
             }
         }
     }
@@ -70,7 +72,9 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     var templates: [[String:String]] = [] {
         didSet {
             if self.templates.count > 0 {
-                self.tableView.reloadData()
+                UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                    self.tableView.reloadData()
+                }, completion: nil)
                 self.showingResult = true
             } else {
                 self.nothingFound = true
@@ -159,7 +163,9 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
                 self.filteredTemplates.append(template)
             }
         }
-        self.tableView.reloadData()
+        UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.tableView.reloadData()
+        }, completion: nil)
     }
     
     // MARK: - Table view data source
