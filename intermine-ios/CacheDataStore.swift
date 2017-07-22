@@ -35,33 +35,39 @@ class CacheDataStore {
     }
 
     func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?, _ error: NetworkErrorType?) -> ()) {
-        if registryNeedsUpdate() {
-            IntermineAPIClient.fetchRegistry { (jsonRes, error) in
-                guard let jsonRes = jsonRes else {
-                    completion(nil, error)
-                    return
-                }
-                // update registry in Core Data
-                self.eraseRegistry()
-                var mineObjects: [Mine] = []
-                if let instances = jsonRes["instances"] as? [[String: AnyObject]] {
-                    for instance in instances {
-                        if let mineObj = Mine.createMineFromJson(json: instance, context: self.managedContext) {
-                            mineObjects.append(mineObj)
-                        }
+        if Connectivity.isConnectedToInternet() {
+            if registryNeedsUpdate() {
+                IntermineAPIClient.fetchRegistry { (jsonRes, error) in
+                    guard let jsonRes = jsonRes else {
+                        completion(nil, error)
+                        return
                     }
-                    self.save()
-                    completion(mineObjects, error)
-                } else {
-                    completion(nil, error)
+                    // update registry in Core Data
+                    self.eraseRegistry()
+                    var mineObjects: [Mine] = []
+                    if let instances = jsonRes["instances"] as? [[String: AnyObject]] {
+                        for instance in instances {
+                            if let mineObj = Mine.createMineFromJson(json: instance, context: self.managedContext) {
+                                mineObjects.append(mineObj)
+                            }
+                        }
+                        self.save()
+                        completion(mineObjects, error)
+                    } else {
+                        completion(nil, error)
+                    }
                 }
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    let mines = Mine.getAllMines(context: self.managedContext)
+                    completion(mines, nil)
+                })
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 let mines = Mine.getAllMines(context: self.managedContext)
                 completion(mines, nil)
             })
-            
         }
     }
 

@@ -35,6 +35,7 @@ struct General {
     static let viewAnimationSpeed = 0.2
     static let nullValues = ["<null>", "NULL", "-"]
     static let timeoutIntervalForRequest: Double = 1800
+    static let timeoutForRegistryUpdate: Double = 1
 }
 
 struct Icons {
