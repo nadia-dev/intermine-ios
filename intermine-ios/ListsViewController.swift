@@ -17,9 +17,9 @@ class ListsViewController: LoadingTableViewController {
                     UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
                         self.tableView.reloadData()
                     }, completion: nil)
-                    self.hideNothingFoundView()
+                    self.showingResult = true
                 } else {
-                    self.showNothingFoundView()
+                    self.nothingFound = true
                 }
             }
         }
@@ -34,9 +34,9 @@ class ListsViewController: LoadingTableViewController {
     }
     
     override func mineSelected(_ notification: NSNotification) {
-        self.startSpinner()
         self.lists = []
-        self.hideNothingFoundLabel()
+        self.isLoading = true
+        IntermineAPIClient.cancelListsRequest()
         if let mineName = notification.userInfo?["mineName"] as? String {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName) {
                 self.configureNavBar(mine: mine, shouldShowMenuButton: true)
@@ -49,17 +49,15 @@ class ListsViewController: LoadingTableViewController {
     }
     
     private func fetchLists(mineUrl: String) {
+        self.isLoading = true
         IntermineAPIClient.fetchLists(mineUrl: mineUrl, completion: { (lists, error) in
             guard let lists = lists else {
-                self.stopSpinner()
-                self.showNothingFoundView()
                 if let error = error {
                     self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
                 }
                 return
             }
             self.lists = lists
-            self.stopSpinner()
         })
     }
 

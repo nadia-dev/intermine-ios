@@ -66,21 +66,6 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
         self.spinner?.stopAnimating()
     }
     
-    // MARK: Private methods
-    
-    private func indicatorFrame() -> CGRect {
-        if let navbarHeight = self.navigationController?.navigationBar.frame.size.height, let tabbarHeight = self.tabBarController?.tabBar.frame.size.height {
-            let viewHeight = BaseView.viewHeight(view: self.view)
-            let indicatorHeight = viewHeight - (tabbarHeight + navbarHeight)
-            let indicatorWidth = BaseView.viewWidth(view: self.view)
-            return CGRect(x: 0, y: 0, width: indicatorWidth, height: indicatorHeight)
-        } else {
-            return self.view.frame
-        }
-    }
 
-    private func indicatorPadding() -> CGFloat {
-        return BaseView.viewWidth(view: self.view) / 2.5
-    }
 
 }

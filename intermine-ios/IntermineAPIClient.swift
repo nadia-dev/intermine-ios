@@ -38,18 +38,20 @@ class IntermineAPIClient: NSObject {
     static let jsonParams = ["format": "json"]
     static let manager = Alamofire.SessionManager.default
     static let counter = Counter()
-    
     static let useDebugServer = false
+    
+    static var listsRequest: Request?
+    static var templatesRequest: Request?
     
     // MARK: Private methods
 
-    private class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, shouldUseAuth: Bool, completion: @escaping (_ result: [String: AnyObject]?, _ error: NetworkErrorType?) -> ()) {
+    private class func sendJSONRequest(url: String, method: HTTPMethod, params: [String: String]?, shouldUseAuth: Bool, completion: @escaping (_ result: [String: AnyObject]?, _ error: NetworkErrorType?) -> ()) -> Request {
         manager.session.configuration.timeoutIntervalForRequest = General.timeoutIntervalForRequest
         var paramsToUse = params
         if shouldUseAuth {
             paramsToUse = IntermineAPIClient.updateParamsWithAuth(params: params)
         }
-        manager.request(url, method: method, parameters: paramsToUse)
+        return manager.request(url, method: method, parameters: paramsToUse)
             .responseJSON {
                 response in
                 switch (response.result) {
@@ -144,6 +146,14 @@ class IntermineAPIClient: NSObject {
         manager.session.getAllTasks { tasks in
             tasks.forEach { $0.cancel() }
         }
+    }
+    
+    class func cancelListsRequest() {
+        IntermineAPIClient.listsRequest?.cancel()
+    }
+    
+    class func cancelTemplatesRequest() {
+        IntermineAPIClient.templatesRequest?.cancel()
     }
     
     class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?, _ error: NetworkErrorType?) -> ()) {
@@ -255,7 +265,7 @@ class IntermineAPIClient: NSObject {
     
     class func fetchLists(mineUrl: String, completion: @escaping (_ result: [List]?, _ error: NetworkErrorType?) -> ()) {
         let url = mineUrl + Endpoints.lists
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: true) { (result, error) in
+        IntermineAPIClient.listsRequest = IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: true) { (result, error) in
             var listObjects: [List] = []
             if let result = result {
                 if let lists = result["lists"] as? [[String: AnyObject]] {
@@ -278,7 +288,7 @@ class IntermineAPIClient: NSObject {
     
     class func fetchTemplates(mineUrl: String, completion: @escaping (_ result: TemplatesList?, _ error: NetworkErrorType?) -> ()) {
         let url = mineUrl + Endpoints.templates
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: true) { (result, error) in
+        IntermineAPIClient.templatesRequest = IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: true) { (result, error) in
             if let result = result {
                 if let templates = result["templates"] as? [String: AnyObject] {
                     var templateList: [Template] = []

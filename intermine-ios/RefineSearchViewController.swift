@@ -89,7 +89,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         }
     }
     
-    private func indicatorPadding() -> CGFloat {
+    override func indicatorPadding() -> CGFloat {
         if let nothingFoundView = self.nothingFoundView {
             return BaseView.viewWidth(view: nothingFoundView) / 3
         }

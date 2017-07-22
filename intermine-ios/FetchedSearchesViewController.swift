@@ -68,12 +68,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
             }, completion: nil)
             
             if data.count > 0 {
-                self.hideNothingFoundView()
+                self.showingResult = true
                 self.buttonView?.isHidden = false
-                self.stopSpinner()
             } else {
                 if self.selectedFacet == nil {
-                    self.showNothingFoundView()
+                    self.nothingFound = true
                     self.buttonView?.isHidden = true
                 }
             }
@@ -137,7 +136,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     for res in searchResults {
                         if !self.lockData {
                             self.data.append(res)
-                            self.stopSpinner()
+                            // FIXME: ?
                         }
                     }
                 }
@@ -187,9 +186,8 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     func refineSearchViewController(controller: RefineSearchViewController, didSelectFacet: SelectedFacet) {
         // reload table view with new data
         self.selectedFacet = didSelectFacet
-        self.hideNothingFoundView()
+        self.showingResult = true
         self.lockData = true
-        self.startSpinner()
         self.data = []
         self.loadRefinedSearchWithOffset(offset: self.currentOffset, selectedFacet: didSelectFacet)
     }

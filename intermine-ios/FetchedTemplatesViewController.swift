@@ -55,7 +55,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     private var templatesCount: Int? {
         didSet {
             if self.templatesCount == 0 {
-                self.showNothingFoundView()
+                self.nothingFound = true
             } else {
                 self.summaryCell?.templatesCount = self.templatesCount
                 self.tableView.reloadData()
@@ -71,9 +71,9 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         didSet {
             if self.templates.count > 0 {
                 self.tableView.reloadData()
-                self.hideNothingFoundView()
+                self.showingResult = true
             } else {
-                self.showNothingFoundView()
+                self.nothingFound = true
             }
         }
     }
@@ -137,7 +137,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res, error) in
                 self.processDataResult(res: res, data: &self.templates)
                 if self.currentOffset == 0 {
-                    self.stopSpinner()
+                    // FIXME: 
                 }
                 if let error = error {
                     self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))

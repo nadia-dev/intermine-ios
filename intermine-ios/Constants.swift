@@ -19,7 +19,7 @@ struct Endpoints {
     static let singleList = "/service/query/results"
     static let search = "/service/search"
     static let report = "/report.do"
-    static let registryDomain = "https://intermine-registry.herokuapp.com/registry"
+    static let registryDomain = "https://intermine-registry.herokuapp.com"
     static let registryInstances = "/service/instances"
 }
 

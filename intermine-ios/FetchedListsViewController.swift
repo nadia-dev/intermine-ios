@@ -22,9 +22,9 @@ class FetchedListsViewController: LoadingTableViewController {
                 UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
                     self.tableView.reloadData()
                 }, completion: nil)
-                self.hideNothingFoundView()
+                self.showingResult = true
             } else {
-                self.showNothingFoundView()
+                self.nothingFound = true
             }
         }
     }
@@ -54,7 +54,7 @@ class FetchedListsViewController: LoadingTableViewController {
                 self.params = params
                 self.processDataResult(res: res, data: &self.lists)
                 if self.currentOffset == 0 {
-                    self.stopSpinner()
+                    // FIXME: - when is this true?
                 }
                 if let error = error {
                     self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))

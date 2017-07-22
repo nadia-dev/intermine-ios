@@ -29,7 +29,7 @@ class LaunchViewController: BaseViewController {
         }
     }
 
-    private func indicatorPadding() -> CGFloat {
+    override func indicatorPadding() -> CGFloat {
         if let spinnerContainer = spinnerContainer {
             return BaseView.viewWidth(view: spinnerContainer) / 2.6
         }
