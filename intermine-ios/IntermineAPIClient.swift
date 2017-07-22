@@ -114,7 +114,7 @@ class IntermineAPIClient: NSObject {
     private class func fetchIntermineVersion(mineUrl: String, completion: @escaping (_ result: String?, _ error: NetworkErrorType?) -> ()) {
         // TODO: - remove method if not needed
         let url = mineUrl + Endpoints.intermineVersion
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: false) { (result, error) in
+        var _ = IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: false) { (result, error) in
             if let result = result {
                 if let versionString = result["version"] {
                     completion("\(versionString)", nil)
@@ -127,7 +127,7 @@ class IntermineAPIClient: NSObject {
     
     private class func fetchReleaseId(mineUrl: String, completion: @escaping (_ result: String?, _ error: NetworkErrorType?) -> ()) {
         let url = mineUrl + Endpoints.modelReleased
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: false) { (result, error) in
+        var _ = IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: jsonParams, shouldUseAuth: false) { (result, error) in
             if let result = result {
                 if let releaseString = result["version"] {
                     completion("\(releaseString)", nil)
@@ -159,7 +159,7 @@ class IntermineAPIClient: NSObject {
     class func makeSearchInMine(mineUrl: String, params: [String: String], completion: @escaping (_ result: SearchResult?, _ facets: FacetList?, _ error: NetworkErrorType?) -> ()) {
         
         let url = mineUrl + Endpoints.search
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: params, shouldUseAuth: false) { (res, error) in
+        var _ = IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: params, shouldUseAuth: false) { (res, error) in
             if let res = res {
                 var facetList: FacetList?
                 if let facets = res["facets"] as? [String: AnyObject] {
@@ -237,14 +237,14 @@ class IntermineAPIClient: NSObject {
     class func fetchSingleList(mineUrl: String, queryString: String, completion: @escaping (_ result: [String: AnyObject]?, _ params: [String: String], _ error: NetworkErrorType?) -> ()) {
         let url = mineUrl + Endpoints.singleList
         let params: [String: String] = ["format": "json", "query": queryString, "start": "0", "size": "15"]
-        IntermineAPIClient.sendJSONRequest(url: url, method: .post, params: params, shouldUseAuth: true) { (res, error) in
+        var _ = IntermineAPIClient.sendJSONRequest(url: url, method: .post, params: params, shouldUseAuth: true) { (res, error) in
             completion(res, params, error)
         }
     }
     
     class func fetchRegistry(completion: @escaping (_ result: [String: AnyObject]?, _ error: NetworkErrorType?) -> ()) {
         let url = Endpoints.registryDomain + Endpoints.registryInstances
-        IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: nil, shouldUseAuth: false) { (res, error) in
+        var _ = IntermineAPIClient.sendJSONRequest(url: url, method: .get, params: nil, shouldUseAuth: false) { (res, error) in
             completion(res, error)
         }
     }

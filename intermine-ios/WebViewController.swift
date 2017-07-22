@@ -45,7 +45,7 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
             let id = searchResult.getId() {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName) {
                 if let mineUrl = mine.url {
-                    let urlString = mineUrl + Endpoints.report + "?id=\(id)"
+                    let urlString = mineUrl + Endpoints.searchResultReport + "?id=\(id)"
                     if let url = NSURL(string: urlString) as URL? {
                         let request = NSURLRequest(url: url)
                         AppManager.sharedManager.shouldBreakLoading = true

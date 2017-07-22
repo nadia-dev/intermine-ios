@@ -18,9 +18,10 @@ struct Endpoints {
     static let modelReleased = "/service/version/release" // version of the data *inside* the intermine
     static let singleList = "/service/query/results"
     static let search = "/service/search"
-    static let report = "/report.do"
+    static let searchResultReport = "/report.do"
     static let registryDomain = "https://intermine-registry.herokuapp.com"
     static let registryInstances = "/service/instances"
+    static let listReport = "bagDetails.do"
 }
 
 struct General {
