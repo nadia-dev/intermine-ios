@@ -250,7 +250,6 @@
 				055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */,
 				05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */,
 				05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */,
-				05AC8A741ED772D6000F37CE /* WebViewController.swift */,
 			);
 			name = SearchTabVCs;
 			sourceTree = "<group>";
@@ -301,6 +300,7 @@
 		05715E6C1EBFBC1100C4C3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05AC8A741ED772D6000F37CE /* WebViewController.swift */,
 				05D531561F1E3674006A4EDC /* LaunchViewController.swift */,
 				057E5F741ED6EBC6004278C5 /* MainViewController.swift */,
 				057E5F701ED6EB01004278C5 /* MenuViewController.swift */,

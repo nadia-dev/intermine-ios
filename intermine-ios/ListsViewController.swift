@@ -25,8 +25,8 @@ class ListsViewController: LoadingTableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if  let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url  {
             self.mineUrl = mineUrl
             self.fetchLists(mineUrl: mineUrl)
@@ -35,6 +35,11 @@ class ListsViewController: LoadingTableViewController {
             let failedView = FailedRegistryView.instantiateFromNib()
             self.tableView.addSubview(failedView)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     override func mineSelected(_ notification: NSNotification) {
@@ -61,7 +66,8 @@ class ListsViewController: LoadingTableViewController {
                 }
                 return
             }
-            self.lists = lists
+            // Sort list objects by "authorized"
+            self.lists = lists.sorted { $0.getAuthd() && !$1.getAuthd() }
         })
     }
 
@@ -102,7 +108,7 @@ class ListsViewController: LoadingTableViewController {
                     if let views = CacheDataStore.sharedCacheDataStore.getParamsForListCall(mineUrl: mineUrl, type: selectedType) {
                         if let viewsQuery = QueryBuilder.buildQuery(views: views, type: selectedType, value: selectedValue) {
                             
-                            if let fetchedListsCV = FetchedListsViewController.fetchedListsViewController(withMineUrl: mineUrl, viewsQuery: viewsQuery, type: selectedType) {
+                            if let fetchedListsCV = FetchedListsViewController.fetchedListsViewController(withMineUrl: mineUrl, viewsQuery: viewsQuery, type: selectedType, listTitle: selectedList.getName()) {
                                 self.navigationController?.pushViewController(fetchedListsCV, animated: true)
                             }
                         }

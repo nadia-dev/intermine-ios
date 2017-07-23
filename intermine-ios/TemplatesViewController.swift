@@ -26,8 +26,8 @@ class TemplatesViewController: LoadingTableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if  let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url {
             self.mineUrl = mineUrl
             self.fetchTemplates(mineUrl: mineUrl)
@@ -36,6 +36,10 @@ class TemplatesViewController: LoadingTableViewController {
             let failedView = FailedRegistryView.instantiateFromNib()
             self.tableView.addSubview(failedView)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func mineSelected(_ notification: NSNotification) {

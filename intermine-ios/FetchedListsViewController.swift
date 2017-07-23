@@ -10,11 +10,11 @@ import UIKit
 
 class FetchedListsViewController: LoadingTableViewController {
     
-    
     private var viewsQuery: String?
     private var currentOffset: Int = 0
     private var params: [String: String]?
     private var type: String?
+    private var listTitle: String?
     
     private var lists: [[String: String]] = [] {
         didSet {
@@ -27,20 +27,38 @@ class FetchedListsViewController: LoadingTableViewController {
         }
     }
     
+    override func didTapInfoButton() {
+        if let listTitle = self.listTitle, let mineUrl = self.mineUrl {
+            print(listTitle)
+            let urlTitle = createUrlValueFromTitle(title: listTitle)
+            let url = mineUrl + Endpoints.listReport + "?bagName=\(urlTitle)"
+            print(url)
+            if let webVC = WebViewController.webViewController(withUrl: url) {
+                self.navigationController?.pushViewController(webVC, animated: true)
+            }
+        }
+    }
+    
+    private func createUrlValueFromTitle(title: String) -> String {
+        return title.replacingOccurrences(of: " ", with: "+")
+    }
+    
     // MARK: Load from storyboard
     
-    class func fetchedListsViewController(withMineUrl: String, viewsQuery: String, type: String) -> FetchedListsViewController? {
+    class func fetchedListsViewController(withMineUrl: String, viewsQuery: String, type: String, listTitle: String?) -> FetchedListsViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "FetchedListsVC") as? FetchedListsViewController
         vc?.mineUrl = withMineUrl
         vc?.viewsQuery = viewsQuery
         vc?.type = type
+        vc?.listTitle = listTitle
         return vc
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideMenuButton = true
+        self.showInfoButton = true
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
     }
     

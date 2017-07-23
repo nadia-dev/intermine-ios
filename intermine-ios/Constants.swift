@@ -21,7 +21,7 @@ struct Endpoints {
     static let searchResultReport = "/report.do"
     static let registryDomain = "http://registry.intermine.org"
     static let registryInstances = "/service/instances"
-    static let listReport = "bagDetails.do"
+    static let listReport = "/bagDetails.do"
 }
 
 struct General {
@@ -52,6 +52,7 @@ struct Icons {
     static let star = UIImage.init(icon: .FAStar, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
     static let placeholder = UIImage.init(icon: .FAFile, size: CGSize(width: 500, height: 500), orientation: UIImageOrientation.up, textColor: Colors.gray56, backgroundColor: UIColor.clear)
     static let titleBarPlaceholder = UIImage.init(icon: .FAChainBroken, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
+    static let user = UIImage.init(icon: .FAUserO, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.palma, backgroundColor: UIColor.clear)
 }
 
 struct Colors {

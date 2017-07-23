@@ -32,6 +32,13 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2p-Wb-mxx">
                                             <rect key="frame" x="8" y="8" width="359" height="84"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z4H-Wf-cva">
+                                                    <rect key="frame" x="337" y="2" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="45d-10-ZnF"/>
+                                                        <constraint firstAttribute="width" secondItem="Z4H-Wf-cva" secondAttribute="height" multiplier="1:1" id="mwe-VN-1Zl"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clP-xA-6yG" userLabel="DescriptionContainer">
                                                     <rect key="frame" x="20" y="20" width="239" height="44"/>
                                                     <subviews>
@@ -80,11 +87,13 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="clP-xA-6yG" firstAttribute="top" secondItem="y2p-Wb-mxx" secondAttribute="top" constant="20" id="5A0-Ub-OVr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z4H-Wf-cva" secondAttribute="trailing" constant="2" id="7Sw-RH-7TZ"/>
                                                 <constraint firstItem="clP-xA-6yG" firstAttribute="leading" secondItem="y2p-Wb-mxx" secondAttribute="leading" constant="20" id="Ewn-vp-u4o"/>
                                                 <constraint firstAttribute="trailing" secondItem="DUy-oh-WHu" secondAttribute="trailing" constant="20" id="Lqt-SB-RtE"/>
                                                 <constraint firstAttribute="bottom" secondItem="clP-xA-6yG" secondAttribute="bottom" constant="20" id="Rqi-8D-4Nq"/>
                                                 <constraint firstItem="DUy-oh-WHu" firstAttribute="top" secondItem="clP-xA-6yG" secondAttribute="top" id="i4v-ZI-iZF"/>
                                                 <constraint firstItem="DUy-oh-WHu" firstAttribute="leading" secondItem="clP-xA-6yG" secondAttribute="trailing" constant="20" id="o3M-XL-vLI"/>
+                                                <constraint firstItem="Z4H-Wf-cva" firstAttribute="top" secondItem="y2p-Wb-mxx" secondAttribute="top" constant="2" id="wC2-Ro-Szu"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -108,6 +117,7 @@
                                     <outlet property="countLabel" destination="N5r-F8-iBr" id="goq-f1-5uq"/>
                                     <outlet property="descriptionLabel" destination="dF4-F1-6rL" id="yWf-47-CF2"/>
                                     <outlet property="titleLabel" destination="956-hx-I4a" id="aP3-lj-Ifb"/>
+                                    <outlet property="userImageView" destination="Z4H-Wf-cva" id="wgV-Ka-FYy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -450,7 +460,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="osB-Zc-LhO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FetchedCell" id="Yia-cI-i8S" customClass="FetchedCell" customModule="intermine_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -526,6 +536,7 @@
                                         <constraint firstItem="rIX-ok-OPw" firstAttribute="leading" secondItem="tYd-kf-X5l" secondAttribute="leadingMargin" constant="12" id="u6Y-jb-ESb"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="countLabel" destination="HtM-vs-tzF" id="Bky-ph-WKW"/>
                                     <outlet property="paramsLabel" destination="rIX-ok-OPw" id="MZc-aR-oc1"/>

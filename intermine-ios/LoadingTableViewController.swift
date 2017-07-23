@@ -44,6 +44,15 @@ class LoadingTableViewController: UITableViewController {
         }
     }
     
+    var showInfoButton = false {
+        didSet {
+            if showInfoButton {
+                let infoButton = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(LoadingTableViewController.didTapInfoButton))
+                navigationItem.rightBarButtonItems = [infoButton]
+            }
+        }
+    }
+    
     var mineUrl: String? {
         didSet {
             if let url = self.mineUrl, let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: url) {
@@ -65,6 +74,10 @@ class LoadingTableViewController: UITableViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func didTapInfoButton() {
+        print("tapped")
     }
     
     func mineSelected(_ notification: NSNotification) {

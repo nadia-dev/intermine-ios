@@ -115,6 +115,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             IntermineAPIClient.getToken(mineUrl: mineUrl, username: userName, password: pwd, completion: { (success) in
                 if success {
                     self.showLoggedinState(isLogged: true)
+                    self.sendUpdatedMineNotification(mineUrl: mineUrl)
                 } else {
                     self.alert(message: String.localize("Login.AuthError"))
                 }
@@ -126,6 +127,15 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         if let mineUrl = self.mineUrl {
             DefaultsManager.removeFromDefaults(key: mineUrl)
             self.showLoggedinState(isLogged: false)
+            self.sendUpdatedMineNotification(mineUrl: mineUrl)
+        }
+    }
+    
+    private func sendUpdatedMineNotification(mineUrl: String) {
+        if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl), let mineName = mine.name {
+            var info: [String: Any] = [:]
+            info = ["mineName": mineName]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.mineSelected), object: self, userInfo: info)
         }
     }
     

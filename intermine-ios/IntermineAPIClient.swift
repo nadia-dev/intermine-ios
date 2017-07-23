@@ -292,7 +292,8 @@ class IntermineAPIClient: NSObject {
                                            size: list["size"] as? Int,
                                            type: list["type"] as? String,
                                            name: list["name"] as? String,
-                                           status: list["status"] as? String)
+                                           status: list["status"] as? String,
+                                           authorized: list["authorized"] as? Bool)
                         listObjects.append(listObj)
                     }
                     completion(listObjects, nil)

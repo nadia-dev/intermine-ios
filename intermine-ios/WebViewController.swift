@@ -16,14 +16,12 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     private var urlString: String?
     private var spinner: NVActivityIndicatorView?
     
-    private var searchResult: SearchResult?
-    
     // MARK: Load from storyboard
-    
-    class func webViewController(withSearchResult: SearchResult) -> WebViewController? {
+
+    class func webViewController(withUrl: String) -> WebViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "WebVC") as? WebViewController
-        vc?.searchResult = withSearchResult
+        vc?.urlString = withUrl
         return vc
     }
 
@@ -40,18 +38,11 @@ class WebViewController: BaseViewController, UIWebViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let searchResult = self.searchResult,
-            let mineName = searchResult.getMineName(),
-            let id = searchResult.getId() {
-            if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName) {
-                if let mineUrl = mine.url {
-                    let urlString = mineUrl + Endpoints.searchResultReport + "?id=\(id)"
-                    if let url = NSURL(string: urlString) as URL? {
-                        let request = NSURLRequest(url: url)
-                        AppManager.sharedManager.shouldBreakLoading = true
-                        self.webView?.loadRequest(request as URLRequest)
-                    }
-                }
+        if let urlString = self.urlString {
+            if let url = NSURL(string: urlString) as URL? {
+                let request = NSURLRequest(url: url)
+                AppManager.sharedManager.shouldBreakLoading = true
+                self.webView?.loadRequest(request as URLRequest)
             }
         }
     }
