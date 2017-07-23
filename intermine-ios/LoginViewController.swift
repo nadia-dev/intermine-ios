@@ -17,6 +17,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var coverView: UIView?
     @IBOutlet weak var loggedInLabel: UILabel?
+    @IBOutlet weak var logoutButton: UIButton!
     
     private let itemsCount = CacheDataStore.sharedCacheDataStore.registrySize()
     private let registry = CacheDataStore.sharedCacheDataStore.getMineNames()
@@ -39,6 +40,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         usernameTextField?.returnKeyType = .go
         passwordTextField?.returnKeyType = .go
         loginButton?.setTitle(String.localize("Login.LoginButton"), for: .normal)
+        logoutButton?.setTitle(String.localize("Login.LogoutButton"), for: .normal)
         usernameTextField?.delegate = self
         passwordTextField?.delegate = self
         initialViewY = self.view.frame.origin.y
@@ -120,6 +122,13 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
+    private func logout() {
+        if let mineUrl = self.mineUrl {
+            DefaultsManager.removeFromDefaults(key: mineUrl)
+            self.showLoggedinState(isLogged: false)
+        }
+    }
+    
     // MARK: Actions
     
     func dismissKeyboard() {
@@ -128,6 +137,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.login()
+    }
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        self.logout()
     }
     
     // MARK: Text field delegate

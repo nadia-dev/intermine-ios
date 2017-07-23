@@ -24,9 +24,9 @@ class ListsViewController: LoadingTableViewController {
             }
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if  let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url  {
             self.mineUrl = mineUrl
             self.fetchLists(mineUrl: mineUrl)

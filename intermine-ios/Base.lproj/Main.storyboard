@@ -595,7 +595,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="tMU-dh-7eg" eventType="touchUpInside" id="v86-Yg-KQg"/>
-                                    <action selector="refineSearchTapped:" destination="6Kn-to-Y6m" eventType="touchUpInside" id="eNg-cV-1PT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ1-AN-HKR">
@@ -613,12 +612,31 @@
                                         <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vv4-qB-nqh">
+                                        <rect key="frame" x="85" y="307.5" width="172.5" height="30"/>
+                                        <color key="backgroundColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="tMU-dh-7eg" eventType="touchUpInside" id="Izi-SD-95y"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="eYA-7r-P8N" firstAttribute="leading" secondItem="HmX-RG-wei" secondAttribute="leadingMargin" id="2hH-wh-BeX"/>
                                     <constraint firstItem="eYA-7r-P8N" firstAttribute="centerY" secondItem="HmX-RG-wei" secondAttribute="centerY" id="IH7-oK-sEp"/>
+                                    <constraint firstItem="vv4-qB-nqh" firstAttribute="top" secondItem="eYA-7r-P8N" secondAttribute="bottom" constant="20" id="JEF-Ml-pxa"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="eYA-7r-P8N" secondAttribute="trailing" id="ONY-ye-Li8"/>
+                                    <constraint firstItem="vv4-qB-nqh" firstAttribute="width" secondItem="HmX-RG-wei" secondAttribute="width" multiplier="0.5" constant="1" id="dBR-ju-Qzg"/>
+                                    <constraint firstItem="vv4-qB-nqh" firstAttribute="centerX" secondItem="HmX-RG-wei" secondAttribute="centerX" id="rmO-uA-nbn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -646,6 +664,7 @@
                         <outlet property="descriptionLabel" destination="lJ1-AN-HKR" id="0rL-ZD-e4j"/>
                         <outlet property="loggedInLabel" destination="eYA-7r-P8N" id="b8n-55-mi6"/>
                         <outlet property="loginButton" destination="NpU-rh-8Qq" id="W4E-SN-l9Q"/>
+                        <outlet property="logoutButton" destination="vv4-qB-nqh" id="kcj-BL-mN4"/>
                         <outlet property="passwordTextField" destination="VXE-if-stE" id="G8s-TN-mWY"/>
                         <outlet property="usernameTextField" destination="feW-DY-1Jm" id="ARl-ao-cd5"/>
                     </connections>
