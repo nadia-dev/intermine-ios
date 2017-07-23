@@ -31,6 +31,10 @@ class TemplatesViewController: LoadingTableViewController {
         if  let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url {
             self.mineUrl = mineUrl
             self.fetchTemplates(mineUrl: mineUrl)
+        } else {
+            self.defaultNavbarConfiguration(withTitle: "Templates")
+            let failedView = FailedRegistryView.instantiateFromNib()
+            self.tableView.addSubview(failedView)
         }
     }
 

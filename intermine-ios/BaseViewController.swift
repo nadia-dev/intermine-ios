@@ -64,6 +64,24 @@ class BaseViewController: UIViewController {
     func indicatorPadding() -> CGFloat {
         return BaseView.viewWidth(view: self.view) / 2.5
     }
+    
+    func defaultNavbarConfiguration(withTitle: String) {
+        self.navigationController?.navigationBar.barTintColor = Colors.palma
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.tintColor = Colors.white
+        self.navigationController?.navigationBar.topItem?.title = withTitle
+        //self.navigationController?.navigationBar.topItem?.titleView = UIImageView(image: Icons.titleBarPlaceholder)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
+        
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.setImage(Icons.titleBarPlaceholder, for: .normal)
+        button.addTarget(self, action: #selector(LoadingTableViewController.menuButtonPressed), for: .touchUpInside)
+        button.tintColor = Colors.white
+        let barButton = UIBarButtonItem()
+        barButton.customView = button
+        self.navigationItem.leftBarButtonItem = barButton
+    }
 }
 
 

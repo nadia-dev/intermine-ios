@@ -30,6 +30,10 @@ class ListsViewController: LoadingTableViewController {
         if  let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url  {
             self.mineUrl = mineUrl
             self.fetchLists(mineUrl: mineUrl)
+        } else {
+            self.defaultNavbarConfiguration(withTitle: "Lists")
+            let failedView = FailedRegistryView.instantiateFromNib()
+            self.tableView.addSubview(failedView)
         }
     }
     

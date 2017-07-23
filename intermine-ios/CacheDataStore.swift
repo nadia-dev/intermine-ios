@@ -35,6 +35,12 @@ class CacheDataStore {
     }
 
     func updateRegistryIfNeeded(completion: @escaping (_ mines: [Mine]?, _ error: NetworkErrorType?) -> ()) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            let mines = Mine.getAllMines(context: self.managedContext)
+            completion(mines, nil)
+        })
+        
         if Connectivity.isConnectedToInternet() {
             if registryNeedsUpdate() {
                 IntermineAPIClient.fetchRegistry { (jsonRes, error) in

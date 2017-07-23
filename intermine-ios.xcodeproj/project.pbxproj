@@ -16,6 +16,8 @@
 		053A57CC1F13858F00445F6E /* debug_registry.json in Resources */ = {isa = PBXBuildFile; fileRef = 053A57CB1F13858F00445F6E /* debug_registry.json */; };
 		05420A921F128C4C00BC1CC7 /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */; };
 		054FD7591F1AD93F0017171A /* FacetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054FD7581F1AD93F0017171A /* FacetManager.swift */; };
+		05533C251F2392B2000CDB9F /* FailedRegistryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05533C241F2392B2000CDB9F /* FailedRegistryView.xib */; };
+		05533C271F2392CA000CDB9F /* FailedRegistryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05533C261F2392CA000CDB9F /* FailedRegistryView.swift */; };
 		055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */; };
 		055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055556681ECCA91D009DCA24 /* SearchResult.swift */; };
 		05715E541EBF055800C4C3C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05715E531EBF055800C4C3C7 /* Constants.swift */; };
@@ -108,6 +110,8 @@
 		05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		054FD7581F1AD93F0017171A /* FacetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacetManager.swift; sourceTree = "<group>"; };
+		05533C241F2392B2000CDB9F /* FailedRegistryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailedRegistryView.xib; sourceTree = "<group>"; };
+		05533C261F2392CA000CDB9F /* FailedRegistryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedRegistryView.swift; sourceTree = "<group>"; };
 		055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedSearchesViewController.swift; sourceTree = "<group>"; };
 		055556681ECCA91D009DCA24 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		05715E531EBF055800C4C3C7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -453,6 +457,8 @@
 			children = (
 				05EA6CBC1EC79C10002CC884 /* TableCoverView.swift */,
 				05EA6CB91EC79BEB002CC884 /* TableCoverView.xib */,
+				05533C261F2392CA000CDB9F /* FailedRegistryView.swift */,
+				05533C241F2392B2000CDB9F /* FailedRegistryView.xib */,
 			);
 			name = TableCoverView;
 			sourceTree = "<group>";
@@ -646,6 +652,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05533C251F2392B2000CDB9F /* FailedRegistryView.xib in Resources */,
 				05E952E91EC197400057F753 /* Localizable.strings in Resources */,
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
@@ -783,6 +790,7 @@
 				05F4078D1EC4AD3100707B86 /* UIViewController+Utils.swift in Sources */,
 				05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */,
 				05F407831EC4980C00707B86 /* TemplatesList.swift in Sources */,
+				05533C271F2392CA000CDB9F /* FailedRegistryView.swift in Sources */,
 				05BF4A811F21AB92007EE471 /* CategoryCell.swift in Sources */,
 				0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */,
 				057E5F771ED6F032004278C5 /* MenuCell.swift in Sources */,
