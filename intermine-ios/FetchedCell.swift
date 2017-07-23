@@ -46,7 +46,7 @@ class FetchedCell: TypeColorCell {
     }
     
     private func labelContents(representedData: [String: String]) -> NSMutableAttributedString {
-        let infoString = NSMutableAttributedString(string: "")
+        var infoString = NSMutableAttributedString(string: "")
         let mineString = NSMutableAttributedString(string: "")
         let typeString = NSMutableAttributedString(string: "")
         let resultingString = NSMutableAttributedString(string: "")
@@ -59,15 +59,12 @@ class FetchedCell: TypeColorCell {
                     let currentString = String.makeBold(text: value)
                     currentString.append(newline)
                     mineString.append(currentString)
-                }
-                
-                else if (key == "type") {
+                } else if (key == "type") {
                     let currentSting = NSMutableAttributedString(string: value)
                     currentSting.append(newline)
                     typeString.append(currentSting)
-                    
                 } else {
-                    let currentString = String.formStringWithBoldText(boldText: key.replacingOccurrences(of: ".", with: " ").camelCaseToWords().replacingOccurrences(of: "  ", with: " "), separatorText: ": ", normalText: value)
+                    let currentString = String.formStringWithBoldText(boldText: key.replacingOccurrences(of: ".", with: " ").replacingOccurrences(of: "  ", with: " "), separatorText: ": ", normalText: value)
                     if gen != representedData.count {
                         currentString.append(newline)
                     }
@@ -75,7 +72,9 @@ class FetchedCell: TypeColorCell {
                 }
             } else {
                 if gen == representedData.count {
-                    // TODO: -if infoString ends with newline -> remove last newline
+                    if infoString.string.hasSuffix("\n") {
+                        infoString = infoString.attributedSubstring(from: NSMakeRange(0, infoString.length - 1)) as! NSMutableAttributedString
+                    }
                 }
             }
         }

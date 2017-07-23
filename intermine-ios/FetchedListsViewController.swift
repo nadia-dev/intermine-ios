@@ -29,10 +29,8 @@ class FetchedListsViewController: LoadingTableViewController {
     
     override func didTapInfoButton() {
         if let listTitle = self.listTitle, let mineUrl = self.mineUrl {
-            print(listTitle)
             let urlTitle = createUrlValueFromTitle(title: listTitle)
             let url = mineUrl + Endpoints.listReport + "?bagName=\(urlTitle)"
-            print(url)
             if let webVC = WebViewController.webViewController(withUrl: url) {
                 self.navigationController?.pushViewController(webVC, animated: true)
             }

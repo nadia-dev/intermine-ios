@@ -36,6 +36,7 @@ struct General {
     static let nullValues = ["<null>", "NULL", "-"]
     static let timeoutIntervalForRequest: Double = 1800
     static let timeoutForRegistryUpdate: Double = 30
+    static let needUppercase = ["dbid", "id", "ebi"]
 }
 
 struct Icons {
