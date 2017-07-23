@@ -22,6 +22,7 @@ class LaunchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinnerContainer?.layoutIfNeeded()
         if let spinnerContainer = spinnerContainer {
             let spinner = NVActivityIndicatorView(frame: spinnerContainer.bounds, type: .ballSpinFadeLoader, color: Colors.white, padding: self.indicatorPadding())
             spinnerContainer.addSubview(spinner)

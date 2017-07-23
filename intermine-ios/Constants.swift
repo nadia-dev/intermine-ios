@@ -19,7 +19,7 @@ struct Endpoints {
     static let singleList = "/service/query/results"
     static let search = "/service/search"
     static let searchResultReport = "/report.do"
-    static let registryDomain = "https://intermine-registry.herokuapp.com"
+    static let registryDomain = "http://registry.intermine.org"
     static let registryInstances = "/service/instances"
     static let listReport = "bagDetails.do"
 }
@@ -35,7 +35,7 @@ struct General {
     static let viewAnimationSpeed = 0.2
     static let nullValues = ["<null>", "NULL", "-"]
     static let timeoutIntervalForRequest: Double = 1800
-    static let timeoutForRegistryUpdate: Double = 1
+    static let timeoutForRegistryUpdate: Double = 30
 }
 
 struct Icons {

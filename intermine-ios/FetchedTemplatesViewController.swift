@@ -72,9 +72,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     var templates: [[String:String]] = [] {
         didSet {
             if self.templates.count > 0 {
-                UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    self.tableView.reloadData()
-                }, completion: nil)
+                self.tableView.reloadData()
                 self.showingResult = true
             } else {
                 self.nothingFound = true
@@ -138,6 +136,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         if let mineUrl = self.mineUrl, let params = self.params {
             var correctedParams = params
             correctedParams["start"] = "\(offset)"
+            self.isLoading = true
             IntermineAPIClient.fetchTemplateResults(mineUrl: mineUrl, queryParams: correctedParams, completion: { (res, error) in
                 self.processDataResult(res: res, data: &self.templates)
                 if self.currentOffset == 0 {

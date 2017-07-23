@@ -84,6 +84,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavbar()
+        self.isLoading = true
         self.loadSearchResultsWithOffset(offset: self.currentOffset)
         refineButton?.setTitle(String.localize("Search.Refine"), for: .normal)
         buttonView?.isHidden = true

@@ -93,6 +93,7 @@ class LoadingTableViewController: UITableViewController {
             }
             
         } else {
+            print("reusing table overlay")
             if self.tableOverlay?.isDescendant(of: self.tableView) == true {
                 // the view already in the stack, 
                 // swap spinner to label or wise versa

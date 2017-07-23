@@ -19,9 +19,7 @@ class FetchedListsViewController: LoadingTableViewController {
     private var lists: [[String: String]] = [] {
         didSet {
             if self.lists.count > 0 {
-                UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    self.tableView.reloadData()
-                }, completion: nil)
+                self.tableView.reloadData()
                 self.showingResult = true
             } else {
                 self.nothingFound = true
@@ -44,11 +42,11 @@ class FetchedListsViewController: LoadingTableViewController {
         super.viewDidLoad()
         self.hideMenuButton = true
         self.loadTemplateResultsWithOffset(offset: self.currentOffset)
-
     }
     
     private func loadTemplateResultsWithOffset(offset: Int) {
         self.params?["start"] = "\(offset)"
+        self.isLoading = true
         if let mineUrl = self.mineUrl, let queryString = self.viewsQuery {
             IntermineAPIClient.fetchSingleList(mineUrl: mineUrl, queryString: queryString, completion: { (res, params, error) in
                 self.params = params

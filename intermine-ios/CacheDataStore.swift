@@ -12,7 +12,7 @@ import CoreData
 class CacheDataStore {
     
     private let modelName = General.modelName
-    private let debug = true
+    private let debug = false
     private let minesUpdateInterval: Double = 432000 //5 days, TODO: -change this value to less often
     
     // MARK: Shared Instance
@@ -243,7 +243,7 @@ class CacheDataStore {
         if debug == true {
             return true
         }
-        if let registry = fetchCachedRegistry() {
+        if let registry = fetchCachedRegistry(), registry.count > 0 {
             if let mine: Mine = registry.first, let lastUpdated = mine.lastTimeUpdated {
                 return NSDate.hasIntervalPassed(lastUpdated: lastUpdated, timeInterval: minesUpdateInterval)
             }
