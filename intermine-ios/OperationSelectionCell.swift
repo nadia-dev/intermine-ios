@@ -54,9 +54,11 @@ class OperationSelectionCell: TemplateDetailBaseCell {
     // MARK: Notification when operation is changed
     
     func operationChanged(_ notification: NSNotification) {
-        if let op = notification.userInfo?["op"] as? String {
-            self.query?.changeOperation(operation: op)
-            operationLabel?.text = op
+        if let op = notification.userInfo?["op"] as? String, let index = notification.userInfo?["index"] as? Int {
+            if self.index == index {
+                self.query?.changeOperation(operation: op)
+                operationLabel?.text = op
+            }
         }
     }
 }
