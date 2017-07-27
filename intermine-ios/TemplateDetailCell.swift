@@ -19,6 +19,8 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var operationTitleLabel: UILabel?
     @IBOutlet weak var operationLabel: UILabel?
     @IBOutlet weak var operationSelectButton: UIButton?
+    
+    @IBOutlet weak var titleLabelToTopConstraint: NSLayoutConstraint?
 
     @IBOutlet weak var valueTitleLabel: UILabel?
     @IBOutlet weak var valueTextField: UITextField?
@@ -38,6 +40,7 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
                     titleLabel?.text = templateQuery?.getPath()
                 } else {
                     titleLabel?.isHidden = true
+                    titleLabelToTopConstraint?.constant = 10
                     operationSelectButton?.isHidden = true
                 }
             }

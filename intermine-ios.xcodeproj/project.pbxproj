@@ -79,11 +79,8 @@
 		05F407981EC5B45F00707B86 /* TemplateDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407971EC5B45F00707B86 /* TemplateDetailTableViewController.swift */; };
 		05F4079A1EC5DFF900707B86 /* OperationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407991EC5DFF900707B86 /* OperationSelectViewController.swift */; };
 		05F4079C1EC6068E00707B86 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4079B1EC6068E00707B86 /* Dictionary+Utils.swift */; };
-		05F4079F1EC60F9D00707B86 /* LookupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4079E1EC60F9D00707B86 /* LookupCell.swift */; };
-		05F407A11EC60FC800707B86 /* OperationSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A01EC60FC800707B86 /* OperationSelectionCell.swift */; };
 		05F407A31EC60FEF00707B86 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A21EC60FEF00707B86 /* DescriptionCell.swift */; };
 		05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A41EC6100C00707B86 /* ActionCell.swift */; };
-		05F407A71EC6105A00707B86 /* TemplateDetailBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */; };
 		05F407AB1EC6137E00707B86 /* LoadingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */; };
 		05F407B01EC6159000707B86 /* FetchedTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407AF1EC6159000707B86 /* FetchedTemplatesViewController.swift */; };
 		05F407B21EC61F1400707B86 /* FetchedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F407B11EC61F1400707B86 /* FetchedCell.swift */; };
@@ -178,11 +175,8 @@
 		05F407971EC5B45F00707B86 /* TemplateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailTableViewController.swift; sourceTree = "<group>"; };
 		05F407991EC5DFF900707B86 /* OperationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSelectViewController.swift; sourceTree = "<group>"; };
 		05F4079B1EC6068E00707B86 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; };
-		05F4079E1EC60F9D00707B86 /* LookupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupCell.swift; sourceTree = "<group>"; };
-		05F407A01EC60FC800707B86 /* OperationSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationSelectionCell.swift; sourceTree = "<group>"; };
 		05F407A21EC60FEF00707B86 /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		05F407A41EC6100C00707B86 /* ActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
-		05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailBaseCell.swift; sourceTree = "<group>"; };
 		05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewController.swift; sourceTree = "<group>"; };
 		05F407AF1EC6159000707B86 /* FetchedTemplatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedTemplatesViewController.swift; sourceTree = "<group>"; };
 		05F407B11EC61F1400707B86 /* FetchedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedCell.swift; sourceTree = "<group>"; };
@@ -524,11 +518,8 @@
 			isa = PBXGroup;
 			children = (
 				05F4078E1EC4F48400707B86 /* TemplateTableViewCell.swift */,
-				05F4079E1EC60F9D00707B86 /* LookupCell.swift */,
-				05F407A01EC60FC800707B86 /* OperationSelectionCell.swift */,
 				05F407A21EC60FEF00707B86 /* DescriptionCell.swift */,
 				05F407A41EC6100C00707B86 /* ActionCell.swift */,
-				05F407A61EC6105A00707B86 /* TemplateDetailBaseCell.swift */,
 				054A8D5B1F29605A00D56813 /* TemplateDetailCell.swift */,
 			);
 			name = TemplateCells;
@@ -752,7 +743,6 @@
 				05BF4A881F22267F007EE471 /* ControllersManager.swift in Sources */,
 				05F4078F1EC4F48400707B86 /* TemplateTableViewCell.swift in Sources */,
 				05908AFC1F0765CD007BDF50 /* FavoriteButton.swift in Sources */,
-				05F407A71EC6105A00707B86 /* TemplateDetailBaseCell.swift in Sources */,
 				057E5F751ED6EBC6004278C5 /* MainViewController.swift in Sources */,
 				0535181C1ECF8260006F87EA /* FacetList.swift in Sources */,
 				05EA6CC01EC82CB2002CC884 /* ListsViewController.swift in Sources */,
@@ -760,7 +750,6 @@
 				05F407A51EC6100C00707B86 /* ActionCell.swift in Sources */,
 				054FD7591F1AD93F0017171A /* FacetManager.swift in Sources */,
 				05AC8A751ED772D6000F37CE /* WebViewController.swift in Sources */,
-				05F4079F1EC60F9D00707B86 /* LookupCell.swift in Sources */,
 				055556691ECCA91D009DCA24 /* SearchResult.swift in Sources */,
 				05D531571F1E3674006A4EDC /* LaunchViewController.swift in Sources */,
 				0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */,
@@ -807,7 +796,6 @@
 				05DA3DF91ECAF75D00AB4B79 /* QueryBuilder.swift in Sources */,
 				057779AA1EAFEFF000B75372 /* IntermineAPIClient.swift in Sources */,
 				05F407851EC4981A00707B86 /* Template.swift in Sources */,
-				05F407A11EC60FC800707B86 /* OperationSelectionCell.swift in Sources */,
 				0524F3B61EDC36AE004779F6 /* FavoriteSearchResult+CoreDataProperties.swift in Sources */,
 				0524585A1ED6115200C8A340 /* AppManager.swift in Sources */,
 				055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */,
