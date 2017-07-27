@@ -40,14 +40,11 @@ class TemplateQuery {
     }
     
     func isLookupQuery() -> Bool {
-        return value?.lowercased() == "lookup"
+        return op?.lowercased() == "lookup"
     }
     
     func isOpQuery() -> Bool {
-        if let value = self.value {
-            return value.lowercased() != "lookup"
-        }
-        return false
+        return op?.lowercased() != "lookup"
     }
     
     func getOperation() -> String? {
@@ -64,6 +61,10 @@ class TemplateQuery {
     
     func changeValue(value: String?) {
         self.value = value
+    }
+    
+    func getPath() -> String? {
+        return self.constraint
     }
     
 }
