@@ -315,7 +315,9 @@ class IntermineAPIClient: NSObject {
                         if let queries = template["where"] as? [[String: AnyObject]] {
                             for query in queries {
                                 let queryObj = TemplateQuery(withValue: query["value"] as? String, code: query["code"] as? String, op: query["op"] as? String, constraint: query["path"] as? String)
-                                queryList.append(queryObj)
+                                if queryObj.getOperation() != nil {
+                                    queryList.append(queryObj)
+                                }
                             }
                         }
                         let templateObj = Template(withTitle: template["title"] as? String, description: template["description"] as? String, queryList: queryList, name: template["name"] as? String, mineUrl: mineUrl)

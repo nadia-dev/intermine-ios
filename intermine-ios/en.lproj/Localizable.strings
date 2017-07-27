@@ -18,6 +18,8 @@
 "Templates.CTA.SelectOperation" = "Select Operation";
 "Templates.CountLabel" = "Template count: %@";
 "Templates.Params" = "Parameters: %@";
+"Templates.Operator" = "Operator";
+"Templates.Value" = "Value";
 
 "General.NothingFound" = "No results found";
 

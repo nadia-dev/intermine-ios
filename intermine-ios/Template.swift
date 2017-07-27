@@ -89,8 +89,7 @@ class Template {
     }
     
     func getQueriesSortedByType() -> [TemplateQuery] {
-        // returned array shows op queires first, then lookup queries
-        return self.getOpQueries() + self.getLookupQueries()
+        return self.getLookupQueries() + self.getOpQueries()
     }
     
 }
