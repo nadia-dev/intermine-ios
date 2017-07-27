@@ -18,6 +18,10 @@ class TemplatesList {
         self.mine = mine
     }
     
+    func getTemplates() -> [Template]? {
+        return self.templates
+    }
+    
     func size() -> Int {
         if let templates = self.templates {
             return templates.count
