@@ -830,6 +830,13 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sue-Vb-M8c">
                                             <rect key="frame" x="8" y="8" width="359" height="84"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRF-Gu-HVr">
+                                                    <rect key="frame" x="337" y="2" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="OlY-AZ-bgX"/>
+                                                        <constraint firstAttribute="width" secondItem="dRF-Gu-HVr" secondAttribute="height" multiplier="1:1" id="ZKh-fO-bXg"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxh-pu-p2P">
                                                     <rect key="frame" x="10" y="10" width="339" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -846,9 +853,11 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="LpS-MV-4Kc" secondAttribute="trailing" constant="10" id="7yX-3V-T4j"/>
+                                                <constraint firstAttribute="trailing" secondItem="dRF-Gu-HVr" secondAttribute="trailing" constant="2" id="LGa-s2-hy8"/>
                                                 <constraint firstAttribute="bottom" secondItem="LpS-MV-4Kc" secondAttribute="bottom" constant="10" id="OWS-yH-j1v"/>
                                                 <constraint firstItem="kxh-pu-p2P" firstAttribute="leading" secondItem="Sue-Vb-M8c" secondAttribute="leading" constant="10" id="WKD-Jb-g8D"/>
                                                 <constraint firstAttribute="trailing" secondItem="kxh-pu-p2P" secondAttribute="trailing" constant="10" id="fk4-Se-7gF"/>
+                                                <constraint firstItem="dRF-Gu-HVr" firstAttribute="top" secondItem="Sue-Vb-M8c" secondAttribute="top" constant="2" id="kGf-da-4KH"/>
                                                 <constraint firstItem="kxh-pu-p2P" firstAttribute="top" secondItem="Sue-Vb-M8c" secondAttribute="top" constant="10" id="rb3-IQ-lat"/>
                                                 <constraint firstItem="LpS-MV-4Kc" firstAttribute="leading" secondItem="Sue-Vb-M8c" secondAttribute="leading" constant="10" id="vTN-B7-SH3"/>
                                                 <constraint firstItem="LpS-MV-4Kc" firstAttribute="top" secondItem="kxh-pu-p2P" secondAttribute="bottom" constant="5" id="ych-Fx-geY"/>
@@ -872,6 +881,7 @@
                                     <outlet property="containerView" destination="Sue-Vb-M8c" id="0nW-7r-Pey"/>
                                     <outlet property="descriptionLabel" destination="LpS-MV-4Kc" id="4d7-SH-P7G"/>
                                     <outlet property="titleLabel" destination="kxh-pu-p2P" id="64F-Vp-BTE"/>
+                                    <outlet property="userImageView" destination="dRF-Gu-HVr" id="FS6-HE-qi5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -27,7 +27,7 @@ class TemplatesViewController: ResultsTableViewController {
                 }
                 return
             }
-            let templates = list.getTemplates()
+            let templates = list.getTemplates()?.sorted { $0.getAuthd() && !$1.getAuthd() }
             self.templates = templates
             completion(templates, error)
         }

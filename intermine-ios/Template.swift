@@ -15,16 +15,26 @@ class Template {
     private let description: String?
     private let queryList: [TemplateQuery]?
     private let mineUrl: String?
+    private let authorized: Bool?
     
-    init(withTitle: String?, description: String?, queryList: [TemplateQuery]?, name: String?, mineUrl: String) {
+    init(withTitle: String?, description: String?, queryList: [TemplateQuery]?, name: String?, mineUrl: String, authorized: Bool?) {
         self.title = withTitle
         self.description = description
         self.queryList = queryList
         self.name = name
         self.mineUrl = mineUrl
+        self.authorized = authorized
     }
     
     // MARK: Public methods
+    
+    func getAuthd() -> Bool {
+        if let authd = self.authorized {
+            return authd
+        } else {
+            return false
+        }
+    }
     
     func getMineUrl() -> String? {
         return self.mineUrl

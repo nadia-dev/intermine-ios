@@ -217,7 +217,6 @@
 		054745781EC247AA00BC35F8 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				054A8D5D1F2A0F7600D56813 /* ResultsTableViewController.swift */,
 				05EA6CBF1EC82CB2002CC884 /* ListsViewController.swift */,
 				05F407891EC4A9AA00707B86 /* TemplatesViewController.swift */,
 				0595D51E1EC0A60600686065 /* SearchViewController.swift */,
@@ -306,7 +305,7 @@
 				055556641ECCA31F009DCA24 /* SearchTabVCs */,
 				05EA6CBE1EC82B9A002CC884 /* ListTabVCs */,
 				05F407AE1EC6142000707B86 /* Landing */,
-				05F407AD1EC6141600707B86 /* LoadingVC */,
+				05F407AD1EC6141600707B86 /* LoadingVCs */,
 				05F4078B1EC4A9B300707B86 /* TemplateTabVCs */,
 				054745741EC246C700BC35F8 /* BaseVC */,
 				054745781EC247AA00BC35F8 /* Tabs */,
@@ -528,12 +527,13 @@
 			name = TemplateCells;
 			sourceTree = "<group>";
 		};
-		05F407AD1EC6141600707B86 /* LoadingVC */ = {
+		05F407AD1EC6141600707B86 /* LoadingVCs */ = {
 			isa = PBXGroup;
 			children = (
+				054A8D5D1F2A0F7600D56813 /* ResultsTableViewController.swift */,
 				05F407AA1EC6137E00707B86 /* LoadingTableViewController.swift */,
 			);
-			name = LoadingVC;
+			name = LoadingVCs;
 			sourceTree = "<group>";
 		};
 		05F407AE1EC6142000707B86 /* Landing */ = {

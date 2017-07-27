@@ -320,7 +320,13 @@ class IntermineAPIClient: NSObject {
                                 }
                             }
                         }
-                        let templateObj = Template(withTitle: template["title"] as? String, description: template["description"] as? String, queryList: queryList, name: template["name"] as? String, mineUrl: mineUrl)
+                        var authd = false
+                        if let tags = template["tags"] as? [String] {
+                            if !tags.contains("im:public") {
+                                authd = true
+                            }
+                        }
+                        let templateObj = Template(withTitle: template["title"] as? String, description: template["description"] as? String, queryList: queryList, name: template["name"] as? String, mineUrl: mineUrl, authorized: authd)
                         templateList.append(templateObj)
                     }
                     let templatesListObj = TemplatesList(withTemplates: templateList, mine: mineUrl)
