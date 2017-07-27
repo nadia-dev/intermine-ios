@@ -9,7 +9,11 @@
 import UIKit
 
 
-class TemplatesViewController: LoadingTableViewController {
+class TemplatesViewController: LoadingTableViewController, UISearchResultsUpdating {
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    private var filtered: [Template]?
 
     private var templatesList: TemplatesList? {
         didSet {
@@ -36,6 +40,11 @@ class TemplatesViewController: LoadingTableViewController {
             let failedView = FailedRegistryView.instantiateFromNib()
             self.tableView.addSubview(failedView)
         }
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +79,13 @@ class TemplatesViewController: LoadingTableViewController {
         }
     }
     
+    private func filterTemplatesForSearchText(searchText: String?) {
+        self.filtered = self.templatesList?.filterTemplates(searchText: searchText)
+        UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.tableView.reloadData()
+        }, completion: nil)
+    }
+    
     // MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,16 +93,27 @@ class TemplatesViewController: LoadingTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let list = self.templatesList {
-            return list.size()
+        if searchController.isActive && searchController.searchBar.text != "" {
+            if let filtered = self.filtered {
+                return filtered.count
+            }
+        } else {
+            if let list = self.templatesList {
+                return list.size()
+            }
         }
         return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TemplateTableViewCell.identifier, for: indexPath) as! TemplateTableViewCell
-        if let template = templatesList?.templateAtIndex(index: indexPath.row) {
-            cell.template = template
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            cell.template = filtered?[indexPath.row]
+        } else {
+            if let template = templatesList?.templateAtIndex(index: indexPath.row) {
+                cell.template = template
+            }
         }
         return cell
     }
@@ -98,5 +125,11 @@ class TemplatesViewController: LoadingTableViewController {
             let templateDetail = TemplateDetailTableViewController.templateDetailTableViewController(withTemplate: template) {
             self.navigationController?.pushViewController(templateDetail, animated: true)
         }
+    }
+    
+    // MARK: UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterTemplatesForSearchText(searchText: searchController.searchBar.text)
     }
 }
