@@ -15,14 +15,6 @@ class AppManager {
     private var launchVC: UIViewController?
     private var launchVCShouldHide = false
     
-    var canHideVC = false {
-        didSet {
-            if launchVCShouldHide {
-                launchVC?.dismiss(animated: false, completion: nil)
-            }
-        }
-    }
-    
     var selectedMine: String = General.defaultMine {
         didSet {
             //

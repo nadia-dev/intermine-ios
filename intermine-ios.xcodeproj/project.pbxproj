@@ -47,7 +47,6 @@
 		05AC8A751ED772D6000F37CE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC8A741ED772D6000F37CE /* WebViewController.swift */; };
 		05BF4A7F1F21AB12007EE471 /* TypeColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF4A7E1F21AB12007EE471 /* TypeColorCell.swift */; };
 		05BF4A811F21AB92007EE471 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF4A801F21AB92007EE471 /* CategoryCell.swift */; };
-		05BF4A881F22267F007EE471 /* ControllersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF4A871F22267F007EE471 /* ControllersManager.swift */; };
 		05CFF8511ED06839005DD0FE /* RefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */; };
 		05D531571F1E3674006A4EDC /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D531561F1E3674006A4EDC /* LaunchViewController.swift */; };
 		05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */; };
@@ -140,7 +139,6 @@
 		05AC8A741ED772D6000F37CE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		05BF4A7E1F21AB12007EE471 /* TypeColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeColorCell.swift; sourceTree = "<group>"; };
 		05BF4A801F21AB92007EE471 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		05BF4A871F22267F007EE471 /* ControllersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllersManager.swift; sourceTree = "<group>"; };
 		05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefineSearchViewController.swift; sourceTree = "<group>"; };
 		05D531561F1E3674006A4EDC /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		05DA3DF61EC9E95200AB4B79 /* MineModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModelParser.swift; sourceTree = "<group>"; };
@@ -331,7 +329,6 @@
 			children = (
 				05DF530B1E90286E00113171 /* AppDelegate.swift */,
 				052458591ED6115200C8A340 /* AppManager.swift */,
-				05BF4A871F22267F007EE471 /* ControllersManager.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -743,7 +740,6 @@
 				0524F3B51EDC36AE004779F6 /* FavoriteSearchResult+CoreDataClass.swift in Sources */,
 				05EA6CD71EC8B243002CC884 /* MineModel+CoreDataClass.swift in Sources */,
 				054A8D5C1F29605A00D56813 /* TemplateDetailCell.swift in Sources */,
-				05BF4A881F22267F007EE471 /* ControllersManager.swift in Sources */,
 				05F4078F1EC4F48400707B86 /* TemplateTableViewCell.swift in Sources */,
 				05908AFC1F0765CD007BDF50 /* FavoriteButton.swift in Sources */,
 				057E5F751ED6EBC6004278C5 /* MainViewController.swift in Sources */,

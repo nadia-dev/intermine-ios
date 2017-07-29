@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        ControllersManager().subscribe()
-        
         CacheDataStore.sharedCacheDataStore.updateRegistryIfNeeded { (mines, error) in
             AppManager.sharedManager.hideLaunchScreen()
             if let mines = mines {
