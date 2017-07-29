@@ -62,18 +62,7 @@ class TypeColorDefine: NSObject {
 }
 
 class TypeColorCell: UITableViewCell {
-    
-    enum CategoryType: String {
-        case Gene = "Gene"
-        case Protein = "Protein"
-        case Publication = "Publication"
-        case Organism = "Organism"
-        case Interaction = "Interaction"
-        case GO = "GO"
-        case Nuffink = "Nuffink"
-    }
 
-    
     func getSideColor(categoryType: String?) -> UIColor {
         return TypeColorDefine.getSideColor(categoryType: categoryType)
     }
