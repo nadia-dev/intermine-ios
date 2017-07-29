@@ -13,7 +13,6 @@ import UIKit
 class AppManager {
     
     private var launchVC: UIViewController?
-    private var launchVCShouldHide = false
     
     var selectedMine: String = General.defaultMine {
         didSet {
