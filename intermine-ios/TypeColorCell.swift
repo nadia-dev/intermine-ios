@@ -16,6 +16,7 @@ enum CategoryType: String {
     case Interaction = "Interaction"
     case GO = "GO"
     case Nuffink = "Nuffink"
+    case All = "All categories"
 }
 
 class TypeColorDefine: NSObject {
@@ -41,6 +42,9 @@ class TypeColorDefine: NSObject {
                 break
             case CategoryType.GO.rawValue:
                 color = Colors.seance
+                break
+            case CategoryType.All.rawValue:
+                color = Colors.tamarillo
                 break
             default:
                 break

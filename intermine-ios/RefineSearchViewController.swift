@@ -348,8 +348,8 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let categories = self.categories, let selectedMine = self.selectedMine {
             let category = categories[indexPath.row]
-            if let facetName = category.getTitle(), let facetCount = category.getCount() {
-                let selectedFacet = SelectedFacet(withMineName: selectedMine.name, facetName: facetName, count: facetCount)
+            if let facetName = category.getTitle() {
+                let selectedFacet = SelectedFacet(withMineName: selectedMine.name, facetName: facetName, count: category.getCount())
                 refineSearchButton?.isEnabled = true
                 self.delegate?.refineSearchViewController(controller: self, didSelectFacet: selectedFacet)
             }
