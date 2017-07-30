@@ -70,9 +70,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 return name0 == AppManager.sharedManager.selectedMine && name1 != AppManager.sharedManager.selectedMine
             })
             
-            UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: { 
-                self.tableView.reloadData()
-            }, completion: nil)
+            self.tableView.reloadData()
             
             if data.count > 0 {
                 self.showingResult = true
@@ -137,6 +135,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     private func loadSearchResultsWithOffset(offset: Int) {
         self.params?["start"] = "\(offset)"
+        
         if let params = self.params {
             IntermineAPIClient.makeSearchOverAllMines(params: params) { (searchResults, facetLists, error) in
                 // Transform into [String: String] dict
@@ -144,7 +143,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     for res in searchResults {
                         if !self.lockData {
                             self.data.append(res)
-                            // FIXME: ?
+                            
                         }
                     }
                 }
