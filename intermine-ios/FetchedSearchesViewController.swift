@@ -63,6 +63,13 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 return name0 < name1
             })
             
+            self.data = self.data.sorted(by: { (searchResult0, searchResult1) -> Bool in
+                guard let name0 = searchResult0.mineName, let name1 = searchResult1.mineName else {
+                    return false
+                }
+                return name0 == AppManager.sharedManager.selectedMine && name1 != AppManager.sharedManager.selectedMine
+            })
+            
             UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: { 
                 self.tableView.reloadData()
             }, completion: nil)
@@ -161,7 +168,11 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     }
     
     private func loadRefinedSearchWithOffset(offset: Int, selectedFacet: SelectedFacet) {
-        self.params?["facet_Category"] = selectedFacet.getFacetName()
+        let facetName = selectedFacet.getFacetName()
+        if facetName != String.localize("Search.Refine.AllCategories") {
+            self.params?["facet_Category"] = selectedFacet.getFacetName()
+        }
+        
         self.params?["size"] = "\(General.pageSize)"
         self.params?["start"] = "\(offset)"
         

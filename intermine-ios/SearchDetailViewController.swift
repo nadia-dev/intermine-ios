@@ -47,13 +47,13 @@ class SearchDetailViewController: BaseViewController, UITableViewDataSource, Fav
     // MARK: Private methods
     
     private func addNavbarButtons() {
-        let infoButton = UIBarButtonItem(image: Icons.info,  style: .plain, target: self, action: #selector(SearchDetailViewController.didTapInfoButton))
+        let detailsButton = UIBarButtonItem(title: String.localize("General.Details"), style: .plain, target: self, action: #selector(LoadingTableViewController.didTapInfoButton))
         
         if let data = self.data {
             let favButton = FavoriteButton(isFavorite: data.isFavorited())
             favButton.delegate = self
             let favBarButton = UIBarButtonItem(customView: favButton)
-            navigationItem.rightBarButtonItems = [infoButton, favBarButton]
+            navigationItem.rightBarButtonItems = [detailsButton, favBarButton]
         }
     }
     

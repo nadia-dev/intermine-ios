@@ -12,8 +12,8 @@ import UIKit
 class TemplateDetailTableViewController: UITableViewController, TemplateDetailCellDelegate, OperationSelectViewControllerDelegate, ActionCellDelegate {
     
     private var sortedQueries: [TemplateQuery] = []
-    private var switchIndex: Int = 0
     private var popover: OperationSelectViewController?
+    private var displayedQueries: [TemplateQuery] = [] // we don't want to show non-editable queries, but still need them to make a request
     
     var template: Template? {
         didSet {
@@ -22,7 +22,9 @@ class TemplateDetailTableViewController: UITableViewController, TemplateDetailCe
             }, completion: nil)
             if let template = self.template {
                 self.sortedQueries = template.getQueriesSortedByType()
-                self.switchIndex = template.totalQueryCount() - template.opQueryCount() - 1
+                self.displayedQueries = self.sortedQueries.filter({ (query: TemplateQuery) -> Bool in
+                    return query.isEditable()
+                })
             }
         }
     }
@@ -68,12 +70,12 @@ class TemplateDetailTableViewController: UITableViewController, TemplateDetailCe
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedQueries.count
+        return displayedQueries.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TemplateDetailCell.identifier, for: indexPath) as! TemplateDetailCell
-        cell.templateQuery = sortedQueries[indexPath.row]
+        cell.templateQuery = displayedQueries[indexPath.row]
         cell.index = indexPath.row
         cell.delegate = self
         return cell

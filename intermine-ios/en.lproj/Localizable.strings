@@ -6,6 +6,8 @@
   Copyright © 2017 Nadia. All rights reserved.
 */
 
+"General.Details" = "Details";
+
 "Tabs.Search" = "Search";
 "Tabs.Templates" = "Templates";
 "Tabs.Lists" = "Lists";
@@ -20,6 +22,7 @@
 "Templates.Params" = "Parameters: %@";
 "Templates.Operator" = "Operator";
 "Templates.Value" = "Value";
+"Templates.ExtraValue" = "Organism";
 
 "General.NothingFound" = "No results found";
 
@@ -32,7 +35,7 @@
 "Search.Refine.LoadingCategories" = "Loading categories";
 "Search.Refine.NoSelection" = "None selected";
 "Search.Refine.AllMines" = "All mines";
-"Search.Refine.AllCategories" = "All facets";
+"Search.Refine.AllCategories" = "All categories";
 "Search.Refine.CTA" = "Refine search";
 
 "Search.SelectMine" = "Select mine";

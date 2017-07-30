@@ -12,7 +12,7 @@ protocol TemplateDetailCellDelegate: class {
     func templateDetailCellDidTapSelectButton(cell: TemplateDetailCell)
 }
 
-class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
+class TemplateDetailCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDelegate {
     
     @IBOutlet weak var containerView: UIView?
     @IBOutlet weak var titleLabel: UILabel?
@@ -20,10 +20,17 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var operationLabel: UILabel?
     @IBOutlet weak var operationSelectButton: UIButton?
     
+    @IBOutlet weak var extraValuePicker: UIPickerView?
+    @IBOutlet weak var extraValueTitleLabel: UILabel?
+    
     @IBOutlet weak var titleLabelToTopConstraint: NSLayoutConstraint?
-
+    @IBOutlet weak var valueTextFieldToBottom: NSLayoutConstraint?
+    
     @IBOutlet weak var valueTitleLabel: UILabel?
     @IBOutlet weak var valueTextField: UITextField?
+    @IBOutlet weak var extraValuePickerToBottom: NSLayoutConstraint?
+    
+    private var organisms: [String]? = []
     
     weak var delegate: TemplateDetailCellDelegate?
     
@@ -44,6 +51,15 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
                     operationSelectButton?.isHidden = true
                 }
             }
+            if templateQuery?.getExtraValue() == nil {
+                extraValuePicker?.isHidden = true
+                extraValueTitleLabel?.isHidden = true
+                valueTextFieldToBottom?.constant = 20
+            } else {
+                if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine) {
+                    organisms = mine.organisms as? [String]
+                }
+            }
             operationLabel?.text = templateQuery?.getOperation()
             valueTextField?.text = templateQuery?.getValue()
         }
@@ -53,6 +69,9 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         operationTitleLabel?.text = String.localize("Templates.Operator")
         valueTitleLabel?.text = String.localize("Templates.Value")
+        extraValueTitleLabel?.text = String.localize("Templates.ExtraValue")
+        
+        extraValuePicker?.delegate = self
         operationSelectButton?.setTitle(String.localize("Templates.CTA.SelectOperation"), for: .normal)
         operationSelectButton?.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         operationSelectButton?.titleLabel?.numberOfLines = 2
@@ -63,6 +82,7 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
         
         containerView?.layer.borderWidth = 1
         containerView?.layer.borderColor = Colors.gray56.withAlphaComponent(0.3).cgColor
+
     }
     
     @IBAction func operationSelectButtonTap(_ sender: Any) {
@@ -80,6 +100,32 @@ class TemplateDetailCell: UITableViewCell, UITextFieldDelegate {
             info = ["value": "", "index": index]
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.valueChanged), object: self, userInfo: info)
+    }
+    
+    // MARK: Picker view data source
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if let organisms = self.organisms {
+            return organisms.count
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return organisms?[row]
+    }
+    
+    // MARK: Picker view delegate
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let organisms = self.organisms else {
+            return
+        }
+        templateQuery?.changeExtra(extra: organisms[row])
     }
     
     // MARK: Notification when operation is changed

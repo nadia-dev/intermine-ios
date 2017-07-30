@@ -56,6 +56,9 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     private var selectedMine: MineRepresentation? {
         didSet {
             if let selectedMine = self.selectedMine {
+                
+                self.configureUIWithMineRepresentation(mineRepresentation: selectedMine)
+                
                 self.categories = self.getCategoriesForMine(mineName: selectedMine.name)
                 if let catsTable = self.categoriesTable {
                     if selectedMine.name == String.localize("Search.Refine.NoSelection") {
@@ -86,6 +89,15 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
                     }
                 }
             }
+        }
+    }
+    
+    private func configureUIWithMineRepresentation(mineRepresentation: MineRepresentation) {
+        if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineRepresentation.name) {
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.refineSearchButton?.backgroundColor = UIColor.hexStringToUIColor(hex: mine.theme)
+                // TODO: - also change the color of cats table view scroll indicator
+            })
         }
     }
     
