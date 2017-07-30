@@ -23,6 +23,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         self.selectMineButton?.setTitle(String.localize("Search.SelectMine"), for: .normal)
+        self.showMenuButton()
     }
     
     func dismissKeyboard() {
