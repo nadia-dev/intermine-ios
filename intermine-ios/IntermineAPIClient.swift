@@ -236,6 +236,8 @@ class IntermineAPIClient: NSObject {
             return
         }
         
+        AppManager.sharedManager.cachedMineIndex = nil
+        
         var results: [SearchResult] = []
         var facetLists: [FacetList] = []
         let totalMineCount = CacheDataStore.sharedCacheDataStore.registrySize()

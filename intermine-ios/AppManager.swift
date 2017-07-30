@@ -23,6 +23,9 @@ class AppManager {
         }
     }
     
+    var cachedCategory: String? = nil
+    var cachedMineIndex: Int? = nil
+    
     var shouldBreakLoading = false {
         didSet {
             if self.shouldBreakLoading {

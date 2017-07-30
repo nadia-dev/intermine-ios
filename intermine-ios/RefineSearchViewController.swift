@@ -24,7 +24,6 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var nothingFoundView: UIView?
     private var mineToSearch: String?
     
-    
     private var mines: [MineRepresentation] = [MineRepresentation(name: String.localize("Search.Refine.NoSelection"), count: nil)]//[String] = [String.localize("Search.Refine.NoSelection")]
     
     private var selectedThemeColor: UIColor?
@@ -152,6 +151,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.facetsUpdated(_:)), name: NSNotification.Name(rawValue: Notifications.facetsUpdated), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchFailed(_:)), name: NSNotification.Name(rawValue: Notifications.searchFailed), object: nil)
+        self.categoriesTable?.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -247,12 +247,16 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     }
     
     private func getInitialSelectedRow() -> Int? {
-        if mines.count > 1 {
-            return 1
-        } else if mines.count == 1 {
-            return 0
+        if AppManager.sharedManager.cachedMineIndex != nil {
+            return AppManager.sharedManager.cachedMineIndex
         } else {
-            return nil
+            if mines.count > 1 {
+                return 1
+            } else if mines.count == 1 {
+                return 0
+            } else {
+                return nil
+            }
         }
     }
     
@@ -333,7 +337,10 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     // MARK: Picker view delegate
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedMine = self.mines[row]
+        AppManager.sharedManager.cachedCategory = nil
+        let selected = self.mines[row]
+        self.selectedMine = selected
+        AppManager.sharedManager.cachedMineIndex = row
     }
     
     // MARK: - Table view data source
@@ -351,6 +358,9 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         if let categories = self.categories {
             let category = categories[indexPath.row]
             cell.formattedFacet = category
+            if let cached = AppManager.sharedManager.cachedCategory, category.getTitle() == cached {
+                cell.showCheck()
+            }
         }
         cell.index = indexPath.row
         if !allCells.contains(cell) { allCells.insert(cell) }
@@ -363,6 +373,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         if let categories = self.categories, let selectedMine = self.selectedMine {
             let category = categories[indexPath.row]
             if let facetName = category.getTitle() {
+                AppManager.sharedManager.cachedCategory = facetName
                 let selectedFacet = SelectedFacet(withMineName: selectedMine.name, facetName: facetName, count: category.getCount())
                 refineSearchButton?.isEnabled = true
                 self.delegate?.refineSearchViewController(controller: self, didSelectFacet: selectedFacet)
