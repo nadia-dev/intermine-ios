@@ -31,6 +31,7 @@
 "Search.Search" = "Search";
 "Search.Refine" = "Refine Search";
 "Search.Refine.SelectMine" = "Select mine";
+"Search.Refine.SelectedMine" = "Selected mine";
 "Search.Refine.SelectCategory" = "Select category";
 "Search.Refine.LoadingCategories" = "Loading categories";
 "Search.Refine.NoSelection" = "None selected";

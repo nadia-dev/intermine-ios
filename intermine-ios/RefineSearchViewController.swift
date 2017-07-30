@@ -22,6 +22,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     
     private let facetManager = FacetManager.shared
     @IBOutlet weak var nothingFoundView: UIView?
+    private var mineToSearch: String?
     
     
     private var mines: [MineRepresentation] = [MineRepresentation(name: String.localize("Search.Refine.NoSelection"), count: nil)]//[String] = [String.localize("Search.Refine.NoSelection")]
@@ -127,6 +128,9 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         minesLabel?.text = String.localize("Search.Refine.SelectMine")
+        if self.mineToSearch != nil {
+            minesLabel?.text = String.localize("Search.Refine.SelectedMine")
+        }
 
         refineSearchButton?.setTitle(String.localize("Search.Refine.CTA"), for: .normal)
         refineSearchButton?.isEnabled = false
@@ -198,19 +202,27 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
             }
         }
         
-//        // Padding with mines containing 0 search results
-        if let registry = CacheDataStore.sharedCacheDataStore.allRegistry() {
-            for mine in registry {
-                if let name = mine.name {
-                    let count = self.getTotalCountForMine(mineName: name)
-                    let updatedMine = MineRepresentation(name: name, count: count)
-                    // test if mines array already has mine with this name
-                    if !(mines.contains(where: { rep in rep.name == name })) {
-                        mines.append(updatedMine)
+        if self.mineToSearch == nil {
+            // Padding with mines containing 0 search results
+            if let registry = CacheDataStore.sharedCacheDataStore.allRegistry() {
+                for mine in registry {
+                    if let name = mine.name {
+                        let count = self.getTotalCountForMine(mineName: name)
+                        let updatedMine = MineRepresentation(name: name, count: count)
+                        // test if mines array already has mine with this name
+                        if !(mines.contains(where: { rep in rep.name == name })) {
+                            mines.append(updatedMine)
+                        }
                     }
                 }
             }
+        } else {
+            // Remove "None selected" option
+            mines = mines.filter({ (mine) -> Bool in
+                return mine.name != String.localize("Search.Refine.NoSelection")
+            })
         }
+
         
         // TODO: - use if mines need to be sorted
         
@@ -235,12 +247,13 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     }
     
     private func getInitialSelectedRow() -> Int? {
-        if mines.count > 0 {
+        if mines.count > 1 {
             return 1
+        } else if mines.count == 1 {
+            return 0
         } else {
             return nil
         }
-
     }
     
     private func getInitialSelectedMine() -> MineRepresentation? {
@@ -291,9 +304,10 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     
     // MARK: Load from storyboard
     
-    class func refineSearchViewController(withFacets: [FacetList]?) -> RefineSearchViewController? {
+    class func refineSearchViewController(withFacets: [FacetList]?, mineToSearch: String?) -> RefineSearchViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "RefineSearchVC") as? RefineSearchViewController
+        vc?.mineToSearch = mineToSearch
         vc?.facets = withFacets
         return vc
     }
