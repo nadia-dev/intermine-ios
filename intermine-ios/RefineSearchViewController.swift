@@ -26,6 +26,8 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     
     private var mines: [MineRepresentation] = [MineRepresentation(name: String.localize("Search.Refine.NoSelection"), count: nil)]//[String] = [String.localize("Search.Refine.NoSelection")]
     
+    private var selectedThemeColor: UIColor?
+    
     private struct MineRepresentation {
         let name: String
         var count: Int?
@@ -57,6 +59,10 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         didSet {
             if let selectedMine = self.selectedMine {
                 
+                if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: selectedMine.name) {
+                    self.selectedThemeColor = UIColor.hexStringToUIColor(hex: mine.theme).withAlphaComponent(0.5)
+                }
+
                 self.configureUIWithMineRepresentation(mineRepresentation: selectedMine)
                 
                 self.categories = self.getCategoriesForMine(mineName: selectedMine.name)
@@ -93,12 +99,9 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     }
     
     private func configureUIWithMineRepresentation(mineRepresentation: MineRepresentation) {
-        if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineRepresentation.name) {
-            UIView.animate(withDuration: 0.2, animations: { 
-                self.refineSearchButton?.backgroundColor = UIColor.hexStringToUIColor(hex: mine.theme)
-                // TODO: - also change the color of cats table view scroll indicator
-            })
-        }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.refineSearchButton?.backgroundColor = self.selectedThemeColor
+        })
     }
     
     override func indicatorPadding() -> CGFloat {
@@ -358,6 +361,13 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
                 cell.showCheck()
             }
         }
+    }
+    
+    // MARK: Scroll view delegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let verticalIndicator = scrollView.subviews.last as? UIImageView
+        verticalIndicator?.backgroundColor = self.selectedThemeColor
     }
 
 }
