@@ -61,3 +61,12 @@
 
 "Registry.Error.FailedToLoad" = "We were unable to retrive the registry at this time. Please, try to run the app later";
 
+"Tutorial.Description.Menu" = "Select mine you would like to work with";
+"Tutorial.Description.SelectedMine" = "Search all mines or specific mine";
+"Tutorial.Description.Templates" = "View templates for selected mine";
+"Tutorial.Description.Lists" = "View lists for selected mine";
+"Tutorial.Description.Favs" = "Store your favorite search results";
+"Tutorial.Description.Login" = "Login to access your templates and lists";
+"Tutorial.Next" = "Next";
+"Tutorial.Done" = "Got it!";
+

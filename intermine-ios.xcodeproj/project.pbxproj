@@ -14,6 +14,8 @@
 		0535181A1ECF824E006F87EA /* SearchFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053518191ECF824E006F87EA /* SearchFacet.swift */; };
 		0535181C1ECF8260006F87EA /* FacetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535181B1ECF8260006F87EA /* FacetList.swift */; };
 		053A57CC1F13858F00445F6E /* debug_registry.json in Resources */ = {isa = PBXBuildFile; fileRef = 053A57CB1F13858F00445F6E /* debug_registry.json */; };
+		053DBEC91F2F1EBC00988200 /* TutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053DBEC81F2F1EBC00988200 /* TutorialView.xib */; };
+		053DBECB1F2F1ECF00988200 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DBECA1F2F1ECF00988200 /* TutorialView.swift */; };
 		05420A921F128C4C00BC1CC7 /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */; };
 		054A8D5C1F29605A00D56813 /* TemplateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A8D5B1F29605A00D56813 /* TemplateDetailCell.swift */; };
 		054A8D5E1F2A0F7600D56813 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054A8D5D1F2A0F7600D56813 /* ResultsTableViewController.swift */; };
@@ -105,6 +107,8 @@
 		053518191ECF824E006F87EA /* SearchFacet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFacet.swift; sourceTree = "<group>"; };
 		0535181B1ECF8260006F87EA /* FacetList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacetList.swift; sourceTree = "<group>"; };
 		053A57CB1F13858F00445F6E /* debug_registry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = debug_registry.json; sourceTree = "<group>"; };
+		053DBEC81F2F1EBC00988200 /* TutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialView.xib; sourceTree = "<group>"; };
+		053DBECA1F2F1ECF00988200 /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		05420A911F128C4C00BC1CC7 /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		054745731EC2426900BC35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		054A8D5B1F29605A00D56813 /* TemplateDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailCell.swift; sourceTree = "<group>"; };
@@ -204,6 +208,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053DBEC71F2F1EA700988200 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				053DBECA1F2F1ECF00988200 /* TutorialView.swift */,
+				053DBEC81F2F1EBC00988200 /* TutorialView.xib */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
 		054745741EC246C700BC35F8 /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +327,7 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				053DBEC71F2F1EA700988200 /* Tutorial */,
 				05BF4A7D1F21AADF007EE471 /* Cells */,
 				05908AFA1F076209007BDF50 /* Buttons */,
 				05EA6CBB1EC79BF8002CC884 /* TableCoverView */,
@@ -650,6 +664,7 @@
 				05E952E91EC197400057F753 /* Localizable.strings in Resources */,
 				05DF53161E90286E00113171 /* LaunchScreen.storyboard in Resources */,
 				05DF53131E90286E00113171 /* Assets.xcassets in Resources */,
+				053DBEC91F2F1EBC00988200 /* TutorialView.xib in Resources */,
 				05715E561EBF0CA800C4C3C7 /* registry.json in Resources */,
 				05EA6CBA1EC79BEB002CC884 /* TableCoverView.xib in Resources */,
 				05DF53111E90286E00113171 /* Main.storyboard in Resources */,
@@ -764,6 +779,7 @@
 				05F407B21EC61F1400707B86 /* FetchedCell.swift in Sources */,
 				05DA3DF71EC9E95200AB4B79 /* MineModelParser.swift in Sources */,
 				05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */,
+				053DBECB1F2F1ECF00988200 /* TutorialView.swift in Sources */,
 				057E5F711ED6EB01004278C5 /* MenuViewController.swift in Sources */,
 				05AC8A731ED75DB2000F37CE /* SearchDetailViewController.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,

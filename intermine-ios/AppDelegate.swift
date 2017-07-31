@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CacheDataStore.sharedCacheDataStore.updateRegistryIfNeeded { (mines, error) in
             AppManager.sharedManager.hideLaunchScreen()
+            AppManager.sharedManager.showTutorialView()
             if let mines = mines {
                 CacheDataStore.sharedCacheDataStore.updateRegistryModelsIfNeeded(mines: mines)
             }

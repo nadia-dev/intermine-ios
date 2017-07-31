@@ -13,6 +13,7 @@ import UIKit
 class AppManager {
     
     private var launchVC: UIViewController?
+    private var tutorialView: TutorialView?
     
     var selectedMine: String = General.defaultMine {
         didSet {
@@ -66,6 +67,27 @@ class AppManager {
             self.launchVC = vc
             vc.modalTransitionStyle = .crossDissolve
             rootViewController?.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    func showTutorialView() {
+        let tutorialView = TutorialView.instantiateFromNib()
+        if let window = UIApplication.shared.keyWindow {
+            tutorialView.resizeView(toY: 0, toWidth: window.frame.size.width, toHeight: window.frame.size.height)
+            tutorialView.tag = 100
+            window.addSubview(tutorialView)
+        }
+        self.tutorialView = tutorialView
+    }
+    
+    func removeTutorialView() {
+        if let window = UIApplication.shared.keyWindow {
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.tutorialView?.alpha = 0
+            }, completion: { (done) in
+                window.viewWithTag(100)?.removeFromSuperview()
+                self.tutorialView = nil
+            })
         }
     }
     

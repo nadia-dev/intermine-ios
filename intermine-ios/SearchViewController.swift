@@ -39,6 +39,8 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.mineSelected(_:)), name: NSNotification.Name(rawValue: Notifications.mineSelected), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hideTutorial(_:)), name: NSNotification.Name(rawValue: Notifications.tutorialFinished), object: nil)
+        
         self.selectedMine = AppManager.sharedManager.selectedMine
     }
     
@@ -50,6 +52,10 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         if let mineName = notification.userInfo?["mineName"] as? String {
             self.selectedMine = mineName
         }
+    }
+    
+    func hideTutorial(_ notification: NSNotification) {
+        AppManager.sharedManager.removeTutorialView()
     }
     
     func dismissKeyboard() {
