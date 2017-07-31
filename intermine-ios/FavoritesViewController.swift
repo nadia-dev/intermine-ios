@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class FavoritesViewController: BaseViewController, UITableViewDataSource {
     
@@ -49,6 +50,11 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource {
     
     private func updateSavedSearches() {
         self.savedSearches = CacheDataStore.sharedCacheDataStore.getSavedSearchResults()
+        if let savedSearches = self.savedSearches, savedSearches.count >= 10 {
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
+        }
     }
     
     // MARK: Table view data source
