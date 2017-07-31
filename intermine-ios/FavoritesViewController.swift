@@ -50,7 +50,7 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource {
     
     private func updateSavedSearches() {
         self.savedSearches = CacheDataStore.sharedCacheDataStore.getSavedSearchResults()
-        if let savedSearches = self.savedSearches, savedSearches.count >= 10 {
+        if let savedSearches = self.savedSearches, savedSearches.count >= 5 {
             if #available(iOS 10.3, *) {
                 SKStoreReviewController.requestReview()
             }
