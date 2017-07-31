@@ -52,6 +52,7 @@
 "Webview.Loading.Error" = "Error loading. Please, try again later";
 
 "Favorites.Title" = "Favorites";
+"Favorites.NothingFound" = "Save search results to review them later";
 
 "Network.Error.ConnectionLost" = "Please, check your Internet connection and try again";
 "Network.Error.Server" = "Sorry, we are experiensing some issues. Please, try again later";

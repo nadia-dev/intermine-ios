@@ -10,12 +10,23 @@ import UIKit
 
 class FavoritesViewController: BaseViewController, UITableViewDataSource {
     
-    
     @IBOutlet weak var tableView: UITableView?
+    private var failedView: FailedRegistryView?
     
     private var savedSearches: [FavoriteSearchResult]? {
         didSet {
-            self.tableView?.reloadData()
+            if let savedSearches = self.savedSearches, savedSearches.count > 0 {
+                self.tableView?.reloadData()
+                if let failedView = self.failedView {
+                    failedView.removeFromSuperview()
+                    self.failedView = nil
+                }
+            } else {
+                let failedView = FailedRegistryView.instantiateFromNib()
+                failedView.messageText = String.localize("Favorites.NothingFound")
+                self.tableView?.addSubview(failedView)
+                self.failedView = failedView
+            }
         }
     }
 
