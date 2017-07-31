@@ -80,6 +80,7 @@ struct Colors {
 struct DefaultsKeys {
     static let token = "intermine.defaults.token"
     static let selectedMine = "intermine.defaults.selectedMine"
+    static let tutorialShown = "intermine.defaults.tutorial.isShown"
 }
 
 struct Operations {

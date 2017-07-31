@@ -71,13 +71,16 @@ class AppManager {
     }
     
     func showTutorialView() {
-        let tutorialView = TutorialView.instantiateFromNib()
-        if let window = UIApplication.shared.keyWindow {
-            tutorialView.resizeView(toY: 0, toWidth: window.frame.size.width, toHeight: window.frame.size.height)
-            tutorialView.tag = 100
-            window.addSubview(tutorialView)
+        if !DefaultsManager.keyExists(key: DefaultsKeys.tutorialShown) {
+            let tutorialView = TutorialView.instantiateFromNib()
+            if let window = UIApplication.shared.keyWindow {
+                tutorialView.resizeView(toY: 0, toWidth: window.frame.size.width, toHeight: window.frame.size.height)
+                tutorialView.tag = 100
+                window.addSubview(tutorialView)
+            }
+            self.tutorialView = tutorialView
+            DefaultsManager.storeInDefaults(key: DefaultsKeys.tutorialShown, value: "yes")
         }
-        self.tutorialView = tutorialView
     }
     
     func removeTutorialView() {
