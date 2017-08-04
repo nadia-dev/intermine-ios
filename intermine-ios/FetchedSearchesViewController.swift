@@ -171,8 +171,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     if let searchResults = searchResults {
                         for res in searchResults {
                             if !self.lockData {
-                                self.data.append(res)
-                                
+                                if !self.data.contains(where: { $0.getId() == res.getId() }) {
+                                    self.data.append(res)
+                                }
                             }
                         }
                     }
@@ -261,8 +262,20 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = self.data[indexPath.row]
-        if let searchDetailVC = SearchDetailViewController.searchDetailViewController(withData: data) {
-            self.navigationController?.pushViewController(searchDetailVC, animated: true)
+        if let mineName = data.getMineName(),
+            let id = data.getId() {
+            if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName) {
+                if let mineUrl = mine.url {
+                    var url = mineUrl + Endpoints.searchResultReport + "?id=\(id)"
+                    if let pubmedId = data.getPubmedId() {
+                        url = Endpoints.pubmed + pubmedId
+                    }
+                    if let webVC = WebViewController.webViewController(withUrl: url) {
+                        AppManager.sharedManager.shouldBreakLoading = true
+                        self.navigationController?.pushViewController(webVC, animated: true)
+                    }
+                }
+            }
         }
     }
     

@@ -14,12 +14,30 @@ class FetchedCell: TypeColorCell {
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var typeView: UIView?
     private var typeViewBackgroundColor: UIColor?
+    @IBOutlet weak var favoriteButton: FavoriteButton?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        favoriteButton?.changeSelectedState(isFavorite: false)
+    }
     
     var typeColor: UIColor? {
         didSet {
             if let typeColor = self.typeColor {
                 contentView.backgroundColor = typeColor
             }
+        }
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        guard let data = self.data, let searchId = data.getId() else {
+            return
+        }
+
+        if data.isFavorited() {
+            CacheDataStore.sharedCacheDataStore.unsaveSearchResult(withId: searchId)
+        } else {
+            CacheDataStore.sharedCacheDataStore.saveSearchResult(searchResult: data)
         }
     }
     
@@ -34,6 +52,7 @@ class FetchedCell: TypeColorCell {
     var data: SearchResult? {
         didSet {
             if let data = self.data {
+                favoriteButton?.changeSelectedState(isFavorite: data.isFavorited())
                 let viewableRepresentation: [String:String] = data.viewableRepresentation()
                 descriptionLabel?.attributedText = self.labelContents(representedData: viewableRepresentation)
                 if let type = data.getType() {
