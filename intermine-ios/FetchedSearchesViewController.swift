@@ -94,7 +94,13 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.loadSearchResultsWithOffset(offset: self.currentOffset)
         refineButton?.setTitle(String.localize("Search.Refine"), for: .normal)
         buttonView?.isHidden = true
-        mineLabel?.text = String.localize("Search.Refine.AllMines")
+        
+        if let mineToSearch = self.mineToSearch {
+            mineLabel?.text = mineToSearch
+        } else {
+            mineLabel?.text = String.localize("Search.Refine.AllMines")
+        }
+
         categoryLabel?.text = String.localize("Search.Refine.AllCategories")
     }
     

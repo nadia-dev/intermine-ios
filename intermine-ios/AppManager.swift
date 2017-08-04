@@ -14,7 +14,7 @@ class AppManager {
     
     private var launchVC: UIViewController?
     private var tutorialView: TutorialView?
-    private var debugTutorial = true
+    private var debugTutorial = false
     
     var selectedMine: String = General.defaultMine {
         didSet {
