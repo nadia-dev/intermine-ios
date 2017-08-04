@@ -14,6 +14,7 @@ class AppManager {
     
     private var launchVC: UIViewController?
     private var tutorialView: TutorialView?
+    private var debugTutorial = true
     
     var selectedMine: String = General.defaultMine {
         didSet {
@@ -70,8 +71,15 @@ class AppManager {
         }
     }
     
+    private func shouldShowTutorial() -> Bool {
+        if debugTutorial {
+            return true
+        }
+        return !DefaultsManager.keyExists(key: DefaultsKeys.tutorialShown)
+    }
+    
     func showTutorialView() {
-        if !DefaultsManager.keyExists(key: DefaultsKeys.tutorialShown) {
+        if shouldShowTutorial() {
             let tutorialView = TutorialView.instantiateFromNib()
             if let window = UIApplication.shared.keyWindow {
                 tutorialView.resizeView(toY: 0, toWidth: window.frame.size.width, toHeight: window.frame.size.height)
