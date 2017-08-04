@@ -106,4 +106,5 @@ struct Notifications {
     static let searchFailed = "notification.search.failed"
     static let registryLoaded = "notification.registry.loaded"
     static let tutorialFinished = "notification.tutorial.finished"
+    static let unfavorited = "notification.favorite.unfavorited"
 }

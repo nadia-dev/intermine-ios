@@ -45,7 +45,6 @@
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
 		0595D5291EC0A7C800686065 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5281EC0A7C800686065 /* BaseViewController.swift */; };
 		05AA421F1EF5715200992DF3 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA421E1EF5715200992DF3 /* BaseButton.swift */; };
-		05AC8A731ED75DB2000F37CE /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */; };
 		05AC8A751ED772D6000F37CE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC8A741ED772D6000F37CE /* WebViewController.swift */; };
 		05BF4A7F1F21AB12007EE471 /* TypeColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF4A7E1F21AB12007EE471 /* TypeColorCell.swift */; };
 		05BF4A811F21AB92007EE471 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF4A801F21AB92007EE471 /* CategoryCell.swift */; };
@@ -139,7 +138,6 @@
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0595D5281EC0A7C800686065 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		05AA421E1EF5715200992DF3 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		05AC8A741ED772D6000F37CE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		05BF4A7E1F21AB12007EE471 /* TypeColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeColorCell.swift; sourceTree = "<group>"; };
 		05BF4A801F21AB92007EE471 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 			children = (
 				055556651ECCA344009DCA24 /* FetchedSearchesViewController.swift */,
 				05CFF8501ED06839005DD0FE /* RefineSearchViewController.swift */,
-				05AC8A721ED75DB2000F37CE /* SearchDetailViewController.swift */,
 			);
 			name = SearchTabVCs;
 			sourceTree = "<group>";
@@ -781,7 +778,6 @@
 				05269F611ED4D4E50002ECB2 /* DefaultsManager.swift in Sources */,
 				053DBECB1F2F1ECF00988200 /* TutorialView.swift in Sources */,
 				057E5F711ED6EB01004278C5 /* MenuViewController.swift in Sources */,
-				05AC8A731ED75DB2000F37CE /* SearchDetailViewController.swift in Sources */,
 				05F407791EC34CFE00707B86 /* BaseView.swift in Sources */,
 				054A8D5E1F2A0F7600D56813 /* ResultsTableViewController.swift in Sources */,
 				05EA6CBD1EC79C10002CC884 /* TableCoverView.swift in Sources */,

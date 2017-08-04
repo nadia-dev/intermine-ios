@@ -21,6 +21,11 @@ class FetchedCell: TypeColorCell {
         favoriteButton?.changeSelectedState(isFavorite: false)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.itemUnfavorited(_:)), name: NSNotification.Name(rawValue: Notifications.unfavorited), object: nil)
+    }
+    
     var typeColor: UIColor? {
         didSet {
             if let typeColor = self.typeColor {
@@ -60,6 +65,18 @@ class FetchedCell: TypeColorCell {
                     typeView?.backgroundColor = typeViewBackgroundColor
                     self.typeViewBackgroundColor = typeViewBackgroundColor
                 }
+            }
+        }
+    }
+    
+    func itemUnfavorited(_ notificaton: NSNotification) {
+        guard let data = self.data else {
+            return
+        }
+        
+        if let info = notificaton.userInfo, let id = info["id"] as? String, let dataId = data.getId() {
+            if dataId == id {
+                favoriteButton?.changeSelectedState(isFavorite: false)
             }
         }
     }
