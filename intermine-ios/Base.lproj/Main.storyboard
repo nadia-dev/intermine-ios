@@ -1158,6 +1158,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5T-E7-uiX" userLabel="TableContainer" customClass="TableContainer" customModule="intermine_ios" customModuleProvider="target">
                                 <rect key="frame" x="16" y="270.5" width="343" height="396.5"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFl-R5-0Nw">
+                                        <rect key="frame" x="34" y="0.0" width="275" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2Q-wf-ErA" userLabel="NothingFoundView">
                                         <rect key="frame" x="0.0" y="10" width="343" height="386.5"/>
                                         <subviews>
@@ -1175,7 +1181,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vze-8B-4NV">
-                                        <rect key="frame" x="16.5" y="0.0" width="310" height="396.5"/>
+                                        <rect key="frame" x="16.5" y="41" width="310" height="355.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="ksM-D7-Olp" customClass="CategoryCell" customModule="intermine_ios" customModuleProvider="target">
@@ -1234,23 +1240,18 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFl-R5-0Nw">
-                                        <rect key="frame" x="149" y="-21.5" width="44.5" height="21"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="kFl-R5-0Nw" firstAttribute="centerX" secondItem="O5T-E7-uiX" secondAttribute="centerX" id="4Zs-kt-Mmh"/>
-                                    <constraint firstItem="d2Q-wf-ErA" firstAttribute="top" secondItem="kFl-R5-0Nw" secondAttribute="bottom" constant="10" id="Gn6-XV-BHQ"/>
+                                    <constraint firstItem="Vze-8B-4NV" firstAttribute="top" secondItem="kFl-R5-0Nw" secondAttribute="bottom" constant="20" id="Gsk-7M-a1t"/>
                                     <constraint firstAttribute="bottom" secondItem="d2Q-wf-ErA" secondAttribute="bottom" id="HJM-Lh-chr"/>
                                     <constraint firstAttribute="bottom" secondItem="Vze-8B-4NV" secondAttribute="bottom" id="JYW-ng-mqH"/>
                                     <constraint firstItem="d2Q-wf-ErA" firstAttribute="leading" secondItem="O5T-E7-uiX" secondAttribute="leading" id="L1E-A2-Fnz"/>
+                                    <constraint firstItem="kFl-R5-0Nw" firstAttribute="width" secondItem="O5T-E7-uiX" secondAttribute="width" multiplier="0.8" constant="1" id="Npm-Nb-ccX"/>
                                     <constraint firstAttribute="trailing" secondItem="d2Q-wf-ErA" secondAttribute="trailing" id="RM3-ym-wth"/>
                                     <constraint firstItem="Vze-8B-4NV" firstAttribute="width" secondItem="O5T-E7-uiX" secondAttribute="width" multiplier="0.9" constant="1" id="Spy-uV-jK4"/>
-                                    <constraint firstItem="Vze-8B-4NV" firstAttribute="top" secondItem="O5T-E7-uiX" secondAttribute="top" id="ZlA-TA-Hon"/>
+                                    <constraint firstItem="kFl-R5-0Nw" firstAttribute="top" secondItem="O5T-E7-uiX" secondAttribute="top" id="axi-p5-6nx"/>
                                     <constraint firstAttribute="bottom" secondItem="d2Q-wf-ErA" secondAttribute="bottom" id="bDj-UI-ufo"/>
                                     <constraint firstItem="d2Q-wf-ErA" firstAttribute="top" secondItem="O5T-E7-uiX" secondAttribute="top" constant="10" id="ma8-Iu-ejc"/>
                                     <constraint firstItem="Vze-8B-4NV" firstAttribute="centerX" secondItem="O5T-E7-uiX" secondAttribute="centerX" id="u1Q-Ce-naL"/>
