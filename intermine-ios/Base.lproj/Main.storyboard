@@ -522,32 +522,52 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOs-cA-HnY">
+                                            <rect key="frame" x="291" y="6.5" width="76" height="30"/>
+                                            <color key="backgroundColor" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="detailButtonTapped:" destination="D2L-YI-VgB" eventType="touchUpInside" id="5gY-vu-WNe"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dfafd" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIX-ok-OPw">
-                                            <rect key="frame" x="20" y="14" width="335" height="0.0"/>
+                                            <rect key="frame" x="20" y="14" width="261" height="0.0"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="asdfasf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtM-vs-tzF">
-                                            <rect key="frame" x="20" y="19" width="335" height="12"/>
+                                            <rect key="frame" x="20" y="19" width="261" height="12"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" red="0.56078431370000004" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="VOs-cA-HnY" firstAttribute="leading" secondItem="rIX-ok-OPw" secondAttribute="trailing" constant="10" id="8oA-27-Aoc"/>
+                                        <constraint firstItem="VOs-cA-HnY" firstAttribute="centerY" secondItem="tYd-kf-X5l" secondAttribute="centerY" id="Eu2-DQ-Ilu"/>
                                         <constraint firstItem="HtM-vs-tzF" firstAttribute="leading" secondItem="tYd-kf-X5l" secondAttribute="leadingMargin" constant="12" id="NCq-S7-fd9"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="VOs-cA-HnY" secondAttribute="trailing" id="P0F-VY-DeG"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="HtM-vs-tzF" secondAttribute="bottom" constant="5" id="Ykc-ly-1Mi"/>
+                                        <constraint firstItem="VOs-cA-HnY" firstAttribute="width" secondItem="tYd-kf-X5l" secondAttribute="width" multiplier="0.2" constant="1" id="Zlo-i5-GZP"/>
                                         <constraint firstItem="rIX-ok-OPw" firstAttribute="top" secondItem="tYd-kf-X5l" secondAttribute="topMargin" constant="6" id="cxD-vU-9Uf"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="rIX-ok-OPw" secondAttribute="trailing" constant="12" id="gIA-kt-IZI"/>
+                                        <constraint firstItem="VOs-cA-HnY" firstAttribute="leading" secondItem="HtM-vs-tzF" secondAttribute="trailing" constant="10" id="iNM-d3-PdY"/>
                                         <constraint firstItem="HtM-vs-tzF" firstAttribute="top" secondItem="rIX-ok-OPw" secondAttribute="bottom" constant="5" id="nUl-sI-0xK"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="HtM-vs-tzF" secondAttribute="trailing" constant="12" id="p54-IW-ife"/>
                                         <constraint firstItem="rIX-ok-OPw" firstAttribute="leading" secondItem="tYd-kf-X5l" secondAttribute="leadingMargin" constant="12" id="u6Y-jb-ESb"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="countLabel" destination="HtM-vs-tzF" id="Bky-ph-WKW"/>
+                                    <outlet property="detailButton" destination="VOs-cA-HnY" id="70Q-PH-b9o"/>
                                     <outlet property="paramsLabel" destination="rIX-ok-OPw" id="MZc-aR-oc1"/>
                                 </connections>
                             </tableViewCell>

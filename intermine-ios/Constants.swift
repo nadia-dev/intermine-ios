@@ -22,6 +22,7 @@ struct Endpoints {
     static let registryDomain = "http://registry.intermine.org"
     static let registryInstances = "/service/instances"
     static let listReport = "/bagDetails.do"
+    static let templateReport = "/loadTemplate.do"
     static let pubmed = "https://www.ncbi.nlm.nih.gov/pubmed/?term="
 }
 

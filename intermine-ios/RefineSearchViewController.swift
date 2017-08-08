@@ -106,13 +106,6 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: Actions
-    
-    @IBAction func refineSearchButtonTapped(_ sender: Any) {
-        // Go to prev vc with reload
-        //self.navigationController?.popViewController(animated: true)
-    }
-    
     
     func searchFailed(_ notification: NSNotification) {
         if let error = notification.userInfo?["errorType"] as? NetworkErrorType {
