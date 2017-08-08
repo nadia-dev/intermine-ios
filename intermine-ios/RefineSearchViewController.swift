@@ -88,7 +88,6 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         }
 
         self.selectedMine = self.getInitialSelectedMine()
-        //self.placeholderImageView?.image = Icons.placeholder
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +95,6 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.facetsUpdated(_:)), name: NSNotification.Name(rawValue: Notifications.facetsUpdated), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchFailed(_:)), name: NSNotification.Name(rawValue: Notifications.searchFailed), object: nil)
-        //self.categoriesTable?.reloadData()
     }
     
     func facetsUpdated(_ notification: NSNotification) {

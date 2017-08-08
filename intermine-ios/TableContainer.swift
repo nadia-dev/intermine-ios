@@ -23,6 +23,12 @@ class TableContainer: BaseView, UITableViewDelegate, UITableViewDataSource {
     
     var allCells = Set<CategoryCell>()
     
+    private var colorString: String?
+    
+    func configureUI(colorString: String) {
+        self.colorString = colorString
+    }
+    
     private var categories: [FormattedFacet]? {
         didSet {
             if let catsTable = self.categoriesTable {
@@ -39,17 +45,26 @@ class TableContainer: BaseView, UITableViewDelegate, UITableViewDataSource {
         super.awakeFromNib()
         categoriesTable?.delegate = self
         categoriesTable?.dataSource = self
+        placeholderImageView?.image = Icons.placeholder
+        placeholderImageView?.isHidden = true
     }
 
     // MARK: Public
 
     func updateCategories(categories: [FormattedFacet]?) {
         self.categories = categories
+        guard let catsTable = self.categoriesTable else {
+            return
+        }
         if let categories = self.categories, categories.count > 0 {
+            placeholderImageView?.isHidden = true
             categoriesLabel?.text = String.localize("Search.Refine.SelectCategory")
             categoriesTable?.reloadData()
+            BaseView.animateView(view: catsTable, animateIn: true)
         } else {
-            categoriesLabel?.text = "run search to load cats"
+            categoriesLabel?.text = String.localize("Search.Refine.NoCategoriesLoaded")
+            placeholderImageView?.isHidden = false
+            BaseView.animateView(view: catsTable, animateIn: false)
         }
     }
     
@@ -118,7 +133,7 @@ class TableContainer: BaseView, UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let verticalIndicator = scrollView.subviews.last as? UIImageView
-        //verticalIndicator?.backgroundColor = self.selectedThemeColor
+        verticalIndicator?.backgroundColor = UIColor.hexStringToUIColor(hex: self.colorString)
     }
 
 
