@@ -40,6 +40,8 @@
 		057E5F751ED6EBC6004278C5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F741ED6EBC6004278C5 /* MainViewController.swift */; };
 		057E5F771ED6F032004278C5 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057E5F761ED6F032004278C5 /* MenuCell.swift */; };
 		05908AFC1F0765CD007BDF50 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05908AFB1F0765CD007BDF50 /* FavoriteButton.swift */; };
+		059319B01F38DF75008A5652 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059319AF1F38DF75008A5652 /* HeaderView.swift */; };
+		059319B21F38E859008A5652 /* TableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059319B11F38E859008A5652 /* TableContainer.swift */; };
 		0595D51F1EC0A60600686065 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D51E1EC0A60600686065 /* SearchViewController.swift */; };
 		0595D5251EC0A69C00686065 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5241EC0A69C00686065 /* FavoritesViewController.swift */; };
 		0595D5271EC0A6D000686065 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0595D5261EC0A6D000686065 /* LoginViewController.swift */; };
@@ -133,6 +135,8 @@
 		057E5F741ED6EBC6004278C5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		057E5F761ED6F032004278C5 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		05908AFB1F0765CD007BDF50 /* FavoriteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		059319AF1F38DF75008A5652 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		059319B11F38E859008A5652 /* TableContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableContainer.swift; sourceTree = "<group>"; };
 		0595D51E1EC0A60600686065 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0595D5241EC0A69C00686065 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		0595D5261EC0A6D000686065 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 		05715E6D1EBFBC3200C4C3C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				059319AE1F38DF57008A5652 /* RefineSearch */,
 				053DBEC71F2F1EA700988200 /* Tutorial */,
 				05BF4A7D1F21AADF007EE471 /* Cells */,
 				05908AFA1F076209007BDF50 /* Buttons */,
@@ -362,6 +367,15 @@
 				05908AFB1F0765CD007BDF50 /* FavoriteButton.swift */,
 			);
 			name = Buttons;
+			sourceTree = "<group>";
+		};
+		059319AE1F38DF57008A5652 /* RefineSearch */ = {
+			isa = PBXGroup;
+			children = (
+				059319AF1F38DF75008A5652 /* HeaderView.swift */,
+				059319B11F38E859008A5652 /* TableContainer.swift */,
+			);
+			name = RefineSearch;
 			sourceTree = "<group>";
 		};
 		05BF4A7D1F21AADF007EE471 /* Cells */ = {
@@ -786,6 +800,7 @@
 				057E5F6F1ED6EAE2004278C5 /* MenuHelper.swift in Sources */,
 				05420A921F128C4C00BC1CC7 /* NetworkErrorHandler.swift in Sources */,
 				05DF530C1E90286E00113171 /* AppDelegate.swift in Sources */,
+				059319B21F38E859008A5652 /* TableContainer.swift in Sources */,
 				057E5F691ED6EA9B004278C5 /* DismissMenuAnimator.swift in Sources */,
 				05715E5A1EBF0FCC00C4C3C7 /* Cache.xcdatamodeld in Sources */,
 				05E952EF1EC198380057F753 /* String+Utils.swift in Sources */,
@@ -811,6 +826,7 @@
 				0524F3B61EDC36AE004779F6 /* FavoriteSearchResult+CoreDataProperties.swift in Sources */,
 				0524585A1ED6115200C8A340 /* AppManager.swift in Sources */,
 				055556661ECCA344009DCA24 /* FetchedSearchesViewController.swift in Sources */,
+				059319B01F38DF75008A5652 /* HeaderView.swift in Sources */,
 				05715E541EBF055800C4C3C7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

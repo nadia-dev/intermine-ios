@@ -38,6 +38,7 @@
 "Search.Refine.AllMines" = "All mines";
 "Search.Refine.AllCategories" = "All categories";
 "Search.Refine.CTA" = "Refine search";
+"Search.Refine.SelectedMines" = "Selected mines";
 
 "Search.SelectMine" = "Select mine";
 "Search.All" = "Search all mines";

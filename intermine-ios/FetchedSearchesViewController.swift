@@ -167,8 +167,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.searchFailed), object: self, userInfo: info)
                             self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
                         }
-
-                        
                     })
                 }
             } else {
@@ -211,12 +209,21 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
         self.params?["size"] = "\(General.pageSize)"
         self.params?["start"] = "\(offset)"
         
+        self.isLoading = true
+        
         if let mineName = selectedFacet.getMineName(), let params = self.params {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: mineName), let mineUrl = mine.url {
                 IntermineAPIClient.makeSearchInMine(mineUrl: mineUrl, params: params, completion: { (searchRes, facetList, error) in
                     
                     if let res = searchRes {
                         self.data.append(res)
+                    }
+                    
+                    if let facets = facetList {
+                        // To later show facets on refine search VC
+                        if let myFacets = self.facets {
+                            self.facets = myFacets + [facets]
+                        }
                     }
                     
                     if let error = error {
@@ -233,7 +240,7 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     func refineSearchViewController(controller: RefineSearchViewController, didSelectFacet: SelectedFacet) {
         // reload table view with new data
         self.selectedFacet = didSelectFacet
-        self.showingResult = true
+        //self.showingResult = true
         self.lockData = true
         self.data = []
         self.loadRefinedSearchWithOffset(offset: self.currentOffset, selectedFacet: didSelectFacet)
