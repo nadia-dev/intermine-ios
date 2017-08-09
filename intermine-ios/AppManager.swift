@@ -16,9 +16,17 @@ class AppManager {
     private var tutorialView: TutorialView?
     private var debugTutorial = false
     
+    var mineChanged: Bool = false
+    var listsLoadedWithNewMine: Bool = false
+    var templatesLoadedWithNewMine: Bool = false
+    
     var selectedMine: String = General.defaultMine {
+        willSet (newValue) {
+            if newValue != self.selectedMine && self.selectedMine != General.defaultMine {
+                mineChanged = true
+            }
+        }
         didSet {
-            //
             var info: [String: Any] = [:]
             info = ["mineName": self.selectedMine]
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.mineSelected), object: self, userInfo: info)

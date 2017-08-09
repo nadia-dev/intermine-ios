@@ -18,8 +18,25 @@ class ListsViewController: ResultsTableViewController {
         }
     }
     
+    override var mineUrl: String? {
+        willSet(newValue) {
+            if newValue != self.mineUrl {
+                AppManager.sharedManager.listsLoadedWithNewMine = true
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func dataLoading(mineUrl: String, completion: @escaping ([Any]?, NetworkErrorType?) -> ()) {
         IntermineAPIClient.fetchLists(mineUrl: mineUrl, completion: { (lists, error) in
+            super.listsLoaded = true
             guard let lists = lists else {
                 if let error = error {
                     self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))

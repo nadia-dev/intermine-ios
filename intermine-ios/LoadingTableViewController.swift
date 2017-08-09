@@ -67,15 +67,6 @@ class LoadingTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 200
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.mineSelected(_:)), name: NSNotification.Name(rawValue: Notifications.mineSelected), object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     func didTapInfoButton() {
         print("tapped")
     }
