@@ -26,14 +26,6 @@ class ListsViewController: ResultsTableViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func dataLoading(mineUrl: String, completion: @escaping ([Any]?, NetworkErrorType?) -> ()) {
         IntermineAPIClient.fetchLists(mineUrl: mineUrl, completion: { (lists, error) in
             super.listsLoaded = true

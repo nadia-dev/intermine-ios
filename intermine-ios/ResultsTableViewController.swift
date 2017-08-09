@@ -50,23 +50,27 @@ class ResultsTableViewController: LoadingTableViewController, UISearchResultsUpd
         tableView.tableHeaderView = searchController.searchBar
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         if AppManager.sharedManager.mineChanged {
             if AppManager.sharedManager.listsLoadedWithNewMine && AppManager.sharedManager.templatesLoadedWithNewMine {
                 AppManager.sharedManager.mineChanged = false
                 AppManager.sharedManager.listsLoadedWithNewMine = false
                 AppManager.sharedManager.templatesLoadedWithNewMine = false
-            } else {
-                self.data = []
-                self.isLoading = true
-                if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url {
-                    self.configureNavBar(mine: mine, shouldShowMenuButton: true)
-                    self.mineUrl = mineUrl
-                    self.fetchData(mineUrl: mineUrl)
-                }
             }
-
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AppManager.sharedManager.mineChanged {
+            self.data = []
+            self.isLoading = true
+            if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineUrl = mine.url {
+                self.configureNavBar(mine: mine, shouldShowMenuButton: true)
+                self.mineUrl = mineUrl
+                self.fetchData(mineUrl: mineUrl)
+            }
         }
     }
    

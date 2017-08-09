@@ -28,14 +28,6 @@ class TemplatesViewController: ResultsTableViewController {
             }
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
     override func dataLoading(mineUrl: String, completion: @escaping ([Any]?, NetworkErrorType?) -> ()) {
         IntermineAPIClient.fetchTemplates(mineUrl: mineUrl) { (templatesList, error) in
