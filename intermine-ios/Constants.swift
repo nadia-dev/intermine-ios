@@ -24,6 +24,7 @@ struct Endpoints {
     static let listReport = "/bagDetails.do"
     static let templateReport = "/loadTemplate.do"
     static let pubmed = "https://www.ncbi.nlm.nih.gov/pubmed/?term="
+    static let templateReportPostfix = "&method=results"
 }
 
 struct General {

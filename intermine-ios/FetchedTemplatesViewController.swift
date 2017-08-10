@@ -115,6 +115,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         guard let params = self.params else {
             return nil
         }
+        print(params)
         let serviceParams = ["format", "start", "size"]
         var url = ""
         for (key, value) in params {
@@ -193,8 +194,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     func fetchTemplatesHeaderCellDidTapDetailsButton(cell: FetchedTemplatesHeaderCell) {
         // show web w/template detail
         if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineURL = mine.url, let urlParams = makeUrlStringFromParams() {
-            let url = mineURL + Endpoints.templateReport + urlParams
-            print(url)
+            let url = mineURL + Endpoints.templateReport + urlParams + Endpoints.templateReportPostfix
             if let webVC = WebViewController.webViewController(withUrl: url) {
                 self.navigationController?.pushViewController(webVC, animated: true)
             }
