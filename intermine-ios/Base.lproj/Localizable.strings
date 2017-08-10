@@ -50,6 +50,7 @@
 "Login.CredsPrompt" = "Use the same credentials as for web";
 "Login.Loggedin" = "You are logged in to %@";
 "Login.AuthError" = "Something went wrong";
+"Login.EmptyCreds" = "Enter valid credetials";
 
 "Webview.Loading.Error" = "Error loading. Please, try again later";
 

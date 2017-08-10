@@ -112,14 +112,18 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     private func login() {
         if let userName = self.usernameTextField?.text, let pwd = self.passwordTextField?.text, let mineUrl = self.mineUrl {
-            IntermineAPIClient.getToken(mineUrl: mineUrl, username: userName, password: pwd, completion: { (success) in
-                if success {
-                    self.showLoggedinState(isLogged: true)
-                    self.sendUpdatedMineNotification(mineUrl: mineUrl)
-                } else {
-                    self.alert(message: String.localize("Login.AuthError"))
-                }
-            })
+            if userName != "", pwd != "" {
+                IntermineAPIClient.getToken(mineUrl: mineUrl, username: userName, password: pwd, completion: { (success) in
+                    if success {
+                        self.showLoggedinState(isLogged: true)
+                        self.sendUpdatedMineNotification(mineUrl: mineUrl)
+                    } else {
+                        self.alert(message: String.localize("Login.AuthError"))
+                    }
+                })
+            } else {
+                self.alert(message: String.localize("Login.EmptyCreds"))
+            }
         }
     }
     
