@@ -54,7 +54,6 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         }
     }
 
-    
     private var facets: [FacetList]? {
         didSet {
             self.mines = self.createMines(showAllMines: mineToSearch == nil)
@@ -95,6 +94,12 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.facetsUpdated(_:)), name: NSNotification.Name(rawValue: Notifications.facetsUpdated), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchFailed(_:)), name: NSNotification.Name(rawValue: Notifications.searchFailed), object: nil)
+        
+        if let selectedMine = self.selectedMine {
+            if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: selectedMine.name), let theme = mine.theme {
+                headerView?.configureUI(colorString: theme)
+            }
+        }
     }
     
     func facetsUpdated(_ notification: NSNotification) {
