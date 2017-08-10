@@ -211,8 +211,11 @@ class IntermineAPIClient: NSObject {
                         facetList = FacetList(withMineName: mineName, facet: categoryFacet)
                     }
                 }
-                
                 if let result = res["results"] as? [[String: AnyObject]] {
+                    if result.count == 0 {
+                        completion(nil, nil, nil)
+                        return
+                    }
                     
                     for r in result {
                         if let mine = CacheDataStore.sharedCacheDataStore.findMineByUrl(url: mineUrl) {
@@ -224,6 +227,7 @@ class IntermineAPIClient: NSObject {
                             }
                         }
                     }
+                    
                 } else {
                     completion(nil, nil, error)
                 }

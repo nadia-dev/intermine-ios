@@ -77,9 +77,17 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                 self.showingResult = true
                 self.buttonView?.isHidden = false
             } else {
+                
                 if self.selectedFacet == nil {
                     self.nothingFound = true
                     self.buttonView?.isHidden = true
+                } else {
+                    self.nothingFound = true
+                    if let buttonView = self.buttonView {
+                        self.view.bringSubview(toFront: buttonView)
+                    }
+                    
+                    //self.buttonView?.isHidden = true
                 }
             }
         }
@@ -217,6 +225,8 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     
                     if let res = searchRes {
                         self.data.append(res)
+                    } else {
+                        self.data = []
                     }
                     
                     if let facets = facetList {
