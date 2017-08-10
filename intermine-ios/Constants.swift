@@ -55,7 +55,7 @@ struct Icons {
     static let check = UIImage.init(icon: .FACheck, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.tamarillo, backgroundColor: UIColor.clear)
     static let placeholder = UIImage.init(icon: .FAFile, size: CGSize(width: 500, height: 500), orientation: UIImageOrientation.up, textColor: Colors.gray56, backgroundColor: UIColor.clear)
     static let titleBarPlaceholder = UIImage.init(icon: .FAChainBroken, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: UIColor.black, backgroundColor: UIColor.clear)
-    static let user = UIImage.init(icon: .FAUserO, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: UIColor.black, backgroundColor: UIColor.clear)
+    static let user = UIImage.init(icon: .FAUserO, size: CGSize(width: 35, height: 35), orientation: UIImageOrientation.up, textColor: Colors.pistachio, backgroundColor: UIColor.clear)
     static let arrow = UIImage.init(icon: .FALongArrowUp, size: CGSize(width: 50, height: 70), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
     static let refresh = UIImage.init(icon: .FARefresh, size: CGSize(width: 45, height: 45), orientation: UIImageOrientation.up, textColor: Colors.white, backgroundColor: UIColor.clear)
     
@@ -68,6 +68,7 @@ struct Colors {
     static let tamarillo = UIColor.hexStringToUIColor(hex: "#96181e")
     static let apple = UIColor.hexStringToUIColor(hex: "#43A047")
     static let pistachio = UIColor.hexStringToUIColor(hex: "#8CA50B")
+    static let stormDust = UIColor.hexStringToUIColor(hex: "#66675C")
     
     // Search facet colors
     static let sushi = UIColor.hexStringToUIColor(hex: "#8BC34A")
