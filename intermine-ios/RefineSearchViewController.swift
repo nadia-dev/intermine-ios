@@ -266,7 +266,11 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         AppManager.sharedManager.cachedCategory = nil
         let selected = self.mines[row]
         self.selectedMine = selected
-        AppManager.sharedManager.cachedMineIndex = row
+        if !(mineToSearch != nil) {
+            AppManager.sharedManager.cachedMineIndex = row
+        } else {
+            AppManager.sharedManager.cachedMineIndex = nil
+        }
     }
     
         
