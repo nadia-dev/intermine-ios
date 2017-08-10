@@ -78,6 +78,12 @@ class FetchedListsViewController: LoadingTableViewController {
             })
         }
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let tempMine = self.mineUrl
+//        self.mineUrl = tempMine
+//    }
 
     // MARK: - Table view data source
 

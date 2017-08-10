@@ -67,6 +67,7 @@ struct Colors {
     static let palma = UIColor.hexStringToUIColor(hex: "#1E9618")
     static let tamarillo = UIColor.hexStringToUIColor(hex: "#96181e")
     static let apple = UIColor.hexStringToUIColor(hex: "#43A047")
+    static let pistachio = UIColor.hexStringToUIColor(hex: "#8CA50B")
     
     // Search facet colors
     static let sushi = UIColor.hexStringToUIColor(hex: "#8BC34A")
@@ -76,6 +77,8 @@ struct Colors {
     static let orange = UIColor.hexStringToUIColor(hex: "#FF5722")
     static let seance = UIColor.hexStringToUIColor(hex: "#9C27B0")
     static let silver = UIColor.hexStringToUIColor(hex: "#CCCCCC")
+    static let silverChalice = UIColor.hexStringToUIColor(hex: "#A6A6A6")
+    static let scorpion = UIColor.hexStringToUIColor(hex: "#585656")
 }
 
 struct DefaultsKeys {

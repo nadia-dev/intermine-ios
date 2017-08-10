@@ -64,6 +64,12 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         self.navigationItem.titleView = searchController.searchBar
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let tempMine = self.mineUrl
+//        self.mineUrl = tempMine
+//    }
+    
     // MARK: Load from storyboard
     
     class func fetchedTemplatesViewController(withMineUrl: String, params: [String: String]) -> FetchedTemplatesViewController? {
