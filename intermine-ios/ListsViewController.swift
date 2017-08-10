@@ -31,7 +31,9 @@ class ListsViewController: ResultsTableViewController {
             super.listsLoaded = true
             guard let lists = lists else {
                 if let error = error {
-                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                    if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                        self.alert(message: errorMessage)
+                    }
                 }
                 return
             }

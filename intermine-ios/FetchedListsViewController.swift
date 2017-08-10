@@ -71,7 +71,9 @@ class FetchedListsViewController: LoadingTableViewController {
                     // FIXME: - when is this true?
                 }
                 if let error = error {
-                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                    if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                        self.alert(message: errorMessage)
+                    }
                 }
             })
         }

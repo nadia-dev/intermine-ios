@@ -34,7 +34,9 @@ class TemplatesViewController: ResultsTableViewController {
             super.templatesLoaded = true
             guard let list = templatesList else {
                 if let error = error {
-                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                    if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                        self.alert(message: errorMessage)
+                    }
                 }
                 return
             }

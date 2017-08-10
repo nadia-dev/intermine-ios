@@ -109,7 +109,9 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
     
     func searchFailed(_ notification: NSNotification) {
         if let error = notification.userInfo?["errorType"] as? NetworkErrorType {
-            self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+            if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                self.alert(message: errorMessage)
+            }
         }
     }
     

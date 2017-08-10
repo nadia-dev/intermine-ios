@@ -76,7 +76,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
             
             let button = UIButton()
             button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            button.setImage(Icons.menu, for: .normal)
+            button.setImage(Icons.whiteMenu, for: .normal)
             button.addTarget(self, action: #selector(BaseViewController.menuButtonPressed), for: .touchUpInside)
             button.tintColor = Colors.white
             let barButton = UIBarButtonItem()
