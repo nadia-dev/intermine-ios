@@ -9,44 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class FetchedTemplatesHeaderCell: UITableViewCell {
-    
-    @IBOutlet weak var paramsLabel: UILabel?
-    @IBOutlet weak var countLabel: UILabel?
-    
-    static let identifier = "FetchedTemplatesHeaderCell"
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        countLabel?.alpha = 0.0
-        paramsLabel?.alpha = 0.0
-    }
-    
-    var params: String? {
-        didSet {
-            if let params = self.params {
-                paramsLabel?.text = String.localizeWithArg("Templates.Params", arg: params)
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.paramsLabel?.alpha = 1.0
-                })
-            }
-        }
-    }
-    
-    var templatesCount: Int? {
-        didSet {
-            if let count = self.templatesCount {
-                countLabel?.text = String.localizeWithArg("Templates.CountLabel", arg: "\(count)")
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.countLabel?.alpha = 1.0
-                })
-            }
-        }
-    }
-    
-}
-
-class FetchedTemplatesViewController: LoadingTableViewController, UISearchResultsUpdating {
+class FetchedTemplatesViewController: LoadingTableViewController, UISearchResultsUpdating, FetchedTemplatesHeaderCellDelegate {
 
     var params: [String: String]?
     var summaryCell: FetchedTemplatesHeaderCell?
@@ -58,9 +21,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
                 self.nothingFound = true
             } else {
                 self.summaryCell?.templatesCount = self.templatesCount
-                UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    self.tableView.reloadData()
-                }, completion: nil)
+                self.tableView.reloadData()
             }
         }
     }
@@ -149,6 +110,26 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         }
     }
     
+    private func makeUrlStringFromParams() -> String? {
+        //name=Feature_overlapping&value1=Pentose+phosphate
+        guard let params = self.params else {
+            return nil
+        }
+        print(params)
+        let serviceParams = ["format", "start", "size"]
+        var url = ""
+        for (key, value) in params {
+            if !serviceParams.contains(key) {
+                if url.characters.count == 0 {
+                    url = "?" + key + "=" + value
+                } else {
+                    url = url + "&" + key + "=" + value
+                }
+            }
+        }
+        return url
+    }
+    
     private func filterTemplatesForSearchText(searchText: String?) {
         guard let searchText = searchText else {
             return
@@ -162,9 +143,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
                 self.filteredTemplates.append(template)
             }
         }
-        UIView.transition(with: self.tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            self.tableView.reloadData()
-        }, completion: nil)
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -197,6 +176,7 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         let cell = tableView.dequeueReusableCell(withIdentifier: FetchedTemplatesHeaderCell.identifier) as! FetchedTemplatesHeaderCell
         cell.templatesCount = self.templatesCount
         cell.params = self.templateParams()
+        cell.delegate = self
         self.summaryCell = cell
         return cell
     }
@@ -207,6 +187,18 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
+    }
+    
+    // MARK: Fetched templates header cell delegate
+    
+    func fetchTemplatesHeaderCellDidTapDetailsButton(cell: FetchedTemplatesHeaderCell) {
+        // show web w/template detail
+        if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: AppManager.sharedManager.selectedMine), let mineURL = mine.url, let urlParams = makeUrlStringFromParams() {
+            let url = mineURL + Endpoints.templateReport + urlParams + Endpoints.templateReportPostfix
+            if let webVC = WebViewController.webViewController(withUrl: url) {
+                self.navigationController?.pushViewController(webVC, animated: true)
+            }
+        }
     }
     
     // MARK: Scroll view delegate
