@@ -62,7 +62,6 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         self.navigationItem.titleView = searchController.searchBar
-        //tableView.tableHeaderView = searchController.searchBar
     }
     
     // MARK: Load from storyboard
@@ -104,7 +103,9 @@ class FetchedTemplatesViewController: LoadingTableViewController, UISearchResult
                     // FIXME: 
                 }
                 if let error = error {
-                    self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                    if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                        self.alert(message: errorMessage)
+                    }
                 }
             })
         }

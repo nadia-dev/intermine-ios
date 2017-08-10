@@ -23,6 +23,7 @@
 "Templates.Operator" = "Operator";
 "Templates.Value" = "Value";
 "Templates.ExtraValue" = "Organism";
+"Templates.OperationSelect.Done" = "Done";
 
 "General.NothingFound" = "No results found";
 

@@ -86,8 +86,6 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     if let buttonView = self.buttonView {
                         self.view.bringSubview(toFront: buttonView)
                     }
-                    
-                    //self.buttonView?.isHidden = true
                 }
             }
         }
@@ -141,12 +139,12 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
     // MARK: Private methods
     
     private func configureNavbar() {
-        self.navigationController?.navigationBar.barTintColor = Colors.palma
+        self.navigationController?.navigationBar.barTintColor = UIColor.white//Colors.palma
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = Colors.white
+        self.navigationController?.navigationBar.tintColor = UIColor.black//Colors.white
         self.navigationController?.navigationBar.backItem?.title = ""
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: Colors.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]//Colors.white]
     }
 
     
@@ -173,7 +171,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                             var info: [String: Any] = [:]
                             info["errorType"] = error
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.searchFailed), object: self, userInfo: info)
-                            self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                            if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                                self.alert(message: errorMessage)
+                            }
                         }
                     })
                 }
@@ -201,7 +201,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                         var info: [String: Any] = [:]
                         info["errorType"] = error
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.searchFailed), object: self, userInfo: info)
-                        self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                        if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                            self.alert(message: errorMessage)
+                        }
                     }
                 }
             }
@@ -237,7 +239,9 @@ class FetchedSearchesViewController: LoadingTableViewController, UIGestureRecogn
                     }
                     
                     if let error = error {
-                        self.alert(message: NetworkErrorHandler.getErrorMessage(errorType: error))
+                        if let errorMessage = NetworkErrorHandler.getErrorMessage(errorType: error) {
+                            self.alert(message: errorMessage)
+                        }
                     }
 
                 })
