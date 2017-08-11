@@ -98,6 +98,7 @@ class RefineSearchViewController: BaseViewController, UIPickerViewDelegate, UIPi
         if let selectedMine = self.selectedMine {
             if let mine = CacheDataStore.sharedCacheDataStore.findMineByName(name: selectedMine.name), let theme = mine.theme {
                 headerView?.configureUI(colorString: theme)
+                tableContainer?.configureUI(colorString: theme)
             }
         }
     }

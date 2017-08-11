@@ -26,7 +26,7 @@ class HeaderView: BaseView {
     weak var delegate: HeaderViewDelegate?
     
     func configureUI(colorString: String) {
-        refineSearchButton?.backgroundColor = UIColor.hexStringToUIColor(hex: colorString).withAlphaComponent(0.5)
+        refineSearchButton?.backgroundColor = UIColor.hexStringToUIColor(hex: colorString)
     }
     
     func configureModeControl(withMode mode: RefineMode, searchableMine: String?) {
