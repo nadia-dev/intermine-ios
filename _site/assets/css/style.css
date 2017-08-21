@@ -266,6 +266,8 @@ Small Device Styles
   code, pre { min-width: 240px; max-width: 320px; font-size: 11px; } }
 h1, h2, h3, p { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+h2 { color: #66675C; }
+
 #header_wrap { background: #8CA50B; }
 #header_wrap img { border: none; box-shadow: none; -webkit-box-shadow: none; width: 30%; height: auto; }
 
