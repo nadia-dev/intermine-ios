@@ -17,7 +17,9 @@ The InterMine app allows you to search through integrated genomics data-sets at 
 * More interactive search results
 
 ## How can I get the app?
+<p class="small_img">
 ![coming soon](assets/images/soon.png)
+</p>
 
 ## How to run the project?
 1. [Download Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
