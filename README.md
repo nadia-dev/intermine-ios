@@ -2,7 +2,7 @@
 
 The InterMine app allows you to search through integrated genomics data-sets at a variety of model-organism databases. Use structured search templates to find relationships between different data sets, inspect your lists of genes of interest and use them in further data analysis and find items of interest from a range of searches on your iPhone.
 
-![screenshots](assets/images/phones.png "Logo Title Text 1")
+![screenshots](assets/images/phones.png)
 
 ## What can you do with the app?
 * View all available Intermines
@@ -16,6 +16,9 @@ The InterMine app allows you to search through integrated genomics data-sets at 
 * Group saved search results and post them as lists
 * More interactive search results
 
+## How can I get the app?
+![coming soon](assets/images/soon.png)
+
 ## How to run the project?
 1. [Download Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 2. Clone the project from Github:
@@ -24,7 +27,10 @@ git clone https://github.com/joystate/intermine-ios.git
 ```
 3. Build and run project in Xcode
 
-## Dependencies
+# Contributors
+[InterMine iOS](https://github.com/intermine/intermine-ios) was developed in entirety by [Nadia Yudina](https://github.com/joystate) as part of GSoC 2017, with input and guidance from the [InterMine team](https://github.com/intermine).
+
+# Dependencies
 * [Alamofire](https://github.com/Alamofire/Alamofire)
 * [Font-Awesome-Swift](https://github.com/thii/FontAwesome.swift)
 * [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView)
