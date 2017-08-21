@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="iOS application : Intermine iOS application">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a0f9602a2d7be4e8b701bdd7c0a9323d4938a126">
+
+<!-- Begin Jekyll SEO tag v2.2.3 -->
+<title>Font Awesome Swift | iOS application</title>
+<meta property="og:title" content="Font Awesome Swift" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Intermine iOS application" />
+<meta property="og:description" content="Intermine iOS application" />
+<link rel="canonical" href="http://localhost:4000/Pods/Font-Awesome-Swift/" />
+<meta property="og:url" content="http://localhost:4000/Pods/Font-Awesome-Swift/" />
+<meta property="og:site_name" content="iOS application" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"WebPage","headline":"Font Awesome Swift","description":"Intermine iOS application","url":"http://localhost:4000/Pods/Font-Awesome-Swift/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="http://github.com/joystate/intermine-ios">View on GitHub</a>
+          <img src="../assets/images/text_logo_wh.svg"/>
+          <h1 id="project_title">iOS application</h1>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="font-awesome-swift">Font Awesome Swift</h1>
+<p><img src="https://github.com/Vaberer/Font-Awesome-Swift/blob/master/resources/opensource_matters.png" alt="Font Awesome Swift" /></p>
+
+<p>Follow me: <a href="https://twitter.com/vaberer">@vaberer</a></p>
+
+<p>I like ★. Do not forget to ★ this super convenient library.</p>
+
+<p>#There is also a very popular <a href="https://github.com/Vaberer/Google-Material-Design-Icons-Swift">Google Design Material Icons</a> library which you will love!</p>
+
+<p>##Added <code class="highlighter-rouge">UISegmentedControl</code> &amp; <code class="highlighter-rouge">UITabbarItem</code> &amp; <code class="highlighter-rouge">UISlider</code> &amp; <code class="highlighter-rouge">UIStepper</code> &amp; <code class="highlighter-rouge">UITextField</code> support!</p>
+
+<p>###Updated to Font Awesome 4.7 - Added 41 new icons!</p>
+
+<p>Font Awesome swift library for iOS. No image icons any more. Using Font Awesome Swift library is very easy to use. Look at the demo app which shows all icons and their names or just visit <a href="http://fortawesome.github.io/Font-Awesome/icons/">FontAwesome</a>.</p>
+
+<p align="center">
+  <img height="480" src="https://github.com/Vaberer/Font-Awesome-Swift/blob/master/resources/image1.png" />
+</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>iOS 8.0+</li>
+  <li>Xcode 8</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects.</p>
+
+<p>CocoaPods 0.36 adds supports for Swift and embedded frameworks. You can install it with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>gem install cocoapods
+</code></pre>
+</div>
+
+<p>To integrate Font Awesome Swift into your Xcode project using CocoaPods, specify it in your <code class="highlighter-rouge">Podfile</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">pod</span> <span class="s1">'Font-Awesome-Swift'</span><span class="p">,</span> <span class="s1">'~&gt; 1.6.2'</span>
+</code></pre>
+</div>
+
+<p>Then, run the following command:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pod install
+</code></pre>
+</div>
+<p>Do not forget to import to your swift files where you want to use this library:</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Font_Awesome_Swift</span>
+</code></pre>
+</div>
+
+<p>Check branches <code class="highlighter-rouge">swift-2.2</code> and <code class="highlighter-rouge">swift-2.3</code></p>
+
+<h3 id="manually">Manually</h3>
+
+<ol>
+  <li>Copy <code class="highlighter-rouge">FAIcon.swift</code> and <code class="highlighter-rouge">FontAwesome.ttf</code> files into your project</li>
+  <li>Check to import <code class="highlighter-rouge">FontAwesome.ttf</code> in project, “Project” &gt; “Target” &gt; “Copy Bundle Resources”</li>
+</ol>
+
+<h2 id="usage">Usage</h2>
+
+<p>Super easy way how to add an icon.</p>
+<p align="center">
+  <img height="200" src="https://github.com/Vaberer/Font-Awesome-Swift/blob/master/resources/helper.png" />
+</p>
+
+<h3 id="uiimage">UIImage</h3>
+<p>For Stacked images, please refer <a href="http://fontawesome.io/examples/#stacked">Stacked Icons</a></p>
+<pre><code class="language-Swift">    UIImage.init(icon: .FATwitter, size: CGSize(width: 35, height: 35))
+    
+    // Change colors
+    UIImage.init(icon: .FATwitter, size: CGSize(width: 35, height: 35), textColor: .red, backgroundColor: .black)
+    
+    // Stacked Images With Bigger Background
+    UIImage.init(bgIcon: .FASquareO, bgTextColor: .white, topIcon: .FATwitter, topTextColor: .white, bgLarge: true)
+    UIImage.init(bgIcon: .FACircle, bgTextColor: .black, topIcon: .FAFlag, topTextColor: .white, bgLarge: true)
+    
+    // Stacked Images With Smaller Background
+    UIImage.init(bgIcon: .FACamera, bgTextColor: .black, topIcon: .FABan, topTextColor: .red, bgLarge: false)
+
+    // Stacked Images With Bigger Background and Custom Size
+    UIImage.init(bgIcon: .FASquare, bgTextColor: .black, topIcon: .FATerminal, topTextColor: .white, bgLarge: true, size: CGSize(width: 50, height: 50))
+
+</code></pre>
+
+<h3 id="uiimageview">UIImageView</h3>
+<pre><code class="language-Swift">    imageView.setFAIconWithName(icon: .FATwitter, textColor: .blue, backgroundColor: .gray)
+
+    imageView.setFAIconWithName(icon: .FATwitter, textColor: .blue)
+    
+</code></pre>
+
+<h3 id="uilabel">UILabel</h3>
+<pre><code class="language-Swift">    labelName.FAIcon = .FAGithub
+
+    labelName.setFAIcon(icon: .FAGithub, iconSize: 35)
+
+    labelName.setFAText(prefixText: "follow me on ", icon: .FATwitter, postfixText: ". Thanks!", size: 25)
+
+    // Bigger icon:
+    labelName.setFAText(prefixText: "follow me on  ", icon: .FATwitter, postfixText: ". Thanks!", size: 25, iconSize: 30)
+
+    labelName.setFAColor(.red)
+    
+</code></pre>
+
+<h3 id="uibutton">UIButton</h3>
+<pre><code class="language-Swift">    buttonName.setFAIcon(icon: .FAGithub, forState: .normal)
+
+    // Set icon size
+    buttonName.setFAIcon(icon: .FAGithub, iconSize: 35, forState: .normal)
+
+    buttonName.setFAText(prefixText: "follow me on ", icon: .FATwitter, postfixText: ". Thanks!", size: 25, forState: .normal)
+
+    // Bigger icon
+    buttonName.setFAText(prefixText: "follow me on ", icon: .FATwitter, postfixText: ". Thanks!", size: 25, forState: .normal, iconSize: 30)
+
+    // Change color:
+    buttonName.setFATitleColor(color: .red, forState: .normal))
+    
+</code></pre>
+
+<h3 id="uibarbuttonitem">UIBarButtonItem</h3>
+<pre><code class="language-Swift">    // Standard font size
+    barName.FAIcon = .FAGithub
+
+    // Custom font size
+    barName.setFAIcon(icon: .FAGithub, iconSize: 35)
+
+    barName.setFAText(prefixText: "follow me on ", icon: .FATwitter, postfixText: ". Thanks!", size: 25)
+
+    barName.tintColor = .red
+
+</code></pre>
+
+<h3 id="uitextfield">UITextField</h3>
+<pre><code class="language-Swift">    // Right View Icon
+    textfield.setRightViewFAIcon(icon: .FASearch, rightViewMode: .always, textColor: .red, backgroundColor: .clear, size: nil)
+
+    // Left View Icon
+    textfield.setLeftViewFAIcon(icon: .FAPlus, leftViewMode: .always, textColor: .red, backgroundColor: .clear, size: nil)
+
+</code></pre>
+
+<h3 id="uisegmentedcontrol">UISegmentedControl</h3>
+<pre><code class="language-Swift">  segmentedControl.setFAIcon(icon: .FATwitter, forSegmentAtIndex: 0)
+  
+</code></pre>
+
+<h3 id="uistepper">UIStepper</h3>
+<pre><code class="language-Swift">    stepper.setFABackgroundImage(icon: .FAGithub, forState: .normal)
+    stepper.setFAIncrementImage(icon: .FABellO, forState: .normal)
+    stepper.setFADecrementImage(icon: .FABellSlashO, forState: .normal)
+    
+
+</code></pre>
+
+<h3 id="uitabbaritem">UITabbarItem</h3>
+<pre><code class="language-Swift">  tabBarController?.tabBar.items?.first?.setFAIcon(.FATwitter)
+  
+  // Options to change selected and unselected color
+  tabBarItem.setFAIcon(icon: .FATwitter, size: nil, textColor: .red, backgroundColor: .black, selectedTextColor: .yellow, selectedBackgroundColor: .white)
+  
+  // Options to change selected and unselected color with specific size
+  tabBarItem.setFAIcon(icon: .FATwitter, size: CGSize(width: 35, height: 35), textColor: .red, backgroundColor: .black, selectedTextColor: .yellow, selectedBackgroundColor: .white)
+  
+</code></pre>
+
+<h3 id="uislider">UISlider</h3>
+<pre><code class="language-Swift">  // Change minimum or maximum value image
+  slider.setFAMinimumValueImage(icon: .FABellSlashO)
+  slider.setFAMaximumValueImage(icon: .FABellO)
+
+  // change minimum or maximum value image with a specific size
+  slider.setFAMinimumValueImage(icon: .FABellSlashO, customSize:  CGSize(width: 35, height: 35))
+  slider.setFAMaximumValueImage(icon: .FABellO, customSize:  CGSize(width: 35, height: 35))
+  
+</code></pre>
+
+<h3 id="uiviewcontroller">UIViewController</h3>
+<pre><code class="language-Swift">  // Change navigation title
+  FATitle = .FATwitter
+  
+</code></pre>
+
+<h2 id="author">Author</h2>
+
+<p>Patrik Vaberer, patrik@toptal.com</p>
+
+<ul>
+  <li><a href="https://sk.linkedin.com/in/vaberer">LinkedIn</a></li>
+  <li><a href="https://twitter.com/vaberer">@vaberer</a></li>
+  <li><a href="http://vaberer.me">Blog</a></li>
+</ul>
+
+<h3 id="licence">Licence</h3>
+
+<p>Font Awesome Swift is available under the MIT license. See the LICENSE file for more info.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">iOS application build by <a href="http://github.com/joystate">Nadia Yudina</a> and maintained by <a href="https://github.com/intermine">Intermine</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

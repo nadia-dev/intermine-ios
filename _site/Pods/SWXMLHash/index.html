@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="iOS application : Intermine iOS application">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=a0f9602a2d7be4e8b701bdd7c0a9323d4938a126">
+
+<!-- Begin Jekyll SEO tag v2.2.3 -->
+<title>SWXMLHash | iOS application</title>
+<meta property="og:title" content="SWXMLHash" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Intermine iOS application" />
+<meta property="og:description" content="Intermine iOS application" />
+<link rel="canonical" href="http://localhost:4000/Pods/SWXMLHash/" />
+<meta property="og:url" content="http://localhost:4000/Pods/SWXMLHash/" />
+<meta property="og:site_name" content="iOS application" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"WebPage","headline":"SWXMLHash","description":"Intermine iOS application","url":"http://localhost:4000/Pods/SWXMLHash/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="http://github.com/joystate/intermine-ios">View on GitHub</a>
+          <img src="../assets/images/text_logo_wh.svg"/>
+          <h1 id="project_title">iOS application</h1>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="swxmlhash">SWXMLHash</h1>
+
+<p><a href=""><img src="https://img.shields.io/cocoapods/p/SWXMLHash.svg" alt="CocoaPods" /></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
+<a href="https://cocoapods.org/pods/SWXMLHash"><img src="https://img.shields.io/cocoapods/v/SWXMLHash.svg" alt="CocoaPods" /></a>
+<a href="https://gitter.im/drmohundro/SWXMLHash?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/drmohundro/SWXMLHash" /></a>
+<a href="https://codebeat.co/projects/github-com-drmohundro-swxmlhash"><img src="https://codebeat.co/badges/893cc640-c5d9-45b2-a3ff-426e6e6b7b80" alt="codebeat" /></a></p>
+
+<p>SWXMLHash is a relatively simple way to parse XML in Swift. If you’re familiar with <code class="highlighter-rouge">NSXMLParser</code>, this library is a simple wrapper around it. Conceptually, it provides a translation from XML to a dictionary of arrays (aka hash).</p>
+
+<p>The API takes a lot of inspiration from <a href="https://github.com/SwiftyJSON/SwiftyJSON">SwiftyJSON</a>.</p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#requirements">Requirements</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <li><a href="#configuration">Configuration</a></li>
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#faq">FAQ</a></li>
+  <li><a href="#changelog">Changelog</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#license">License</a></li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+</li>
+  <li>Xcode 8.0+</li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p>SWXMLHash can be installed using <a href="http://cocoapods.org/">CocoaPods</a>, <a href="https://github.com/Carthage/Carthage">Carthage</a>, or manually.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install CocoaPods, run:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>gem install cocoapods
+</code></pre>
+</div>
+
+<p>Then create a <code class="highlighter-rouge">Podfile</code> with the following contents:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
+
+<span class="n">pod</span> <span class="s1">'SWXMLHash'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0.0'</span>
+</code></pre>
+</div>
+
+<p>Finally, run the following command to install it:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pod install
+</code></pre>
+</div>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install Carthage, run (using Homebrew):</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>brew update
+<span class="gp">$ </span>brew install carthage
+</code></pre>
+</div>
+
+<p>Then add the following line to your <code class="highlighter-rouge">Cartfile</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>github "drmohundro/SWXMLHash" ~&gt; 3.0
+</code></pre>
+</div>
+
+<h3 id="manual-installation">Manual Installation</h3>
+
+<p>To install manually, you’ll need to clone the SWXMLHash repository. You can do this in a separate directory or you can make use of git submodules - in this case, git submodules are recommended so that your repository has details about which commit of SWXMLHash you’re using. Once this is done, you can just drop the <code class="highlighter-rouge">SWXMLHash.swift</code> file into your project.</p>
+
+<blockquote>
+  <p>NOTE: if you’re targeting iOS 7, you’ll have to install manually because embedded frameworks require a minimum deployment target of iOS 8 or OSX Mavericks.</p>
+</blockquote>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>If you’re just getting started with SWXMLHash, I’d recommend cloning the repository down and opening the workspace. I’ve included a Swift playground in the workspace which makes it easy to experiment with the API and the calls.</p>
+
+<p><img src="https://raw.githubusercontent.com/drmohundro/SWXMLHash/assets/swift-playground@2x.png" width="600" alt="Swift Playground" /></p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>SWXMLHash allows for limited configuration in terms of its approach to parsing. To set any of the configuration options, you use the <code class="highlighter-rouge">configure</code> method, like so:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">xml</span> <span class="o">=</span> <span class="kt">SWXMLHash</span><span class="o">.</span><span class="n">config</span> <span class="p">{</span>
+              <span class="n">config</span> <span class="k">in</span>
+              <span class="c1">// set any config options here</span>
+          <span class="p">}</span><span class="o">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">xmlToParse</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>The available options at this time are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">shouldProcessLazily</code>
+    <ul>
+      <li>This determines whether not to use lazy loading of the XML. It can significantly increase the performance of parsing if your XML is large.</li>
+      <li>Defaults to <code class="highlighter-rouge">false</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">shouldProcessNamespaces</code>
+    <ul>
+      <li>This setting is forwarded on to the internal <code class="highlighter-rouge">NSXMLParser</code> instance. It will return any XML elements without their namespace parts (i.e. “&lt;h:table&gt;” will be returned as “&lt;table&gt;”)</li>
+      <li>Defaults to <code class="highlighter-rouge">false</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<p>All examples below can be found in the included <a href="https://github.com/drmohundro/SWXMLHash/blob/master/Tests/">specs</a>.</p>
+
+<h3 id="initialization">Initialization</h3>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">xml</span> <span class="o">=</span> <span class="kt">SWXMLHash</span><span class="o">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">xmlToParse</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Alternatively, if you’re parsing a large XML file and need the best performance, you may wish to configure the parsing to be processed lazily. Lazy processing avoids loading the entire XML document into memory, so it could be preferable for performance reasons. See the error handling for one caveat regarding lazy loading.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">xml</span> <span class="o">=</span> <span class="kt">SWXMLHash</span><span class="o">.</span><span class="n">config</span> <span class="p">{</span>
+              <span class="n">config</span> <span class="k">in</span>
+              <span class="n">config</span><span class="o">.</span><span class="n">shouldProcessLazily</span> <span class="o">=</span> <span class="kc">true</span>
+          <span class="p">}</span><span class="o">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">xmlToParse</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>The above approach uses the new config method, but there is also a <code class="highlighter-rouge">lazy</code> method directly off of <code class="highlighter-rouge">SWXMLHash</code>.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">xml</span> <span class="o">=</span> <span class="kt">SWXMLHash</span><span class="o">.</span><span class="nf">lazy</span><span class="p">(</span><span class="n">xmlToParse</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="single-element-lookup">Single Element Lookup</h3>
+
+<p>Given:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;root&gt;</span>
+  <span class="nt">&lt;header&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Foo<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/header&gt;</span>
+  ...
+<span class="nt">&lt;/root&gt;</span>
+</code></pre>
+</div>
+
+<p>Will return “Foo”.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"header"</span><span class="p">][</span><span class="s">"title"</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="p">?</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<h3 id="multiple-elements-lookup">Multiple Elements Lookup</h3>
+
+<p>Given:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;root&gt;</span>
+  ...
+  <span class="nt">&lt;catalog&gt;</span>
+    <span class="nt">&lt;book&gt;&lt;author&gt;</span>Bob<span class="nt">&lt;/author&gt;&lt;/book&gt;</span>
+    <span class="nt">&lt;book&gt;&lt;author&gt;</span>John<span class="nt">&lt;/author&gt;&lt;/book&gt;</span>
+    <span class="nt">&lt;book&gt;&lt;author&gt;</span>Mark<span class="nt">&lt;/author&gt;&lt;/book&gt;</span>
+  <span class="nt">&lt;/catalog&gt;</span>
+  ...
+<span class="nt">&lt;/root&gt;</span>
+</code></pre>
+</div>
+
+<p>The below will return “John”.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"catalog"</span><span class="p">][</span><span class="s">"book"</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s">"author"</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="p">?</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<h3 id="attributes-usage">Attributes Usage</h3>
+
+<p>Given:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;root&gt;</span>
+  ...
+  <span class="nt">&lt;catalog&gt;</span>
+    <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">"1"</span><span class="nt">&gt;&lt;author&gt;</span>Bob<span class="nt">&lt;/author&gt;&lt;/book&gt;</span>
+    <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">"123"</span><span class="nt">&gt;&lt;author&gt;</span>John<span class="nt">&lt;/author&gt;&lt;/book&gt;</span>
+    <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">"456"</span><span class="nt">&gt;&lt;author&gt;</span>Mark<span class="nt">&lt;/author&gt;&lt;/book&gt;</span>
+  <span class="nt">&lt;/catalog&gt;</span>
+  ...
+<span class="nt">&lt;/root&gt;</span>
+</code></pre>
+</div>
+
+<p>The below will return “123”.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"catalog"</span><span class="p">][</span><span class="s">"book"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="p">?</span><span class="o">.</span><span class="nf">attribute</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="s">"id"</span><span class="p">)?</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<p>Alternatively, you can look up an element with specific attributes. The below will return “John”.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"catalog"</span><span class="p">][</span><span class="s">"book"</span><span class="p">]</span><span class="o">.</span><span class="nf">withAttr</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"123"</span><span class="p">)[</span><span class="s">"author"</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="p">?</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<h3 id="returning-all-elements-at-current-level">Returning All Elements At Current Level</h3>
+
+<p>Given:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;root&gt;</span>
+  ...
+  <span class="nt">&lt;catalog&gt;</span>
+    <span class="nt">&lt;book&gt;&lt;genre&gt;</span>Fiction<span class="nt">&lt;/genre&gt;&lt;/book&gt;</span>
+    <span class="nt">&lt;book&gt;&lt;genre&gt;</span>Non-fiction<span class="nt">&lt;/genre&gt;&lt;/book&gt;</span>
+    <span class="nt">&lt;book&gt;&lt;genre&gt;</span>Technical<span class="nt">&lt;/genre&gt;&lt;/book&gt;</span>
+  <span class="nt">&lt;/catalog&gt;</span>
+  ...
+<span class="nt">&lt;/root&gt;</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">all</code> method will iterate over all nodes at the indexed level. The code below will return “Fiction, Non-fiction, Technical”.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="s">", "</span><span class="o">.</span><span class="nf">join</span><span class="p">(</span><span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"catalog"</span><span class="p">][</span><span class="s">"book"</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">elem</span> <span class="k">in</span>
+  <span class="n">elem</span><span class="p">[</span><span class="s">"genre"</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="o">!.</span><span class="n">text</span><span class="o">!</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p>You can also iterate over the <code class="highlighter-rouge">all</code> method:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">elem</span> <span class="k">in</span> <span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"catalog"</span><span class="p">][</span><span class="s">"book"</span><span class="p">]</span><span class="o">.</span><span class="n">all</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">elem</span><span class="p">[</span><span class="s">"genre"</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="o">!.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Alternatively, XMLIndexer provides <code class="highlighter-rouge">for-in</code> support directly from the index (no <code class="highlighter-rouge">all</code> needed in this case).</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">elem</span> <span class="k">in</span> <span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"catalog"</span><span class="p">][</span><span class="s">"book"</span><span class="p">]</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">elem</span><span class="p">[</span><span class="s">"genre"</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="o">!.</span><span class="n">text</span><span class="o">!</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="returning-all-child-elements-at-current-level">Returning All Child Elements At Current Level</h3>
+
+<p>Given:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;root&gt;</span>
+  <span class="nt">&lt;catalog&gt;</span>
+    <span class="nt">&lt;book&gt;</span>
+      <span class="nt">&lt;genre&gt;</span>Fiction<span class="nt">&lt;/genre&gt;</span>
+      <span class="nt">&lt;title&gt;</span>Book<span class="nt">&lt;/title&gt;</span>
+      <span class="nt">&lt;date&gt;</span>1/1/2015<span class="nt">&lt;/date&gt;</span>
+    <span class="nt">&lt;/book&gt;</span>
+  <span class="nt">&lt;/catalog&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</code></pre>
+</div>
+
+<p>The below will <code class="highlighter-rouge">print</code> “root”, “catalog”, “book”, “genre”, “title”, and “date” (note the <code class="highlighter-rouge">children</code> method).</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">enumerate</span><span class="p">(</span><span class="nv">indexer</span><span class="p">:</span> <span class="kt">XMLIndexer</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="n">child</span> <span class="k">in</span> <span class="n">indexer</span><span class="o">.</span><span class="n">children</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">element</span><span class="o">!.</span><span class="n">name</span><span class="p">)</span>
+    <span class="nf">enumerate</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nf">enumerate</span><span class="p">(</span><span class="nv">indexer</span><span class="p">:</span> <span class="n">xml</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p>Using Swift 2.0’s new error handling feature:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="n">xml</span><span class="o">!.</span><span class="nf">byKey</span><span class="p">(</span><span class="s">"root"</span><span class="p">)</span><span class="o">.</span><span class="nf">byKey</span><span class="p">(</span><span class="s">"what"</span><span class="p">)</span><span class="o">.</span><span class="nf">byKey</span><span class="p">(</span><span class="s">"header"</span><span class="p">)</span><span class="o">.</span><span class="nf">byKey</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="k">let</span> <span class="nv">error</span> <span class="k">as</span> <span class="kt">IndexingError</span> <span class="p">{</span>
+  <span class="c1">// error is an IndexingError instance that you can deal with</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Or</strong> using the existing indexing functionality:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">switch</span> <span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"what"</span><span class="p">][</span><span class="s">"header"</span><span class="p">][</span><span class="s">"foo"</span><span class="p">]</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">.</span><span class="kt">Element</span><span class="p">(</span><span class="k">let</span> <span class="nv">elem</span><span class="p">):</span>
+  <span class="c1">// everything is good, code away!</span>
+<span class="k">case</span> <span class="o">.</span><span class="kt">XMLError</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+  <span class="c1">// error is an IndexingError instance that you can deal with</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that error handling as shown above will not work with lazy loaded XML. The lazy parsing doesn’t actually occur until the <code class="highlighter-rouge">element</code> or <code class="highlighter-rouge">all</code> method are called - as a result, there isn’t any way to know prior to asking for an element if it exists or not.</p>
+
+<h3 id="types-conversion">Types conversion</h3>
+
+<p>Given:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;root&gt;</span>
+  <span class="nt">&lt;books&gt;</span>
+    <span class="nt">&lt;book</span> <span class="na">isbn=</span><span class="s">"0000000001"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;title&gt;</span>Book A<span class="nt">&lt;/title&gt;</span>
+      <span class="nt">&lt;price&gt;</span>12.5<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;year&gt;</span>2015<span class="nt">&lt;/year&gt;</span>
+      <span class="nt">&lt;categories&gt;</span>
+        <span class="nt">&lt;category&gt;</span>C1<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;category&gt;</span>C2<span class="nt">&lt;/category&gt;</span>
+      <span class="nt">&lt;/categories&gt;</span>
+    <span class="nt">&lt;/book&gt;</span>
+    <span class="nt">&lt;book</span> <span class="na">isbn=</span><span class="s">"0000000002"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;title&gt;</span>Book B<span class="nt">&lt;/title&gt;</span>
+      <span class="nt">&lt;price&gt;</span>10<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;year&gt;</span>1988<span class="nt">&lt;/year&gt;</span>
+      <span class="nt">&lt;categories&gt;</span>
+        <span class="nt">&lt;category&gt;</span>C2<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;category&gt;</span>C3<span class="nt">&lt;/category&gt;</span>
+      <span class="nt">&lt;/categories&gt;</span>
+    <span class="nt">&lt;/book&gt;</span>
+    <span class="nt">&lt;book</span> <span class="na">isbn=</span><span class="s">"0000000003"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;title&gt;</span>Book C<span class="nt">&lt;/title&gt;</span>
+      <span class="nt">&lt;price&gt;</span>8.33<span class="nt">&lt;/price&gt;</span>
+      <span class="nt">&lt;year&gt;</span>1990<span class="nt">&lt;/year&gt;</span>
+      <span class="nt">&lt;amount&gt;</span>10<span class="nt">&lt;/amount&gt;</span>
+      <span class="nt">&lt;categories&gt;</span>
+        <span class="nt">&lt;category&gt;</span>C1<span class="nt">&lt;/category&gt;</span>
+        <span class="nt">&lt;category&gt;</span>C3<span class="nt">&lt;/category&gt;</span>
+      <span class="nt">&lt;/categories&gt;</span>
+    <span class="nt">&lt;/book&gt;</span>
+  <span class="nt">&lt;books&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</code></pre>
+</div>
+<p>with <code class="highlighter-rouge">Book</code> struct implementing <code class="highlighter-rouge">XMLIndexerDeserializable</code>:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Book</span><span class="p">:</span> <span class="kt">XMLIndexerDeserializable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Double</span>
+    <span class="k">let</span> <span class="nv">year</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span>
+    <span class="k">let</span> <span class="nv">isbn</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">category</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">_</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">XMLIndexer</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Book</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="kt">Book</span><span class="p">(</span>
+            <span class="nv">title</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s">"title"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">(),</span>
+            <span class="nv">price</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s">"price"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">(),</span>
+            <span class="nv">year</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s">"year"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">(),</span>
+            <span class="nv">amount</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s">"amount"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">(),</span>
+            <span class="nv">isbn</span><span class="p">:</span> <span class="n">node</span><span class="o">.</span><span class="nf">value</span><span class="p">(</span><span class="nv">ofAttribute</span><span class="p">:</span> <span class="s">"isbn"</span><span class="p">),</span>
+            <span class="nv">category</span> <span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s">"categories"</span><span class="p">][</span><span class="s">"category"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The below will return array of <code class="highlighter-rouge">Book</code> structs:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">books</span><span class="p">:</span> <span class="p">[</span><span class="kt">Book</span><span class="p">]</span> <span class="o">=</span> <span class="k">try</span> <span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"books"</span><span class="p">][</span><span class="s">"book"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://raw.githubusercontent.com/ncreated/SWXMLHash/assets/types-conversion%402x.png" width="600" alt="Types Conversion" /></p>
+
+<p>You can convert any XML to your custom type by implementing <code class="highlighter-rouge">XMLIndexerDeserializable</code> for any non-leaf node (e.g. <code class="highlighter-rouge">&lt;book&gt;</code> in the example above).</p>
+
+<p>For leaf nodes (e.g. <code class="highlighter-rouge">&lt;title&gt;</code> in the example above), built-in converters support <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code>, <code class="highlighter-rouge">Float</code>, <code class="highlighter-rouge">Bool</code>, and <code class="highlighter-rouge">String</code> values (both non- and -optional variants). Custom converters can be added by implementing <code class="highlighter-rouge">XMLElementDeserializable</code>.</p>
+
+<p>For attributes (e.g. <code class="highlighter-rouge">isbn=</code> in the example above), built-in converters support the same types as above, and additional converters can be added by implementing <code class="highlighter-rouge">XMLAttributeDeserializable</code>.</p>
+
+<p>Types conversion supports error handling, optionals and arrays. For more examples, look into <code class="highlighter-rouge">SWXMLHashTests.swift</code> or play with types conversion directly in the Swift playground.</p>
+
+<h2 id="faq">FAQ</h2>
+
+<h3 id="does-swxmlhash-handle-urls-for-me">Does SWXMLHash handle URLs for me?</h3>
+
+<p>No - SWXMLHash only handles parsing of XML. If you have a URL that has XML content on it, I’d recommend using a library like <a href="https://github.com/Alamofire/Alamofire">AlamoFire</a> to download the content into a string and then parsing it.</p>
+
+<h3 id="does-swxmlhash-support-writing-xml-content">Does SWXMLHash support writing XML content?</h3>
+
+<p>No, not at the moment - SWXMLHash only supports parsing XML (via indexing, deserialization, etc.).</p>
+
+<h3 id="im-getting-an-ambiguous-reference-to-member-subscript-when-i-call-value">I’m getting an “Ambiguous reference to member ‘subscript’” when I call <code class="highlighter-rouge">.value()</code>.</h3>
+
+<p><code class="highlighter-rouge">.value()</code> is used for deserialization - you have to have something that implements <code class="highlighter-rouge">XMLIndexerDeserializable</code> and that can handle deserialization to the left-hand side of expression.</p>
+
+<p>For example, given the following:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">dateValue</span><span class="p">:</span> <span class="kt">NSDate</span> <span class="o">=</span> <span class="k">try!</span> <span class="n">xml</span><span class="p">[</span><span class="s">"root"</span><span class="p">][</span><span class="s">"date"</span><span class="p">]</span><span class="o">.</span><span class="nf">value</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p>You’ll get an error because there isn’t any built-in deserializer for <code class="highlighter-rouge">NSDate</code>. See the above documentation on adding your own deserialization support.</p>
+
+<h3 id="im-getting-an-exc_bad_access-sigsegv-when-i-call-parse">I’m getting an <code class="highlighter-rouge">EXC_BAD_ACCESS (SIGSEGV)</code> when I call <code class="highlighter-rouge">parse()</code></h3>
+
+<p>Chances are very good that your XML content has what is called a “byte order mark” or BOM. SWXMLHash uses <code class="highlighter-rouge">NSXMLParser</code> for its parsing logic and there are issues with it and handling BOM characters. See <a href="https://github.com/drmohundro/SWXMLHash/issues/65">issue #65</a> for more details. Others who have run into this problem have just stripped the BOM out of their content prior to parsing.</p>
+
+<h3 id="how-do-i-handle-deserialization-with-a-class-versus-a-struct-such-as-with-nsdate">How do I handle deserialization with a class versus a struct (such as with <code class="highlighter-rouge">NSDate</code>)?</h3>
+
+<p>Using extensions on classes instead of structs can result in some odd catches that might give you a little trouble. For example, see <a href="http://stackoverflow.com/questions/38174669/how-to-deserialize-nsdate-with-swxmlhash">this question on StackOverflow</a> where someone was trying to write their own <code class="highlighter-rouge">XMLElementDeserializable</code> for <code class="highlighter-rouge">NSDate</code> which is a class and not a struct. The <code class="highlighter-rouge">XMLElementDeserializable</code> protocol expects a method that returns <code class="highlighter-rouge">Self</code> - this is the part that gets a little odd.</p>
+
+<p>See below for the code snippet to get this to work and note in particular the <code class="highlighter-rouge">private static func value&lt;T&gt;() -&gt; T</code> line - that is the key.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">NSDate</span><span class="p">:</span> <span class="kt">XMLElementDeserializable</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">XMLElement</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">dateAsString</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="kt">XMLDeserializationError</span><span class="o">.</span><span class="kt">NodeHasNoValue</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="nv">dateFormatter</span> <span class="o">=</span> <span class="kt">NSDateFormatter</span><span class="p">()</span>
+    <span class="n">dateFormatter</span><span class="o">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">"EEE, dd MMM yyyy HH:mm:ss zzz"</span>
+    <span class="k">let</span> <span class="nv">date</span> <span class="o">=</span> <span class="n">dateFormatter</span><span class="o">.</span><span class="nf">dateFromString</span><span class="p">(</span><span class="n">dateAsString</span><span class="p">)</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">validDate</span> <span class="o">=</span> <span class="n">date</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="kt">XMLDeserializationError</span><span class="o">.</span><span class="kt">TypeConversionFailed</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="s">"Date"</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="n">element</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// NOTE THIS</span>
+    <span class="k">return</span> <span class="nf">value</span><span class="p">(</span><span class="n">validDate</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// AND THIS</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">value</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">NSDate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">date</span> <span class="k">as!</span> <span class="kt">T</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="have-a-different-question">Have a different question?</h3>
+
+<p>Feel free to shoot me an email, post a <a href="http://stackoverflow.com/questions/tagged/swxmlhash">question on StackOverflow</a>, or open an issue if you think you’ve found a bug. I’m happy to try to help!</p>
+
+<h2 id="changelog">Changelog</h2>
+
+<p>See <a href="CHANGELOG.md">CHANGELOG</a> for a list of all changes and their corresponding versions.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING</a> for guidelines to contribute back to SWXMLHash.</p>
+
+<h2 id="license">License</h2>
+
+<p>SWXMLHash is released under the MIT license. See <a href="/Pods/SWXMLHash/LICENSE">LICENSE</a> for details.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">iOS application build by <a href="http://github.com/joystate">Nadia Yudina</a> and maintained by <a href="https://github.com/intermine">Intermine</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

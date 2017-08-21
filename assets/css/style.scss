@@ -1,0 +1,26 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+h1, h2, h3, p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#header_wrap {
+  background: #8CA50B;
+  img {
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: 30%;
+    height: auto;
+  }
+}
+
+#main_content_wrap {
+  border-top: none;
+  img {
+    width: 100%;
+  }
+}
