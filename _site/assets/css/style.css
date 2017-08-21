@@ -271,4 +271,5 @@ h1, h2, h3, p { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 #main_content_wrap { border-top: none; }
 #main_content_wrap img { width: 100%; }
+#main_content_wrap .button_img { width: 50%; }
 #main_content_wrap a { color: #8CA50B; }
