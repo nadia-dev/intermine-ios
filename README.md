@@ -23,3 +23,9 @@ The InterMine app allows you to search through integrated genomics data-sets at 
 git clone https://github.com/joystate/intermine-ios.git
 ```
 3. Build and run project in Xcode
+
+## Dependencies
+* [Alamofire](https://github.com/Alamofire/Alamofire)
+* [Font-Awesome-Swift](https://github.com/thii/FontAwesome.swift)
+* [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView)
+* [SWXMLHash](https://github.com/drmohundro/SWXMLHash)
