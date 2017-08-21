@@ -2,7 +2,7 @@
 
 The InterMine app allows you to search through integrated genomics data-sets at a variety of model-organism databases. Use structured search templates to find relationships between different data sets, inspect your lists of genes of interest and use them in further data analysis and find items of interest from a range of searches on your iPhone.
 
-![alt text](../assets/images/phones.png "Logo Title Text 1")
+![screenshots](assets/images/phones.png "Logo Title Text 1")
 
 ## What can you do with the app?
 * View all available Intermines
