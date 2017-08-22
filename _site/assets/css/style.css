@@ -268,6 +268,8 @@ h1, h2, h3, p { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h2 { color: #66675C; }
 
+#forkme_banner { background-color: #a50b8b; }
+
 #header_wrap { background: #8CA50B; }
 #header_wrap img { border: none; box-shadow: none; -webkit-box-shadow: none; width: 30%; height: auto; }
 
